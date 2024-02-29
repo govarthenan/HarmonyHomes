@@ -4,13 +4,13 @@
 define('DB_HOST', 'database');
 define('DB_USER', 'root');
 define('DB_PASSWORD', 'tiger');
-define('DB_NAME', 'mvcDB');
+define('DB_NAME', 'harmonyhomes');
 
 // /app/ folder path
 define('APP_ROOT', dirname(__DIR__));
 
 // site name
-define('SITE_NAME', 'MVC');
+define('SITE_NAME', 'HarmonyHomes');
 
 // URL root
 define('URL_ROOT', 'http://localhost/' . strtolower(SITE_NAME));
