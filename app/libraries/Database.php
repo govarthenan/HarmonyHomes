@@ -104,8 +104,9 @@ class Database
      *
      * @return array The array containing all the records in the result.
      */
-    public function fetchAllResults()
+    public function resultSet()
     {
+        $this->execute();
         return $this->statement->fetchAll();
     }
 
