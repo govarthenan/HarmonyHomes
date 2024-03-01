@@ -89,6 +89,17 @@ class Database
     }
 
     /**
+     * Get single record as object
+     *
+     * @return DBO_result Single result
+     */
+    public function singleResult()
+    {
+        $this->execute();
+        return $this->statement->fetch();
+    }
+
+    /**
      * Fetches all the results from the database.
      *
      * @return array The array containing all the records in the result.
