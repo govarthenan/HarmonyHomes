@@ -151,7 +151,7 @@ class Residents extends Controller
                     // register user
                     if ($this->model->registerResident($this->data)) {
                         // redirect to home page after successful registration
-                        header('location: ' . URL_ROOT);
+                        header('location: ' . URL_ROOT . '/residents/signIn');
                     } else {
                         die('Error with registering user to DB');  // ToDo: improve error handling
 
@@ -170,5 +170,11 @@ class Residents extends Controller
 
             $this->loadView('residents/sign_up', $this->data);
         }
+    }
+
+    public function signIn()
+    {
+        // ToDo: implement sign in
+        $this->loadView('residents/sign_in');
     }
 }
