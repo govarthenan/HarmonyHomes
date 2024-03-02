@@ -43,8 +43,9 @@
             }
             ?>
             <form method="post" class="description-buttons">
-                <button type="submit" name="login_button" class="login_button">Sign In&nbsp;<span>&rsaquo;</span></button>
-                <a href="<?php echo URL_ROOT . '/residents/signUp'; ?>" class="signup_button">Sign Up&nbsp;<span>&rsaquo;</span></a>
+                <a href="<?php echo URL_ROOT . '/residents/signIn'; ?>" class="login_button">Resident Sign In&nbsp;<span>&rsaquo;</span></a>
+                <a href="<?php echo URL_ROOT . '/residents/signUp'; ?>" class="signup_button">Resident Sign Up&nbsp;<span>&rsaquo;</span></a>
+                <a href="<?php echo URL_ROOT . '/staff/signIn'; ?>" class="login_button">Staff Sign In&nbsp;<span>&rsaquo;</span></a>
             </form>
 
         </div>
