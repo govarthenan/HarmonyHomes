@@ -22,7 +22,7 @@
                         <img src="<?php echo URL_ROOT . '/resources/common/company-logo-small.png' ?>" class="logo-sign-in">
                         <div class="company-name-sign-in">Harmony Homes</div>
                     </div>
-
+                    <?php flashMessage('signUp_success'); ?>
                     <form action="<?php echo URL_ROOT . '/residents/signIn'; ?>" method="post" class="login-form">
                         <div class="sign-in-form-group">
                             <label for="username">Email:</label>

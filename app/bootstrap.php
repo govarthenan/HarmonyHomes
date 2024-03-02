@@ -12,6 +12,7 @@ require_once '../app/config/config.php';
 
 // load helpers
 require_once APP_ROOT . '/helpers/file_handling_functions.php';
+require_once APP_ROOT . '/helpers/message_notification_functions.php';
 
 // load libraries - now handled by autoload
 // require_once APP_ROOT . '/libraries/Core.php';
