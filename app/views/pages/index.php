@@ -34,11 +34,9 @@
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["login_button"])) {
-
                     header("Location: login.php");
                     exit();
                 } elseif (isset($_POST["signup_button"])) {
-
                     header("Location: signup.php");
                     exit();
                 }
