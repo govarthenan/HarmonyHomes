@@ -34,7 +34,9 @@ class Residents extends Controller
                 'floor_number' => trim($_POST['floor_number']),
                 'door_number' => trim($_POST['door_number']),
                 'nic' => trim($_POST['nic']),
-                                'password' => trim($_POST['password']),
+                'nic_path' => '',
+                'agreement_path' => '',
+                'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
             ];
 
@@ -114,10 +116,53 @@ class Residents extends Controller
                 $this->errors['confirm_password_err'] = 'Passwords do not match';
             }
 
-            // check if any errors exist by checking $errors array
-            if (empty($errors)) {
+            // validate nic and document file uploads
+            if (empty($_FILES['nic_photo'])) {
+                $this->errors['nic_photo_err'] = 'Please upload NIC photo';
+            } elseif ($_FILES['nic_photo']['error'] != 0) {
+                $this->errors['nic_photo_err'] = 'Error uploading NIC photo';
+            }
+
+            if (empty($_FILES['agreement_photo'])) {
+                $this->errors['agreement_photo_err'] = 'Please upload document photo';
+            } elseif ($_FILES['agreement_photo']['error'] != 0) {
+                $this->errors['agreement_photo_err'] = 'Error uploading document photo';
+            }
+
+            // check if any errors exist by checking $this->errors array
+            if (empty($this->errors)) {
                 // register user
-echo 'no errors. lets register user';
+
+                // debug
+                echo 'no errors' . '<br>';
+
+                // move both files and get their paths
+                $this->data['nic_path'] = uploadFile($_FILES['nic_photo']);
+                $this->data['agreement_path'] = uploadFile($_FILES['agreement_photo']);
+
+                echo $this->data['nic_path'] . '<br>';
+                echo $this->data['agreement_path'] . '<br>';
+
+                // ensure file uploads were successful before registering
+                if ($this->data['nic_path'] && $this->data['agreement_path']) {
+                    // hash password
+                    $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+
+                    // register user
+                    if ($this->model->registerResident($this->data)) {
+                        // redirect to login page
+                        // header('location: ' . URL_ROOT . '/residents/login');
+                        echo 'registration successful';
+                    } else {
+                        die('Error with registering user to DB');  // ToDo: improve error handling
+
+                        // delete uploaded files unique to this registration
+                        unlink($this->data['nic_path']);
+                        unlink($this->data['agreement_path']);
+                    }
+                } else {
+                    die('Error uploading files');  // ToDo: improve error handling
+                }
             } else {
                 die(print_r($this->errors));  // ToDO: improve error handling
             }
