@@ -133,15 +133,9 @@ class Residents extends Controller
             if (empty($this->errors)) {
                 // register user
 
-                // debug
-                echo 'no errors' . '<br>';
-
                 // move both files and get their paths
                 $this->data['nic_path'] = uploadFile($_FILES['nic_photo']);
                 $this->data['agreement_path'] = uploadFile($_FILES['agreement_photo']);
-
-                echo $this->data['nic_path'] . '<br>';
-                echo $this->data['agreement_path'] . '<br>';
 
                 // ensure file uploads were successful before registering
                 if ($this->data['nic_path'] && $this->data['agreement_path']) {
@@ -152,7 +146,7 @@ class Residents extends Controller
                     if ($this->model->registerResident($this->data)) {
                         // register flash message to be shown in login page
                         flashMessage('signUp_success', 'You are now registered and can log in', 'alert alert-success');
-                        
+
                         // redirect to home page after successful registration
                         header('location: ' . URL_ROOT . '/residents/signIn');
                     } else {
