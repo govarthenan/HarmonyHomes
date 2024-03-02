@@ -46,7 +46,7 @@
             ?>
             <form method="post" class="description-buttons">
                 <button type="submit" name="login_button" class="login_button">Sign In&nbsp;<span>&rsaquo;</span></button>
-                <button type="submit" name="signup_button" class="signup_button">Sign Up&nbsp;<span>&rsaquo;</span></button>
+                <a href="<?php echo URL_ROOT . '/residents/signUp'; ?>" class="signup_button">Sign Up&nbsp;<span>&rsaquo;</span></a>
             </form>
 
         </div>
