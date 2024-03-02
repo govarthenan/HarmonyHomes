@@ -36,9 +36,9 @@
 
                         <label for="gender">Gender:</label>
                         <select id="gender" name="gender" required>
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
-                            <option value="2">Other</option>
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                            <option value="o">Other</option>
                         </select>
 
                         <label for="floorNumber ">Floor Number:</label>
