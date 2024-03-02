@@ -34,11 +34,9 @@
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST["login_button"])) {
-
                     header("Location: login.php");
                     exit();
                 } elseif (isset($_POST["signup_button"])) {
-
                     header("Location: signup.php");
                     exit();
                 }
@@ -46,7 +44,7 @@
             ?>
             <form method="post" class="description-buttons">
                 <button type="submit" name="login_button" class="login_button">Sign In&nbsp;<span>&rsaquo;</span></button>
-                <button type="submit" name="signup_button" class="signup_button">Sign Up&nbsp;<span>&rsaquo;</span></button>
+                <a href="<?php echo URL_ROOT . '/residents/signUp'; ?>" class="signup_button">Sign Up&nbsp;<span>&rsaquo;</span></a>
             </form>
 
         </div>
