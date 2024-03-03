@@ -243,7 +243,6 @@ class Residents extends Controller
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->name;
 
-        echo 'successfully signed in ' . $_SESSION['user_name'];
-        // ToDO: redirect to residents dashboard
+        header('location: ' . URL_ROOT . '/residents/index');
     }
 }
