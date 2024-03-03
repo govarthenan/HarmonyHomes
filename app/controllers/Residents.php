@@ -16,6 +16,11 @@ class Residents extends Controller
         $this->model = $this->loadModel('Resident');  // load DB model. PDO instance is inside private property
     }
 
+    public function index()
+    {
+        $this->loadView('residents/dashboard');
+    }
+
     public function signUp()
     {
         // check for post/get to see if form was submitted

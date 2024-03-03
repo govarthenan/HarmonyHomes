@@ -1,5 +1,5 @@
 <?php
-include('sidenav.php');
+include(APP_ROOT.'/views/inc/resident_side_nav.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@ include('sidenav.php');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="<?php echo URL_ROOT . 'css/style.css'; ?>" />
+    <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/style.css'; ?>" />
   </head>
   <body onload="randerDate()">
     <div class="main-content">
@@ -79,19 +79,19 @@ include('sidenav.php');
   
         <div class="second-row-resident-dashboard">
           <div class="booking-reminder">
-            <img src="<?php echo URL_ROOT . 'resources/waiting-appointments-calendar.svg'?>" class="booking-reminder-img">
+            <img src="<?php echo URL_ROOT . '/resources/resident_dashboard/waiting-appointments-calendar.svg'?>" class="booking-reminder-img">
             <div class="reminder-heading">Booking</div>
           </div>
           <div class="event-reminder">
-             <img src="<?php echo URL_ROOT . 'resources/calendar-star.svg'?>" class="event-reminder-img">
+             <img src="<?php echo URL_ROOT . '/resources/resident_dashboard/calendar-star.svg'?>" class="event-reminder-img">
              <div class="reminder-heading">Events</div>
           </div>
           <div class="payment-reminder">
-            <img src="<?php echo URL_ROOT . 'resources/subscription-cashflow.svg'?>" class="payment-reminder-img">
+            <img src="<?php echo URL_ROOT . '/resources/resident_dashboard/subscription-cashflow.svg'?>" class="payment-reminder-img">
             <div class="reminder-heading">Payments</div>
           </div>
           <div class="private-files">
-           <img src="<?php echo URL_ROOT . 'resources/business-user-curriculum.svg'?>" class="business-user-curriculum-img">
+           <img src="<?php echo URL_ROOT . '/resources/resident_dashboard/business-user-curriculum.svg'?>" class="business-user-curriculum-img">
            <div class="private-files-heading">Private files</div>
           </div>
         </div>
@@ -129,7 +129,7 @@ include('sidenav.php');
        </div>
     </div>
 
-    <script src="<?php echo URL_ROOT . 'js/index.js'; ?>" ></script>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>" ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>
