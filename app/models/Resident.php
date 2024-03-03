@@ -64,4 +64,26 @@ class Resident
         // Execute the query and return bool
         return $this->db->execute();
     }
+
+    /**
+     * Logs in a resident with the given email and password.
+     *
+     * @param string $email The email of the resident.
+     * @param string $password The password of the resident.
+     * @return mixed Returns the resident object if the login is successful, false otherwise.
+     */
+    public function logIn(string $email, string $password)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE email = :email');
+        $this->db->bind('email', $email);
+
+        $row = $this->db->singleResult();
+
+        $hashed_password = $row->password;
+        if (password_verify($password, $hashed_password)) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
 }
