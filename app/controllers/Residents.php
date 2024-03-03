@@ -174,9 +174,76 @@ class Residents extends Controller
         }
     }
 
+    /**
+     * Sign in function for the Residents controller.
+     *
+     * This function handles the sign in process for residents. It checks if the form was submitted,
+     * sanitizes the input data, and processes the login. If the login is successful, it creates a session
+     * for the user. If the login fails, it returns an error message.
+     *
+     * @return void
+     */
     public function signIn()
     {
-        // ToDo: implement sign in
-        $this->loadView('residents/sign_in');
+
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // process login
+
+            // sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            // store data
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+            ];
+
+            // array to store errors
+            $errors = [];
+
+            // check if email exists
+            if ($this->model->isEmailTaken($data['email'])) {
+                // continue login process
+
+                $logInResult = $this->model->logIn($data['email'], $data['password']);
+
+                // check password and login
+                if ($logInResult) {
+                    // create session
+                    $this->createUserSession($logInResult);
+                } else {
+                    $errors['password_err'] = 'Password incorrect';
+                    die(print_r($errors));  // ToDo: improve error handling
+                }
+            } else {
+                // email does not exist
+                $errors['email_err'] = 'No such email found';
+            }
+        } else {
+            // load form
+            $this->loadView('residents/sign_in');
+        }
+    }
+
+    /**
+     * Creates a user session and stores user information in the session variables.
+     *
+     * @param object $user The user object containing user information.
+     * @return void
+     */
+    public function createUserSession($user)
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            echo 'pass 1';
+            session_start();
+        }
+
+        $_SESSION['user_id'] = $user->user_id;
+        $_SESSION['user_email'] = $user->email;
+        $_SESSION['user_name'] = $user->name;
+
+        echo 'successfully signed in ' . $_SESSION['user_name'];
+        // ToDO: redirect to residents dashboard
     }
 }
