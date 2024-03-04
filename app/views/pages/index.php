@@ -43,9 +43,9 @@
             }
             ?>
             <form method="post" class="description-buttons">
-                <a href="<?php echo URL_ROOT . '/residents/signIn'; ?>" class="login_button">Resident Sign In&nbsp;<span>&rsaquo;</span></a>
-                <a href="<?php echo URL_ROOT . '/residents/signUp'; ?>" class="signup_button">Resident Sign Up&nbsp;<span>&rsaquo;</span></a>
-                <a href="<?php echo URL_ROOT . '/staff/signIn'; ?>" class="login_button">Staff Sign In&nbsp;<span>&rsaquo;</span></a>
+                <a href="<?php echo URL_ROOT . '/residents/signIn'; ?>" class="login_button_res">Resident Sign In&nbsp;<span>&rsaquo;</span></a>
+                <a href="<?php echo URL_ROOT . '/residents/signUp'; ?>" class="signup_button_res">Resident Sign Up&nbsp;<span>&rsaquo;</span></a>
+                <a href="<?php echo URL_ROOT . '/staff/signIn'; ?>" class="login_button_staff">Staff Sign In&nbsp;<span>&rsaquo;</span></a>
             </form>
 
         </div>

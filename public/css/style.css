@@ -88,11 +88,12 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-    margin-left: -18%;
+    margin-left: -14%;
 }
 
-.login_button,
-.signup_button {
+.login_button_res,
+.signup_button_res,
+.login_button_staff {
     border-width: 0;
     border-radius: 5px;
     font-size: 1.5rem;
@@ -100,9 +101,12 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, color 0.3s;
     cursor: pointer;
+    text-decoration: none;
+    width: 10%;
+     
 }
 
-.login_button {
+.login_button_res{
     color: var(--color_6);
     background-color: var(--color_5);
     border-color: var(--color_6);
@@ -110,28 +114,41 @@ body {
     border-width: 2px;
 }
 
-.signup_button {
+.signup_button_res{
     color: var(--color_5);
     border-width: 2px;
     border-style: solid;
     border-color: var(--color_5);
+    margin-right: 5%;
 }
 
-.login_button:hover {
+.login_button_staff{
+    color: var(--color_6);
+    background-color: var(--color_5);
+    border-color: var(--color_6);
+    border-width: 2px;
+}
+
+.login_button_res:hover {
     background-color: var(--color_6);
     color: var(--color_5);
     border-color: var(--color_5);
 }
 
-.signup_button:hover {
+.signup_button_res:hover {
     background-color: var(--color_5);
     color: var(--color_6);
     border-color: var(--color_6);
 }
 
-.landing-img {
+.login_button_staff:hover {
+    background-color: var(--color_6);
+    color: var(--color_5);
+    border-color: var(--color_5);
+}
 
-    width: 90%;
+.landing-img {
+ width: 90%;
     height: 80%;
     margin-top: 10%;
 }
