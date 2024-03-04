@@ -1396,3 +1396,357 @@ input:-webkit-autofill:active {
       border-color: var(--color_1);
       color: var(--color_1); 
     }
+
+
+
+/*General-manager-dashboard*/
+    
+.dashboard-container-general-manger{
+    flex:1;
+    display: grid;
+    grid-template-rows: 2.5fr 3fr;
+    height: 100%;
+  }
+  
+  .first-row-dashboard-general{
+  display: grid;
+  margin: 1%;
+  grid-template-columns:2.4fr 1fr ;
+  
+  }
+  
+  .second-row-dashboard-general{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0% 1% 1%;
+    
+   }
+  
+  
+  .dashboard-tile-column-1-gen{
+    display: grid;
+    grid-template-rows: 1.5fr 1fr;
+  }
+  
+  .dashboard-tile-column-2-gen{
+     
+  }
+  .dashboard-tile-column-1-gen-row-1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1%;
+  }
+  
+  .no-of-flats{
+    margin: 3% 3%;
+    background-color:var(--color_6);
+    border-radius: 5px;
+    padding: 2%;
+    transition: transform 0.3s ease;
+    border-color: var(--color_5);
+    border-style: solid;
+    border-width: 2px;
+  }
+  
+  .no-of-flats:hover{
+    transform: translateY(-5px); 
+  }
+  
+  .total-residents{
+    margin: 3% 1%;
+    background-color: var(--color_6);
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    transition: transform 0.3s ease;
+    border-color: var(--color_5);
+    border-style:  solid;
+    border-width: 2px;
+  }
+  
+  .total-residents:hover{
+    transform: translateY(-5px); 
+  }
+  
+  .no-of-staff{
+    margin: 3% 3% 3%;
+    background-color: var(--color_6);
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+    transition: transform 0.3s ease;
+    border-color: var(--color_5);
+    border-style:  solid;
+    border-width: 2px;
+  }
+  
+  .no-of-staff:hover{
+    transform: translateY(-5px); 
+  }
+  
+  .title-dashboard-tiles {
+    font-size: 1.3rem;
+    text-align: center;
+    position: relative;
+    color: var(--color_5);
+    font-weight: bold;
+    margin-top: 4%;
+    margin-left: 3%;
+  }
+  
+  .content-info-flat{
+    display: flex;
+  }
+  
+  .flat-img{
+    background-color: var(--color_5);
+    width: 18%;
+    padding: 1.5%;
+    border-radius: 5px;
+    margin: 1%;
+  }
+  
+  .tot-flats{
+    color: var(--color_4);
+    font-size: 1.1rem;
+    margin: 2% 35% 0%;
+  }
+  
+  .sold-flats{
+    color: var(--color_4);
+    font-size: 1.1rem;
+    margin: 0% 35% 1%; 
+  }
+  
+  .content-info-gender{
+    display: flex;
+  }
+  
+  .population-img{
+    background-color: var(--color_5);
+    width: 17%;
+    padding: 1.5%;
+    border-radius: 5px;
+    margin: 1%;
+    }
+    
+    .tot-res{
+      color: var(--color_4);
+      font-size: 1.1rem;
+      margin: 0% 35% 1%;  
+    }
+  
+    .content-info-staff{
+      display: flex;
+    }
+  
+    .tot-staff{
+      color: var(--color_4);
+      font-size: 1.1rem;
+      margin: 0% 35% 1%;  
+    }
+  
+    .calendar{
+      background-color: var(--color_7);
+      margin: 4% 4% 2% 1%; 
+      user-select: none;   
+      border-radius: 5px;
+    }
+  
+    .calendar.calendar-container{
+      background-color: var(--color_7);
+      box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.2);
+      font-family: "Roboto", sans-serif;
+      overflow: hidden;
+      height: 50%;
+    }
+  
+  .calendar-container .month{
+    width: 84%;
+    background-color:var(--color_7);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color_6);
+    padding: 0% 8% ;
+    text-align: center;
+    border-radius: 5px; 
+  }
+  
+  .month h2{
+    font-size: 1.3rem;  
+  }
+  
+  .month p{
+    font-size: 1.1rem;
+  }
+  
+  .month .arrow{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    line-height: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .month .arrow:hover{
+    background-color:var(--color_9);
+  }
+  
+  .calendar .week{
+    display: flex;
+    background-color: var(--color_5);
+    color: var(--color_6);
+  }
+  
+  .week div{
+    width: 14.28%;
+    text-align: center;
+    padding: 1.5% 0%;
+    transition: 0.4s;
+  }
+  
+  .week .active{
+    background-color: var(--color_9);
+  }
+  
+  .dates{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1% 0;
+    color: var(--color_11);
+  }
+  
+  .dates div{
+    width: 11.1%;
+    height: 10%;
+    margin: 2.5px;
+    margin-top: 1.7px;
+    text-align: center;
+    line-height: 100%;
+    border: 3px solid var(--color_6);
+    padding: 1% 0%;
+  }
+  
+  .dates .today{
+    background-color:var(--color_5);
+    color: var(--color_6);
+  }
+  
+  .dates .today:hover{
+    background-color:var(--color_5);
+    font-size: 1rem;
+    font-weight: 200;
+  }
+  
+  .dates div:hover:not(.today){
+    background-color: var(--color_6);
+    color:var(--color_5);
+    font-size: 600;
+    cursor: pointer;
+    -webkit-box-reflect: below 4px linear-gradient(transparent, #0000004d);
+    border: 3px solid var(--color_5);
+  }
+  
+  .dates div:nth-child(n+27):hover{
+    -webkit-box-reflect: above 4px linear-gradient(transparent, #0000004d);
+  }
+  
+  .calendar-container .dates div:nth-child(n+38){
+    border: none !important;
+    cursor: auto !important;
+    background: none !important;
+  }
+  
+  .dates .prev, .dates .next{
+    opacity: 0.5;
+  }
+  
+  .dates .prev:hover,
+  .dates .next:hover{
+    opacity: 1;
+  }
+  
+  .dashboard-tile-column-1-gen-row-2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .sign-up-request-box{
+    margin:1% 4% 2%;
+    background-color: var(--color_6);
+    border-color: var(--color_5);
+    border-radius: 5px;
+    border-style: solid;
+    display: flex;
+    border-width: 2px;
+    align-items: center;
+    }
+  
+    .sign-up-request-box:hover{
+      transform: translateY(-3px); 
+    }
+  .sign-up-request-heading,.amenity-request-heading{
+    font-size: 1.2rem;
+    color: var(--color_5);
+  }
+  
+  .amenity-request-box{
+    margin:1% 4% 2%;
+    background-color: var(--color_6);
+    border-color: var(--color_5);
+    border-radius: 5px;
+    border-style: solid;
+    display: flex;
+    border-width: 2px;
+    align-items: center;
+    }
+    
+  .add-user{
+    background-color: var(--color_5);
+    margin: 4%;
+    padding: 2%;
+    height: 25%;
+    border-radius: 5px;
+    align-content: center;
+  }
+  
+  .amenity-request-img{
+    background-color: var(--color_5);
+    margin: 4%; 
+    height: 33%;
+    width: 9%;
+    padding: 0.5% 1%;
+    border-radius: 5px;
+    align-content: center;
+  }
+  
+  .amenity-request-box:hover{
+    transform: translateY(-3px); 
+  }
+  
+  .consumption-overview{
+    background-color: var(--color_6);
+    margin-right: 1%;
+    border-radius: 5px;
+  }
+  
+  .payment-overview-gm{
+    background-color: var(--color_6);
+    margin-left: 1%;
+    border-radius: 5px;
+  }
+  
+  #financeChart {
+    width: 95% !important;
+    height: 95% !important;
+    display: block;
+  }
+  
+  #consumptionChart {
+    width: 95% !important;
+    height: 95% !important;
+    display: block;
+  }
+  
