@@ -212,3 +212,70 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
   });
+
+
+/*Finance manger-dashboard-charts*/
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('financeChart').getContext('2d');
+    const financeChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example months
+            datasets: [
+                {
+                    label: 'Income',
+                    data: [5000, 6000, 5500, 6500, 6200, 6800], // Example income data
+                    borderColor: '#154aaa',
+                    backgroundColor: 'rgba(21, 74, 170,0.2)',
+                    fill: true,
+                    tension: 0.1
+                },
+                {
+                    label: 'Expense',
+                    data: [3000, 3500, 2800, 4000, 3700, 4500], // Example expense data
+                    borderColor: '#f43c6e',
+                    backgroundColor: 'rgba(244, 60, 110,0.1)',
+                    fill: true,
+                    tension: 0.1
+                },
+                {
+                    label: 'Balance',
+                    data: [2000, 2500, 2700, 2500, 2500, 2300], // Example balance data (Income - Expense)
+                    borderColor: '#4cc2c4',
+                    backgroundColor: 'rgba(76, 194, 196,0.2)',
+                    fill: true,
+                    tension: 0.1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Amount ($)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false // Adjusted to maintain aspect ratio within the given square
+        }
+    });
+});
+
+

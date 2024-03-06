@@ -13,7 +13,7 @@ define('APP_ROOT', dirname(__DIR__));
 define('SITE_NAME', 'HarmonyHomes');
 
 // URL root
-define('URL_ROOT', 'http://localhost/' . strtolower(SITE_NAME));
+define('URL_ROOT', 'http://localhost/sharmony/');
 
 // import MyAutoLoader class and register static methods for autloading
 spl_autoload_register('MyAutoLoader::autoLoadLibraries');  // register static function's name as string
