@@ -1750,3 +1750,613 @@ input:-webkit-autofill:active {
     display: block;
   }
   
+
+
+  /*amenities-landing*/
+
+  
+.amenity{
+    display: grid;
+    grid-template-rows: 1.5fr 4fr; 
+    flex: 1; 
+  }
+  
+  .amenity-row-1{
+  margin: 2% 2% 0%;
+  background-color: var(--color_6);
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  }
+  
+  .amenity-row-2{
+    margin: 0.5% 2% 1%;
+    background-color: var(--color_6);
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  
+  .Up-coming-booking-amenity-landing{
+  margin: 0% 3% 0% 78%;
+  padding: 1%;
+  box-shadow: 0px 0px 2px 4px rgba(7, 7, 85, 0.1);
+  color: var(--color_4);
+  border-radius: 5px;
+  font-weight: bold;
+  width: 10%;
+  }
+  
+  .Up-coming-booking-amenity-landing:hover{
+    transform: 3;
+  }
+  
+  .booking-log-amenity-landing{
+    margin: 0% 5% 0% 0%;
+    padding: 1%;
+    box-shadow: 0px 0px 2px 4px rgba(7, 7, 85, 0.1);
+    color: var(--color_4);
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  
+  .booking-log-amenity-landing:hover{
+    color: var(--color_6); 
+    background-color: var(--color_4); 
+  }
+  
+  .amenity-fitness-center{
+    border-color: var(--color_4); 
+    margin: 1.5% 1.5% 0% 1.5%;
+    border-radius: 10px;
+    border-width: 1px;
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+  }
+  
+  .amenity-common-area{
+    border-color: var(--color_4);
+    margin:  1.5% 1.5% 0% 1.5%;
+    border-radius: 10px;
+    border-width: 1px;
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+  }
+  
+  .amenity-swimming-pool{
+    border-color: var(--color_4);
+    margin:  1.5% 1.5% 1.5% 1.5%;
+    border-radius: 10px;
+    border-width: 1px;
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+  }
+  
+  .amenity-icon{
+  background-color: var(--color_11);
+  border-radius: 10px;
+  
+  }
+  
+  .gym-icon{
+    background-color: var(--color_7);
+    padding: 2%;
+    height: 40%;
+    border-radius: 8px;
+    margin: 10% 35% 5%;
+  }
+  
+  .amenity-description{
+    text-align: center;
+    margin: 0% 2%;
+    font-size: 1.1rem;
+    color: var(--color_4);
+    background-color: var(--color_11);
+    border-radius: 8px;
+  }
+  
+  .fitness-center-booking-button,.swimming-pool-center-booking-button,.common-area-booking-button{
+    background-color: var(--color_7);
+    color: var(--color_6);
+    margin: 0% 45% 2%;
+    padding: 1%;
+    border-radius: 8px;
+  }
+  
+  .swim-icon{
+    background-color: var(--color_7);
+    padding: 2%;
+    height: 40%;
+    width: 27%;
+    border-radius: 8px; 
+    margin: 10% 35% 5%;
+  }
+  
+  .common-area{
+    background-color: var(--color_7);
+    height: 40%;
+    padding: 3%;
+    width: 25%;
+    border-radius: 8px; 
+    margin: 10% 35% 5%; 
+  }
+  .direction{
+    margin-top: 3%;
+  }
+  
+  .amenity-name{
+    text-align: center;
+    color: var(--color_4);
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+
+  /*booking interface-all*/
+
+.booking-container-common-area,.booking-container-fitness-center{
+  background-color: var(--color_6);
+  height: 93%;
+  width: 94%;
+  margin: 2% 4%;
+}
+
+.appointment-heading-container{
+display: flex;
+padding: 1% 2%;
+}
+
+.appoinment-image{
+margin-right: 2%;
+width: 3%;
+margin-top: 0.5%;
+height: 5%;
+}
+
+.appointment-heading{
+font-size: 1.3rem;
+font-weight: bold;
+color: var(--color_4);
+margin-top: 1%;
+
+}
+
+.input-container{
+  display: grid;
+  grid-template-rows: 1fr 2fr 5fr;
+}
+
+.form-date-common-area{
+  background-color: var(--color_11);
+  display: grid;
+  padding: 1% ;
+  margin: -0.5% 2%;
+}
+
+.form-date-fitness-center{
+  background-color: var(--color_11);
+  display: grid;
+  padding: 1% ;
+  margin: 0% 2%;
+}
+.date{
+  display: grid;
+  grid-template-columns:0.5fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.9fr 0.5fr;
+  padding: 1%;
+}
+
+.date:focus{
+  background-color:var(--color_7);
+  color: white;
+  border: var(--color_6);
+  border-style: solid 1px;
+}
+
+.date-name{
+  background-color: var(--color_6);
+  margin: 7% 15%;
+  text-align: center;
+  padding: 3% 8%;
+  border:solid var(--color_2);
+  border-width: 1px;
+}
+
+.date-name-arrow{
+  margin: 30% 25%; 
+  background-color: var(--color_6);
+  border:solid var(--color_2);
+  border-width: 1px;
+  padding: 1%;
+}
+.form-time{
+  margin-top: 0.2%;
+  background-color: var(--color_11);
+  padding: 1%;
+  margin: 0% 2%;
+}
+
+.form-time-common-area{
+  margin-top: 0.2%;
+  background-color: var(--color_11);
+  padding: 1%;
+  margin: 0% 2%;
+  align-items: center;
+}
+
+.form-time-fitness-center{
+  margin-top: 0.2%;
+  background-color: var(--color_11);
+  padding: 1%;
+  margin: 0% 2%;
+  align-items: center; 
+}
+.time{
+  display: grid;
+  grid-template-columns: 0.9fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+  padding: 1%;
+}
+.time-name{
+  background-color: var(--color_6);
+  margin: 7% 12%;
+  text-align: center;
+  padding: 1% 1%;
+  border:solid var(--color_2);
+  border-width: 1px;
+}
+.form-date-heading,.form-time-heading{
+  border-bottom:solid var(--color_6);
+  display: flex;
+}
+
+.form-type-heading{
+  display: flex;
+}
+
+.booking-submit{
+  background-color: var(--color_11); 
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 0% 2%;
+  padding: 1%;
+  border-bottom:solid var(--color_6);
+}
+
+.date-of-slot,.time-of-slot,.no-of-people{
+  color: var(--color_4);
+  font-size: 1.2rem;
+  margin-left: 3%;
+  font-weight: bold;
+  margin-right: 1%;
+  padding: 0.5%;
+}
+
+.no-of-people{
+  padding: 1.5%;
+  margin-left: 9%;
+}
+#people-no{
+  background-color: var(--color_6); 
+}
+
+.cancel-btn-amenity{
+  margin-left: 70%;
+  background-color: var(--color_6);
+  border-color: var(--color_4);
+  color: var(--color_4);
+}
+
+.submit-btn-amenity{
+ margin-left: 1%;
+  background-color: var(--color_7);
+  color: var(--color_6);
+  border-color: var(--color_7);
+}
+.cancel-btn-amenity:hover{
+  background-color: var(--color_7);
+  border-color: var(--color_7);
+  color: var(--color_6);
+}
+
+.submit-btn-amenity:hover{
+  background-color: var(--color_6);
+  border-color: var(--color_4);
+  color: var(--color_4); 
+}
+
+.submit-column-amenity{
+  background-color: var(--color_11);
+  margin: 0% 2%;
+  padding: 2%;
+}
+
+.time-name:hover{
+  background-color: var(--color_7);
+  border: 1px solid var(--color_2);
+  color: var(--color_6);
+}
+
+.date-name:hover{
+  background-color: var(--color_7);
+  border:1px solid var(--color_2);
+  color: var(--color_6);
+}
+
+
+/*common area booking*/
+
+
+.form-date-heading-common area{
+  border-bottom:solid var(--color_6);
+  display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*submission confirmation*/
+
+
+.submission-confirmation{
+  background-color: var(--color_6);
+  border: #0c3866;
+  flex: 1;
+  margin: 10% 35%;
+  text-align: center;
+  padding: 1.5%;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
+  display: grid;
+ }
+ 
+ .confirmation-heading{
+   color: var(--color_4);
+   margin: 0%;
+ }
+ .submit-column-confirmation{
+   padding: 1%;  
+ }
+ 
+ .cancel-btn-confirmation, .submit-btn-cofirmation {
+   padding: 1% 2%;
+   cursor: pointer;
+   border: solid;
+   border-radius: 5px;
+   font-family: var(--font_master);
+   font-size: 1.2rem; 
+ }
+ .cancel-btn-confirmation{
+   margin-left: 5%;
+   background-color: var(--color_6);
+   border-color: var(--color_4);
+   color: var(--color_4);
+  
+ }
+ 
+ .submit-btn-cofirmation{
+   margin-left: 8%;
+   background-color: var(--color_7);
+   color: var(--color_6);
+   border-color: var(--color_7);
+ }
+ 
+ .submit-btn-cofirmation:hover{
+   background-color: var(--color_6);
+   border-color: var(--color_4);
+   color: var(--color_4); 
+ }
+ 
+ .cancel-btn-confirmation:hover{
+   background-color: var(--color_7);
+   border-color: var(--color_7);
+   color: var(--color_6);
+ }
+ 
+ .modal {
+   display: none;
+   position: fixed;
+   z-index: 1;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: rgba(143, 144, 150, 0.2);
+ }
+ 
+ .close {
+   color: var(--color_2);
+   margin-left:90% ;
+   font-size: 28px;
+   font-weight: bold;
+ }
+ 
+ .close:hover,
+ .close:focus {
+   color: var(--color_4);
+   text-decoration: none;
+   cursor: pointer;
+ }
+
+
+ /*amenity view*/
+
+.form-column-view-time{
+  padding: 1%;  
+  margin-top: 5%;
+  margin-left: 2%;
+}
+
+.form-column-no-of-people{
+    margin-top: 10%;
+    margin-left: 2%;
+}
+
+.form-column-view-amenity{
+  padding:0% 2%;  
+  margin:2% 3% 1%;
+}
+
+.form-column-view-amenity-type{
+  padding:0% 2%;  
+  margin:10% 3% 0%;
+}
+
+.form-column-view-date{
+  padding: 1%;  
+  margin: 2%;
+}
+
+.form-column-purpose{
+  padding: 1%;  
+  margin: 0% 1%;
+}
+
+.up-coming-bookings{
+  display: grid;
+  grid-template-rows: 1fr 5fr; 
+  flex: 1;
+}
+
+.up-coming-bookings-1-container{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  background-color: var(--color_6);
+  margin: 1% 1% -1% 1%;
+}
+
+.Your-bokings-heading{
+  margin: 1% 2% 2%;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--color_4);
+}
+
+.topbar-upcoming-booking {
+  overflow: hidden;
+  background-color: var(--color_11);
+  margin: 0% 2%;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.topbar-upcoming-booking a {
+  float: left;
+  display: block;
+  color: var(--color_7);
+  text-align: center;
+  padding:  4%;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.topbar-upcoming-booking a:hover {
+  background-color: var(--color_5);
+  color: var(--color_6);
+  border-radius: 5px;
+}
+
+.content-section {
+  display: none;
+}
+
+.content-section.active {
+  display: block;
+}
+
+.up-coming-bookings-2-container{
+  background-color: var(--color_6);
+  margin: 0% 1% 1% 1%;
+}
+
+.booking-details-container{
+  border-color: var(--color_4);
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  padding: 0.5%;
+  margin:1% 8%;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr;
+  align-items: center;
+}
+
+.upcoming-icon-class-gym{
+  background-color: var(--color_7);
+  padding: 1%;
+  border-radius: 5px;
+  height: 45%;
+  margin-left: 2%;
+}
+
+.upcoming-icon-class-swim{
+  background-color: var(--color_7);
+  padding: 1%;
+  border-radius: 5px;
+  width: 28%;
+  margin-left: 2%;
+}
+
+.upcoming-icon-class-common{
+  background-color: var(--color_7);
+  padding: 2%; 
+  border-radius: 5px;
+  width: 25%;
+  margin-left: 2%;
+}
+
+.booking-details{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.user-name-booking{
+  color: var(--color_7);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.booking-date-time-upcoming{
+color: var(--color_7);
+}
+
+.up-coming-cancel-edit{
+  float: right;
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+}
+.Cancel-button-upcoming{
+  background-color: var(--color_1);
+  color: var(--color_6);
+  padding: 2%;
+  width: 28%;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.edit-button-upcoming{
+  background-color: var(--color_6);
+  border-color: var(--color_1);
+  border-style: solid;
+  border-width: 2px;
+  margin-left: 8%;
+  padding: 1% 2%;
+  border-radius: 5px;
+  width: 28%;
+  text-align: center;
+  color: var(--color_1);
+}
