@@ -212,3 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
   });
+
+
+  /*Notification */ 
+
+  function toggleMessage(element) {
+    var body = element.parentNode.parentNode.querySelector('.notification-body');
+    if (body.style.display === 'none') {
+        body.style.display = 'block';
+    } else {
+        body.style.display = 'none';
+    }
+}
