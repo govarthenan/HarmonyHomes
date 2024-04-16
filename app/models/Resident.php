@@ -86,4 +86,20 @@ class Resident
             return false;
         }
     }
+
+    /**
+     * Retrieves the display name of a user based on their ID.
+     *
+     * @param int $user_id The ID of the user.
+     * @return string The full name of the user.
+     */
+    public function getUserDisplayName(int $user_id)
+    {
+        $this->db->prepareQuery('SELECT name FROM resident WHERE user_id = :id');
+        $this->db->bind('id', $user_id);
+
+        $row = $this->db->singleResult();
+
+        return $row->name;  // return string full name
+    }
 }

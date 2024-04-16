@@ -18,7 +18,7 @@
         <div class="dropdown">
           <div class="user_profile">
              <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/abc.jpg'?>"  class="profile-img"/>
-             <p class="user_name">User Name</p>
+             <p class="user_name"><?php $this->displayUserName(); ?></p>
           </div>
              
         <div class="dropdown-content">

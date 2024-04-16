@@ -245,4 +245,23 @@ class Residents extends Controller
 
         header('location: ' . URL_ROOT . '/residents/index');
     }
+    /**
+     * Display the user's first name.
+     *
+     * This method retrieves the user's ID from the session and uses it to fetch the user's display name from the database.
+     * It then returns the user's first name by extracting it from the display name.
+     *
+     * @return void
+     */
+    public function displayUserName()
+    {
+        // get user id from session
+        $user_id = $_SESSION['user_id'];
+
+        // get user name from DB
+        $user_name = $this->model->getUserDisplayName($user_id);
+
+        // return user name
+        echo explode(' ', $user_name)[0];
+    }
 }
