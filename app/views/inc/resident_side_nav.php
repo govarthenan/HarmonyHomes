@@ -72,7 +72,7 @@
             <hr />
             <div class="navi-item">
                     <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_log-out.svg'?>" />
-                    <span class="sidebar-title">Logout</span>
+                    <a href="<?php echo URL_ROOT . '/residents/signOut'; ?>" class="logout"><span class="sidebar-title">Logout</span></a>
                 </div>
         </nav>
     </div>

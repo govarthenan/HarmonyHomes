@@ -245,6 +245,29 @@ class Residents extends Controller
 
         header('location: ' . URL_ROOT . '/residents/index');
     }
+
+    /**
+     * Signs out the current user.
+     *
+     * This method unsets the session variables for user_id, user_email, and user_name,
+     * destroys the session, and loads the sign in page.
+     *
+     * @return void
+     */
+    public function signOut()
+    {
+        // unset session variables
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+
+        // destroy session
+        session_destroy();
+
+        // load sign in page
+        $this->loadView('residents/sign_in');
+    }
+
     /**
      * Display the user's first name.
      *
