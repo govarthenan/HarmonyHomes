@@ -1,3 +1,5 @@
+/*Finance-manager*/
+
 :root {
     --color_1: #f43c6e;
     --color_2: #7ec4ff;
@@ -617,365 +619,15 @@ input:-webkit-autofill:active {
     width: 2%;
 }
 
-/*dashboard*/
+/* main content part */
 
-.dashboard-container {
-    display: grid;
-    grid-template-rows: 2fr 0.7fr 2.3fr;
-    flex: 1;
-}
-
-.first-row-resident-dashboard {
-    display: grid;
-    grid-template-columns: 2.8fr 1.1fr;
-
-}
-
-/*announcment*/
-
-
-.announcment-container {
-    background-color: var(--color_6);
-    margin: 1.2%;
-    grid-template-rows: 0.5fr 2fr;
-    display: grid;
-    border-radius: 5px;
-}
-
-.announcment-heading {
-    margin-left: 4%;
-    color: var(--color_4);
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 1%;
-}
-
-.announcment-tile-container {
-    grid-template-rows: 1fr 1fr;
-    display: grid;
-    margin: 0% 2% 2% 4%;
-}
-
-.announcment-tile-heading {
-    margin: 3%;
-    font-size: 1.2rem;
-    text-align: center;
-    font-weight: bold;
-    color: var(--color_4);
-}
-
-.announcment-details {
-    font-size: 1rem;
-    margin: 2% 5% 2%;
-    color: var(--color_7);
-    text-align: justify;
-}
-
-.announcment-1,
-.announcment-2 {
-    margin: 1%;
-    box-shadow: 0px 0px 15px 3px rgba(0, 0, 255, 0.1);
+.main-content {
+    flex: 5;
+    background-color: var(--color_8);
     display: flex;
-}
-
-/*calendar*/
-
-
-.calendar {
-    background-color: var(--color_7);
-    margin: 3% 4% 3% 1%;
-    user-select: none;
-    border-radius: 5px;
-}
-
-.calendar.calendar-container {
-    background-color: var(--color_7);
-    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.2);
-    font-family: "Roboto", sans-serif;
-    overflow: hidden;
-    height: 50%;
-    border-radius: 5px;
-}
-
-.calendar-container .month {
-    width: 84%;
-    background-color: var(--color_7);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--color_6);
-    padding: 0% 8%;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.month h2 {
-    font-size: 1.3rem;
-}
-
-.month p {
-    font-size: 1.1rem;
-}
-
-.month .arrow {
-    width: 1.5rem;
-    height: 1.5rem;
-    display: inline-block;
-    line-height: 1.5rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.month .arrow:hover {
-    background-color: var(--color_9);
-}
-
-.calendar .week {
-    display: flex;
-    background-color: var(--color_5);
-    color: var(--color_6);
-}
-
-.week div {
-    width: 14.28%;
-    text-align: center;
-    padding: 1.5% 0%;
-    transition: 0.4s;
-}
-
-.week .active {
-    background-color: var(--color_9);
-}
-
-.dates {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1% 0;
-    color: var(--color_11);
-}
-
-.dates div {
-    width: 11.1%;
-    height: 10%;
-    margin: 2.5px;
-    margin-top: 1.7px;
-    text-align: center;
-    line-height: 100%;
-    border: 3px solid var(--color_6);
-    padding: 1% 0%;
-}
-
-.dates .today {
-    background-color: var(--color_5);
-    color: var(--color_6);
-}
-
-.dates .today:hover {
-    background-color: var(--color_5);
-    font-size: 1rem;
-    font-weight: 200;
-}
-
-.dates div:hover:not(.today) {
-    background-color: var(--color_6);
-    color: var(--color_5);
-    font-size: 600;
-    cursor: pointer;
-    -webkit-box-reflect: below 4px linear-gradient(transparent, #0000004d);
-    border: 3px solid var(--color_5);
-}
-
-.dates div:nth-child(n+27):hover {
-    -webkit-box-reflect: above 4px linear-gradient(transparent, #0000004d);
-}
-
-.calendar-container .dates div:nth-child(n+38) {
-    border: none !important;
-    cursor: auto !important;
-    background: none !important;
-}
-
-.dates .prev,
-.dates .next {
-    opacity: 0.5;
-}
-
-.dates .prev:hover,
-.dates .next:hover {
-    opacity: 1;
-}
-
-/*second row*/
-
-.second-row-resident-dashboard {
-    margin: 0.3% 1%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.booking-reminder {
-    background-color: var(--color_6);
-    margin-right: 3.5%;
-    display: flex;
-    border-radius: 5px;
-    border: 2px var(--color_5);
-    border-style: solid;
-}
-
-.event-reminder {
-    background-color: var(--color_6);
-    margin-right: 3.5%;
-    display: flex;
-    border-radius: 5px;
-    border: 2px var(--color_5);
-    border-style: solid;
-}
-
-.payment-reminder {
-    background-color: var(--color_6);
-    margin-right: 3.5%;
-    display: flex;
-    border-radius: 5px;
-    border: 2px var(--color_5);
-    border-style: solid;
-
-}
-
-.private-files {
-    border: var(--color_4);
-    display: flex;
-    background-color: var(--color_6);
-    border-radius: 5px;
-    border: 2px var(--color_5);
-    border-style: solid;
-}
-
-.booking-reminder-img,
-.business-user-curriculum-img,
-.event-reminder-img,
-.payment-reminder-img {
-    margin: 5% 3%;
-    height: 40%;
-    padding: 3%;
-    float: left;
-    border-radius: 10%;
-    object-fit: cover;
-    background-color: var(--color_5);
-}
-
-.reminder-heading {
-    color: var(--color_5);
-    margin: 5% 4%;
-    font-size: 1.3rem;
-    float: right;
-}
-
-.private-files-heading,
-.reminder-heading {
-    color: var(--color_5);
-    margin: 5% 4% 10%;
-    font-size: 1.2rem;
-}
-
-.popup-booking,
-.popup-events,
-.popup-payment {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    overflow: auto;
-    background-color: rgba(209, 227, 249, 0.2);
     height: 100vh;
-    width: 100vw;
-}
-
-.modal-content-booking {
-    background-color: var(--color_6);
-    margin: 20% 20.7%;
-    padding: 1.5%;
-    box-shadow: 0 0 4px 2px rgba(101, 140, 186, 0.2);
-    width: 15%;
-    height: 10%;
-}
-
-.modal-content-events {
-    background-color: var(--color_6);
-    margin: 20% 40.7%;
-    padding: 1.5%;
-    box-shadow: 0 0 4px 2px rgba(101, 140, 186, 0.2);
-    width: 15%;
-    height: 15%;
-}
-
-.modal-content-payment {
-    background-color: var(--color_6);
-    margin: 20% 60.7%;
-    padding: 1.5%;
-    box-shadow: 0 0 4px 2px rgba(101, 140, 186, 0.2);
-    width: 15%;
-    height: 10%;
-}
-
-.close {
-    color: var(--color_4);
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: var(--color_3);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.bookin-msg,
-.event-msg {
-    padding: 2% 4%;
-    font-size: 1.2rem;
-    color: var(--color_4);
-    border: var(--color_2);
-    font-weight: bold;
-}
-
-
-/*third  row*/
-
-.third-row-resident-dashboard {
-    margin: 1%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.maitenance-payment-overview {
-    background-color: var(--color_6);
-    margin-right: 2%;
-    height: 99%;
-    width: 98%;
-    display: block;
-    box-sizing: border-box;
-    margin-right: 2%;
-    border-radius: 5px;
-}
-
-#maintenancePaymentChart {
-    background-color: var(--color_6);
-    height: 50%;
-    width: 80%;
-}
-
-.utility-useage-overview {
-    background-color: var(--color_6);
-    border-radius: 5px;
-}
-
-#utilityUsageChart {
-    max-width: 100%;
-    max-height: 95%;
-}
-
+    
+  }
 
 
 /*404-error page*/
@@ -1019,382 +671,279 @@ input:-webkit-autofill:active {
     text-align: center;
 }
 
-/*complaints*/
+
+/*Finance dashboard*/
 
 
-.complaint-type,.complaint-log-content {
+.dashboard-container-finance{
+    flex: 1;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    grid-gap: 1%; 
-    background-color: var(--color_6);
+    grid-template-rows:1r 3fr ;
+    height: 100vh;
   }
-  
-  .complaint-log-content{
-    background-color: var(--color_6);
-    grid-template-columns: 1.5fr 1.5fr 1.2fr  5fr 1.5fr;
+
+  .row-1-finance-dashboard{
+  margin: 1%;
+  display: grid;
+  grid-template-columns: 2.5fr 1fr ;
+ 
   }
-  .complaint-log,.new-complaint {
-    padding: 3%;
-    border-color: var(--color_4);
-    border-width: 2px; 
-  }
-  
-  
-  .complaint-log{
-    border-right: 2px solid var(--color_4);
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
-    margin: 1.5%;
-  }
-  .new-complaint{
-    
-    margin: 1.5%;
-    opacity: var(--opacity_1);
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+
+  .row-2-finance-dashboard{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
    
   }
-  .complaint-log-content {
-    padding: 2%;
-    border-radius: 5px;
-    border-color: var(--color_4);
-    border-width: 1px;
-    border-style: solid;
-    margin-top: 1%;
-    cursor: pointer;
+
+  .row-1-column-1{
+  display: grid;
+  grid-template-rows: 1fr 0.7fr;
+  }
+
+  .row-1-column-2{
+    margin: 2% 2% 2% 2%;
+   background-color: var(--color_7);
+   border-radius: 10px;
+  }
+  .row-1-box{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  }
+   
+  .row-2-box{
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
   }
   
-  .complaint-type-title{
-    font-size: 1.2rem;
+  .finance-overview-box{
+    margin: 2%;
+    background-color: var(--color_6);
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--color_5);
+    border-width: 2px;
+    display: flex;
+   
+  }
+
+  .non-routin-expenses,.transaction-log{
+    margin: 2%;
+    background-color: var(--color_6);
+    border-radius: 10px;
+    border-style: solid;
+    border-color: var(--color_5);
+    border-width: 2px;
+    display: flex;
+    align-items: center; 
+  }
+
+  .box-c{
+    margin: 0% 2% 2% 3.6%;
+    background-color: var(--color_6);
+    border-radius: 10px; 
+  }
+
+  .box-d{
+    margin: 0% 2% 2% 1%;
+    background-color: var(--color_6); 
+    border-radius: 10px;
+  }
+ 
+.non-routine-expense-icon{
+  background-color: var(--color_5);
+  height: 22%;
+  width: 8%;
+  margin: 4%;
+  padding: 1.5% 1%;
+  border-radius: 8px;
+}
+
+.transaction-log{
+border-radius: 5px;
+background-color: var(--color_6);
+margin-bottom: 2%;
+border-width: 3px;
+border-color: var(--color_5);
+border-style: solid;
+display: flex;
+border-width: 2px;
+}
+
+.payment-overview-maintenace-chart{
+  border-radius: 5px;
+  background-color: var(--color_6);
+  margin: 1% 2% 1% 0% ; 
+}
+
+.finance-dash-tile-img{
+ background-color: var(--color_5); 
+ height: 20%;
+ margin: 4%; 
+ padding: 2%;
+ border-radius: 10px;
+ 
+}
+
+.finance-dash-tile-heading{
+  color: var(--color_5);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10% 5% ;
+}
+
+.total-fund,.total-income,.total-expense{
+  margin: 10% 5% 0%;
+  color: var(--color_4);
+  font-size: 1.8rem;
+  text-align: right;
+}
+
+.non-routin-expenses-heading,.transaction-log-heading{
+  margin: 7% 1%;
+  color: var(--color_5);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.payment-overview-maintenace-chart-heading{
+  margin: 2%;
+  color: var(--color_4);
+  font-weight: bold;
+  font-size: 1.1rem; 
+}
+
+.finance-document-heading{
+  margin: 2%;
+  color: var(--color_4);
+  font-weight: bold;
+  font-size: 1.1rem;  
+}
+
+.payment-status-chart-1{
+
+
+}
+
+.payment-status-chart-2{
+ height: 80%;
+margin: 2%;
+ }
+
+
+/*Notification creation */
+
+/*notification creation for GM, FM and security*/
+
+.notification-container{
+    background-color: var(--color_6);
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 1.3fr 1fr;
+    margin: 2% 3%;
+    width:94%
+  }
+  
+  .notification-heading{
+    margin: 2% 2%;
     color: var(--color_4);
-    margin-left: 3%;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+  
+  .notification-audience{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+  }
+  
+  .audience-heading{
+    font-weight: bold;
+    margin-left: 4%;
+    font-size: 1.1rem;
+    color: var(--color_3);
+  }
+  
+  .audience-details{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  
+  .send-heading{
+    margin:1% 25%;
     font-weight: bold;
   }
   
-  .select-complaint-img{
-    height: 80%;
-    margin-left: 3%;
-    
+  .hidden {
+    display: none;
   }
-  
-  .new-complaint-img{
-    height: 80%;
-    margin-left: 3%;
-  }
-  
-  .file-column,.description-column,.id-column,.date-column{
-    border-right: 2px solid var(--color_4);
-    
-  }
-  
-  .file-image{
-    height: 60%;
-    width:30%;
-    margin-left: 20%;
-  }
-  
-  .complaint-type-heading{
-    margin: 1% 0%;
-  }
-  
-  .complaint-id-heading{
-    margin: 8% 0%;
-  }
-  
-  .complaint-date-heading{
-    margin: 6% 0%;
-  }
-  
-  .complaint-file-heading{
-    margin: 6% 0% 0%;
-  }
-  .complaint-id{
-    margin-top: 5%;
-  }
-  
-  .complaint-description{
-    margin: 1% 0%;
-  }
-  
-  .complaint-status-heading{
-    margin: 2% 0% 0%; 
-  }
-  .complaint-date{
-    margin: 10%;
-  }
-  
-  .status-inprogress{
-    padding: 3% 0%;
-    background-color: var(--color_2);
-    text-align: center;
-    margin-left: 13%;
-    border-radius: 5px;
-  }
-  
-  .status-completed{
-    padding: 3% 0%;
-    text-align: center;
-    margin-left: 13%;
-    background-color: var(--color_5);
-    border-radius: 5px;
-  }
-  
-  
-  .new-complaint:hover{
-    margin: 1.5%;
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
-    cursor: pointer;
-    opacity: 100%;
-   
-  }
-  
-  .complaint-log:hover{
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
-    cursor: pointer;
-  }
-  
-  
-  .complaint-type-title:hover{
-    font-size: 1.4rem;
-    color: var(--color_7);
-    margin-left: 3%;
-    color: var(--color_4);
-  }
-  
-  .complaint-log-content:hover{
-    cursor: pointer;
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
-    translate: 1%;
-  }
-  
-  
-  /*new complaint*/
-  
-  
-  .new-complaint-landing{
-  height: 94%;
-  width: 98%;
-  background-color: var(--color_6);
-  margin:2% 3%;
-  }
-  
-  .complaint-column-new{
-    
-    margin: 2% 2% 2% 2%;
-  }
-  
-  .new-complaint-log,.new-complaint-new {
-    padding: 4%;
-    border-color: var(--color_4);
-    border-width: 2px; 
-  }
-  
-  .new-complaint-log{
-   
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
-    margin: 1.5%;
-    opacity: var(--opacity_1);
-  }
-  
-  .new-complaint-new{
-    margin: 1.5%;
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
-   
-  }
-  
-  .new-complaint-new:hover{
-    margin: 1.5%;
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
-    cursor: pointer;
-  }
-  
-  .new-complaint-log:hover{
-    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
-    cursor: pointer;
-    opacity: 100%;
-  }
-  
-  .new-complaint-container {
-    display: grid;
-    grid-template-columns: 2fr 10fr; 
-    height: 75vh; 
-  }
-  
-  .nested-grid {  
-      grid-template-columns: repeat(6, 1fr); 
-      grid-gap: 10px; 
-  }
-  
-  .form-column {
-      padding: 2%;  
-      margin-left: 3%;
-  }
-  .attachment-column{
-    padding: 2%;  
-    margin-left: 3%;
-    margin-top:50%;
-  }
-  
   select{
     background-color:var(--form_color);
     padding: 1% 8%;
     border: none; 
   }
   
-  textarea{
-    background-color:var(--form_color);
-    padding: 1% 5%;
-    border: none;
-    width: 90%;
+  #groupSelect{
+    margin-top: 2%;
   }
   
   input{
-    background-color:var(--form_color);
-    padding: 1% 5%;
     border: none;
-    width: 90%;
-    align-content: center;
   }
   
-  .drop-area {
-    background-color:var(--form_color);
-    padding: 1% 5%;
-    border: none;
-    width: 83%;
-    margin: 0% 8% 0% 5%;
-    text-align: center;
-    color: var(--color_4);
+  #residentIdSelect{
+    margin-top: 2%; 
   }
   
-  .upload-cloud-img{
-    margin-top: 1%;
+  .notification-content-heading{
+    font-weight: bold;
+    margin-left: 4%;
+    font-size: 1.1rem;
+    color: var(--color_3); 
   }
   
-  
-  input[type="file"] {
-    display: none;
+  .notification-content-details-title{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
   }
   
-  .file {
-    margin-bottom: 10px;
+  .notification-message{
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 3fr;
+  }
+  
+  .notification-title,.notification-message-heading{
+    margin:1% 25%;
+    font-weight: bold; 
+  }
+  
+  input[type="text"] {
+    width: 80%;
     padding: 8px;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color:var(--form_color);
     border-radius: 4px;
-  }
-  
-  .custom-file-upload {
-    display: inline-block;
-    padding: 1% 2%;
-    background-color:var(--form_color);
-    border-color:var(--color_4);
-    cursor: pointer;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 1px;
-  }
-  
-  .submit-column{
-    padding: 2%;  
-    margin-left: 3%;
-  }
-  
-  .cancel-btn, .submit-btn,.edit-btn,.delete-btn {
-    padding: 1% 2%;
-    cursor: pointer;
-    border: solid;
-    border-radius: 5px;
-    font-family: var(--font_master);
-    font-size: 1.2rem; 
-  }
-  .cancel-btn{
-    margin-left: 70%;
-    background-color: var(--color_6);
-    border-color: var(--color_4);
-    color: var(--color_4);
-   
-  }
-  
-  .submit-btn{
-    margin-left: 1%;
-    background-color: var(--color_7);
-    color: var(--color_6);
-    border-color: var(--color_7);
-  }
-  .cancel-btn:hover{
-    background-color: var(--color_7);
-    border-color: var(--color_7);
-    color: var(--color_6);
-  }
-  
-  .submit-btn:hover{
-    background-color: var(--color_6);
-    border-color: var(--color_4);
-    color: var(--color_4); 
-  }
-  
-  /*complaint-view*/
-  
-  .submitted-answers{
-    background-color:var(--form_color);
-    padding: 0% 0%;
     border: none;
-    
   }
   
-  .form-column-view{
-    padding:0% 2%;  
-    margin:1% 3%;
+  .notification-content-details-message{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
   }
   
-  .form-column-view-subject{
-    padding: 1%;  
-    margin: 3%;
+  .ql-toolbar {
+    width: 82%; 
+    background-color: var(--form_color);    
   }
   
-  .form-column-view-description{
-    padding: 1%;  
-    margin-top: 1%;
+  #editor{
+    background-color: var(--form_color);
   }
   
-  .attachment-column-view{ 
-    margin-top: 20%;
+  #sendButton{
+    background-color: var(--color_7);
+    color: var(--color_6);
+    padding:0.5% 1%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin:5% 25%;
+    border:none;
+    border-radius: 5px;
   }
-  
-  .complaint-view-file{
-    margin: 3% 40%;
-    width: 6%;
-  }
-  
-  .view-complaint-landing{
-    height: 60%;
-    width: 98%;
-    background-color: var(--color_6);
-    margin:5% 7%;
-    }
-  
-    .edit-btn{
-      margin-left: 70%;
-      background-color: var(--color_6);
-      border-color: var(--color_1);
-      color: var(--color_1);
-    }
-    
-    .delete-btn{
-      margin-left: 1%;
-      background-color: var(--color_1);
-      color: var(--color_6);
-      border-color: var(--color_1);
-    }
-    .edit-btn:hover{
-      background-color: var(--color_1);
-      border-color: var(--color_1);
-      color: var(--color_6);
-    }
-    
-    .delete-btn:hover{
-      background-color: var(--color_6);
-      border-color: var(--color_1);
-      color: var(--color_1); 
-    }
-
-
-    

@@ -279,3 +279,30 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+/*create a notification Gm, Fm and security*/
+
+/*create Notification*/
+
+function toggleDropdowns() {
+    var userType = document.getElementById('userType').value;
+    var groupSelect = document.getElementById('groupSelect');
+    var residentIdSelect = document.getElementById('residentIdSelect');
+
+    // Handling Group Select visibility
+    if (userType === 'groups') {
+        groupSelect.style.display = 'block';
+        residentIdSelect.style.display = 'none';  // Ensure this is hidden if not 'customUser'
+    } else {
+        groupSelect.style.display = 'none';
+    }
+
+    
+    if (userType === 'customUser') {
+        residentIdSelect.style.display = 'block';
+        groupSelect.style.display = 'none';  // Ensure this is hidden if not 'groups'
+    } else {
+        residentIdSelect.style.display = 'none';
+    }
+}
