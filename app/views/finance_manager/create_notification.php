@@ -7,7 +7,7 @@ include('sidenav.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Notification</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/finance_style.css'; ?>" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
@@ -65,7 +65,7 @@ include('sidenav.php');
          </div>
        </div>
    </div> 
-   <script src="index.js"></script>
+   <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 </body>
 </html>
