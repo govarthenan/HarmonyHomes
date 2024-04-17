@@ -1,5 +1,5 @@
 <?php
-include('sidenav.php');
+include(APP_ROOT . '/views/inc/resident_side_nav.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,21 +8,21 @@ include('sidenav.php');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/style.css'; ?>" />
 </head>
 
-<body>
+<body onload="randerDate()">
     <div class="main-content">
         <div class="new-complaint-landing">
             <div class="complaint-column-new">
                 <div class="complaint-type">
                     <div class="complaint-log">
-                        <img src="one-finger-tap.svg" class="select-complaint-img" />
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/one-finger-tap.svg' ?>" class="select-complaint-img" />
                         <span class="complaint-type-title">Complaint Log</span>
                     </div>
 
                     <div class="new-complaint">
-                        <img src="hand-held-tablet-writing.svg" class="new-complaint-img" />
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/hand-held-tablet-writing.svg' ?>" class="new-complaint-img" />
                         <span class="complaint-type-title">New Complaint</span>
                     </div>
                 </div>
@@ -39,7 +39,7 @@ include('sidenav.php');
 
                     <div class="file-column">
                         <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="file.svg" class="file-image">
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
                     </div>
 
                     <div class="description-column">
@@ -66,7 +66,7 @@ include('sidenav.php');
 
                     <div class="file-column">
                         <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="file.svg" class="file-image">
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
                     </div>
 
                     <div class="description-column">
@@ -94,7 +94,7 @@ include('sidenav.php');
 
                     <div class="file-column">
                         <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="file.svg" class="file-image">
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
                     </div>
 
                     <div class="description-column">
@@ -122,7 +122,7 @@ include('sidenav.php');
 
                     <div class="file-column">
                         <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="file.svg" class="file-image">
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
                     </div>
 
                     <div class="description-column">
