@@ -26,15 +26,20 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         <a href="<?php echo URL_ROOT . '/residents/complaintAdd' ?>"><span class="complaint-type-title">New Complaint</span></a>
                     </div>
                 </div>
+
+
+
+
+                <?php foreach($data['complaints'] as $index=>$complaint) : ?>
                 <div class="complaint-log-content">
                     <div class="id-column">
                         <h4 class="complaint-id-heading">Complaint ID</h4>
-                        <p class="complaint-id"></p>M01</p>
+                        <p class="complaint-id"></p><?php echo $complaint->complaint_id; ?></p>
                     </div>
 
                     <div class="date-column">
                         <h4 class="complaint-date-heading">Complaint Date</h4>
-                        <p class="complaint-date"></p>2023/05/01</p>
+                        <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
                     </div>
 
                     <div class="file-column">
@@ -43,98 +48,17 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                     </div>
 
                     <div class="description-column">
-                        <h4 class="complaint-type-heading">Maintenance</h4>
-                        <p class="complaint-description"></p>fsehjhhfsf jhffsfhifheif hskudhsdkhgsgb hdfksdfg</p>
+                        <h4 class="complaint-type-heading"><?php echo $complaint->topic; ?></h4>
+                        <p class="complaint-description"></p><?php echo $complaint->subject; ?></p>
                     </div>
 
                     <div class="status-column">
                         <h4 class="complaint-status-heading">Status</h4>
-                        <p class="status-inprogress">In Progress</p>
+                        <p class="status-inprogress"><?php echo $complaint->status; ?></p>
                     </div>
                 </div>
+                <?php endforeach; ?>
 
-                <div class="complaint-log-content">
-                    <div class="id-column">
-                        <h4 class="complaint-id-heading">Complaint ID</h4>
-                        <p class="complaint-id"></p>S01</p>
-                    </div>
-
-                    <div class="date-column">
-                        <h4 class="complaint-date-heading">Complaint Date</h4>
-                        <p class="complaint-date"></p>2023/07/11</p>
-                    </div>
-
-                    <div class="file-column">
-                        <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                    </div>
-
-                    <div class="description-column">
-                        <h4 class="complaint-type-heading">Security</h4>
-                        <p class="complaint-description">fbsjhfsb rtykbfsdbgjs cb dxcjvdgeu gdayuftuef</p>
-                    </div>
-
-                    <div class="status-column">
-                        <h4 class="complaint-status-heading">Status</h4>
-                        <p class="status-completed">Completed</p>
-                    </div>
-                </div>
-
-                <div class="complaint-log-content">
-
-                    <div class="id-column">
-                        <h4 class="complaint-id-heading">Complaint ID</h4>
-                        <p class="complaint-id"></p>M20</p>
-                    </div>
-
-                    <div class="date-column">
-                        <h4 class="complaint-date-heading">Complaint Date</h4>
-                        <p class="complaint-date"></p>2023/10/01</p>
-                    </div>
-
-                    <div class="file-column">
-                        <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                    </div>
-
-                    <div class="description-column">
-                        <h4 class="complaint-type-heading">Maintenance</h4>
-                        <p class="complaint-description"></p>fsehjhhfsf jhffsfhifheif hskudhsdkhgsgb hdfksdfg</p>
-                    </div>
-
-                    <div class="status-column">
-                        <h4 class="complaint-status-heading">Status</h4>
-                        <p class="status-inprogress">In Progress</p>
-                    </div>
-                </div>
-
-                <div class="complaint-log-content">
-
-                    <div class="id-column">
-                        <h4 class="complaint-id-heading">Complaint ID</h4>
-                        <p class="complaint-id"></p>S11</p>
-                    </div>
-
-                    <div class="date-column">
-                        <h4 class="complaint-date-heading">Complaint Date</h4>
-                        <p class="complaint-date"></p>2023/12/21</p>
-                    </div>
-
-                    <div class="file-column">
-                        <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                    </div>
-
-                    <div class="description-column">
-                        <h4 class="complaint-type-heading">Maintenance</h4>
-                        <p class="complaint-description"></p>fsehjhhfsf jhffsfhifheif hskudhsdkhgsgb hdfksdfg</p>
-                    </div>
-
-                    <div class="status-column">
-                        <h4 class="complaint-status-heading">Status</h4>
-                        <p class="status-completed">Completed</p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

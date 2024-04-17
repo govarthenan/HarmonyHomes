@@ -125,4 +125,16 @@ class Resident
         // Execute the query and return bool
         return $this->db->execute();
     }
+
+    /**
+     * Fetches all complaints for the current user.
+     *
+     * @return array An array containing all the complaints for the current user.
+     */
+    public function fetchAllComplaints()
+    {
+        $this->db->prepareQuery('SELECT * FROM complaint WHERE user_id = :user_id');
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        return $this->db->resultSet();
+    }
 }

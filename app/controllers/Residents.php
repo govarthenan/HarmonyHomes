@@ -288,9 +288,15 @@ class Residents extends Controller
         echo explode(' ', $user_name)[0];
     }
 
+    /**
+     * Fetches all complaints and loads the complaints log view.
+     *
+     * @return void
+     */
     public function complaintsLog()
     {
-        $this->loadView('residents/complaints_log');
+        $data['complaints'] = $this->model->fetchAllComplaints();
+        $this->loadView('residents/complaints_log', $data);
     }
 
     /**
@@ -321,5 +327,12 @@ class Residents extends Controller
         } else {
             $this->loadView('residents/complaint_add');
         }
+    }
+
+    public function test()
+    {
+        $complaints_list = $this->model->fetchAllComplaints();
+        $data['complaints'] = $complaints_list;
+        $this->loadView('residents/test', $data);
     }
 }
