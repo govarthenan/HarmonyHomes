@@ -45,7 +45,7 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_complaints.svg'?>" />
-                <span class="sidebar-title">Complaints</span>
+                <a href="<?php echo URL_ROOT . '/residents/complaintsLog'; ?>"><span class="sidebar-title">Complaints</span></a>
             </div>
 
             <div class="navi-item">

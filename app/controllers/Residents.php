@@ -287,4 +287,9 @@ class Residents extends Controller
         // return user name
         echo explode(' ', $user_name)[0];
     }
+
+    public function complaintsLog()
+    {
+        $this->loadView('residents/complaints_log');
+    }
 }
