@@ -1,5 +1,5 @@
 <?php
-include('sidenav.php');
+include(APP_ROOT . '/views/inc/resident_side_nav.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,21 +8,21 @@ include('sidenav.php');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/style.css'; ?>" />
 </head>
 
-<body>
+<body onload="randerDate()">
     <div class="main-content">
         <div class="new-complaint-landing">
             <div class="complaint-column-new">
                 <div class="complaint-type">
                     <div class="new-complaint-log">
-                        <img src="one-finger-tap.svg" class="select-complaint-img" />
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/one-finger-tap.svg' ?>" class="select-complaint-img" />
                         <span class="complaint-type-title">My Complaint</span>
                     </div>
 
                     <div class="new-complaint-new">
-                        <img src="hand-held-tablet-writing.svg" class="new-complaint-img" />
+                    <img src="<?php echo URL_ROOT . '/resources/complaint/hand-held-tablet-writing.svg' ?>" class="new-complaint-img" />
                         <span class="complaint-type-title">New Complaint</span>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ include('sidenav.php');
                                 </div>
 
                                 <div class="drop-area">
-                                    <img src="upload-cloud.svg" class="upload-cloud-img">
+                                    <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
                                     <p>Drag and Drop to upload files <br> or </p>
                                     <label for="file-input" class="custom-file-upload">Choose File</label>
                                     <input type="file" id="file-input">
@@ -75,8 +75,8 @@ include('sidenav.php');
                                     <button class="submit-btn">Submit</button>
                                 </div>
                             </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
