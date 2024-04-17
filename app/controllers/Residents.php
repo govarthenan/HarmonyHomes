@@ -292,4 +292,8 @@ class Residents extends Controller
     {
         $this->loadView('residents/complaints_log');
     }
+
+    public function complaintAdd(){
+        $this->loadView('residents/complaint_add');
+    }
 }

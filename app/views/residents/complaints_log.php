@@ -23,7 +23,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
                     <div class="new-complaint">
                         <img src="<?php echo URL_ROOT . '/resources/complaint/hand-held-tablet-writing.svg' ?>" class="new-complaint-img" />
-                        <span class="complaint-type-title">New Complaint</span>
+                        <a href="<?php echo URL_ROOT . '/residents/complaintAdd' ?>"><span class="complaint-type-title">New Complaint</span></a>
                     </div>
                 </div>
                 <div class="complaint-log-content">
