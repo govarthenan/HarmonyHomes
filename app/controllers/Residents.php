@@ -293,7 +293,33 @@ class Residents extends Controller
         $this->loadView('residents/complaints_log');
     }
 
-    public function complaintAdd(){
-        $this->loadView('residents/complaint_add');
+    /**
+     * Adds a complaint for a resident.
+     *
+     * This method is responsible for handling the submission of a complaint form. It checks if the form was submitted using the POST method, sanitizes the input data, and calls the model to add the complaint to the database. If the complaint is successfully added, the user is redirected to the complaints log page. Otherwise, an error message is displayed.
+     *
+     * @return void
+     */
+    public function complaintAdd()
+    {
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'user_id' => $_SESSION['user_id'],
+                'topic' => trim($_POST['topic']),
+                'subject' => trim($_POST['subject']),
+                'description' => trim($_POST['description']),
+            ];
+
+            // call model to add complaint
+            if ($this->model->writeComplaint($data)) {
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
+            } else {
+                die('Error with adding complaint to DB');  // ToDo: improve error handling
+            }
+        } else {
+            $this->loadView('residents/complaint_add');
+        }
     }
 }

@@ -102,4 +102,27 @@ class Resident
 
         return $row->name;  // return string full name
     }
+
+    /**
+     * Writes a complaint to the database.
+     *
+     * This method prepares and executes an SQL query to insert a new complaint into the 'complaint' table.
+     * It binds the necessary values from the session and the POST data, and returns a boolean indicating
+     * the success of the query execution.
+     *
+     * @return bool Returns true if the query execution is successful, false otherwise.
+     */
+    public function writeComplaint()
+    {
+        $this->db->prepareQuery('INSERT INTO complaint (user_id, subject, description, topic) VALUES (:user_id, :subject, :description, :topic)');
+
+        // Bind values
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        $this->db->bind('subject', $_POST['subject']);
+        $this->db->bind('description', $_POST['description']);
+        $this->db->bind('topic', $_POST['topic']);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
 }
