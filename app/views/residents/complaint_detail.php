@@ -1,5 +1,5 @@
 <?php
-include('sidenav.php');
+include(APP_ROOT . '/views/inc/resident_side_nav.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,10 +8,10 @@ include('sidenav.php');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/style.css'; ?>" />
 </head>
 
-<body>
+<body onload="randerDate()">
     <div class="main-content">
         <div class="view-complaint-landing">
             <div class="complaint-column-new">
@@ -38,19 +38,18 @@ include('sidenav.php');
                         <div class="nested-grid">
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <p style="padding:1%"> Maintenance</p>
+                                    <p style="padding:1%"><?php echo $data['complaint']->topic; ?></p>
                                 </div>
                             </div>
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <p style="padding:1%"> Maintenance</p>
+                                    <p style="padding:1%"><?php echo $data['complaint']->subject; ?></p>
                                 </div>
                             </div>
 
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <p style="padding:1%; text-align:block;"> hkssjfhkefelfhnie dhfguhguryruthg kfjdfhiughruigh gjghryhtruthh hfuyhf <br>
-                                        hfrjhgiurhguythytr eruthrytgrbgrhg bhgruyghurtyrh fhehfruhgyurhgyurht<br>hguhgiurghitrgruiytey hgfyrfuyebfyurber </p>
+                                    <p style="padding:1%; text-align:block;"><?php echo $data['complaint']->description; ?></p>
                                 </div>
                             </div>
 
@@ -61,7 +60,7 @@ include('sidenav.php');
                             </div>
 
                             <div class="submit-column">
-                                <button class="edit-btn">Edit</button>
+                                <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $data['complaint']->complaint_id; ?>"><button class="edit-btn">Edit</button></a>
                                 <button class="delete-btn">Delete</button>
                             </div>
                         </div>

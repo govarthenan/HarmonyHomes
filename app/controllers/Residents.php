@@ -381,6 +381,31 @@ class Residents extends Controller
         }
     }
 
+    /**
+     * Displays the details of a specific complaint.
+     *
+     * @param int $complaint_id The ID of the complaint to fetch details for.
+     * @return void
+     */
+    public function complaintDetail($complaint_id)
+    {
+        $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
+
+        // check DB result
+        if (!$complaint_detail) {
+            die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+        }
+
+        // check if complaint belongs to user
+        if ($complaint_detail->user_id != $_SESSION['user_id']) {
+            die('Unauthorized access');  // ToDo: improve error handling
+        }
+
+        $data['complaint'] = $complaint_detail;
+
+        $this->loadView('residents/complaint_detail', $data);
+    }
+
     public function test()
     {
         $complaints_list = $this->model->fetchAllComplaints();

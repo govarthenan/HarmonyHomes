@@ -42,10 +42,12 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
                         </div>
 
-                        <div class="file-column">
-                            <h4 class="complaint-file-heading">Attachments</h4>
-                            <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                        </div>
+                        <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
+                            <div class="file-column">
+                                <h4 class="complaint-file-heading">More Info</h4>
+                                <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
+                            </div>
+                        </a>
 
                         <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
                             <div class="file-column">
