@@ -102,4 +102,87 @@ class Resident
 
         return $row->name;  // return string full name
     }
+
+    /**
+     * Writes a complaint to the database.
+     *
+     * This method prepares and executes an SQL query to insert a new complaint into the 'complaint' table.
+     * It binds the necessary values from the session and the POST data, and returns a boolean indicating
+     * the success of the query execution.
+     *
+     * @return bool Returns true if the query execution is successful, false otherwise.
+     */
+    public function writeComplaint()
+    {
+        $this->db->prepareQuery('INSERT INTO complaint (user_id, subject, description, topic) VALUES (:user_id, :subject, :description, :topic)');
+
+        // Bind values
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        $this->db->bind('subject', $_POST['subject']);
+        $this->db->bind('description', $_POST['description']);
+        $this->db->bind('topic', $_POST['topic']);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
+    /**
+     * Fetches all complaints for the current user.
+     *
+     * @return array An array containing all the complaints for the current user.
+     */
+    public function fetchAllComplaints()
+    {
+        $this->db->prepareQuery('SELECT * FROM complaint WHERE user_id = :user_id');
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        return $this->db->resultSet();
+    }
+
+    /**
+     * Updates a complaint in the database with the edited information.
+     *
+     * @param array $edited_complaint The edited complaint data.
+     * @return bool Returns true if the update was successful, false otherwise.
+     */
+    public function editComplaint($edited_complaint)
+    {
+        $this->db->prepareQuery('UPDATE complaint SET subject = :subject, description = :description, topic = :topic WHERE complaint_id = :complaint_id');
+
+        // Bind values
+        $this->db->bind('subject', $edited_complaint['subject']);
+        $this->db->bind('description', $edited_complaint['description']);
+        $this->db->bind('topic', $edited_complaint['topic']);
+        $this->db->bind('complaint_id', $edited_complaint['complaint_id']);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
+    /**
+     * Fetches a single complaint based on the complaint ID.
+     *
+     * @param int $complaint_id The ID of the complaint.
+     * @return mixed The complaint object if found, false otherwise.
+     */
+    public function fetchComplaintDetails(int $complaint_id)
+    {
+        $this->db->prepareQuery('SELECT * FROM complaint WHERE complaint_id = :complaint_id');
+        $this->db->bind('complaint_id', $complaint_id);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteComplaint($complaint_id)
+    {
+        $this->db->prepareQuery('DELETE FROM complaint WHERE complaint_id = :complaint_id');
+        $this->db->bind('complaint_id', $complaint_id);
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
 }
