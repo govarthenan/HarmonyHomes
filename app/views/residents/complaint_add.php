@@ -18,11 +18,11 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                 <div class="complaint-type">
                     <div class="new-complaint-log">
                         <img src="<?php echo URL_ROOT . '/resources/complaint/one-finger-tap.svg' ?>" class="select-complaint-img" />
-                        <span class="complaint-type-title">My Complaint</span>
+                        <a href="<?php echo URL_ROOT . '/residents/complaintsLog'; ?>"><span class="complaint-type-title">Complaints Log</span></a>
                     </div>
 
                     <div class="new-complaint-new">
-                    <img src="<?php echo URL_ROOT . '/resources/complaint/hand-held-tablet-writing.svg' ?>" class="new-complaint-img" />
+                        <img src="<?php echo URL_ROOT . '/resources/complaint/hand-held-tablet-writing.svg' ?>" class="new-complaint-img" />
                         <span class="complaint-type-title">New Complaint</span>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         </div>
                     </div>
                     <div class="column-new-complaint">
-                        <form name="complaintForm" method="post" class="new-complaint-form" action="<?php echo URL_ROOT. '/residents/complaintAdd' ?>">
+                        <form name="complaintForm" method="post" class="new-complaint-form" action="<?php echo URL_ROOT . '/residents/complaintAdd' ?>">
                             <div class="nested-grid-new-complaint">
                                 <div class="form-column-new-complaint">
                                     <select id="items" name="topic" required>
@@ -59,22 +59,22 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 <div class="form-column-new-complaint">
                                     <input type="text" id="shortAnswer" name="subject" required>
                                 </div>
-                                </div>
-
-                                <div class="form-column-new-complaint">
-                                    <textarea id="answer" name="description" rows="8" required></textarea>
-                                </div>
-
-                                <div class="submit-column">
-                                    <button type="reset" class="cancel-btn">Cancel</button>
-                                    <button type="submit" class="submit-btn">Submit</button>
-                                </div>
                             </div>
-                        </form>
+
+                            <div class="form-column-new-complaint">
+                                <textarea id="answer" name="description" rows="8" required></textarea>
+                            </div>
+
+                            <div class="submit-column">
+                                <button type="reset" class="cancel-btn">Cancel</button>
+                                <button type="submit" class="submit-btn">Submit</button>
+                            </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

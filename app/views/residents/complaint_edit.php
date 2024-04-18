@@ -18,7 +18,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                 <div class="complaint-type">
                     <div class="new-complaint-log">
                         <img src="<?php echo URL_ROOT . '/resources/complaint/one-finger-tap.svg' ?>" class="select-complaint-img" />
-                        <span class="complaint-type-title">My Complaint</span>
+                        <a href="<?php echo URL_ROOT . '/residents/complaintsLog'; ?>"><span class="complaint-type-title">Complaints Log</span></a>
                     </div>
 
                     <div class="new-complaint-new">
