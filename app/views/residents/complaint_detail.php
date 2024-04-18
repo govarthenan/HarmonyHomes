@@ -61,7 +61,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
                             <div class="submit-column">
                                 <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $data['complaint']->complaint_id; ?>"><button class="edit-btn">Edit</button></a>
-                                <button class="delete-btn">Delete</button>
+                                <a href="<?php echo URL_ROOT . '/residents/complaintDelete/' . $data['complaint']->complaint_id; ?>"><button class="delete-btn">Delete</button></a>
                             </div>
                         </div>
                     </div>

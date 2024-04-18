@@ -406,6 +406,30 @@ class Residents extends Controller
         $this->loadView('residents/complaint_detail', $data);
     }
 
+    /**
+     * Deletes a complaint for a resident.
+     *
+     * @param int $complaint_id The ID of the complaint to be deleted.
+     * @return void
+     */
+    public function complaintDelete($complaint_id)
+    {
+        // check if complaint belongs to user
+        $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
+
+        if ($complaint_detail->user_id != $_SESSION['user_id']) {
+            die('Unauthorized access');  // ToDo: improve error handling
+        }
+
+        $complaint_delete_result = $this->model->deleteComplaint($complaint_id);
+
+        if (!$complaint_delete_result) {
+            die('Error deleting complaint');  // ToDo: improve error handling
+        }
+
+        header('location: ' . URL_ROOT . '/residents/complaintsLog');
+    }
+
     public function test()
     {
         $complaints_list = $this->model->fetchAllComplaints();

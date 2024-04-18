@@ -177,4 +177,12 @@ class Resident
             return false;
         }
     }
+
+    public function deleteComplaint($complaint_id)
+    {
+        $this->db->prepareQuery('DELETE FROM complaint WHERE complaint_id = :complaint_id');
+        $this->db->bind('complaint_id', $complaint_id);
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
 }
