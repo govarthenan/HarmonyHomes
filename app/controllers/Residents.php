@@ -329,6 +329,58 @@ class Residents extends Controller
         }
     }
 
+    /**
+     * Edit a complaint.
+     *
+     * This method is responsible for editing a complaint based on the provided complaint ID.
+     * It checks if the form was submitted via POST or GET method, sanitizes the input data,
+     * and calls the model to update the complaint in the database. If the update is successful,
+     * it redirects the user to the complaints log page. Otherwise, it displays an error message.
+     * If the form was not submitted, it fetches the complaint details and checks if the complaint
+     * belongs to the current user. If not, it displays an unauthorized access message. Finally,
+     * it loads the view for editing the complaint.
+     *
+     * @param int $complaint_id The ID of the complaint to be edited.
+     * @return void
+     */
+    public function complaintEdit($complaint_id)
+    {
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'complaint_id' => $complaint_id,
+                'user_id' => $_SESSION['user_id'],
+                'topic' => trim($_POST['topic']),
+                'subject' => trim($_POST['subject']),
+                'description' => trim($_POST['description']),
+            ];
+
+            // call model to add complaint
+            if ($this->model->editComplaint($data)) {
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
+            } else {
+                die('Error with updating complaint in DB');  // ToDo: improve error handling
+            }
+        } else {
+            $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
+
+            // check DB result
+            if (!$complaint_detail) {
+                die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+            }
+
+            // check if complaint belongs to user
+            if ($complaint_detail->user_id != $_SESSION['user_id']) {
+                die('Unauthorized access');  // ToDo: improve error handling
+            }
+
+            $data['complaint'] = $complaint_detail;
+
+            $this->loadView('residents/complaint_edit', $data);
+        }
+    }
+
     public function test()
     {
         $complaints_list = $this->model->fetchAllComplaints();

@@ -30,33 +30,40 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
 
 
-                <?php foreach($data['complaints'] as $index=>$complaint) : ?>
-                <div class="complaint-log-content">
-                    <div class="id-column">
-                        <h4 class="complaint-id-heading">Complaint ID</h4>
-                        <p class="complaint-id"></p><?php echo $complaint->complaint_id; ?></p>
-                    </div>
+                <?php foreach ($data['complaints'] as $index => $complaint) : ?>
+                    <div class="complaint-log-content">
+                        <div class="id-column">
+                            <h4 class="complaint-id-heading">Complaint ID</h4>
+                            <p class="complaint-id"></p><?php echo $complaint->complaint_id; ?></p>
+                        </div>
 
-                    <div class="date-column">
-                        <h4 class="complaint-date-heading">Complaint Date</h4>
-                        <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
-                    </div>
+                        <div class="date-column">
+                            <h4 class="complaint-date-heading">Complaint Date</h4>
+                            <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
+                        </div>
 
-                    <div class="file-column">
-                        <h4 class="complaint-file-heading">Attachments</h4>
-                        <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                    </div>
+                        <div class="file-column">
+                            <h4 class="complaint-file-heading">Attachments</h4>
+                            <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
+                        </div>
 
-                    <div class="description-column">
-                        <h4 class="complaint-type-heading"><?php echo $complaint->topic; ?></h4>
-                        <p class="complaint-description"></p><?php echo $complaint->subject; ?></p>
-                    </div>
+                        <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
+                            <div class="file-column">
+                                <h4 class="complaint-file-heading">Update Complaint</h4>
+                                <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
+                            </div>
+                        </a>
 
-                    <div class="status-column">
-                        <h4 class="complaint-status-heading">Status</h4>
-                        <p class="status-inprogress"><?php echo $complaint->status; ?></p>
+                        <div class="description-column">
+                            <h4 class="complaint-type-heading"><?php echo $complaint->topic; ?></h4>
+                            <p class="complaint-description"></p><?php echo $complaint->subject; ?></p>
+                        </div>
+
+                        <div class="status-column">
+                            <h4 class="complaint-status-heading">Status</h4>
+                            <p class="status-inprogress"><?php echo $complaint->status; ?></p>
+                        </div>
                     </div>
-                </div>
                 <?php endforeach; ?>
 
             </div>
