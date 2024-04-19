@@ -65,6 +65,13 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 <textarea id="answer" name="description" rows="8" required><?php echo $data['complaint']->description; ?></textarea>
                             </div>
 
+                            <div class="drop-area">
+                              <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
+                              <p>Drag and Drop to upload files <br> or </p>
+                              <label for="file-input" class="custom-file-upload">Choose File</label>
+                              <input type="file" id="file-input" >
+                            </div>
+
                             <div class="submit-column">
                                 <button type="reset" class="cancel-btn">Cancel</button>
                                 <button type="submit" class="submit-btn">Update</button>

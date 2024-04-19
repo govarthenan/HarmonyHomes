@@ -59,21 +59,6 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">'; ?>
                             </p>
                         </div>
-
-                        <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
-                            <div class="file-column">
-                                <h4 class="complaint-file-heading">More Info</h4>
-                                <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                            </div>
-                        </a>
-
-                        <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
-                            <div class="file-column">
-                                <h4 class="complaint-file-heading">Update Complaint</h4>
-                                <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                            </div>
-                        </a>
-
                         <div class="description-column">
                             <h4 class="complaint-type-heading"><?php echo $complaint->topic; ?></h4>
                             <p class="complaint-description"></p><?php echo $complaint->subject; ?></p>
@@ -83,6 +68,23 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <h4 class="complaint-status-heading">Status</h4>
                             <p class="status-inprogress"><?php echo $complaint->status; ?></p>
                         </div>
+
+                        <div class="file-column">
+                          <h4 class="complaint-action-heading">Action</h4>
+                          <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
+                            <button class="viewButton">View</button>
+                          </a>
+                          <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
+                            <button class="updateButton">Update</button>
+                         </a>
+                        </div>
+                        
+
+                        
+
+                        
+
+                       
                     </div>
                 <?php endforeach; ?>
 
