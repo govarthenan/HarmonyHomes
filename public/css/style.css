@@ -1396,8 +1396,22 @@ input:-webkit-autofill:active {
   .submitted-answers{
     background-color:var(--form_color);
     padding: 0% 0%;
-    border: none;
-    
+    border: none; 
+  }
+
+  .submitted-answers-subject{
+    background-color:var(--form_color);
+    padding: 0% 0%;
+    border: none; 
+    margin-top: 4%;
+  }
+
+  .submitted-answers-description{
+    background-color:var(--form_color);
+    padding: 0% 0%;
+    border: none; 
+    margin-top: 4%;
+    height: fit-content;
   }
   
   .form-column-view{
