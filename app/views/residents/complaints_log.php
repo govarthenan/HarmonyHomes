@@ -41,6 +41,24 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <h4 class="complaint-date-heading">Complaint Date</h4>
                             <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
                         </div>
+                        <div class="date-column">
+                            <h4 class="complaint-date-heading">Attachment</h4>
+                            <p class="complaint-date"></p>
+                            <?php
+                            $blob = $complaint->attachments;
+                            $base64 = base64_encode($blob);
+
+                            // Determine the content type
+                            $finfo = new finfo(FILEINFO_MIME_TYPE);
+                            $type = $finfo->buffer($blob); // Get the MIME type of the blob data
+
+                            // Generate the src attribute for the img tag
+                            $imgSrc = 'data:' . $type . ';base64,' . $base64;
+
+                            // Output the img tag
+                            echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">'; ?>
+                            </p>
+                        </div>
 
                         <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
                             <div class="file-column">
