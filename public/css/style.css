@@ -106,8 +106,9 @@ body {
     color: var(--color_6);
     background-color: var(--color_5);
     border-color: var(--color_6);
-    margin-right: 5%;
+    margin:2% 5%;
     border-width: 2px;
+    text-decoration: none;
 }
 
 .signup_button {
@@ -115,6 +116,7 @@ body {
     border-width: 2px;
     border-style: solid;
     border-color: var(--color_5);
+    text-decoration: none;
 }
 
 .login_button:hover {
@@ -211,7 +213,7 @@ input:-webkit-autofill:active {
     padding: 3%;
     border: none;
     cursor: pointer;
-    width: 86%;
+    width: 80%;
     font-size: 1.1rem;
     font-weight: bold;
 }
@@ -349,7 +351,7 @@ input:-webkit-autofill:active {
 }
 
 .registration-form select {
-    width: 84%;
+    width: 80%;
     padding: 2%;
     border: 1px solid var(--color_2);
     margin: 0% 5% 2%;
@@ -503,6 +505,8 @@ input:-webkit-autofill:active {
     box-shadow: 3px 0 5px rgba(22, 35, 147, );
 }
 
+/*side bar */
+
 .sidebar {
     flex: 1;
     background-color: var(--color_7);
@@ -525,18 +529,20 @@ input:-webkit-autofill:active {
     margin-top: 1%;
     display: flex;
     align-items: center;
-    margin-left: 3%;
+    margin-left: 4%;
 }
 
+.navi-item:active{
+    background-color: var(--color_5);
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;   
+}
 .navi-item:hover {
     background-color: var(--color_5);
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.navi-item:current {
-    background-color: var(--color_1);
 }
 
 .company_profile {
@@ -547,11 +553,12 @@ input:-webkit-autofill:active {
     margin-left: 6%;
     font-family: var(--font_company_name);
     color: var(--color_5);
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-top: 8%;
 }
 
 .user_name {
-    margin-left: 30%;
+    text-align: center;
     font-family: var(--font_master);
     color: var(--color_5);
     font-size: 1.4rem;
@@ -614,8 +621,18 @@ input:-webkit-autofill:active {
 
 .sidebar_office_building {
     height: 10%;
-    width: 2%;
+   
 }
+
+/* main content part */
+
+.main-content {
+    flex: 5;
+    background-color: var(--color_8);
+    display: flex;
+    height: 100vh; 
+    overflow-y: auto;
+  }
 
 /*dashboard*/
 
