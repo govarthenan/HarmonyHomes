@@ -45,18 +45,25 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <h4 class="complaint-date-heading">Attachment</h4>
                             <p class="complaint-date"></p>
                             <?php
+
                             $blob = $complaint->attachments;
-                            $base64 = base64_encode($blob);
 
-                            // Determine the content type
-                            $finfo = new finfo(FILEINFO_MIME_TYPE);
-                            $type = $finfo->buffer($blob); // Get the MIME type of the blob data
+                            if (empty($blob)) {
+                                echo "No Attachment";
+                            } else {
+                                $base64 = base64_encode($blob);
 
-                            // Generate the src attribute for the img tag
-                            $imgSrc = 'data:' . $type . ';base64,' . $base64;
+                                // Determine the content type
+                                $finfo = new finfo(FILEINFO_MIME_TYPE);
+                                $type = $finfo->buffer($blob); // Get the MIME type of the blob data
 
-                            // Output the img tag
-                            echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">'; ?>
+                                // Generate the src attribute for the img tag
+                                $imgSrc = 'data:' . $type . ';base64,' . $base64;
+
+                                // Output the img tag
+                                echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">';
+                            }
+                            ?>
                             </p>
                         </div>
                         <div class="description-column">
@@ -70,21 +77,21 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         </div>
 
                         <div class="file-column">
-                          <h4 class="complaint-action-heading">Action</h4>
-                          <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
-                            <button class="viewButton">View</button>
-                          </a>
-                          <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
-                            <button class="updateButton">Update</button>
-                         </a>
+                            <h4 class="complaint-action-heading">Action</h4>
+                            <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
+                                <button class="viewButton">View</button>
+                            </a>
+                            <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
+                                <button class="updateButton">Update</button>
+                            </a>
                         </div>
-                        
 
-                        
 
-                        
 
-                       
+
+
+
+
                     </div>
                 <?php endforeach; ?>
 
