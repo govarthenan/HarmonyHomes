@@ -76,6 +76,12 @@ class Generals extends Controller
         $this->loadView('generals/more_info');
     }
 
+    public function complaintsLog()
+    {
+        $data['complaints'] = $this->model->fetchAllComplaints();
+        $this->loadView('generals/complaints_log', $data);
+    }
+
     public function test()
     {
         $complaints_list = $this->model->fetchAllComplaints();

@@ -30,4 +30,10 @@ class General
 
         return $row->name;  // return string full name
     }
+
+    public function fetchAllComplaints()
+    {
+        $this->db->prepareQuery('SELECT complaint.*, resident.name FROM complaint JOIN resident ON complaint.user_id = resident.user_id');
+        return $this->db->resultSet();
+    }
 }
