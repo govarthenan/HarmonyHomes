@@ -48,16 +48,25 @@ class Staffs extends Controller
 
                 $logInResult = $this->model->logIn($data['email'], $data['password'], $data['role']);
 
+                // extract user data for creating session
+                $user_data = [
+                    'user_id' => $logInResult->staff_id,
+                    'email' => $logInResult->email,
+                    'name' => $logInResult->name,
+                    'role' => $logInResult->role
+                ];
+
                 // check password and login
                 if ($logInResult) {
-                    // debug
-                    echo 'LogIn successful!';
-
-                    // create session
-                    // create controller for each role
-                    // call construct model for each role
-                    // with the session data, load the respective controller
-                    // redirect to respective controller's index
+                    // according to role, instantiate a new controller
+                    // and load the index method, with user data to create session
+                    if ($data['role'] == 'general') {
+                        require_once APP_ROOT . '/controllers/Generals.php';
+                        $general_controller = new Generals();
+                        $general_controller->index($user_data);
+                    } elseif ($data['role'] == 'finance') {
+                        // add controllers for other users
+                    }
                 } else {
                     $errors['password_err'] = 'Password incorrect';
                     die(print_r($errors));  // ToDo: improve error handling
