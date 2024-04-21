@@ -46,7 +46,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         </div>
                     </div>
                     <div class="column-new-complaint">
-                        <form name="complaintForm" method="post" class="new-complaint-form" action="<?php echo URL_ROOT . '/residents/complaintAdd' ?>">
+                        <form enctype="multipart/form-data" name="complaintForm" method="post" class="new-complaint-form" action="<?php echo URL_ROOT . '/residents/complaintAdd' ?>">
                             <div class="nested-grid-new-complaint">
                                 <div class="form-column-new-complaint">
                                     <select id="items" name="topic" required>
@@ -66,22 +66,21 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             </div>
 
                             <div class="drop-area">
-                              <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
-                              <p>Drag and Drop to upload files <br> or </p>
-                              <label for="file-input" class="custom-file-upload">Choose File</label>
-                              <input type="file" id="file-input" >
+                                <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
+                                <p>Drag and Drop to upload files <br> or </p>
+                                <label for="file-input" class="custom-file-upload">Choose File</label>
+                                <input type="file" name="attachment" id="file-input">
                             </div>
 
                             <div class="submit-column">
                                 <button type="reset" class="cancel-btn">Cancel</button>
                                 <button type="submit" class="submit-btn">Submit</button>
                             </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </body>
 
