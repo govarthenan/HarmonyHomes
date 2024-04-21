@@ -3,11 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2024 at 01:38 PM
+-- Generation Time: Apr 21, 2024 at 01:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO,ALLOW_INVALID_DATES";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -75,6 +75,28 @@ INSERT INTO `resident` (`user_id`, `email`, `name`, `phone`, `birthday`, `gender
 (10, 'gova@gmail.com', 'Govarthenan Rajadurai', 752508610, '2001-04-19', 'm', 7, 2, '200111000487', '/opt/lampp/htdocs/harmonyhomes/app/uploads/706dfed6feb75e33bcbc9cc201d016bfa1e7db94e9a0e4d934080dac1e63cc21.jpeg', '/opt/lampp/htdocs/harmonyhomes/app/uploads/8e52ccf7245428e42947ecea3dbdbec6c4a4dab719eeb16b1207915534390ad1.jpg', '$2y$10$wAD47/ct/xCQRyRyRvHrGOFPvK7Vm6p1z8GgACi0Tp99iRbzyOgWq'),
 (11, 'davis@ymail.com', 'Davis Peiries', 773415186, '1994-08-14', 'f', 6, 3, '1995446758429', '/opt/lampp/htdocs/harmonyhomes/app/uploads/706dfed6feb75e33bcbc9cc201d016bfa1e7db94e9a0e4d934080dac1e63cc21_1713203265.jpeg', '/opt/lampp/htdocs/harmonyhomes/app/uploads/8e52ccf7245428e42947ecea3dbdbec6c4a4dab719eeb16b1207915534390ad1_1713203265.jpg', '$2y$10$wAD47/ct/xCQRyRyRvHrGOFPvK7Vm6p1z8GgACi0Tp99iRbzyOgWq');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `staff_id` int(11) NOT NULL,
+  `email` varchar(320) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`staff_id`, `email`, `name`, `password`, `role`) VALUES
+(1, 'gm@smail.com', 'Bill Gates', '$2y$10$CtOABC1p1OUJAHrLOxLbyerrbL4wj4CybxTXvJ2rBLvNyiMln3nre', 'general'),
+(2, 'fac@gmail.com', 'Frank Black', '$2y$10$CtOABC1p1OUJAHrLOxLbyerrbL4wj4CybxTXvJ2rBLvNyiMln3nre', 'facility');
+
 --
 -- Indexes for dumped tables
 --
@@ -93,6 +115,12 @@ ALTER TABLE `resident`
   ADD PRIMARY KEY (`user_id`);
 
 --
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`staff_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -107,6 +135,12 @@ ALTER TABLE `complaint`
 --
 ALTER TABLE `resident`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `staff`
+--
+ALTER TABLE `staff`
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
