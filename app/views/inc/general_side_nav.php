@@ -25,7 +25,7 @@
         <div class="dropdown">
             <div class="user_profile">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/abc.jpg' ?>" class="profile-img" />
-                <p class="user_name">User Name</p>
+                <p class="user_name"><?php echo $_SESSION['user_name'] ?></p>
             </div>
 
             <div class="dropdown-content">
