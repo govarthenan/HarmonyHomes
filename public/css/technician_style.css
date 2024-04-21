@@ -1,0 +1,370 @@
+:root {
+    --color_1: #f43c6e;
+    --color_2: #7ec4ff;
+    --color_3: #408dff;
+    --color_4: #154aaa;
+    --color_5: #4cc2c4;
+    --color_6: #ffff;
+    --color_7: #0c3866;
+    --color_8: rgba(135, 172, 202, 0.4);
+    --color_9: #073907;
+    --color_10: #9370db;
+    --color_11: #e3edf6;
+    --form_color: rgba(213, 235, 247, 0.5);
+
+    --font_master: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    --font_company_name: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    --opacity_1: 55%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    font-family: var(--font_master);
+}
+
+/*side bar*/
+
+.sidebar {
+    flex: 1;
+    background-color: var(--color_7);
+    color: var(--color_6);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    margin-left: 5%;
+}
+
+.navi-item {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+    display: block;
+    color: var(--color_6);
+    font-weight: bold;
+    margin-top: 1%;
+    display: flex;
+    align-items: center;
+    margin-left: 3%;
+}
+
+.navi-item:hover {
+    background-color: var(--color_5);
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navi-item:current {
+    background-color: var(--color_1);
+}
+
+.company_profile {
+    margin-left: 1%;
+}
+
+.company_name {
+    margin-left: 6%;
+    font-family: var(--font_company_name);
+    color: var(--color_5);
+    font-size: 2rem;
+}
+
+.user_name {
+    margin-left: 30%;
+    font-family: var(--font_master);
+    color: var(--color_5);
+    font-size: 1.4rem;
+    font-style: bold;
+}
+
+.profile-img {
+    margin: 7% 45%;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--color_7);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+    z-index: 1;
+    top: 100%;
+    border-radius: 5px;
+}
+
+.dropdown:hover .dropdown-content {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.dropdown-item {
+    padding: 1rem 2rem;
+    text-decoration: none;
+    display: block;
+    color: var(--color_6);
+    font-size: 1rem;
+    display: flex;
+}
+
+.dropdown-title {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-user,
+.sidebar-notification,
+.sidebar-options,
+.sidebar-logout {
+    margin-left: 5%;
+}
+
+.dropdown-title:hover {
+    background-color: var(--color_5);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sidebar_office_building {
+    height: 10%;
+}
+
+/* main content part */
+
+.main-content {
+    flex: 5;
+    background-color: var(--color_8);
+    display: flex;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/*technician*/
+
+.technician-dashboard-container {
+    height: 98%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1.5fr 3fr;
+}
+
+.tech-dashboard-row-1 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.tech-content-box-1 {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    border-radius: 10px;
+   
+}
+
+.tech-announcment-container {
+    margin: 2% 3% 2% 2%;
+    display: grid;
+    grid-template-rows: 0.2fr 0.5fr 0.5fr;
+    border-radius: 10px;
+    background-color: var(--color_6);
+}
+
+.tech-announcment-tile {
+    border-style: solid;
+    border-color: var(--color_4);
+    border-radius: 10px;
+    margin: 2% 3% 1%;
+    padding: 2%;
+    text-align: justify;
+}
+
+.announcment-sender {
+    padding-left: 4%;
+}
+.tech-announcment-heading {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.tech-welcome-msg-container {
+    background-color: var(--color_6);
+    margin: 1% 2% 0%;
+}
+
+.tech-welcome-msg {
+    font-size: 1.2rem;
+    color: var(--color_4);
+    font-weight: bold;
+    margin: 1% 3% 0%;
+}
+
+.tech-dasboard-tiles-container {
+    background-color: var(--color_6);
+    margin: 0% 2% 1%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.tech-total-task-tile {
+    margin: 2% 3% 9% 5%;
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_5);
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    border-radius: 10px;
+}
+
+.tech-ongoing-task-tile {
+    margin: 2% 4% 9% 4%;
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_5);
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    border-radius: 10px;
+}
+
+.tech-completed-task-tile {
+    margin: 2% 5% 9% 3%;
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_5);
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    border-radius: 10px;
+}
+
+.total-task-icon,
+.ongoing-task-icon,
+.completed-task-icon {
+    background-color: var(--color_5);
+    height: 27%;
+    padding: 8%;
+    margin: 17%;
+    border-radius: 10px;
+}
+
+.Number-task {
+    display: grid;
+    grid-template-rows: 2fr 3fr;
+}
+
+.task-name {
+    color: var(--color_5);
+    font-size: 1.3rem;
+    margin: 5% 5%;
+    text-align: center;
+}
+
+.task-count-total,
+.task-count-ongoing,
+.task-count-completed {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color_5);
+    font-weight: bold;
+}
+
+.tech-dashboard-row-2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.new-tasks-assigned {
+    background-color: var(--color_6);
+    margin: 1% 2%;
+    border-radius: 10px;
+}
+
+.new-tasks-heading {
+    color: var(--color_4);
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 2%;
+}
+
+.new-task-container {
+    border-style: solid;
+    border-color: var(--color_4);
+    margin: 2% 2% 1% 2%;
+    border-width: 2px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1.5fr;
+}
+
+.issue-id-column {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+    border-right: 1px solid var(--color_4);
+}
+
+.task-name-column {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+    border-right: 1px solid var(--color_4);
+}
+
+.view-button-column {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    text-align: center;
+    border-right: 1px solid var(--color_4);
+    align-items: center;
+}
+
+.issue-id-heading {
+    font-size: 1rem;
+    color: var(--color_7);
+    margin: 2%;
+    font-weight: bold;
+}
+
+.task-name-heading {
+    font-size: 1rem;
+    color: var(--color_7);
+    margin: 2%;
+    font-weight: bold;
+}
+
+.action-name-heading {
+    font-size: 1rem;
+    color: var(--color_7);
+    margin: 2%;
+    font-weight: bold;
+}
+
+.viewButton {
+    background-color: var(--color_7);
+    color: var(--color_6);
+    border: none;
+    padding: 2% 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 22%;
+    margin-left: 40%;
+}
+
+.viewButton:hover {
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_4);
+    color: var(--color_4);
+}
