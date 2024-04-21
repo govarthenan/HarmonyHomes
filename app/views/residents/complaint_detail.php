@@ -42,13 +42,13 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 </div>
                             </div>
                             <div class="form-column-view">
-                                <div class="submitted-answers">
+                                <div class="submitted-answers-subject">
                                     <p style="padding:1%"><?php echo $data['complaint']->subject; ?></p>
                                 </div>
                             </div>
 
                             <div class="form-column-view">
-                                <div class="submitted-answers">
+                                <div class="submitted-answers-description">
                                     <p style="padding:1%; text-align:block;"><?php echo $data['complaint']->description; ?></p>
                                 </div>
                             </div>

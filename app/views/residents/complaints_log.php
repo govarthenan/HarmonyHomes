@@ -41,21 +41,24 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <h4 class="complaint-date-heading">Complaint Date</h4>
                             <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
                         </div>
+                        <div class="date-column">
+                            <h4 class="complaint-date-heading">Attachment</h4>
+                            <p class="complaint-date"></p>
+                            <?php
+                            $blob = $complaint->attachments;
+                            $base64 = base64_encode($blob);
 
-                        <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
-                            <div class="file-column">
-                                <h4 class="complaint-file-heading">More Info</h4>
-                                <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                            </div>
-                        </a>
+                            // Determine the content type
+                            $finfo = new finfo(FILEINFO_MIME_TYPE);
+                            $type = $finfo->buffer($blob); // Get the MIME type of the blob data
 
-                        <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
-                            <div class="file-column">
-                                <h4 class="complaint-file-heading">Update Complaint</h4>
-                                <img src="<?php echo URL_ROOT . '/resources/complaint/file.svg' ?>" class="file-image">
-                            </div>
-                        </a>
+                            // Generate the src attribute for the img tag
+                            $imgSrc = 'data:' . $type . ';base64,' . $base64;
 
+                            // Output the img tag
+                            echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">'; ?>
+                            </p>
+                        </div>
                         <div class="description-column">
                             <h4 class="complaint-type-heading"><?php echo $complaint->topic; ?></h4>
                             <p class="complaint-description"></p><?php echo $complaint->subject; ?></p>
@@ -65,6 +68,23 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <h4 class="complaint-status-heading">Status</h4>
                             <p class="status-inprogress"><?php echo $complaint->status; ?></p>
                         </div>
+
+                        <div class="file-column">
+                          <h4 class="complaint-action-heading">Action</h4>
+                          <a href="<?php echo URL_ROOT . '/residents/complaintDetail/' . $complaint->complaint_id; ?>">
+                            <button class="viewButton">View</button>
+                          </a>
+                          <a href="<?php echo URL_ROOT . '/residents/complaintEdit/' . $complaint->complaint_id; ?>">
+                            <button class="updateButton">Update</button>
+                         </a>
+                        </div>
+                        
+
+                        
+
+                        
+
+                       
                     </div>
                 <?php endforeach; ?>
 

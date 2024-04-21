@@ -19,7 +19,7 @@ class Database
     public function __construct()
     {
         // set DSN
-        $dsn = 'mysql:host=' . $this->db_host . ';dbname=' . $this->db_name;
+        $dsn = 'mysql:host=' . $this->db_host . ";port=3307" . ';dbname=' . $this->db_name;
 
         $options = array(
             PDO::ATTR_PERSISTENT => true,

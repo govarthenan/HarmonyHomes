@@ -106,8 +106,9 @@ body {
     color: var(--color_6);
     background-color: var(--color_5);
     border-color: var(--color_6);
-    margin-right: 5%;
+    margin:2% 5%;
     border-width: 2px;
+    text-decoration: none;
 }
 
 .signup_button {
@@ -115,6 +116,7 @@ body {
     border-width: 2px;
     border-style: solid;
     border-color: var(--color_5);
+    text-decoration: none;
 }
 
 .login_button:hover {
@@ -211,7 +213,7 @@ input:-webkit-autofill:active {
     padding: 3%;
     border: none;
     cursor: pointer;
-    width: 86%;
+    width: 80%;
     font-size: 1.1rem;
     font-weight: bold;
 }
@@ -349,7 +351,7 @@ input:-webkit-autofill:active {
 }
 
 .registration-form select {
-    width: 84%;
+    width: 80%;
     padding: 2%;
     border: 1px solid var(--color_2);
     margin: 0% 5% 2%;
@@ -390,7 +392,8 @@ input:-webkit-autofill:active {
 }
 
 .custom-file-upload:hover {
-    background-color: var(--color_5);
+    background-color: var(--color_6);
+    color: var(--color_4);
 }
 
 #nicPhotoName,
@@ -503,6 +506,8 @@ input:-webkit-autofill:active {
     box-shadow: 3px 0 5px rgba(22, 35, 147, );
 }
 
+/*side bar */
+
 .sidebar {
     flex: 1;
     background-color: var(--color_7);
@@ -525,7 +530,14 @@ input:-webkit-autofill:active {
     margin-top: 1%;
     display: flex;
     align-items: center;
-    margin-left: 3%;
+    margin-left: 4%;
+}
+
+.navi-item:active{
+    background-color: var(--color_5);
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;   
 }
 
 .navi-item:hover {
@@ -533,10 +545,6 @@ input:-webkit-autofill:active {
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-.navi-item:current {
-    background-color: var(--color_1);
 }
 
 .company_profile {
@@ -547,11 +555,12 @@ input:-webkit-autofill:active {
     margin-left: 6%;
     font-family: var(--font_company_name);
     color: var(--color_5);
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-top: 8%;
 }
 
 .user_name {
-    margin-left: 30%;
+    text-align: center;
     font-family: var(--font_master);
     color: var(--color_5);
     font-size: 1.4rem;
@@ -560,7 +569,6 @@ input:-webkit-autofill:active {
 
 .profile-img {
     margin: 7% 45%;
-
 }
 
 .dropdown {
@@ -614,8 +622,18 @@ input:-webkit-autofill:active {
 
 .sidebar_office_building {
     height: 10%;
-    width: 2%;
+   
 }
+
+/* main content part */
+
+.main-content {
+    flex: 5;
+    background-color: var(--color_8);
+    display: flex;
+    height: 100vh; 
+    overflow-y: auto;
+  }
 
 /*dashboard*/
 
@@ -779,7 +797,6 @@ input:-webkit-autofill:active {
 .dates div:hover:not(.today) {
     background-color: var(--color_6);
     color: var(--color_5);
-    font-size: 600;
     cursor: pointer;
     -webkit-box-reflect: below 4px linear-gradient(transparent, #0000004d);
     border: 3px solid var(--color_5);
@@ -1031,27 +1048,27 @@ input:-webkit-autofill:active {
   
   .complaint-log-content{
     background-color: var(--color_6);
-    grid-template-columns: 1.5fr 1.5fr 1.2fr  5fr 1.5fr;
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 3fr 1.5fr 1.5fr;
   }
+
   .complaint-log,.new-complaint {
     padding: 3%;
     border-color: var(--color_4);
     border-width: 2px; 
   }
   
-  
   .complaint-log{
     border-right: 2px solid var(--color_4);
     box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
     margin: 1.5%;
   }
+
   .new-complaint{
-    
     margin: 1.5%;
     opacity: var(--opacity_1);
     box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
-   
   }
+
   .complaint-log-content {
     padding: 2%;
     border-radius: 5px;
@@ -1067,12 +1084,12 @@ input:-webkit-autofill:active {
     color: var(--color_4);
     margin-left: 3%;
     font-weight: bold;
+    text-decoration: none; 
   }
   
   .select-complaint-img{
     height: 80%;
-    margin-left: 3%;
-    
+    margin-left: 3%; 
   }
   
   .new-complaint-img{
@@ -1080,17 +1097,58 @@ input:-webkit-autofill:active {
     margin-left: 3%;
   }
   
-  .file-column,.description-column,.id-column,.date-column{
-    border-right: 2px solid var(--color_4);
-    
+  .status-column,.description-column,.id-column,.date-column{
+    border-right: 2px solid var(--color_4); 
   }
   
-  .file-image{
-    height: 60%;
-    width:30%;
-    margin-left: 20%;
+  .status-column{
+ padding-right: 4%;
+ text-align: center;
+  }
+
+  .file-column{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    text-align: center;
+  }
+
+  .viewButton {
+    background-color: var(--color_7);
+    color: var(--color_6);
+    border: none;
+    padding: 2% 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width:32%;
   }
   
+  .viewButton:hover{
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_4);
+    color: var(--color_4);
+  }
+
+  .updateButton{
+    background-color: var(--color_6);
+    color: var(--color_4);
+    border-style: solid;
+    border-color: var(--color_4);
+    padding: 2% 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width:44%; 
+  }
   .complaint-type-heading{
     margin: 1% 0%;
   }
@@ -1106,12 +1164,9 @@ input:-webkit-autofill:active {
   .complaint-file-heading{
     margin: 6% 0% 0%;
   }
+
   .complaint-id{
     margin-top: 5%;
-  }
-  
-  .complaint-description{
-    margin: 1% 0%;
   }
   
   .complaint-status-heading{
@@ -1121,29 +1176,31 @@ input:-webkit-autofill:active {
     margin: 10%;
   }
   
+  .complaint-action-heading{
+    margin-top: 0%;
+  }
+
   .status-inprogress{
     padding: 3% 0%;
     background-color: var(--color_2);
     text-align: center;
-    margin-left: 13%;
+    margin-left: 0%;
     border-radius: 5px;
   }
   
   .status-completed{
     padding: 3% 0%;
     text-align: center;
-    margin-left: 13%;
+    margin-left: 0%;
     background-color: var(--color_5);
     border-radius: 5px;
   }
-  
   
   .new-complaint:hover{
     margin: 1.5%;
     box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
     cursor: pointer;
-    opacity: 100%;
-   
+    opacity: 100%; 
   }
   
   .complaint-log:hover{
@@ -1151,9 +1208,7 @@ input:-webkit-autofill:active {
     cursor: pointer;
   }
   
-  
-  .complaint-type-title:hover{
-    font-size: 1.4rem;
+  .complaint-type-title:hover{ 
     color: var(--color_7);
     margin-left: 3%;
     color: var(--color_4);
@@ -1162,23 +1217,31 @@ input:-webkit-autofill:active {
   .complaint-log-content:hover{
     cursor: pointer;
     box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
-    translate: 1%;
+    translate: 0.5%;
   }
   
+  a, a:visited, a:hover, a:active, a:focus {
+    text-decoration: none;
+    cursor: pointer;
+}
+
   
   /*new complaint*/
   
   
   .new-complaint-landing{
-  height: 94%;
+  height: fit-content;
   width: 98%;
   background-color: var(--color_6);
-  margin:2% 3%;
+  margin:2% 3% 0%;
   }
   
   .complaint-column-new{
-    
-    margin: 2% 2% 2% 2%;
+   margin: 2% 2% 0% 2%;
+   overflow-y: auto;
+   height: fit-content; 
+   scrollbar-width: none;
+   position: relative;
   }
   
   .new-complaint-log,.new-complaint-new {
@@ -1188,7 +1251,6 @@ input:-webkit-autofill:active {
   }
   
   .new-complaint-log{
-   
     box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
     margin: 1.5%;
     opacity: var(--opacity_1);
@@ -1197,7 +1259,6 @@ input:-webkit-autofill:active {
   .new-complaint-new{
     margin: 1.5%;
     box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
-   
   }
   
   .new-complaint-new:hover{
@@ -1215,7 +1276,7 @@ input:-webkit-autofill:active {
   .new-complaint-container {
     display: grid;
     grid-template-columns: 2fr 10fr; 
-    height: 75vh; 
+    height: fit-content; 
   }
   
   .nested-grid {  
@@ -1223,7 +1284,7 @@ input:-webkit-autofill:active {
       grid-gap: 10px; 
   }
   
-  .form-column {
+  .form-column-new-complaint{
       padding: 2%;  
       margin-left: 3%;
   }
@@ -1258,7 +1319,7 @@ input:-webkit-autofill:active {
     background-color:var(--form_color);
     padding: 1% 5%;
     border: none;
-    width: 83%;
+    width: 74%;
     margin: 0% 8% 0% 5%;
     text-align: center;
     color: var(--color_4);
@@ -1267,7 +1328,6 @@ input:-webkit-autofill:active {
   .upload-cloud-img{
     margin-top: 1%;
   }
-  
   
   input[type="file"] {
     display: none;
@@ -1284,7 +1344,7 @@ input:-webkit-autofill:active {
   .custom-file-upload {
     display: inline-block;
     padding: 1% 2%;
-    background-color:var(--form_color);
+    background-color:var(--color_7);
     border-color:var(--color_4);
     cursor: pointer;
     border-radius: 5px;
@@ -1293,7 +1353,7 @@ input:-webkit-autofill:active {
   }
   
   .submit-column{
-    padding: 2%;  
+    padding: 2% 2% 0%;  
     margin-left: 3%;
   }
   
@@ -1309,8 +1369,7 @@ input:-webkit-autofill:active {
     margin-left: 70%;
     background-color: var(--color_6);
     border-color: var(--color_4);
-    color: var(--color_4);
-   
+    color: var(--color_4); 
   }
   
   .submit-btn{
@@ -1319,6 +1378,7 @@ input:-webkit-autofill:active {
     color: var(--color_6);
     border-color: var(--color_7);
   }
+  
   .cancel-btn:hover{
     background-color: var(--color_7);
     border-color: var(--color_7);
@@ -1336,8 +1396,22 @@ input:-webkit-autofill:active {
   .submitted-answers{
     background-color:var(--form_color);
     padding: 0% 0%;
-    border: none;
-    
+    border: none; 
+  }
+
+  .submitted-answers-subject{
+    background-color:var(--form_color);
+    padding: 0% 0%;
+    border: none; 
+    margin-top: 4%;
+  }
+
+  .submitted-answers-description{
+    background-color:var(--form_color);
+    padding: 0% 0%;
+    border: none; 
+    margin-top: 4%;
+    height: fit-content;
   }
   
   .form-column-view{
