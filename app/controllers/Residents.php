@@ -429,6 +429,32 @@ class Residents extends Controller
 
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
+    public function amenetyLanding(){
+        $this->loadView('residents/ameneties_landing');
+    }
+    
+    public function amenetyViewEdit(){
+        $this->loadView('residents/ameneties_view');
+    }
+    public function amenetyCommon(){
+        $this->loadView('residents/common_area_booking');
+    }
+    public function amenetyPool(){
+        $this->loadView('residents/pool_booking');
+    }
+   
+    public function amenetyGym(){
+        $this->loadView('residents/fitness_center_booking');
+    }
+    public function amenetyUpcoming(){
+        $this->loadView('residents/upcoming_booking_all');
+    }
+    public function amenetyHistory(){
+        $this->loadView('residents/ameneties_history');
+    }
+    public function amenetyCommonEdit(){
+        $this->loadView('residents/ameneties_history');
+    }
 
     public function test()
     {
