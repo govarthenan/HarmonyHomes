@@ -114,14 +114,14 @@ class Resident
      */
     public function writeComplaint()
     {
-        $this->db->prepareQuery('INSERT INTO complaint (user_id, subject, description, topic) VALUES (:user_id, :subject, :description, :topic)');
+        $this->db->prepareQuery('INSERT INTO complaint (user_id, subject, description, topic, attachments) VALUES (:user_id, :subject, :description, :topic, :attachments)');
 
         // Bind values
         $this->db->bind('user_id', $_SESSION['user_id']);
         $this->db->bind('subject', $_POST['subject']);
         $this->db->bind('description', $_POST['description']);
         $this->db->bind('topic', $_POST['topic']);
-
+        $this->db->bind('attachments', $_POST['attachments']);
         // Execute the query and return bool
         return $this->db->execute();
     }
