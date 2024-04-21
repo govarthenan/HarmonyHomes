@@ -343,3 +343,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+/*select file in complaints part*/
+
+document.getElementById('file-input').addEventListener('change', function(event) {
+    var file = event.target.files[0];  // Get the selected file
+    var dropArea = document.getElementById('drop-area');
+
+    // Clear the content of the drop area and then append the file name
+    dropArea.innerHTML = `
+        <p>Selected file: ${file.name}</p>
+    `;
+});
