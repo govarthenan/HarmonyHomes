@@ -1,5 +1,6 @@
 <?php
 include(APP_ROOT . '/views/inc/general_side_nav.php');
+$complaint = $data['complaint'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,19 +43,18 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                         <div class="nested-grid-complaint">
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <p style="padding:1%"> Maintenance</p>
+                                    <p style="padding:1%"><?php echo $complaint->topic; ?></p>
                                 </div>
                             </div>
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <p style="padding:1%"> Maintenance</p>
+                                    <p style="padding:1%"><?php echo $complaint->subject; ?></p>
                                 </div>
                             </div>
 
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <p style="padding:1%; text-align:block;"> hkssjfhkefelfhnie dhfguhguryruthg kfjdfhiughruigh gjghryhtruthh hfuyhf <br>
-                                        hfrjhgiurhguythytr eruthrytgrbgrhg bhgruyghurtyrh fhehfruhgyurhgyurht<br>hguhgiurghitrgruiytey hgfyrfuyebfyurber </p>
+                                    <p style="padding:1%; text-align:block;"><?php echo $complaint->description; ?></p>
                                 </div>
                             </div>
 
@@ -63,19 +63,19 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                                     <img src="<?php echo URL_ROOT . '/public/resources/generals/file.svg' ?>" class="complaint-view-file">
                                 </div>
                             </div>
-                            <div class="form-column-view">
-                                <select id="items" name="selectedItem">
-                                    <option value="0">Select Status</option>
-                                    <option value="1">In Progress</option>
-                                    <option value="2">Resolved</option>
-                                    <option value="3">Hold</option>
-                                    <option value="3">Completed</option>
-                                </select>
-                            </div>
-
-                            <div class="update-button">
-                                <button class="update-btn">Update Status</button>
-                            </div>
+                            <form method="post" action="<?php echo URL_ROOT . '/generals/complaintStatusUpdate/' . $complaint->complaint_id ?>">
+                                <div class="form-column-view">
+                                    <select id="items" name="new_status">
+                                        <option value="Submitted" <?php echo ($data['complaint']->status == 'Submitted') ? 'selected' : ''; ?>>Submitted</option>
+                                        <option value="In Progress" <?php echo ($data['complaint']->status == 'In Progress') ? 'selected' : ''; ?>>In Progress</option>
+                                        <option value="On Hold" <?php echo ($data['complaint']->status == 'On Hold') ? 'selected' : ''; ?>>On Hold</option>
+                                        <option value="Resolved" <?php echo ($data['complaint']->status == 'Resolved') ? 'selected' : ''; ?>>Resolved</option>
+                                    </select>
+                                </div>
+                                <div class="update-button">
+                                    <button type="submit" class="update-btn">Update Status</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

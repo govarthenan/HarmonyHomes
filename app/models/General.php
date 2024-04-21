@@ -36,4 +36,40 @@ class General
         $this->db->prepareQuery('SELECT complaint.*, resident.name FROM complaint JOIN resident ON complaint.user_id = resident.user_id');
         return $this->db->resultSet();
     }
+
+    /**
+     * Fetches the details of a complaint from the database.
+     *
+     * @param int $complaint_id The ID of the complaint to fetch.
+     * @return mixed Returns an associative array containing the details of the complaint if found, or false if not found.
+     */
+    public function fetchComplaintDetails(int $complaint_id)
+    {
+        $this->db->prepareQuery('SELECT * FROM complaint WHERE complaint_id = :complaint_id');
+        $this->db->bind('complaint_id', $complaint_id);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Updates the status of a complaint in the database.
+     *
+     * @param int $complaint_id The ID of the complaint to update.
+     * @param string $new_status The new status to set for the complaint.
+     * @return bool Returns true if the update was successful, false otherwise.
+     */
+    public function updateComplaintStatus(int $complaint_id, string $new_status)
+    {
+        $this->db->prepareQuery('UPDATE complaint SET status = :new_status WHERE complaint_id = :complaint_id');
+        $this->db->bind('new_status', $new_status);
+        $this->db->bind('complaint_id', $complaint_id);
+
+        return $this->db->execute();
+    }
 }

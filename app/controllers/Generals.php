@@ -82,6 +82,43 @@ class Generals extends Controller
         $this->loadView('generals/complaints_log', $data);
     }
 
+    /**
+     * Fetches and displays the details of a complaint.
+     *
+     * @param int $complaint_id The ID of the complaint to fetch details for.
+     * @return void
+     */
+    public function complaintDetails($complaint_id)
+    {
+        $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
+
+        // check DB result
+        if (!$complaint_detail) {
+            die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+        }
+
+        $data['complaint'] = $complaint_detail;
+
+        $this->loadView('generals/complaint_details', $data);
+    }
+
+    /**
+     * Updates the status of a complaint.
+     *
+     * @param int $complaint_id The ID of the complaint to update.
+     * @return void
+     */
+    public function complaintStatusUpdate($complaint_id)
+    {
+        $new_status = trim($_POST['new_status']);
+
+        if ($this->model->updateComplaintStatus($complaint_id, $new_status)) {
+            $this->complaintsLog();
+        } else {
+            die("\nProblem updating status");
+        }
+    }
+
     public function test()
     {
         $complaints_list = $this->model->fetchAllComplaints();
