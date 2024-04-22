@@ -112,7 +112,7 @@ class Resident
      *
      * @return bool Returns true if the query execution is successful, false otherwise.
      */
-    public function writeComplaint()
+    public function writeComplaint($data)
     {
         $this->db->prepareQuery('INSERT INTO complaint (user_id, subject, description, topic, attachments) VALUES (:user_id, :subject, :description, :topic, :attachments)');
 
@@ -121,7 +121,7 @@ class Resident
         $this->db->bind('subject', $_POST['subject']);
         $this->db->bind('description', $_POST['description']);
         $this->db->bind('topic', $_POST['topic']);
-        $this->db->bind('attachments', $_POST['attachments']);
+        $this->db->bind('attachments', $data['attachment']);
         // Execute the query and return bool
         return $this->db->execute();
     }
