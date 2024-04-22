@@ -1830,4 +1830,35 @@ input[type="file"] {
     width: 95% !important;
     height: 95% !important;
     display: block;
-}
+  }
+  
+
+  /* flash message */
+  .alert {
+    padding: 1.5%;
+    background-color: white;
+    color: blue;
+    opacity: 1; /* Start fully visible */
+    transition: opacity 0.5s linear; /* Smooth transition for the opacity */
+    border-style:solid;
+    border-radius:8px;
+    border-width:2px;
+    font-weight:bold;
+    font-size:1.1rem;
+    width:50%;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: blue;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }
