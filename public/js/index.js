@@ -345,6 +345,16 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+
+/*choose files-billing, complaint*/
+document.getElementById('file-input').addEventListener('change', function() {
+    var fileName = document.getElementById('file-input').files[0].name;
+    document.getElementById('file-name').textContent = fileName;
+});
+
+
+
 /*select file in complaints part*/
 
 document.getElementById('file-input').addEventListener('change', function(event) {
