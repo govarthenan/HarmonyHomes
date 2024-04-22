@@ -343,3 +343,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Function to close the alert manually
+function closeAlert() {
+    var alertElement = document.getElementById('alert');
+    alertElement.style.opacity = '0';
+    setTimeout(function () {
+        alertElement.style.display = 'none';
+    }, 500);
+}
+
+// Automatically close the alert after 5 seconds
+setTimeout(function () {
+    closeAlert();
+}, 5000);
