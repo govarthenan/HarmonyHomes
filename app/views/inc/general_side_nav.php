@@ -43,7 +43,7 @@
         <nav class="navigation">
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_amenities.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/index' ?>"><span class="sidebar-title">Home</span></a>
+                <a href="<?php echo URL_ROOT . '/generals/index' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Home</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_issues.svg' ?>" class="sidebar_office_building" />
@@ -57,7 +57,7 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_complaints.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/complaintsLog' ?>"><span class="sidebar-title">Complaints</span></a>
+                <a href="<?php echo URL_ROOT . '/generals/complaintsLog' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Complaints</span></a>
             </div>
 
             <div class="navi-item">
@@ -73,7 +73,7 @@
             <hr />
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_log-out.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/signOut' ?>"><span class="sidebar-title">Logout</span></a>
+                <a href="<?php echo URL_ROOT . '/generals/signOut' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Logout</span></a>
             </div>
         </nav>
 
