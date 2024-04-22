@@ -310,12 +310,14 @@ class Residents extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
                 'topic' => trim($_POST['topic']),
                 'subject' => trim($_POST['subject']),
                 'description' => trim($_POST['description']),
+                "attachment" => file_get_contents($_FILES['attachment']["tmp_name"])
             ];
 
             // call model to add complaint

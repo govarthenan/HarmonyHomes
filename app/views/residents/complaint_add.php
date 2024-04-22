@@ -46,7 +46,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         </div>
                     </div>
                     <div class="column-new-complaint">
-                        <form name="complaintForm" method="post" class="new-complaint-form" action="<?php echo URL_ROOT . '/residents/complaintAdd' ?>">
+                        <form enctype="multipart/form-data" name="complaintForm" method="post" class="new-complaint-form" action="<?php echo URL_ROOT . '/residents/complaintAdd' ?>">
                             <div class="nested-grid-new-complaint">
                                 <div class="form-column-new-complaint">
                                     <select id="items" name="topic" required>
@@ -65,11 +65,12 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 <textarea id="answer" name="description" rows="8" required></textarea>
                             </div>
 
+
                             <div class="drop-area" id="drop-area">
                                 <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
                                 <p>Drag and Drop to upload files <br> or </p>
                                 <label for="file-input" class="custom-file-upload">Choose File</label>
-                                <input type="file" id="file-input">
+                                <input type="file" name="attachment" id="file-input">
                             </div>
 
                             <div class="submit-column">
@@ -81,7 +82,6 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
