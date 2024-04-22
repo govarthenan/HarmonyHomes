@@ -41,7 +41,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             <h4 class="complaint-date-heading">Complaint Date</h4>
                             <p class="complaint-date"></p><?php echo $complaint->created_date; ?></p>
                         </div>
-
+                        
                         <div class="description-column">
                             <h4 class="complaint-type-heading"><?php echo $complaint->topic; ?></h4>
                             <p class="complaint-description"></p><?php echo $complaint->subject; ?></p>

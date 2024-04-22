@@ -343,3 +343,42 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+
+
+/*create announcement*/
+
+function toggleDropdowns() {
+    var userType = document.getElementById('userType').value;
+    var groupSelect = document.getElementById('groupSelect');
+
+    // Handling Group Select visibility
+    if (userType === 'wings') {
+        groupSelect.style.display = 'block';
+    } else {
+        groupSelect.style.display = 'none';
+    }
+
+}
+
+
+/*Notification and announcement*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    var quill = new Quill('#editor', {
+        theme: 'snow'  // Specify theme in configuration
+    });
+
+    document.getElementById('notificationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const message = quill.root.innerHTML;  // Get the inner HTML of the editor
+
+        console.log('Notification Title:', title);
+        console.log('Notification Message:', message);
+
+        // Here you would typically send the data to a server
+        alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
+    });
+});

@@ -125,4 +125,98 @@ class Generals extends Controller
         $data['complaints'] = $complaints_list;
         $this->loadView('generals/test', $data);
     }
+
+
+
+    /**
+     * Fetches all announcements and loads the complaints log view.
+     *
+     * @return void
+     */
+    public function announcementsLog()
+    {
+        $data['announcements'] = $this->model->fetchAllAnnouncements();
+        $this->loadView('generals/announcement_log', $data);
+    }
+
+
+    /**
+     * Adds a announcment for a general manger.
+     *
+     * This method is responsible for handling the submission of a complaint form. It checks if the form was submitted using the POST method, sanitizes the input data, and calls the model to add the complaint to the database. If the complaint is successfully added, the user is redirected to the complaints log page. Otherwise, an error message is displayed.
+     *
+     * @return void
+     */
+    public function announcementAdd()
+    {
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // foreach ($_POST as $key => $value) {
+            //     echo gettype($value) . PHP_EOL;
+            // }
+            // die();
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'user_id' => $_SESSION['user_id'],  // Assuming user_id is stored in session
+                'receiver' => trim($_POST['receiver']),
+                'title' => trim($_POST['title']),
+                'message' => trim($_POST['message'])
+            ];
+
+            // call model to add announcment
+            if ($this->model->writeAnnouncement($data)) {
+                header('location: ' . URL_ROOT . '/generals/announcementsLog');
+                //$this->announcementsLog();
+            } else {
+                die('Error with adding announcement to DB');  // ToDo: improve error handling
+            }
+        } else {
+            $this->loadView('generals/announcement_add');
+        }
+    }
+
+
+    /* 
+    * @param int $announcement_id The ID of the announcement to be edited.
+    * @return void
+    */
+    public function announcementEdit($announcement_id)
+    {
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'announcement_id' => $announcement_id,
+                'user_id' => $_SESSION['user_id'],
+                'receiver' => trim($_POST['receiver']),
+                'title' => trim($_POST['title']),
+                'message' => trim($_POST['message']),
+            ];
+
+            // call model to add announcement
+            if ($this->model->editAnnouncement($data)) {
+                header('location: ' . URL_ROOT . '/generals/announcementLog');
+            } else {
+                die('Error with updating announcement in DB');  // ToDo: improve error handling
+            }
+        } else {
+            $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);
+
+            // check DB result
+            if ($announcement_detail) {
+                die('Announcement not found: fetchAnnouncementDetails()');  // ToDo: improve error handling
+            }
+
+            // check if complaint belongs to user
+            if ($announcement_detail->user_id != $_SESSION['user_id']) {
+                die('Unauthorized access');  // ToDo: improve error handling
+            }
+
+            $data['announcement'] = $announcement_detail;
+
+            $this->loadView('generals/announcement_edit', $data);
+        }
+    }
 }

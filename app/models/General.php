@@ -72,4 +72,55 @@ class General
 
         return $this->db->execute();
     }
+
+
+
+    public function writeAnnouncement($data)
+    {
+       $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
+       
+
+        $this->db->bind('user_id', $data['user_id']);
+        $this->db->bind('receiver', $data['receiver']);
+        $this->db->bind('title', $data['title']);
+        $this->db->bind('message', $data['message']);
+
+        return $this->db->execute();
+    }
+
+
+    
+    /**
+     * Fetches all announcements for the current user.
+     *
+     * @return array An array containing all the complaints for the current user.
+     */
+    public function fetchAllAnnouncements()
+    {
+        $this->db->prepareQuery('SELECT * FROM announcement WHERE user_id = :user_id');
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        return $this->db->resultSet();
+    }
+
+    
+    /**
+     * Updates a announcement in the database with the edited information.
+     *
+     * @param array $edited_announcement The edited complaint data.
+     * @return bool Returns true if the update was successful, false otherwise.
+     */
+    public function editAnnouncement($edited_announcement)
+    {
+        $this->db->prepareQuery('UPDATE announcement SET receiver = :receiver, title = :title, message = :message WHERE announcement_id = :announcement_id');
+
+        // Bind values
+        $this->db->bind('receiver', $edited_announcement['receiver']);
+        $this->db->bind('title',$edited_announcement['title']);
+        $this->db->bind('message', $edited_announcement['message']);
+        $this->db->bind('announcement_id',$edited_announcement['announcement_id']);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
 }
