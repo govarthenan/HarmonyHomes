@@ -1204,7 +1204,7 @@ border-radius: 4px;
 }
 .announcement-log-content{
   background-color: var(--color_6);
-  grid-template-columns:1fr 1fr 1fr 1fr 1fr; 
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
   display: grid;
 }
 .announcement-log-content {
@@ -1334,7 +1334,7 @@ border-radius: 4px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
-  width: 25%;
+  width: 28%;
   margin-right: 2%;
 }
 
