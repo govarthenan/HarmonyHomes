@@ -65,7 +65,8 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 <textarea id="answer" name="description" rows="8" required></textarea>
                             </div>
 
-                            <div class="drop-area">
+
+                            <div class="drop-area" id="drop-area">
                                 <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
                                 <p>Drag and Drop to upload files <br> or </p>
                                 <label for="file-input" class="custom-file-upload">Choose File</label>
@@ -82,6 +83,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
             </div>
         </div>
     </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
 
 </html>

@@ -345,6 +345,33 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+/*select file in complaints part*/
+
+document.getElementById('file-input').addEventListener('change', function(event) {
+    var file = event.target.files[0];  // Get the selected file
+    var dropArea = document.getElementById('drop-area');
+
+    // Clear the content of the drop area and then append the file name
+    dropArea.innerHTML = `
+        <p>Selected file: ${file.name}</p>
+    `;
+});
+
+// Function to close the alert manually
+function closeAlert() {
+    var alertElement = document.getElementById('alert');
+    alertElement.style.opacity = '0';
+    setTimeout(function () {
+        alertElement.style.display = 'none';
+    }, 500);
+}
+
+// Automatically close the alert after 5 seconds
+setTimeout(function () {
+    closeAlert();
+}, 5000);
+
+
 
 /*create announcement*/
 

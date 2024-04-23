@@ -10,40 +10,37 @@ class Generals extends Controller
     private $model;
     public $data = [];  // to store data entered by user, as well as to be passed to view
     public $errors = [];  // to store errors, as well as to be passed to view
+    public $controller_role = "general";
 
-    public function __construct()
+    public function __construct($user_data = [])
     {
+        // check if user is signed in
+        $is_signed_in = isset($_SESSION['user_id']);
+
+        if ($is_signed_in) {
+            // check if user has the right role
+            $role = $_SESSION['user_role'];
+
+            if ($role == $this->controller_role) {
+                // continue
+            } else {
+                die('You do not have the right role to access this page.');
+            }
+            // check if user has the right role
+            if ($_SESSION['user_role'] != $this->controller_role) {
+                die('You do not have the right role to access this page.');
+            }
+        } else {
+            header('Location: ' . URL_ROOT . '/staffs/sign_in');
+        }
+
         // load DB model
         $this->model = $this->loadModel('General');  // load DB model. PDO instance is inside private property
     }
 
-    public function index($user_data)
+    public function index()
     {
-
-        // if signed in, create user session
-        $this->createUserSession($user_data);
-
         $this->loadView('generals/dashboard');
-    }
-
-    /**
-     * Creates a user session and stores user information in the session variables.
-     *
-     * @param object $user The user object containing user information.
-     * @return void
-     */
-    public function createUserSession($user)
-    {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        $_SESSION['user_id'] = $user['user_id'];
-        $_SESSION['user_email'] = $user['email'];
-        $_SESSION['user_name'] = $user['name'];
-        $_SESSION['user_role'] = $user['role'];
-
-        return;
     }
 
     /**
