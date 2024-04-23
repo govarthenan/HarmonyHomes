@@ -47,7 +47,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
               <p class="announcement-audience"></p><?php echo $announcement->receiver; ?></p>
             </div>
 
-            <!--<div class="description-column">
+            <div class="description-column">
             <h4 class="announcement-type-heading">Maintenance</h4>
             <p class="announcement-description"></p>Umai</p>
           </div>-->
