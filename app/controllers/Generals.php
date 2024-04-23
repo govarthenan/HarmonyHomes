@@ -202,7 +202,7 @@ class Generals extends Controller
             $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);
 
             // check DB result
-            if ($announcement_detail) {
+            if (!$announcement_detail) {
                 die('Announcement not found: fetchAnnouncementDetails()');  // ToDo: improve error handling
             }
 
@@ -216,4 +216,57 @@ class Generals extends Controller
             $this->loadView('generals/announcement_edit', $data);
         }
     }
+
+
+    /**
+     * Displays the details of a specific complaint.
+     *
+     * @param int $complaint_id The ID of the complaint to fetch details for.
+     * @return void
+     */
+    public function announcementDetail($announcement_id)
+    {
+        $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);
+
+        // check DB result
+        if (!$announcement_detail) {
+            die('Complaint not found: fetchAnnouncementDetails()');  // ToDo: improve error handling
+        }
+
+        // check if complaint belongs to user
+        if ($announcement_detail->user_id != $_SESSION['user_id']) {
+            die('Unauthorized access');  // ToDo: improve error handling
+        }
+
+        $data['announcement'] = $announcement_detail;
+
+        $this->loadView('generals/announcement_detail', $data);
+    }
+
+
+    /**
+     * Deletes a announcement for a resident.
+     *
+     * @param int $announcement_id The ID of the complaint to be deleted.
+     * @return void
+     */
+    public function announcementDelete($announcement_id)
+    {
+        // check if announcementt belongs to user
+        $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);
+
+        if ( $announcement_detail->user_id != $_SESSION['user_id']) {
+            die('Unauthorized access');  // ToDo: improve error handling
+        }
+
+        $announcement_delete_result = $this->model->deleteAnnouncement($announcement_id);
+
+        if (!$announcement_delete_result) {
+            die('Error deleting announcement');  // ToDo: improve error handling
+        }
+
+        header('location: ' . URL_ROOT . '/generals/announcementLog');
+    }
+
+
 }

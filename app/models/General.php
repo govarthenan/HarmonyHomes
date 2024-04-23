@@ -123,4 +123,34 @@ class General
         return $this->db->execute();
     }
 
+    /**
+     * Fetches a single complaint based on the complaint ID.
+     *
+     * @param int $complaint_id The ID of the complaint.
+     * @return mixed The complaint object if found, false otherwise.
+     */
+    public function fetchAnnouncementDetails(int $announcement_id)
+    {
+        $this->db->prepareQuery('SELECT * FROM announcement WHERE announcement_id = :announcement_id');
+        $this->db->bind('announcement_id', $announcement_id);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function deleteAnnouncement($announcement_id)
+    {
+        $this->db->prepareQuery('DELETE FROM announcement WHERE announcement_id = :announcement_id');
+        $this->db->bind('announcement_id', $announcement_id);
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
+
 }
