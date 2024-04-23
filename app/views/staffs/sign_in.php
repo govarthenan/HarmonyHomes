@@ -32,18 +32,20 @@
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" required>
                         </div>
-                        <div class="sign-in-form-group forgot-password">
-                            <a href="/forgot-password">Forgot Password?</a> <!-- ToDo: update link and implement functionality -->
-                        </div>
-                        <div class="form-column-new-complaint">
+                        
+                        <div class="sign-in-form-group">
                             <label for="role">Role:</label>
                             <select id="items" name="role" required>
-                                <option value="general">Geenral Manager</option>
+                                <option value="general">Genaral Manager</option>
                                 <option value="finance">Finance Manager</option>
                                 <option value="facility">Facility Manager</option>
                                 <option value="security">Security</option>
                                 <option value="technician">Technician</option>
                             </select>
+                        </div>
+
+                        <div class="sign-in-form-group forgot-password">
+                            <a href="/forgot-password">Forgot Password?</a> <!-- ToDo: update link and implement functionality -->
                         </div>
                         <button type="submit" class="btn-login">Login</button>
                     </form>

@@ -320,6 +320,18 @@ input:-webkit-autofill:active {
     margin: 1%;
 }
 
+.sign-in-form-group select{
+    background-color:var(--color_6);
+    padding: 1% 8%;
+    border: solid;
+    border-color: var(--color_2);
+    border-width: 1px;
+    width: 80%;
+    height: 7%;
+    color: var(--color_4);
+    }
+
+/*sign in*/
 .registration-form label {
     display: block;
     margin-bottom: 2%;
