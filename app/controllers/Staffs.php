@@ -48,25 +48,19 @@ class Staffs extends Controller
 
                 $logInResult = $this->model->logIn($data['email'], $data['password'], $data['role']);
 
-                // extract user data for creating session
-                $user_data = [
-                    'user_id' => $logInResult->staff_id,
-                    'email' => $logInResult->email,
-                    'name' => $logInResult->name,
-                    'role' => $logInResult->role
-                ];
-
                 // check password and login
                 if ($logInResult) {
-                    // according to role, instantiate a new controller
-                    // and load the index method, with user data to create session
-                    if ($data['role'] == 'general') {
-                        require_once APP_ROOT . '/controllers/Generals.php';
-                        $general_controller = new Generals();
-                        $general_controller->index($user_data);
-                    } elseif ($data['role'] == 'finance') {
-                        // add controllers for other users
-                    }
+                    // extract user data for creating session
+                    $user_data = [
+                        'user_id' => $logInResult->staff_id,
+                        'email' => $logInResult->email,
+                        'name' => $logInResult->name,
+                        'role' => $logInResult->role
+                    ];
+
+                    // create user session and redirect user to homepage
+                    $this->createUserSession($user_data);
+                    $this->redirectUser($user_data['role']);
                 } else {
                     $errors['password_err'] = 'Password incorrect';
                     die(print_r($errors));  // ToDo: improve error handling
@@ -79,6 +73,48 @@ class Staffs extends Controller
         } else {
             // load form
             $this->loadView('staffs/sign_in');
+        }
+    }
+
+    public function createUserSession($user)
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION['user_id'] = $user['user_id'];
+        $_SESSION['user_email'] = $user['email'];
+        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['user_role'] = $user['role'];
+
+        return;
+    }
+
+    /**
+     * Redirects the user based on their role.
+     *
+     * @param string $role The role of the user.
+     * @return void
+     */
+    public function redirectUser($role)
+    {
+        // according to the role, import controller class and redirect
+        if ($role == 'general') {
+            require_once APP_ROOT . '/controllers/Generals.php';
+            header('Location: ' . URL_ROOT . '/generals');
+        }
+
+        switch ($role) {
+            case 'general':
+                require_once APP_ROOT . '/controllers/Generals.php';
+                header('Location: ' . URL_ROOT . '/generals');
+                break;
+            case 'finance':
+                require_once APP_ROOT . '/controllers/Finances.php';
+                header('Location: ' . URL_ROOT . '/finances');
+                break;
+            default:
+                die('Invalid role');
         }
     }
 }
