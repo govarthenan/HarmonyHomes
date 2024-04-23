@@ -557,7 +557,13 @@
   border-style: solid;
   font-weight: bold;
 }
-  
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none; /* Ensure this is not*/
+}
+
+
    /*gm amenity table */
 /* 
    .gm-amenity-content{
@@ -1345,14 +1351,15 @@ border-radius: 4px;
   color: var(--color_6);
   border-color: var(--color_1);
   border-style: solid;
-  padding: 2%;
+  padding:1% 2%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .delete-btn:hover {
@@ -1360,6 +1367,30 @@ border-radius: 4px;
   border-color: var(--color_1);
   color: var(--color_1);
 }
+
+
+.edit-btn {
+  background-color: var(--color_6);
+  color: var(--color_1);
+  border-color: var(--color_1);
+  border-style: solid;
+  padding:1% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 80%;
+}
+
+.edit-btn:hover {
+  background-color: var(--color_1);
+  border-color: var(--color_1);
+  color: var(--color_6);
+}
+
 
 
 /*GM - new announcement creation */

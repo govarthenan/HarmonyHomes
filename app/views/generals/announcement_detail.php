@@ -70,8 +70,8 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                             
 
                             <div class="submit-column">
-                                <a href="<?php echo URL_ROOT . '/generals/announcementEdit/' . $data['announcement']->announcement_id; ?>"><button class="edit-btn">Update</button></a>
-                                <a href="<?php echo URL_ROOT . '/generalss/announcementDelete/' . $data['announcement']->announcement_id; ?>"><button class="delete-btn">Delete</button></a>
+                                <a href="<?php echo URL_ROOT . '/generals/announcementEdit/' . $data['announcement']->announcement_id; ?>"><button class="edit-btn">Edit</button></a>
+                                <a href="<?php echo URL_ROOT . '/generals/announcementDelete/' . $data['announcement']->announcement_id; ?>"><button class="delete-btn">Delete</button></a>
                             </div>
                         </div>
                     </div>

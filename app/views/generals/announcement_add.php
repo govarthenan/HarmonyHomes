@@ -9,6 +9,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
     <title>Create announcement</title>
     <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/general_style.css' ?>" />
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css" rel="stylesheet" />
+    
 </head>
 <body>
    <div class="main-content">
@@ -16,7 +17,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
      <div class="announcement-type">
                   <div class="new-next-announcement">
                   <img src="<?php echo URL_ROOT . '/resources/generals/announcement_log.svg' ?>" class="select-announcement-img" />
-                  <a href="<?php echo URL_ROOT . '/generals/announcementLog' ?>" style="text-decoration: none;"><span class="announcement-type-title">Announcement Log</span></a>
+                  <a href="<?php echo URL_ROOT . '/generals/announcementsLog' ?>" style="text-decoration: none;"><span class="announcement-type-title">Announcement Log</span></a>
                 </div>
                 
                 <div class="announcement-next-log">

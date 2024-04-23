@@ -133,7 +133,7 @@ class Generals extends Controller
     public function announcementsLog()
     {
         $data['announcements'] = $this->model->fetchAllAnnouncements();
-        $this->loadView('generals/announcement_log', $data);
+        $this->loadView('generals/announcements_log', $data);
     }
 
 
@@ -174,11 +174,20 @@ class Generals extends Controller
         }
     }
 
-
-    /* 
-    * @param int $announcement_id The ID of the announcement to be edited.
-    * @return void
-    */
+/**
+     * Edit a announcement.
+     *
+     * This method is responsible for editing a announcement based on the provided complaint ID.
+     * It checks if the form was submitted via POST or GET method, sanitizes the input data,
+     * and calls the model to update the announcement in the database. If the update is successful,
+     * it redirects the user to the announcements log page. Otherwise, it displays an error message.
+     * If the form was not submitted, it fetches the announcement details and checks if the complaint
+     * belongs to the current user. If not, it displays an unauthorized access message. Finally,
+     * it loads the view for editing the announcement.
+     *
+     * @param int $announcement_id The ID of the announcement to be edited.
+     * @return void
+     */
     public function announcementEdit($announcement_id)
     {
         // check for post/get to see if form was submitted
@@ -194,7 +203,7 @@ class Generals extends Controller
 
             // call model to add announcement
             if ($this->model->editAnnouncement($data)) {
-                header('location: ' . URL_ROOT . '/generals/announcementLog');
+                header('location: ' . URL_ROOT . '/generals/announcementsLog');
             } else {
                 die('Error with updating announcement in DB');  // ToDo: improve error handling
             }
@@ -219,9 +228,9 @@ class Generals extends Controller
 
 
     /**
-     * Displays the details of a specific complaint.
+     * Displays the details of a specific announcement.
      *
-     * @param int $complaint_id The ID of the complaint to fetch details for.
+     * @param int $announcement_id The ID of the announcement to fetch details for.
      * @return void
      */
     public function announcementDetail($announcement_id)
@@ -243,19 +252,19 @@ class Generals extends Controller
         $this->loadView('generals/announcement_detail', $data);
     }
 
-
-    /**
+    
+/**
      * Deletes a announcement for a resident.
      *
-     * @param int $announcement_id The ID of the complaint to be deleted.
+     * @param int $announcement_id The ID of the announcement to be deleted.
      * @return void
      */
     public function announcementDelete($announcement_id)
     {
-        // check if announcementt belongs to user
+        // check if announcement belongs to user
         $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);
 
-        if ( $announcement_detail->user_id != $_SESSION['user_id']) {
+        if ($announcement_detail->user_id != $_SESSION['user_id']) {
             die('Unauthorized access');  // ToDo: improve error handling
         }
 
@@ -265,7 +274,7 @@ class Generals extends Controller
             die('Error deleting announcement');  // ToDo: improve error handling
         }
 
-        header('location: ' . URL_ROOT . '/generals/announcementLog');
+        header('location: ' . URL_ROOT . '/generals/announcementsLog');
     }
 
 
