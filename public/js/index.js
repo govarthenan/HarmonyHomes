@@ -215,11 +215,66 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
+/*consumption chart general manger*/
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('consumptionChart').getContext('2d');
+    const consumptionChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example monthly labels
+            datasets: [{
+                label: 'Total Electricity Consumption (kWh)', // Adjusted label for clarity
+                data: [300, 400, 350, 500, 450, 550], // Example data for electricity consumption
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)', // Line color for electricity
+                tension: 0.1 // Slight curve in the line
+            }, {
+                label: 'Total Water Consumption (Liters)', // Adjusted label for clarity
+                data: [1200, 1100, 1150, 1080, 1220, 1250], // Example data for water consumption
+                fill: false,
+                borderColor: 'rgb(21, 74, 170)', // Line color for water
+                tension: 0.1 // Slight curve in the line
+            }]
+        },
+        options: {
+            aspectRatio: 1, // Ensures the chart maintains a square shape
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Consumption'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                },
+                title: {
+                    display: true,
+                    text: 'Total Consumption Overview', // Title for the chart
+                    padding: {
+                        top: 10,
+                        bottom: 25
+                    },
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false // Allows flexibility in adjusting aspect ratio
+        }
+    });
+  });
 
 
-  /*finance-js*/
 
-  /*finance chart-finance-js*/
+/*finance chart for both general manager and finance manger*/
 
   document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('financeChart').getContext('2d');
@@ -232,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     label: 'Income',
                     data: [5000, 6000, 5500, 6500, 6200, 6800], // Example income data
                     borderColor: '#154aaa',
-                    backgroundColor: 'rgba(21, 74, 170,0.2)',
+                    backgroundColor: 'rgba(21, 74, 170,0.1)',
                     fill: true,
                     tension: 0.1
                 },
@@ -248,7 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     label: 'Balance',
                     data: [2000, 2500, 2700, 2500, 2500, 2300], // Example balance data (Income - Expense)
                     borderColor: '#4cc2c4',
-                    backgroundColor: 'rgba(76, 194, 196,0.2)',
+                    backgroundColor: 'rgba(76, 194, 196,0.1)',
                     fill: true,
                     tension: 0.1
                 }
@@ -274,6 +329,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 legend: {
                     display: true,
                     position: 'top'
+                },
+                title: { // Adding title configuration here
+                    display: true,
+                    text: 'Account Overview',
+                    position: 'top',
+                    font: {
+                        size: 18
+                    }
                 }
             },
             responsive: true,
@@ -283,6 +346,70 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+/*select file in complaints part*/
+
+document.getElementById('file-input').addEventListener('change', function(event) {
+    var file = event.target.files[0];  // Get the selected file
+    var dropArea = document.getElementById('drop-area');
+
+    // Clear the content of the drop area and then append the file name
+    dropArea.innerHTML = `
+        <p>Selected file: ${file.name}</p>
+    `;
+});
+
+// Function to close the alert manually
+function closeAlert() {
+    var alertElement = document.getElementById('alert');
+    alertElement.style.opacity = '0';
+    setTimeout(function () {
+        alertElement.style.display = 'none';
+    }, 500);
+}
+
+// Automatically close the alert after 5 seconds
+setTimeout(function () {
+    closeAlert();
+}, 5000);
+
+
+
+/*create announcement*/
+
+function toggleDropdowns() {
+    var userType = document.getElementById('userType').value;
+    var groupSelect = document.getElementById('groupSelect');
+
+    // Handling Group Select visibility
+    if (userType === 'wings') {
+        groupSelect.style.display = 'block';
+    } else {
+        groupSelect.style.display = 'none';
+    }
+
+}
+
+
+/*Notification and announcement*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    var quill = new Quill('#editor', {
+        theme: 'snow'  // Specify theme in configuration
+    });
+
+    document.getElementById('notificationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const message = quill.root.innerHTML;  // Get the inner HTML of the editor
+
+        console.log('Notification Title:', title);
+        console.log('Notification Message:', message);
+
+        // Here you would typically send the data to a server
+        alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
+    });
+});
 
 /*payment status-finance-js*/
 
