@@ -86,4 +86,9 @@ class Finances extends Controller
         // return first name
         echo explode(' ', $user_name)[0];
     }
+
+    public function billingHome()
+    {
+        $this->loadView('finances/bill_create');
+    }
 }
