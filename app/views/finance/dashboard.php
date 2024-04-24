@@ -18,19 +18,19 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                 <div class="row-1-column-1">
                     <div class="row-1-box">
                         <div class="finance-overview-box">
-                            <img src="<?php echo URL_ROOT . '/resources/finance_dashboard/money.png' ?>" class="finance-dash-tile-img">
+                            <img src="<?php echo URL_ROOT . '/resources/finances/money.png' ?>" class="finance-dash-tile-img">
                             <span class="finance-dash-tile-heading">Current funds<br>
                                 <div class="total-fund"><b>Rs.2000k</b></div>
                             </span>
                         </div>
                         <div class="finance-overview-box">
-                            <img src="<?php echo URL_ROOT . '/resources/finance_dashboard/income.png' ?>" class="finance-dash-tile-img">
+                            <img src="<?php echo URL_ROOT . '/resources/finances/income.png' ?>" class="finance-dash-tile-img">
                             <span class="finance-dash-tile-heading">Income<br>
                                 <div class="total-income"><b>Rs.2000k</b></div>
                             </span>
                         </div>
                         <div class="finance-overview-box">
-                            <img src="<?php echo URL_ROOT . '/resources/finance_dashboard/decrease.png' ?>" class="finance-dash-tile-img">
+                            <img src="<?php echo URL_ROOT . '/resources/finances/decrease.png' ?>" class="finance-dash-tile-img">
                             <span class="finance-dash-tile-heading">Expense<br>
                                 <div class="total-expense"><b>Rs.500k</b></div>
                             </span>
@@ -38,11 +38,11 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                     </div>
                     <div class="row-2-box">
                         <div class="non-routin-expenses">
-                            <img src="<?php echo URL_ROOT . '/resources/finance_dashboard/non-routine-expense.svg' ?>" class="non-routine-expense-icon">
+                            <img src="<?php echo URL_ROOT . '/resources/finances/non-routine-expense.svg' ?>" class="non-routine-expense-icon">
                             <span class="non-routin-expenses-heading">Non-Routine Expenses</span>
                         </div>
                         <div class="transaction-log">
-                            <img src="<?php echo URL_ROOT . '/resources/finance_dashboard/transaction-log.svg' ?>" class="non-routine-expense-icon">
+                            <img src="<?php echo URL_ROOT . '/resources/finances/transaction-log.svg' ?>" class="non-routine-expense-icon">
                             <span class="transaction-log-heading">Transaction log</span>
                         </div>
                     </div>
