@@ -87,8 +87,8 @@ class Finances extends Controller
         echo explode(' ', $user_name)[0];
     }
 
-    public function billingHome()
+    public function csvBilling()
     {
-        $this->loadView('finances/bill_create');
-    }
+        $this->loadView('finances/billing_csv');
+}
 }

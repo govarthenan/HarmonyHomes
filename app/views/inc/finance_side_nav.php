@@ -40,7 +40,7 @@
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_bill.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/finances/billingHome' ?>"><span class="sidebar-title">Billing</span></a>
+                <a href="<?php echo URL_ROOT . '/finances/csvBilling' ?>"><span class="sidebar-title">Billing</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_calendar.svg' ?>" />
