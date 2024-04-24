@@ -441,3 +441,107 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+
+/*technician part */
+
+
+
+/*task chart*/
+
+function createPieChart(chartId) {
+    const data = {
+        labels: ['Ongoing Tasks', 'Completed Tasks'],
+        datasets: [{
+            label: 'Task Distribution',
+            data: [40, 60], // Percentage data for Ongoing and Completed tasks
+            backgroundColor: ['rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)'],
+            borderColor: ['rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'right' // Positioning legend on the right
+                },
+                title: {
+                    display: true,      // Ensure the title is shown
+                    text: 'Monthly Summary', // Title text
+                    font: {
+                        size: 16         // Font size of the title
+                    }
+                }
+            },
+            responsive: true,   // Ensures the canvas size is responsive to container
+            maintainAspectRatio: false // Ensures aspect ratio is not maintained, allowing custom dimensions
+        }
+    };
+
+    const ctx = document.getElementById(chartId).getContext('2d');
+    const taskChart = new Chart(ctx, config); // Create the chart
+}
+
+createPieChart('taskChart'); // Call this function with the id of the canvas element
+
+
+/*bar chart*/
+
+function createBarChart(chartId) {
+    const data = {
+        labels: ['LED bulbs', 'Volters', 'Switches', 'Wires'], // Example inventory items
+        datasets: [{
+            label: 'Inventory Count',
+            data: [50, 75, 150, 120], // Example quantity of each item
+            backgroundColor: [
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)'
+            ],
+            borderColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)'
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true // Ensures the scale starts at zero
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'top' // Positions the legend at the top of the chart
+                },
+                title: {
+                    display: true,
+                    text: 'Inventory Items',
+                    font: {
+                        size: 16
+                    }
+                }
+            },
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    };
+
+    const ctx = document.getElementById(chartId).getContext('2d');
+    new Chart(ctx, config); // Create the chart
+}
+createBarChart('inventoryChart');
+
