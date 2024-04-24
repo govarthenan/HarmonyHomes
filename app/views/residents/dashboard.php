@@ -19,8 +19,9 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
             </div>
             
             <div class="announcment-tile-container">
+            <?php foreach ($data['complaints'] as $index => $complaint) : ?>
                <div class="announcment-1">
-                 <div class="announcment-tile-heading">Monthly General meeting</div>
+                 <div class="announcment-tile-heading"><?php echo $data['complaint']->topic; ?></div>
                       <!--<div class="announcment-details">Dear residents,<br>
                          We are excited to announce our general meeting for the month of February.<br>
                         <b>Date:2024.02.27</b><br>
@@ -30,19 +31,9 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
                          General manager.
                       </div>-->
                    </div>
-               <div class="announcment-2">
-                 <div class="announcment-tile-heading">Power Cut Announcement</div>
-                      <!--<div class="announcment-details">Dear residents,<br>
-                      We would like to inform you about a scheduled power cut on the 4th of February.<br>
-                        <b>Date:2024.02.27</b><br>
-                        <b>Time:8.00 a.m</b><br>
-                        <b>Duration:6 hours</b><br>
-                        <b>Reason:Maitenance repair</b><br> We apologize for any inconvenience this may cause and appreciate your understanding.<br>
-                         Thank you,<br>
-                         Facility manager.
-                      </div>-->
-                   </div>
+               
                 </div>
+                <?php endforeach; ?>
           </div>
           <div class="calendar">
             <div class="calendar-container">
