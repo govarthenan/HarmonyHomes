@@ -301,6 +301,10 @@ border-width: 2px;
   font-size: 1.1rem;  
 }
 
+.payment-status-chart-1{
+
+
+}
 
 .payment-status-chart-2{
  height: 80%;
@@ -438,4 +442,107 @@ margin: 2%;
     border-style: solid;
     margin: 2%;
   }
+/*Billing-finance*/
 
+.billing-container-finance{
+    background-color: var(--color_6);
+    margin: 1%;
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr 11fr;
+  }
+  
+  .billing-heading{
+    color: var(--color_4);
+    margin: 1% 2%;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  
+  .billing-container{
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--color_3);
+    margin: 0% 8% 2%;
+  }
+  
+  .elec-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 8%;
+  }
+  
+  .elec-lable{
+    margin: 30% 10% 5% 30%;
+    font-weight: bold;
+  }
+  
+  .water-lable{
+    margin: 30% 10% 5% 30%; 
+    font-weight: bold;
+  }
+  
+  .file-input-lable {
+    opacity: 0.9;  
+    border-radius: 5px;
+    border: 2px solid var(--color_4);  
+    padding: 10px;
+    color: var(--color_6);  
+    background-color: var(--color_7); 
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .file{
+    background-color: var(--color_2);
+  }
+  
+  .file-upload-wrapper{
+    display: flex;
+  }
+  
+  .file-upload-wrapper .file-input-label {
+    display: inline-block;
+    padding: 1% 1.5%;
+    background-color: var(--color_6); 
+    border-color: var(--color_4);
+    color: var(--color_4);
+    border-radius: 5px;
+    cursor: pointer; 
+    font-size: 1.1rem; 
+    text-align: center; 
+    margin: 1% 0; 
+    border-style: solid;
+   
+  }
+  
+  .file-upload-wrapper .file-input-label:hover {
+    background-color: var(--color_7); 
+    color: var(--color_6);
+    border-color: var(--color_7);
+    border-style: solid;
+  }
+  
+  #file-name{
+    margin: 3% 2%;
+  }
+  
+  .uploadButton{
+    background-color: var(--color_7);
+    color: var(--color_6);
+    padding: 1% 1.5%;
+    border-style: solid;
+    border-color: var(--color_7);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1rem;
+    float: right;
+    margin-right: 20%;
+  }
+  
+  .uploadButton:hover{
+    background-color: var(--color_6); 
+    border-color: var(--color_4);
+    color: var(--color_4);
+  }
