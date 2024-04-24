@@ -358,14 +358,12 @@ document.getElementById('file-input').addEventListener('change', function() {
 
 /*select file in complaints part*/
 
-document.getElementById('file-input').addEventListener('change', function(event) {
+document.getElementById('file-input').addEventListener('change', function (event) {
     var file = event.target.files[0];  // Get the selected file
-    var dropArea = document.getElementById('drop-area');
+    var fileMessage = document.getElementById('select-message');
 
     // Clear the content of the drop area and then append the file name
-    dropArea.innerHTML = `
-        <p>Selected file: ${file.name}</p>
-    `;
+    fileMessage.innerHTML = `${file.name}`;
 });
 
 // Function to close the alert manually
