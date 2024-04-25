@@ -72,8 +72,9 @@ function moveDate(para){
   randerDate()
 }
 
+/*resident js*/
 
-//maintenance payment variation chart 
+//maintenance payment variation chart-resident js 
 
 document.addEventListener('DOMContentLoaded', function() {
     var ctx = document.getElementById('maintenancePaymentChart').getContext('2d');
@@ -130,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//utility usage chart
+//utility usage chart-resident js
 
 document.addEventListener('DOMContentLoaded', function() {
     var ctx = document.getElementById('utilityUsageChart').getContext('2d');
@@ -169,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-//modal
+//modal-resident js
 
 document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
@@ -347,14 +348,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /*select file in complaints part*/
 
-document.getElementById('file-input').addEventListener('change', function(event) {
+document.getElementById('file-input').addEventListener('change', function (event) {
     var file = event.target.files[0];  // Get the selected file
-    var dropArea = document.getElementById('drop-area');
+    var fileMessage = document.getElementById('select-message');
 
     // Clear the content of the drop area and then append the file name
-    dropArea.innerHTML = `
-        <p>Selected file: ${file.name}</p>
-    `;
+    fileMessage.innerHTML = `${file.name}`;
 });
 
 // Function to close the alert manually
@@ -407,5 +406,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Here you would typically send the data to a server
         alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
+    });
+});
+
+/*payment status-finance-js*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('paymentStatusChart').getContext('2d');
+    var paymentStatusChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Completed Payments', 'Not Completed Payments'],
+            datasets: [{
+                label: 'Payment Status',
+                data: [60, 40], // Data for the chart: 60% completed, 40% not completed
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)', // Light blue for completed
+                    'rgba(255, 99, 132, 0.6)'  // Light red for not completed
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
     });
 });

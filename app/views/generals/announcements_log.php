@@ -48,9 +48,9 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
             </div>
 
             <div class="description-column">
-            <h4 class="announcement-type-heading">Maintenance</h4>
-            <p class="announcement-description"></p>Umai</p>
-          </div>-->
+            <h4 class="announcement-type-heading">Title</h4>
+            <p class="announcement-description"></p><?php echo $announcement->title; ?></p>
+          </div>
 
             <div class="action-column">
               <h4 class="announcement-status-heading">Action</h4>

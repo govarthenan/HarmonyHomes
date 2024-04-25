@@ -560,7 +560,7 @@
 a:-webkit-any-link {
   color: -webkit-link;
   cursor: pointer;
-  text-decoration: none; /* Ensure this is not*/
+  text-decoration: none;
 }
 
 
@@ -572,7 +572,7 @@ a:-webkit-any-link {
     width:90%;
     margin: 5% 5%;  } */
 
-    .gm-amenity-content,.gm-complaint-content,.fac-issue-content{
+    .gm-amenity-content,.fac-issue-content{
       flex:1;
       height:70%;
       width:94%;
@@ -581,6 +581,18 @@ a:-webkit-any-link {
       display: grid;
       grid-template-rows: 1fr 12fr;
       }
+
+
+      .gm-complaint-content{
+        flex:1;
+        height:fit-content;
+        width:94%;
+        margin: 1% 2%;
+        background-color: var(--color_6);
+        display: grid;
+        grid-template-rows: 1fr 12fr;
+        padding-bottom: 2%;
+        }
 
   /*table */
 
@@ -1204,7 +1216,7 @@ border-radius: 4px;
 }
 .announcement-log-content{
   background-color: var(--color_6);
-  grid-template-columns:1fr 1fr 1fr 1fr 1fr; 
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
   display: grid;
 }
 .announcement-log-content {
@@ -1334,7 +1346,7 @@ border-radius: 4px;
   cursor: pointer;
   border-radius: 5px;
   font-weight: bold;
-  width: 25%;
+  width: 28%;
   margin-right: 2%;
 }
 
@@ -1416,7 +1428,7 @@ border-radius: 4px;
 
 .audience-heading{
   font-weight: bold;
-  margin-left: 4%;
+  margin:2% 4% 0%;
   font-size: 1.1rem;
   color: var(--color_3);
 }
@@ -1506,7 +1518,7 @@ input[type="text"] {
   font-weight: bold;
   font-size: 1.1rem;
   font-weight: bold;
-  margin:5% 25%;
+  margin:5% 25% 5% 79%;
 
 }
 #sendButton:hover{
