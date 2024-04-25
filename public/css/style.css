@@ -320,8 +320,8 @@ input:-webkit-autofill:active {
     margin: 1%;
 }
 
-.sign-in-form-group select{
-    background-color:var(--color_6);
+.sign-in-form-group select {
+    background-color: var(--color_6);
     padding: 1% 8%;
     border: solid;
     border-color: var(--color_2);
@@ -329,7 +329,7 @@ input:-webkit-autofill:active {
     width: 80%;
     height: 7%;
     color: var(--color_4);
-    }
+}
 
 /*sign in*/
 .registration-form label {
@@ -799,7 +799,7 @@ input:-webkit-autofill:active {
 .dates .today:hover {
     background-color: var(--color_5);
     font-size: 1rem;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .dates div:hover:not(.today) {
@@ -914,7 +914,7 @@ input:-webkit-autofill:active {
     width: 100vw;
 }
 
-.popup-announcement{
+.popup-announcement {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -984,16 +984,16 @@ input:-webkit-autofill:active {
     font-weight: bold;
 }
 
-.announcement-msg{
+.announcement-msg {
     font-size: 1.2rem;
     font-weight: bold;
     margin-left: 2%;
 }
 
-.sender{
+.sender {
     font-size: 1.1rem;
     font-weight: bold;
-    margin-left: 2%;   
+    margin-left: 2%;
 }
 
 /*third  row*/
@@ -1354,11 +1354,11 @@ select {
     border: none;
 }
 
-.form-column-new-complaint.text{
+.form-column-new-complaint.text {
     background-color: var(--form_color);
     padding: 1% 5%;
     border: none;
-    width: 90%;   
+    width: 90%;
 }
 
 textarea {
@@ -1534,8 +1534,8 @@ input[type="file"] {
     color: var(--color_1);
 }
 
-  /* flash message */
-  
+/* flash message */
+
 .alert {
     padding: 1.5% 2%;
     background-color: var(--color_2);
@@ -1553,7 +1553,7 @@ input[type="file"] {
     left: 60%;
     transform: translateX(-50%);
     z-index: 1; /* Ensures it doesn't get hidden behind other elements */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for better visibility */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for better visibility */
     /* display: none; */
 }
 
@@ -1569,5 +1569,346 @@ input[type="file"] {
 }
 
 .closebtn:hover {
+    color: var(--color_6);
+}
+
+/*payment*/
+
+.payment-container {
+    width: 99%;
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+    background-color: var(--color_6);
+    margin: 1%;
+    height: fit-content;
+}
+
+.payment-heading {
+    color: var(--color_4);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 1.5% 2% 0%;
+}
+
+.payment-column-new {
+    margin: -5% 2% 2% 2%;
+    overflow-y: auto;
+    height: 93%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    position: relative;
+}
+
+.payment-container-his-new {
+    height: fit-content;
+}
+
+.payment-type,
+.payment-log-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1%;
+    background-color: var(--color_6);
+}
+
+.payment-type {
+    position: sticky;
+    top: 0;
+}
+
+.payment-log-content {
+    background-color: var(--color_6);
+    grid-template-columns: 1.5fr 1.5fr 1.2fr 5fr 1.5fr;
+}
+.payment-log,
+.new-payment {
+    padding: 3%;
+    border-color: var(--color_4);
+    border-width: 2px;
+}
+
+.payment-type-title {
+    font-size: 1.2rem;
+    color: var(--color_4);
+    margin-left: 3%;
+    font-weight: bold;
+}
+
+.payment-log {
+    border-right: 2px solid var(--color_4);
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+    margin: 1.5%;
+}
+
+.new-payment {
+    margin: 1.5%;
+    opacity: var(--opacity_1);
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+}
+
+.payment-log-log {
+    margin: 1.5%;
+    opacity: var(--opacity_1);
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+}
+
+.new-payment-log {
+    border-right: 2px solid var(--color_4);
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+    margin: 1.5%;
+}
+
+.payment-log-log,
+.new-payment-log {
+    padding: 3%;
+    border-color: var(--color_4);
+    border-width: 2px;
+}
+
+.payment-new-content {
+    padding: 2%;
+    border-radius: 5px;
+    border-color: var(--color_4);
+    border-width: 1px;
+    border-style: solid;
+    margin: 1% 4%;
+    cursor: pointer;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1.5fr 1.5fr;
+}
+
+.select-payment-img {
+    height: 80%;
+    margin-left: 3%;
+}
+
+.new-payment-img {
+    height: 80%;
+    margin-left: 3%;
+}
+
+.payment-log:hover {
+    margin: 1.5%;
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
+    cursor: pointer;
+}
+
+.new-payment:hover {
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
+    cursor: pointer;
+    opacity: 100%;
+}
+
+.payment-log-log:hover {
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
+    cursor: pointer;
+    opacity: 100%;
+}
+
+.new-payment-log:hover {
+    margin: 1.5%;
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
+    cursor: pointer;
+}
+.payment-type-title:hover {
+    color: var(--color_7);
+    margin-left: 3%;
+    color: var(--color_4);
+}
+
+.payment-new-content:hover {
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
+}
+
+.payment-id-column,
+.subject-name,
+.status-payment,
+.amount {
+    border-right: 2px solid var(--color_7);
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    padding: 1%;
+}
+
+.payment-id-heading,
+.subject-heading,
+.status-heading-payment,
+.action-heading,
+.amount-heading {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: -5%;
+    margin-left: 3%;
+}
+
+.payment-id,
+.subject,
+.Total-amount {
+    margin-top: 10%;
+}
+
+.not-paid {
+    background-color: var(--color_2);
+    border-radius: 5px;
+    padding: 1% 2%;
+    text-align: center;
+    margin: 10% 22% 0%;
+}
+
+.viewButton-payment-log {
+    background-color: var(--color_7);
+    color: var(--color_6);
+    border: none;
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 40%;
+    margin: 2% 0% 2% 80%;
+}
+
+.viewButton-payment-log:hover {
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_4);
+    color: var(--color_4);
+}
+
+.viewButton-payment {
+    background-color: var(--color_7);
+    color: var(--color_6);
+    border: none;
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 40%;
+    margin: 2% 0% 2% 60%;
+}
+
+.viewButton-payment:hover {
+    background-color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_4);
+    color: var(--color_4);
+}
+
+.payButton {
+    background-color: var(--color_6);
+    color: var(--color_4);
+    border-style: solid;
+    border-color: var(--color_4);
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 40%;
+    margin: 2% 10%;
+}
+
+.payButton:hover {
+    background-color: var(--color_7);
+    border-style: solid;
+    border-color: var(--color_7);
+    color: var(--color_6);
+}
+
+.action-payment-column {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.button-container-payment-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/*invoice view */
+
+/*finance-invoice-container*/
+
+.finance-invoice-container {
+    background-color: var(--color_6);
+    margin: 1%;
+    flex: 1;
+}
+
+.finance-invoice-container-border {
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 0.5fr 0.5fr;
+    border: solid;
+    margin: 2% 2% 1%;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: var(--color_4);
+    height: 94%;
+}
+
+.invoice-heading {
+    margin: 3% 8% 0%;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: var(--color_4);
+}
+
+.invoice-container {
+    display: grid;
+    grid-template-columns: 1fr 0.2fr;
+    margin: 2% 30% 4% 20%;
+    border-bottom: solid;
+    border-width: 2px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.send-container {
+    margin: -4% 0% 2% 62%;
+}
+
+.total-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0% -3% 2% 20%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.payButton-invoice {
+    background-color: var(--color_6);
+    color: var(--color_4);
+    border-style: solid;
+    border-color: var(--color_4);
+    padding: 1% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.8rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 20%;
+    margin: 2% 0%;
+}
+
+.payButton-invoice:hover {
+    background-color: var(--color_7);
+    border-style: solid;
+    border-color: var(--color_7);
     color: var(--color_6);
 }
