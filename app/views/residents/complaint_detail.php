@@ -54,7 +54,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             </div>
 
                             <div class="form-column-view">
-                                <div class="submitted-answers">
+                                <div class="submitted-answers-attachment">
                                     <?php
 
                                     $blob = $data['complaint']->attachments;
@@ -72,7 +72,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                         $imgSrc = 'data:' . $type . ';base64,' . $base64;
 
                                         // Output the img tag
-                                        echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">';
+                                        echo '<img width="200rem" src="' . $imgSrc . '" alt="Complaint Attachment">';
                                     }
                                     ?>
                                 </div>

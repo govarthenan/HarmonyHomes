@@ -1072,7 +1072,11 @@ border-radius: 4px;
 .submitted-answers{
   background-color:var(--form_color);
   padding: 0% 0%;
-  border: none;
+  border: none; 
+}
+
+.submitted-answers-attachement{
+  padding: 0% 0%;
   
 }
 
@@ -1091,10 +1095,20 @@ border-radius: 4px;
   height: fit-content;
 }
 
+.attachment-image {
+  width: 100%;
+  max-width: 800px; /* Larger screens */
+  height: auto;
+}
+
+.form-column-view-attachment{
+    padding: 0% 2%;
+    margin: 1% 3% 4%;
+}
 
 .form-column-view{
     padding: 0% 2%;
-    margin: 1% 3%;
+    margin: 1% 3% 4%;
 }
 
 .form-column-view-subject{
@@ -1114,7 +1128,7 @@ border-radius: 4px;
 .form-attachment-column-status{
   padding: 1%;
   margin: 3%;
-  margin-top: 15%;
+  margin-top: 65%;
 }
 
 .complaint-view-file{
@@ -1123,7 +1137,7 @@ border-radius: 4px;
 }
 
 .view-complaint-landing{
-  height: 62%;
+  height: fit-content;
   width: 98%;
   background-color: var(--color_6);
   margin:5% 7%;
@@ -1159,13 +1173,18 @@ border-radius: 4px;
 
 /*gm_complaint_view*/
 
+.complaint-column-new{
+  height: fit-content;
+  
+}
+
 .update-button{
   padding: 0px;
   margin-left: 3%;
 }
 
 .update-btn{
-  margin-left: 70%;
+  margin-left: 78%;
   background-color: var(--color_6);
   border-color: #0c3866;
   color: #0c3866;
@@ -1187,6 +1206,10 @@ border-radius: 4px;
   background-color: var(--color_1);
   border-color: var(--color_1);
   color: var(--color_6);
+}
+
+.form-column-view.select{
+  margin-bottom: 2%;
 }
 
 /* GM - announcement view */

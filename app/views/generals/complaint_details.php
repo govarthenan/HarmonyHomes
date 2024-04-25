@@ -58,8 +58,8 @@ $complaint = $data['complaint'];
                                 </div>
                             </div>
 
-                            <div class="form-column-view">
-                                <div class="submitted-answers">
+                            <div class="form-column-view-attachment">
+                                <div class="submitted-answers-attachement" style="width:30%">
                                     <?php
 
                                     $blob = $complaint->attachments;
@@ -77,14 +77,14 @@ $complaint = $data['complaint'];
                                         $imgSrc = 'data:' . $type . ';base64,' . $base64;
 
                                         // Output the img tag
-                                        echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">';
+                                        echo '<img width="200rem" src="' . $imgSrc . '" alt="Complaint Attachment">';
                                     }
                                     ?>
                                 </div>
                             </div>
                             <form method="post" action="<?php echo URL_ROOT . '/generals/complaintStatusUpdate/' . $complaint->complaint_id ?>">
                                 <div class="form-column-view">
-                                    <select id="items" name="new_status">
+                                    <select id="items" name="new_status" style="margin-bottom: -2%;">
                                         <option value="Submitted" <?php echo ($data['complaint']->status == 'Submitted') ? 'selected' : ''; ?>>Submitted</option>
                                         <option value="In Progress" <?php echo ($data['complaint']->status == 'In Progress') ? 'selected' : ''; ?>>In Progress</option>
                                         <option value="On Hold" <?php echo ($data['complaint']->status == 'On Hold') ? 'selected' : ''; ?>>On Hold</option>
