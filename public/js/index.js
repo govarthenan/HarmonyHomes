@@ -347,30 +347,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 /*select file in complaints part*/
+try {
+    document.getElementById('file-input').addEventListener('change', function (event) {
+        var file = event.target.files[0];  // Get the selected file
+        var fileMessage = document.getElementById('select-message');
 
-document.getElementById('file-input').addEventListener('change', function (event) {
-    var file = event.target.files[0];  // Get the selected file
-    var fileMessage = document.getElementById('select-message');
-
-    // Clear the content of the drop area and then append the file name
-    fileMessage.innerHTML = `${file.name}`;
-});
-
-// Function to close the alert manually
-function closeAlert() {
-    var alertElement = document.getElementById('alert');
-    alertElement.style.opacity = '0';
-    setTimeout(function () {
-        alertElement.style.display = 'none';
-    }, 500);
+        // Clear the content of the drop area and then append the file name
+        fileMessage.innerHTML = `${file.name}`;
+    });
+} catch (error) {
+    console.error(error);
 }
 
-// Automatically close the alert after 5 seconds
-setTimeout(function () {
-    closeAlert();
-}, 5000);
+// Function to close the alert automatically after n seconds
+try {
+    function closeAlert() {
+        var alertElement = document.getElementById('alert');
+        alertElement.style.opacity = '0';
+        setTimeout(function () {
+            alertElement.style.display = 'none';
+        }, 2000);
+    }
 
-
+    // Automatically close the alert after 5 seconds
+    setTimeout(function () {
+        closeAlert();
+    }, 1000);
+} catch (error) {
+    console.log(error);
+}
 
 /*create announcement*/
 
