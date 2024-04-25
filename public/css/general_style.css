@@ -560,7 +560,7 @@
 a:-webkit-any-link {
   color: -webkit-link;
   cursor: pointer;
-  text-decoration: none; /* Ensure this is not*/
+  text-decoration: none;
 }
 
 
@@ -572,7 +572,7 @@ a:-webkit-any-link {
     width:90%;
     margin: 5% 5%;  } */
 
-    .gm-amenity-content,.gm-complaint-content,.fac-issue-content{
+    .gm-amenity-content,.fac-issue-content{
       flex:1;
       height:70%;
       width:94%;
@@ -581,6 +581,18 @@ a:-webkit-any-link {
       display: grid;
       grid-template-rows: 1fr 12fr;
       }
+
+
+      .gm-complaint-content{
+        flex:1;
+        height:fit-content;
+        width:94%;
+        margin: 1% 2%;
+        background-color: var(--color_6);
+        display: grid;
+        grid-template-rows: 1fr 12fr;
+        padding-bottom: 2%;
+        }
 
   /*table */
 
