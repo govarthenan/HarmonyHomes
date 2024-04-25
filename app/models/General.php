@@ -152,5 +152,9 @@ class General
         return $this->db->execute();
     }
 
+    public function acceptSignup(){
+        
+    }
+
 
 }

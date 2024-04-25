@@ -681,6 +681,7 @@ input:-webkit-autofill:active {
     grid-template-rows: 1fr 1fr;
     display: grid;
     margin: 0% 2% 2% 4%;
+    /* overflow-y: auto; */
 }
 
 .announcment-tile-heading {

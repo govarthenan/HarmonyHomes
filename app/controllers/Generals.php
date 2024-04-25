@@ -276,6 +276,9 @@ class Generals extends Controller
 
         header('location: ' . URL_ROOT . '/generals/announcementsLog');
     }
+    public function signupAccept(){
+        
+    }
 
 
 }

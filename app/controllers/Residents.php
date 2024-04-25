@@ -20,7 +20,7 @@ class Residents extends Controller
 
     public function index()
     {   
-        $data['announcements'] = $this->model->fetchAllAnnouncements();
+        $data['announcement'] = $this->model->fetchAllAnnouncements();
         $this->loadView('residents/dashboard', $data);
     
        
@@ -477,6 +477,7 @@ public function viewAnnouncement(){
     $this->loadView('residents/dashboard', $data);
 
 }
+
 
     public function test()
     {

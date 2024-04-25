@@ -19,21 +19,15 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
             </div>
             
             <div class="announcment-tile-container">
-            <?php foreach ($data['complaints'] as $index => $complaint) : ?>
+            <?php foreach ($data['announcement'] as $index => $announcement) : ?>
                <div class="announcment-1">
-                 <div class="announcment-tile-heading"><?php echo $data['complaint']->topic; ?></div>
-                      <!--<div class="announcment-details">Dear residents,<br>
-                         We are excited to announce our general meeting for the month of February.<br>
-                        <b>Date:2024.02.27</b><br>
-                        <b>Time:8.00 a.m</b><br>
-                        <b>Location:</b><br>Please make sure to attend and participate. Your presence is highly valued!<br>
-                         Thank you,<br>
-                         General manager.
-                      </div>-->
+                
+                 <div class="announcment-tile-heading"><p><?php echo $announcement->title; ?></p></div>
+                      
                    </div>
+                 <?php endforeach?>
                
-                </div>
-                <?php endforeach; ?>
+           </div>
           </div>
           <div class="calendar">
             <div class="calendar-container">

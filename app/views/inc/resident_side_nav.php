@@ -50,7 +50,7 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_issues.svg'?>" />
-                <span class="sidebar-title">Issues</span>
+                <a href="<?php echo URL_ROOT . '/residents/issueLanding'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">  <span class="sidebar-title">Issues</span> </a>
             </div>
 
             <div class="navi-item">
