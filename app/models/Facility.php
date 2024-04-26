@@ -44,7 +44,7 @@ class Facility
     
     }
     public function addTechnician($data){
-        $this->db->prepareQuery('INSERT INTO `technician_overview`( first_name, last_name, specialization, experience, email, phone_number) VALUES (:first_name, :last_name, :specialization, :experience, :email, :phone_number)');
+        $this->db->prepareQuery('INSERT INTO `technician_overview`( first_name, last_name, specialization, experience, email, phone_number,password) VALUES (:first_name, :last_name, :specialization, :experience, :email, :phone_number,:password)');
         // Bind values
         
         $this->db->bind('first_name', $data['first_name']);
@@ -53,9 +53,8 @@ class Facility
         $this->db->bind('experience', $data['experience']);
         $this->db->bind('email', $data['email']);
         $this->db->bind('phone_number', $data['phone_number']);
-
+        $this->db->bind('password', $data['password']);
        
-
         // Execute the query and return bool
         return $this->db->execute();
         
