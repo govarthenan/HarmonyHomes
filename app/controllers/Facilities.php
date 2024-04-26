@@ -1,0 +1,148 @@
+<?php
+
+/**
+ * Controller class for posts.
+ *
+ * @property mixed $model An instance of DB model.
+ */
+class Facilities extends Controller
+{
+    private $model;
+    public $data = [];  // to store data entered by user, as well as to be passed to view
+    public $errors = [];  // to store errors, as well as to be passed to view
+    public $controller_role = "facility";
+
+    public function __construct($user_data = [])
+    {
+        // check if user is signed in
+        $is_signed_in = isset($_SESSION['user_id']);
+
+        if ($is_signed_in) {
+            // check if user has the right role
+            $role = $_SESSION['user_role'];
+
+            if ($role == $this->controller_role) {
+                // continue
+            } else {
+                die('You do not have the right role to access this page.');
+            }
+            // check if user has the right role
+            if ($_SESSION['user_role'] != $this->controller_role) {
+                die('You do not have the right role to access this page.');
+            }
+        } else {
+            header('Location: ' . URL_ROOT . '/staffs/sign_in');
+        }
+
+        // load DB model
+        $this->model = $this->loadModel('Facility');  // load DB model. PDO instance is inside private property
+    }
+
+    public function index()
+    {
+        $this->loadView('facilities/dashboard');
+    }
+
+
+    /**
+     * Signs out the current user.
+     *
+     * This method unsets the session variables for user_id, user_email, and user_name,
+     * destroys the session, and loads the sign in page.
+     *
+     * @return void
+     */
+    public function signOut()
+    {
+        // unset session variables
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_role']);
+
+        // destroy session
+        session_destroy();
+
+        // load sign in page
+        $this->loadView('staffs/sign_in');
+    }
+
+    // ToDO: Start with complaints log function
+
+   
+    public function issueAssign()
+    {
+        $data['issues_data'] = $this->model->getIssues();
+        $this->loadView('facilities/fac_issue_table',$data);
+        
+    }
+    public function technicianLog()
+    {
+        $data['tech_detail'] = $this->model->viewTechnician();
+        $this->loadView('facilities/technician_view',$data);
+     }
+    public function technicianAdd()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // foreach ($_POST as $key => $value) {
+            //     echo gettype($value) . PHP_EOL;
+            // }
+            // die();
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'first_name' => trim($_POST['first_name']),  // Assuming user_id is stored in session
+                'last_name' => trim($_POST['last_name']),
+                'specialization' => trim($_POST['specialization']),
+                'experience' => trim($_POST['experience']),
+                'email' => trim($_POST['email']),
+                'phone_number' => trim($_POST['phone_number']) 
+            ];
+            
+
+            // call model to add announcment
+            if ($this->model->addTechnician($data)) {
+                header('location: ' . URL_ROOT . '/facilities/technicianLog');
+                //$this->announcementsLog();
+            } else {
+                die('Error with adding announcement to DB');  // ToDo: improve error handling
+            }
+        } else {
+            $this->loadView('facilities/technician_view');
+        }
+      }
+      public function technicianDelete($technician_id)
+    {
+       
+        // check if technician belongs to user
+        $technician_detail = $this->model->fetchtechnicianDetails($technician_id);
+
+        // if ($announcement_detail->user_id != $_SESSION['user_id']) {
+        //     die('Unauthorized access');  // ToDo: improve error handling
+        // }
+
+        $technician_delete_result = $this->model->deleteTechnician($technician_id);
+
+        if (!$technician_delete_result) {
+            die('Error deleting announcement');  // ToDo: improve error handling
+        }
+
+        header('location: ' . URL_ROOT . '/facilities/technicianLog');
+    
+     }
+
+     
+    // public function test()
+    // {
+    //     $complaints_list = $this->model->fetchAllComplaints();
+    //     $data['complaints'] = $complaints_list;
+    //     $this->loadView('generals/test', $data);
+    // }
+
+
+
+  
+
+
+}
