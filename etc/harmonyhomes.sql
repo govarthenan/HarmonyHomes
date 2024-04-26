@@ -141,7 +141,8 @@ CREATE TABLE IF NOT EXISTS `staff` (
 
 INSERT INTO `staff` (`staff_id`, `email`, `name`, `password`, `role`) VALUES
 (1, 'gm@smail.com', 'Bill Gates', '$2y$10$CtOABC1p1OUJAHrLOxLbyerrbL4wj4CybxTXvJ2rBLvNyiMln3nre', 'general'),
-(2, 'fac@gmail.com', 'Frank Black', '$2y$10$CtOABC1p1OUJAHrLOxLbyerrbL4wj4CybxTXvJ2rBLvNyiMln3nre', 'facility');
+(2, 'fac@gmail.com', 'Frank Black', '$2y$10$CtOABC1p1OUJAHrLOxLbyerrbL4wj4CybxTXvJ2rBLvNyiMln3nre', 'facility'),
+(3, 'sec@smail.com', 'Tony Stark', '$2y$10$CtOABC1p1OUJAHrLOxLbyerrbL4wj4CybxTXvJ2rBLvNyiMln3nre', 'security');
 
 --
 -- Constraints for dumped tables
