@@ -60,7 +60,26 @@ $complaint = $data['complaint'];
 
                             <div class="form-column-view">
                                 <div class="submitted-answers">
-                                    <img src="<?php echo URL_ROOT . '/public/resources/generals/file.svg' ?>" class="complaint-view-file">
+                                    <?php
+
+                                    $blob = $complaint->attachments;
+
+                                    if (empty($blob)) {
+                                        echo '<p style="padding:1%; text-align:block;">No Attachments</p>';
+                                    } else {
+                                        $base64 = base64_encode($blob);
+
+                                        // Determine the content type
+                                        $finfo = new finfo(FILEINFO_MIME_TYPE);
+                                        $type = $finfo->buffer($blob); // Get the MIME type of the blob data
+
+                                        // Generate the src attribute for the img tag
+                                        $imgSrc = 'data:' . $type . ';base64,' . $base64;
+
+                                        // Output the img tag
+                                        echo '<img width="65rem" src="' . $imgSrc . '" alt="Complaint Attachment">';
+                                    }
+                                    ?>
                                 </div>
                             </div>
                             <form method="post" action="<?php echo URL_ROOT . '/generals/complaintStatusUpdate/' . $complaint->complaint_id ?>">
