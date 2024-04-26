@@ -325,6 +325,7 @@ class Residents extends Controller
 
             // call model to add complaint
             if ($this->model->writeComplaint($data)) {
+                flash('complaint_add_success', 'Complaint added successfully!');
                 header('location: ' . URL_ROOT . '/residents/complaintsLog');
             } else {
                 die('Error with adding complaint to DB');  // ToDo: improve error handling

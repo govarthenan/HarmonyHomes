@@ -37,7 +37,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                                 <td><?php echo $complaint->name; ?></td>
                                 <td><?php echo $complaint->subject; ?></td>
                                 <td><?php echo $complaint->created_date; ?></td>
-                                <td><button class="viewButton"><a href="<?php echo URL_ROOT . '/generals/complaintDetails/' . $complaint->complaint_id; ?>">View</a></button></td>
+                                <td><button class="viewButton"><a href="<?php echo URL_ROOT . '/generals/complaintDetails/' . $complaint->complaint_id; ?>" style="text-decoration: none;color: inherit;">View</a></button></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
