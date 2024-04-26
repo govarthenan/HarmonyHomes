@@ -107,4 +107,38 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+{/* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> */}
+
+$(document).ready(function() {
+    // Your jQuery code goes here
+    var script = document.createElement('script');
+
+// Set the source of the script to the jQuery CDN
+script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+
+// Set the onload event handler to execute your custom script once jQuery is loaded
+script.onload = function() {
+    // Your custom script that depends on jQuery goes here
+    $(document).ready(function() {
+        // jQuery code
+        console.log('jQuery is loaded!');
+    });
+};
+
+// Append the script element to the document body
+document.body.appendChild(script);
+    $('#techType').change(function() {
+        var techType = $(this).val();
+        $.ajax({
+            type: 'POST',
+            url: 'get_technician_details.php',
+            data: { techType: techType },
+            dataType: 'html',
+            success: function(response) {
+                $('#techDetails').html(response);
+            }
+        });
+    });
+});
+
 
