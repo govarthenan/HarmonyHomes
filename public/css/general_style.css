@@ -1518,4 +1518,480 @@ input[type="text"] {
 }
 
 
+/*gm amenity table */
+.gm-amenity-content,
+.gm-complaint-content,
+.fac-issue-content {
+    flex: 1;
+    height: 90%;
+    width: 94%;
+    margin: 1% 2%;
+    background-color: var(--color_6);
+    display: grid;
+    grid-template-rows: 1fr 12fr;
+    overflow-y: auto;
+}
 
+.fac-inventory-content {
+    flex: 1;
+    height: fit-content;
+    width: 94%;
+    margin: 1% 2%;
+    background-color: var(--color_6);
+    display: grid;
+    grid-template-rows: 0.1fr 0.1fr 1fr;
+    padding-bottom: 2%;
+}
+
+.inventory_add {
+    padding: 2%;
+    margin-left: 87%;
+}
+
+.inventory_heading{
+  font-size: 1.4rem;
+    color: var(--color_4);
+    font-weight: bold;
+    margin: 1% 3% 0%;
+}
+
+.update-inventory-heading{
+  font-size: 1.2rem;
+  color: var(--color_4);
+  font-weight: bold;
+  margin-bottom: 2%;
+}
+
+#updateInventoryForm label{
+  font-size: 1.1rem;
+  color: var(--color_4);
+margin: 5% 2% 4%;
+}
+
+.update_Button-inve-add{
+  background-color: var(--color_7);
+  border-color:var(--color_7);
+  color: var(--color_6);
+  border: solid;
+  padding: 1% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 75%;
+  margin-top: 6%;
+}
+
+
+.update_Button-inve-add:hover{
+  background-color: var(--color_6);
+  border-color:var(--color_7);
+  color: var(--color_7);
+  border: solid;
+  padding: 1% 2%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-left: 75%;
+}
+
+#updateInventoryForm textarea{
+  width: 83%;
+  height: 20%;
+}
+
+
+.inventorymodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(143, 144, 150, 0.2);
+}
+
+/* Modal Content Box */
+.inventorymodal-content {
+  background-color: var(--color_6);
+  margin: 7% 0% 9% 67%;
+  padding: 20px;
+  width: 20%;
+  border-radius: 10px;
+  box-shadow: 0 4px 2px rgba(101, 140, 186, 0.2);
+  height: 40%;
+  display: grid;
+  grid-template-rows:0.5fr 0.5fr 1fr 1fr  ;
+}
+/* .modal-content {
+  background-color: var(--color_6);
+  margin: 7% 0% 9% 67%;
+  padding: 20px;
+  width: 20%;
+  border-radius: 10px;
+  box-shadow: 0 4px 2px rgba(101, 140, 186, 0.2);
+  height: 40%;
+  display: grid;
+  grid-template-rows:0.5fr 0.5fr 1fr 1fr  ;
+} */
+
+.inventoryUpdateModal{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(143, 144, 150, 0.2);
+}
+
+/* Modal Content Box */
+.inventoryUpdateModal-content {
+  background-color: var(--color_6);
+  margin: 15% 0% 9% 47%;
+  padding: 20px;
+  width: 20%;
+  border-radius: 10px;
+  box-shadow: 0 4px 2px rgba(101, 140, 186, 0.2);
+  height: 40%;
+  display: grid;
+  grid-template-rows:0.5fr 0.5fr 1fr 1fr  ;
+}
+
+.close {
+  color: var(--color_2);
+  margin-left: 90%;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--color_4);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* fac-issue-assign */
+.modal {
+  display: none; 
+  position: fixed;
+  z-index: 1000; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color:rgba(209, 227, 249, 0.4);; 
+  overflow: hidden;
+}
+
+/* Modal Content Box */
+.modal-content {
+  background-color: var(--color_6);
+  margin: 10% 25%;
+  padding: 20px;
+  width: 50%; 
+  border-radius: 10px;
+  box-shadow:  0 4px 2px rgba(101, 140, 186, 0.2);
+  height: 55%;
+}
+
+/* The Close Button */
+.close {
+  color: var(--color_2);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--color_4);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.assign-tech-heading{
+color: var(--color_4);
+font-size: 1.3rem;
+margin-top: -2%;
+font-weight: bold;
+}
+
+#assignTechForm {
+  text-align: left;
+  margin-top:2%;
+}
+
+#assignTechForm label {
+  margin-bottom: 1%;
+  display: block;
+  font-weight: bold;
+  color: var(--color_4);
+}
+
+#assignTechForm select {
+  width: 100%;
+  padding: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#assignTechForm button {
+  background-color: var(--color_7); /* Green */
+  color: var(--color_6);
+  padding: 1% 2%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  margin-top: 2%;
+}
+
+#assignTechForm button:hover {
+  background-color:var(--color_6);
+  border-style: solid;
+  border-color: var(--color_4);
+  color: var(--color_7);
+  font-weight: bold;
+}
+
+/* technician overview */
+.technician-container{
+  background-color: var(--color_6);
+  width: 96%;
+  margin: 1% 2%;
+  display: grid;
+  height:fit-content; 
+}
+
+.technician-details-heading{
+  margin: 2% 0% 0% 6%;
+  font-size: 1.3rem;
+  color: var(--color_4);
+  font-weight: bold;
+  flex: 2;
+}
+
+.add-button-container{
+  display: flex;
+  flex: 1;
+}
+.add-btn-technician{
+  float: right;
+  margin: 2% 2% 0% 55%;
+  display: block;
+  flex: 1;
+  padding: 1%;
+  color: var(--color_4);
+  border: 2px var(--color_4);
+  border-style:solid;
+  box-shadow: 0 2px 4px rgba(151, 148, 233, 0.4); 
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--color_6);
+  
+}
+.technician-card {
+  
+  border:0px solid var(--color_4);
+  padding: 1% 1%;
+  box-shadow: 0 1px 16px rgb(148, 149, 187, 0.4); 
+  margin: 1% 1.3% 1% 0%;
+  width: 40%;
+  background-color: var(--color_6);
+  height: fit-content;
+}
+
+.technicians-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2%;
+  
+}
+
+.technician-profile-image{
+height: 80%;
+width: 40%;
+ margin: 2.5% 0% 1.5% 36%;
+}
+
+.technicain-name,.technician-id,.specialization,.experience{
+ font-size: 1.1rem;
+ margin: 1.5% 2.5%;
+ text-align: left;
+}
+
+.technician-button-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 2%;
+ 
+}
+
+.msg-button{
+  margin-left: 30%;
+  padding: 4%;
+  background-color: var(--color_6);
+  color: var(--color_4);
+  font-weight: bold;
+  font-size: 1rem;
+  border:2px solid var(--color_4);
+  box-shadow: 0 1px 16px rgb(148, 149, 187, 0.4); 
+  border-radius: 5px;
+}
+
+.dlt-btn{
+  margin-left: 30%;
+  padding: 4%;
+  background-color: var(--color_6);
+  color: var(--color_1);
+  font-weight: bold;
+  font-size: 1rem;
+  border:2px solid var(--color_1);
+  box-shadow: 0 1px 16px rgba(187, 148, 157, 0.4);
+  border-radius: 5px;
+}
+
+/*add new technician*/
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(151, 154, 172, 0.3);
+ 
+}
+
+.close {
+  color: var(--color_2);
+  margin-left:90% ;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--color_4);
+  text-decoration: none;
+  cursor: pointer;
+}
+.add-technician-container{
+  background-color: var(--color_6);
+  border:var(--color_4);
+  margin: 6% 5% 0% 35%;
+  padding: 1%;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(7, 7, 85, 0.2);  
+}
+
+.add-new-technician-heading{
+  margin-top: -1%;
+  color: var(--color_4);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 4%;
+}
+
+.new-technician-input-container{
+margin: 1%;
+display: grid;
+grid-template-columns: 1fr 1fr;
+flex:1;
+}
+
+.form-group{
+  padding: 2%;  
+  margin-left: 3%;
+  height: fit-content;
+}
+
+.form-group label{
+  color: var(--color_4);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.form-group input{
+  padding: 2%;
+  background-color: var(--color_11);
+  margin-left: 2%;
+  width: 90%;
+  border-color: var(--color_4);
+  border-style:  solid;
+  border-width: 1px;
+  margin-top: 2%;
+}
+
+.technichian-name{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+}
+
+.cancel-btn-technician{
+  margin-left: 7%;
+  background-color: var(--color_6);
+  border-color: var(--color_4);
+  color: var(--color_4);
+  padding: 2% 2%;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 16px rgba(7, 7, 85, 0.2);
+  border-radius: 5px;
+}
+
+.submit-btn-technician{
+  margin-left: 10%;
+  background-color: var(--color_7);
+  color: var(--color_6);
+  border-color: var(--color_7);
+  padding: 2% 2%;
+  font-size: 1.1rem;
+  border-style: solid;
+  box-shadow: 0 8px 16px rgba(7, 7, 85, 0.2);
+  border-radius: 5px;
+}
+
+.cancel-btn-technician:hover{
+  background-color: var(--color_7);
+  border-color: var(--color_7);
+  color: var(--color_6);
+  border-style: solid;
+  box-shadow: 0 8px 16px rgba(7, 7, 85, 0.2);
+  border-radius: 5px;
+}
+
+.submit-btn-technician:hover{
+  background-color: var(--color_6);
+  border-color: var(--color_4);
+  color: var(--color_4);
+  box-shadow: 0 8px 16px rgba(7, 7, 85, 0.2); 
+  border-radius: 5px;
+}
+
+.submit-column-confirmation{
+  display: flex;
+  margin-top: 3%;
+}
