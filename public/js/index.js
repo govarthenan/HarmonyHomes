@@ -446,3 +446,116 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+
+
+/*visitor satus*/
+
+
+
+var ctx = document.getElementById('visitorStatusDoughnut').getContext('2d');
+var visitorStatusDoughnut = new Chart(ctx, {
+  type: 'doughnut',
+  data: {
+    labels: ['Visitors Left', 'Visitors Still Inside'],
+    datasets: [{
+      data: [12, 8],
+      backgroundColor: [
+        '#4BC0C0',  // Teal color
+        '#FF6384'   // Pink color
+      ],
+      borderColor: [
+        '#ffffff',  // White borders
+        '#ffffff'
+      ],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    aspectRatio: 2,  // Increase this number to make the chart "flatter"
+    plugins: {
+      legend: {
+        position: 'bottom',
+      },
+      tooltip: {
+        enabled: true,
+      }
+    }
+  }
+});
+
+
+
+/*external visitors*/
+
+var ctxExternal = document.getElementById('externalPartiesDoughnut').getContext('2d');
+  var externalPartiesDoughnut = new Chart(ctxExternal, {
+    type: 'doughnut',
+    data: {
+      labels: ['External Parties Left', 'External Parties Still Inside'],
+      datasets: [{
+        data: [10, 5], // Example data for external parties
+        backgroundColor: [
+          '#4BC0C0',  // Teal color
+          '#9370db'   // Pink color
+        ],
+        borderColor: [
+          '#ffffff',  // White borders
+          '#ffffff'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2,  // Makes the chart flatter
+      plugins: {
+        legend: {
+          position: 'bottom',
+        },
+        tooltip: {
+          enabled: true,
+        }
+      }
+    }
+  });
+
+
+  /*delivery status chart */
+
+  var ctxDelivery = document.getElementById('deliveryStatusDoughnut').getContext('2d');
+  var deliveryStatusDoughnut = new Chart(ctxDelivery, {
+    type: 'doughnut',
+    data: {
+      labels: ['Deliveries Completed', 'Deliveries Pending'],
+      datasets: [{
+        data: [20, 10], // Example data: 20 items completed, 10 pending
+        backgroundColor: [
+          '#7ec4ff',  // Teal color for completed
+          '#FF6384'   // Pink color for pending
+        ],
+        borderColor: [
+          '#ffffff',  // White borders
+          '#ffffff'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      aspectRatio: 2,  // Controls the flatness of the chart
+      plugins: {
+        legend: {
+          position: 'bottom',
+        },
+        tooltip: {
+          enabled: true,
+        }
+      }
+    }
+  });
+
