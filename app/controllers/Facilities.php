@@ -80,6 +80,7 @@ class Facilities extends Controller
     {
         $data['tech_detail'] = $this->model->viewTechnician();
         $this->loadView('facilities/technician_view',$data);
+        die(var_dump($data));
      }
     public function technicianAdd()
     {
@@ -97,20 +98,48 @@ class Facilities extends Controller
                 'specialization' => trim($_POST['specialization']),
                 'experience' => trim($_POST['experience']),
                 'email' => trim($_POST['email']),
-                'phone_number' => trim($_POST['phone_number']) 
+                'phone_number' => trim($_POST['phone_number']),
+                'password' => trim($_POST['password']),
+                'confirm_password' => trim($_POST['cpassword']),
             ];
-            
-
-            // call model to add announcment
-            if ($this->model->addTechnician($data)) {
-                header('location: ' . URL_ROOT . '/facilities/technicianLog');
-                //$this->announcementsLog();
-            } else {
-                die('Error with adding announcement to DB');  // ToDo: improve error handling
+            $this->errors = [];
+            if (empty($this->data['password'])) {
+                $this->errors['password_err'] = 'Please enter password';
+            } elseif (strlen($this->data['password']) < 6) {
+                $this->errors['password_err'] = 'Password must be at least 6 characters';
             }
+           
+            
+            //confirm password
+            if (empty($this->data['confirm_password'])) {
+                $this->errors['confirm_password_err'] = 'Please confirm password';
+            } elseif ($this->data['password'] != $this->data['confirm_password']) {
+                $this->errors['confirm_password_err'] = 'Passwords do not match';
+            }
+            //hash  password
+            if (empty($this->errors)) {
+            $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+              // call model to add technician
+              if ($this->model->addTechnician($data)) {
+                header('location: ' . URL_ROOT . '/facilities/technicianLog');
+                //$this->techniciansLog();
+            } else {
+                die('Error with adding technician to DB');  // ToDo: improve error handling
+            }
+            
+            }
+            else {
+                die(print_r($this->errors));  // ToDO: improve error handling
+            }
+          
         } else {
             $this->loadView('facilities/technician_view');
         }
+        
+        
+        
+
+
       }
       public function technicianDelete($technician_id)
     {
