@@ -37,11 +37,11 @@
         <nav class="navigation">
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/securities/sidebar_amenities.svg' ?>">
-                <span class="sidebar-title">Home</span>
+                <a href="<?php echo URL_ROOT . '/securities/index' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Home</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/securities/visitor.svg' ?>" class="sidebar_icon">
-                <span class="sidebar-title">Visitor Tracking</span>
+                <a href="<?php echo URL_ROOT . '/securities/visitorsLog'; ?>" style="text-decoration: none; color: inherit;"><span class="sidebar-title">Visitor&nbsp;Tracking</span></a>
             </div>
 
             <div class="navi-item">

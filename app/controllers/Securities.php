@@ -65,4 +65,57 @@ class Securities extends Controller
         // load sign in page
         $this->loadView('staffs/sign_in');
     }
+
+/**
+     * Fetches all visitors and loads the complaints log view.
+     *
+     * @return void
+     */
+    public function visitorsLog()
+    {
+        $data['visitors'] = $this->model->fetchAllVisitors();
+        $this->loadView('securities/visitors_active', $data);
+        
+    }
+
+
+    /**
+     * Adds a complaint for a resident.
+     *
+     * This method is responsible for handling the submission of a complaint form. It checks if the form was submitted using the POST method, sanitizes the input data, and calls the model to add the complaint to the database. If the complaint is successfully added, the user is redirected to the complaints log page. Otherwise, an error message is displayed.
+     *
+     * @return void
+     */
+    public function visitorAdd()
+    {
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'user_id' => $_SESSION['user_id'],
+                'fullName' => trim($_POST['fullName']),
+                'contactNumber' => trim($_POST['contactNumber']),
+                'entryTime' => trim($_POST['entryTime']),
+                'purposeOfVisit' => trim($_POST['purposeOfVisit']),
+                'hostName' => trim($_POST['hostName']),
+                'notes' => trim($_POST['notes'])
+            ];
+
+            // call model to add complaint
+            if ($this->model->writeVisitor($data)) {
+                header('location: ' . URL_ROOT . '/securities/visitorsLog');
+                //$this->announcementsLog();
+            } else {
+                die('Error with adding announcement to DB');  // ToDo: improve error handling
+            }
+        } else {
+            $this->loadView('securities/visitor_add');
+        }
+    }
+
+
+
+
+
 }

@@ -513,3 +513,123 @@ button:hover {
     border-color: var(--color_7);
     color: var(--color_7);
 }
+
+
+/*Active visitor*/
+
+.acive-visitor-container{
+   flex:1;
+   background-color: var(--color_6); 
+   margin: 1%;
+   height: fit-content;
+   padding-bottom: 1%;
+}
+
+.onsite-visitor-heading{
+    margin: 1% 2%;
+    color: var(--color_4);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.add-new-visitor{
+    float: right;
+}
+.add-btn{
+    float: right;
+    padding: 10% 6%;
+    background-color: var(--color_7);
+    color: var(--color_6);
+    border-style: solid;
+    border-color: var(--color_7);
+    margin-right: 70%;
+    width: 150%;
+    font-size: 1.1rem;
+    border-radius: 8px;
+}
+
+/*table */
+
+.table-body {
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 3%;
+    border-spacing: 10px;
+    width: 95%;
+}
+
+.table-body table {
+    width: 100%;
+}
+
+.table-body table tr {
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
+    height: 50px;
+    border-color: var(--color_7);
+    text-align: center;
+}
+
+.table-body table th {
+    text-align: center;
+}
+
+.onsite-visitor-head{
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
+    height: 50px;
+    border-color: var(--color_7);
+    color: var(--color_7);
+    background-color: var(--color_11);  
+}
+
+/*
+.description-row td {
+    padding-top: 2%;
+}
+
+.resident-name-lable,
+.resident-nic-lable,
+.resident-nic-pic-lable {
+    font-size: 1.1rem;
+    color: var(--color_7);
+    margin-bottom: 1%;
+    text-align: left;
+}
+
+.amenity-table-head,
+.complaint-table-head,
+.issue-table-head,
+.inventory_table_head {
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
+    height: 50px;
+    border-color: var(--color_7);
+    color: var(--color_7);
+    background-color: var(--color_11);
+}
+
+.amenity-request-heading,
+.complaint-heading,
+.issue-heading{
+    font-size: 1.2rem;
+    color: var(--color_4);
+    font-weight: bold;
+    margin: 1% 2%;
+}
+
+.table-body table tr button {
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-body table tr td button .btn-t {
+    background-color: var(--color_7);
+    color: var(--color_6);
+    padding: 3%;
+    border: none;
+    cursor: pointer;
+    width: 86%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    /*change
+    
+}*/

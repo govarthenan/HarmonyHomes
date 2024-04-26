@@ -128,12 +128,14 @@ INSERT INTO `resident` (`user_id`, `email`, `name`, `phone`, `birthday`, `gender
 
 DROP TABLE IF EXISTS `staff`;
 CREATE TABLE IF NOT EXISTS `staff` (
-  `staff_id` int(11) NOT NULL,
+  `staff_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(320) NOT NULL,
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `role` varchar(255) NOT NULL,
+  PRIMARY KEY (`staff_id`)
+
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `staff`

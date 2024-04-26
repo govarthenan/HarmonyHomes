@@ -15,7 +15,7 @@ include(APP_ROOT . '/views/inc/security_side_nav.php');
     <div class="main-content">
         <div class="visitor-container">
             <div class="visitor-registration-heading">Visitor Registration</div>
-            <form action="/submit-visitor-info" name="visitor-form" method="post">
+            <form enctype="multipart/form-data" name="visitorForm" method="post" action="<?php echo URL_ROOT . '/securities/visitorAdd' ?>">
                 <div class="visitor-reg-form-container">
                     <div class="visitor-form-1">
                         <div class="item">
