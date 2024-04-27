@@ -66,7 +66,7 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_help.svg'?>" />
-                <span class="sidebar-title">Support</span>
+                <a href="<?php echo URL_ROOT . '/residents/test' ?>"><span class="sidebar-title">Support</span></a>
             </div>
 
             <hr />
