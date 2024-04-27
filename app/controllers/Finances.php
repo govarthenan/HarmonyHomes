@@ -110,22 +110,21 @@ class Finances extends Controller
             // call function to validate csv
             $validated_data = $this->preprocessCsv();
 
-            // check if records exist for the month and year for the billing type
-            $record_exists = $this->model->checkRecordsExist($validated_data['month'], $validated_data['year'], $validated_data['billing_type']);
+            if ($validated_data) {
+                // check if records exist for the month and year for the billing type
+                $record_exists = $this->model->checkRecordsExist($validated_data['month'], $validated_data['year'], $validated_data['billing_type']);
 
-            // if records exist, schedule flash message
-            if ($record_exists) {
-                // flush $_POST and $_FILES data
-                $_POST = [];
-                $_FILES = [];
+                // if records exist, schedule flash message
+                if ($record_exists) {
+                    // flush $_POST and $_FILES data
+                    $_POST = [];
+                    $_FILES = [];
 
-                flash('error_csv_record_exists', 'Payment details already exist for  ' . $validated_data['month'] . '/' . $validated_data['year'] . '!', 'alert alert-error');
-                header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
-            } else {
-                // if no records exist for the month and year
+                    flash('error_csv_record_exists', 'Payment details already exist for  ' . $validated_data['month'] . '/' . $validated_data['year'] . '!', 'alert alert-error');
+                    header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                } else {
+                    // if no records exist for the month and year
 
-                // if no errors, proceed to record the csv file
-                if ($validated_data) {
                     // record csv file in DB
                     if ($this->model->recordCsv($validated_data)) {
                         // update billing_resident table, which is the focal point for all billing data
@@ -133,6 +132,7 @@ class Finances extends Controller
 
                         // if successful, schedule flash message
                         if ($update_master_status) {
+                            flash('csv_record_success', 'CSV file uploaded successfully!', 'alert alert-success');
                             header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
                         } else {
                             // if errors, schedule flash message
@@ -144,14 +144,9 @@ class Finances extends Controller
                         flash('csv_record_error', 'Error uploading CSV file!', 'alert alert-error');
                         header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
                     }
-                } else {
-                    // if errors, flush $_POST and $_FILES data, and reload upload page
-                    $_POST = [];
-                    $_FILES = [];
-
-                    flash('error_csv_parsing', 'Unknown error in CSV, please check and reupload!', 'alert alert-error');
-                    header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
                 }
+            } else {
+                header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
             }
         } else {
             $this->loadView('finances/upload_csv');
@@ -196,7 +191,7 @@ class Finances extends Controller
         // check for four digits and if its greater than the current year
         if (strlen($_POST['year']) != 4 || $_POST['year'] > date('Y')) {
             flash('error_invalid_year', 'Invalid year!', 'alert alert-error');  // schedule flash message
-            header('Location: ' . URL_ROOT . '/financespphp for/csvUpload');  // redirect to the same page
+            return false;
         }
 
         // check if billing type is valid
@@ -222,7 +217,10 @@ class Finances extends Controller
             // check if required columns are present
             foreach ($required_columns as $column) {
                 if (!in_array($column, $header)) {
-                    $this->errors['missing_column'] = 'Missing column: ' . $column;
+                    // flush $_POST and $_FILES data
+                    $_POST = [];
+                    $_FILES = [];
+
                     flash('error_missing_column', 'Missing column: ' . $column, 'alert alert-error');  // schedule flash message
                     return false;
                 }

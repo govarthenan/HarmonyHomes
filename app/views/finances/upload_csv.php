@@ -24,7 +24,6 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
             flash('error_csv_parsing');
             flash('csv_record_success');
             flash('csv_record_error');
-            flash('error_csv_parsing');
             flash('error_csv_record');
             flash('error_csv_record_exists');
             ?>
