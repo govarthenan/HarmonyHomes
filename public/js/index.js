@@ -456,3 +456,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// show announcement details on resident page
+function showAnnouncementDetails(id) {
+    document.getElementById('announcementDetails-' + id).style.display = 'block';
+    // Use the id argument to fetch the announcement details from the server
+    // and populate the announcementDetails element with the fetched data
+}

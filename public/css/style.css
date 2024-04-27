@@ -696,6 +696,7 @@ input:-webkit-autofill:active {
     margin: 2% 5% 2%;
     color: var(--color_7);
     text-align: justify;
+    display: none;  
 }
 
 .announcment-1,
