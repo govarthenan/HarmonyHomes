@@ -245,9 +245,17 @@ class Finances extends Controller
         $this->loadView('finances/payments_overview');
     }
 
+    /**
+     * Retrieve and display payments due for the current month.
+     *
+     * @return void
+     */
     public function paymentsDue()
     {
-        $this->loadView('finances/payments_due');
+        // get payments of this month
+        $data['payments'] = $this->model->getPaymentsDue();
+
+        $this->loadView('finances/payments_due', $data);
     }
 
     public function paymentsOverDue()

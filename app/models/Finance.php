@@ -187,4 +187,18 @@ class Finance
         }
         return true;
     }
+
+    /**
+     * Retrieves the payments that are due for the current month and year.
+     *
+     * @return array Returns an array of payment records.
+     */
+    public function getPaymentsDue()
+    {
+        // get payments that belong to this month
+        $this->db->prepareQuery('SELECT * FROM billing_resident WHERE month = :month AND year = :year');
+        $this->db->bind('month', date('m'));
+        $this->db->bind('year', date('Y'));
+        return $this->db->resultSet();
+    }
 }
