@@ -10,6 +10,7 @@
     --color_9: #073907;
     --color_10: #9370db;
     --color_11: #e3edf6;
+    --color_12:rgb(247, 195, 209);
     --form_color: rgba(213, 235, 247, 0.5);
 
     --font_master: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -1537,7 +1538,7 @@ input[type="file"] {
 
   /* flash message */
   
-.alert {
+.alert-success {
     padding: 1.5% 2%;
     background-color: var(--color_2);
     color: var(--color_7);
@@ -1557,6 +1558,48 @@ input[type="file"] {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for better visibility */
     /* display: none; */
 }
+
+.alert-danger{
+    padding: 1.5% 2%;
+    background-color: var(--color_12);
+    color: var(--color_1);
+    opacity: 1; /* Start fully visible */
+    transition: opacity 0.5s linear; /* Smooth transition for the opacity */
+    border-radius: 8px;
+    border: 2px solid var(--color_1); /* Subtle border */
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 30%;
+    margin: 0 auto; /* Center the alert box */
+    position: fixed; /* Fixed at the top */
+    top: 18%; /* Spacing from the top */
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensures it doesn't get hidden behind other elements */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.flash-message-container {
+    position: fixed;
+    top: 10%;  /* Adjust based on header/nav-bar height */
+    right: 10%;
+     /* Fixed width, adjust as needed */
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.flash-message {
+    
+    padding: 10px;
+    margin-bottom: 5px; /* Space between messages */
+    border-radius: 8px;
+    border: 2px solid var(--color_3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 1;
+    transition: opacity 0.5s linear;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 
 .closebtn {
     margin-left: 15px;
