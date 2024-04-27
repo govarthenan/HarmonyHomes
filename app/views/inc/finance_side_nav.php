@@ -36,7 +36,7 @@
         <nav class="navigation">
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_payment.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/finances/paymentsOverview' ?>"><span class="sidebar-title">Payment Overview</span></a>
+                <a href="<?php echo URL_ROOT . '/finances/paymentsDue' ?>"><span class="sidebar-title">Payment Overview</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_bill.svg' ?>" />
