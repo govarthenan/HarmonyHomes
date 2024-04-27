@@ -581,6 +581,17 @@ button:hover {
     background-color: var(--color_11);  
 }
 
+
+
+/*delivery form*/
+
+.delivery-container{
+    flex: 1;
+    background-color: var(--color_6);
+    margin: 2%;
+    height: fit-content;
+    padding-bottom: 2%;
+}
 /*
 .description-row td {
     padding-top: 2%;

@@ -80,9 +80,9 @@ class Securities extends Controller
 
 
     /**
-     * Adds a complaint for a resident.
+     * Adds a visitor for a security.
      *
-     * This method is responsible for handling the submission of a complaint form. It checks if the form was submitted using the POST method, sanitizes the input data, and calls the model to add the complaint to the database. If the complaint is successfully added, the user is redirected to the complaints log page. Otherwise, an error message is displayed.
+     * This method is responsible for handling the submission of a visitor form. It checks if the form was submitted using the POST method, sanitizes the input data, and calls the model to add the visitor to the database. If the visitort is successfully added, the user is redirected to the complaints log page. Otherwise, an error message is displayed.
      *
      * @return void
      */
@@ -114,8 +114,51 @@ class Securities extends Controller
         }
     }
 
+/**
+     * Fetches all visitors and loads the complaints log view.
+     *
+     * @return void
+     */
+    public function deliverysLog()
+    {
+        $data['deliveries'] = $this->model->fetchAlldeliveries();
+        $this->loadView('securities/delivery_active', $data);
+        
+    }
 
 
 
+    /**
+     * Adds a delivery for a security.
+     *
+     * This method is responsible for handling the submission of a delivery form. It checks if the form was submitted using the POST method, sanitizes the input data, and calls the model to add the delivery to the database. If the delivery is successfully added, the user is redirected to the complaints log page. Otherwise, an error message is displayed.
+     *
+     * @return void
+     */
+    public function deliveryAdd()
+    {
+        // check for post/get to see if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'user_id' => $_SESSION['user_id'],
+                'doorNumber' => trim($_POST['doorNumber']),
+                'floorNumber' => trim($_POST['floorNumber']),
+                'notes' => trim($_POST['notes'])
+                
+            ];
+
+            // call model to add complaint
+            if ($this->model->writedelivery($data)) {
+                header('location: ' . URL_ROOT . '/securities/deliverysLog');
+                //$this->announcementsLog();
+            } else {
+                die('Error with adding announcement to DB');  // ToDo: improve error handling
+            }
+        } else {
+            $this->loadView('securities/delivery_add');
+        }
+    }
 
 }
