@@ -95,11 +95,11 @@ class Finances extends Controller
     }
 
     /**
-     * Handles the CSV file upload for finances.
+     * Handles the CSV file upload for the Finances controller.
      *
-     * This method is responsible for handling the CSV file upload for finances. It checks if the request method is POST,
-     * validates the CSV file, checks if records already exist for the specified month, year, and billing type, and then
-     * either records the CSV file in the database or displays an error message accordingly.
+     * This method is responsible for processing the uploaded CSV file, validating its data,
+     * and recording it in the database. It also checks if records already exist for the
+     * specified month, year, and billing type, and schedules flash messages accordingly.
      *
      * @return void
      */
@@ -128,9 +128,17 @@ class Finances extends Controller
                 if ($validated_data) {
                     // record csv file in DB
                     if ($this->model->recordCsv($validated_data)) {
+                        // update billing_resident table, which is the focal point for all billing data
+                        $update_master_status = $this->model->updateMasterFromCsv($validated_data['month'], $validated_data['year'], $validated_data['billing_type']);
+
                         // if successful, schedule flash message
-                        flash('csv_record_success', 'Payments recorded successfully!', 'alert alert-success');
-                        header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                        if ($update_master_status) {
+                            header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                        } else {
+                            // if errors, schedule flash message
+                            flash('csv_record_error', 'Error while uupdating master billing table!', 'alert alert-error');
+                            header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                        }
                     } else {
                         // if errors, schedule flash message
                         flash('csv_record_error', 'Error uploading CSV file!', 'alert alert-error');

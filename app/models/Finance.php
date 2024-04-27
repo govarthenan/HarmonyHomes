@@ -115,4 +115,76 @@ class Finance
 
         return true;
     }
+
+    /**
+     * Update the master table from a CSV file for a specific month, year, and billing type.
+     *
+     * @param string $month The month of the CSV data.
+     * @param string $year The year of the CSV data.
+     * @param string $billing_type The type of billing (water or power).
+     * @return bool Returns true if the update is successful, false otherwise.
+     */
+    public function updateMasterFromCsv($month, $year, $billing_type)
+    {
+        // set target table
+        $target_table = 'billing_resident';
+
+        // set source table
+        if ($billing_type == 'water') {
+            $source_table = 'billing_water';
+        } elseif ($billing_type = 'power') {
+            $source_table = 'billing_power';
+        } else {
+            flash('error_unknown_billing_type', 'Unknown CSV billing type!', 'alert alert-error');
+            return false;
+        }
+
+        // set target column
+        if ($billing_type == 'water') {
+            $target_column = 'water';
+        } elseif ($billing_type = 'power') {
+            $target_column = 'power';
+        } else {
+            flash('error_unknown_billing_type', 'Unknown CSV billing type!', 'alert alert-error');
+            return false;
+        }
+
+        // get all csv rows for the month and year
+        $this->db->prepareQuery('SELECT * FROM ' . $source_table . ' WHERE month = :month AND year = :year');
+        $this->db->bind('month', $month);
+        $this->db->bind('year', $year);
+        $csv_rows = $this->db->resultSet();
+
+        // for each csv row, update the master table
+        foreach ($csv_rows as $row) {
+            // check if row exists with the same month, year, floor, door
+            $this->db->prepareQuery('SELECT * FROM ' . $target_table . ' WHERE month = :month AND year = :year AND floor = :floor AND door = :door');
+            $this->db->bind('month', $month);
+            $this->db->bind('year', $year);
+            $this->db->bind('floor', $row->floor);
+            $this->db->bind('door', $row->door);
+            $current_row = $this->db->singleResult();
+
+            // if row exists, update
+            if ($current_row) {
+                $this->db->prepareQuery('UPDATE ' . $target_table . ' SET ' . $target_column . ' = :amount WHERE month = :month AND year = :year AND floor = :floor AND door = :door');
+                $this->db->bind('amount', $row->amount);
+                $this->db->bind('month', $month);
+                $this->db->bind('year', $year);
+                $this->db->bind('floor', $row->floor);
+                $this->db->bind('door', $row->door);
+                $this->db->execute();
+            } else {
+                // if row does not exist, insert
+                $this->db->prepareQuery('INSERT INTO ' . $target_table . ' (month, year, floor, door, ' . $target_column . ') VALUES (:month, :year, :floor, :door, :amount)');
+                $this->db->bind('month', $month);
+                $this->db->bind('year', $year);
+                $this->db->bind('floor', $row->floor);
+                $this->db->bind('door', $row->door);
+                $this->db->bind('amount', $row->amount);
+                $this->db->execute();
+            }
+        }
+        return true;
+    }
 }
