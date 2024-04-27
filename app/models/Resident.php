@@ -188,7 +188,7 @@ class Resident
 
     public function fetchAllAnnouncements()
     {
-        $this->db->prepareQuery('SELECT * FROM announcement ORDER BY announcement_id DESC LIMIT 2');
+        $this->db->prepareQuery('SELECT * FROM announcement ORDER BY announcement_id DESC');
         return $this->db->resultSet();
     }
 }

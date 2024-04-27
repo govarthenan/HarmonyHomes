@@ -26,8 +26,12 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         foreach ($data['announcements'] as $announcement) :
                             $n++; ?>
                             <div class="announcment-1">
-                                <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?></div>
-                                <div id="announcementDetails-<?php echo $n ?>" class="announcment-details"><?php echo $announcement->message; ?></div>
+                                <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?><br></div>
+                                <div id="announcementDetails-<?php echo $n ?>" class="announcement-msg">
+                                    <div class="title"><b>Title:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->title; ?></div>
+                                    <div class="sender"><b>by:&nbsp;&nbsp;&nbsp;</b></div>
+                                    <div class="message"><b>Message:&nbsp;&nbsp;&nbsp;</b></div>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -121,15 +125,14 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
         <div class="modal-content-announcement">
             <span class="close">&times;</span>
             <div class="announcement-msg">
-                <div class="title">Power Cut</div>
-                <div class="sender">Facility manager</div>
-                <div class="date">sent date</div>
-                <div class="message">fhrhgruhgiergr</div>
+                <div class="title">Title:</div>
+                <div class="sender">by:</div>
+                <div class="message">Message:</div>
             </div>
         </div>
-
-        <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>
