@@ -1,82 +1,82 @@
 //calendar
 let newDateFunction = new Date()
-function randerDate(){
-  newDateFunction.setDate(1)
-  let day = newDateFunction.getDay()
+function randerDate() {
+    newDateFunction.setDate(1)
+    let day = newDateFunction.getDay()
 
-  let currentDate = new Date(
-      newDateFunction.getFullYear(),
-      newDateFunction.getMonth() + 1,0
-  ).getDate() // to get the last date of current month
-
-
-  let prevDate = new Date(
-      newDateFunction.getFullYear(),
-      newDateFunction.getMonth(), 0
-  ).getDate() // to get the last date of previous month
-
-  let addNext = new Date(newDateFunction.getFullYear(), 
-  newDateFunction.getMonth() + 2, 0).getDate() + 7;
-
-  console.log(currentDate, prevDate, addNext);
-
-  let month = newDateFunction.getMonth()
-  let year = newDateFunction.getFullYear()
-  let monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  document.getElementById("month").innerHTML = monthArr[month] + " - " + year
-
-  let today = new Date()
-  let weekDay = today.getDay()
-  document.getElementById("date").innerHTML = today.toDateString()
-  document.querySelector(`.week :nth-child(${weekDay + 1})`).classList.add("active")
+    let currentDate = new Date(
+        newDateFunction.getFullYear(),
+        newDateFunction.getMonth() + 1, 0
+    ).getDate() // to get the last date of current month
 
 
+    let prevDate = new Date(
+        newDateFunction.getFullYear(),
+        newDateFunction.getMonth(), 0
+    ).getDate() // to get the last date of previous month
 
-  let DATES = ""
+    let addNext = new Date(newDateFunction.getFullYear(),
+        newDateFunction.getMonth() + 2, 0).getDate() + 7;
 
-  for(let x = day; x > 0; x--){
-      DATES += "<div class='prev'>" + (prevDate - x + 1) + "</div>"
-  }
+    console.log(currentDate, prevDate, addNext);
 
-  for(let i = 1; i <= currentDate; i++){
-      if(i === today.getDate() && newDateFunction.getMonth() == today.getMonth() && newDateFunction.getFullYear() === today.getFullYear()){
-          DATES += "<div class='today'>" + i + "</div>"
-      }
-      else{
-          DATES += "<div>" + i + "</div>"
-      }
-  }
+    let month = newDateFunction.getMonth()
+    let year = newDateFunction.getFullYear()
+    let monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    document.getElementById("month").innerHTML = monthArr[month] + " - " + year
 
-  for(let k = 1; k <= addNext; k++){
-      if(k <= 1){
-          DATES += "<div class='next'>" + k + "</div>"
-      }
-      else{
-          break;
-      }
-  }
+    let today = new Date()
+    let weekDay = today.getDay()
+    document.getElementById("date").innerHTML = today.toDateString()
+    document.querySelector(`.week :nth-child(${weekDay + 1})`).classList.add("active")
 
-  document.querySelector('.dates').innerHTML = DATES
+
+
+    let DATES = ""
+
+    for (let x = day; x > 0; x--) {
+        DATES += "<div class='prev'>" + (prevDate - x + 1) + "</div>"
+    }
+
+    for (let i = 1; i <= currentDate; i++) {
+        if (i === today.getDate() && newDateFunction.getMonth() == today.getMonth() && newDateFunction.getFullYear() === today.getFullYear()) {
+            DATES += "<div class='today'>" + i + "</div>"
+        }
+        else {
+            DATES += "<div>" + i + "</div>"
+        }
+    }
+
+    for (let k = 1; k <= addNext; k++) {
+        if (k <= 1) {
+            DATES += "<div class='next'>" + k + "</div>"
+        }
+        else {
+            break;
+        }
+    }
+
+    document.querySelector('.dates').innerHTML = DATES
 }
 
-function moveDate(para){
+function moveDate(para) {
 
-  if(para == 'prev'){
-      newDateFunction.setMonth(newDateFunction.getMonth() - 1)
-  }
+    if (para == 'prev') {
+        newDateFunction.setMonth(newDateFunction.getMonth() - 1)
+    }
 
-  else if(para == 'next'){
-      newDateFunction.setMonth(newDateFunction.getMonth() + 1)
-  }
+    else if (para == 'next') {
+        newDateFunction.setMonth(newDateFunction.getMonth() + 1)
+    }
 
-  randerDate()
+    randerDate()
 }
 
 /*resident js*/
 
 //maintenance payment variation chart-resident js 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var ctx = document.getElementById('maintenancePaymentChart').getContext('2d');
     var maintenancePaymentChart = new Chart(ctx, {
         type: 'line',
@@ -84,11 +84,11 @@ document.addEventListener('DOMContentLoaded', function() {
             labels: ['September', 'Octomber', 'November', 'December', 'January', 'February'],
             datasets: [{
                 label: 'Maintenance Payment (Rs)',
-                data: [1000, 1350, 1250, 1400, 1500, 1950], 
+                data: [1000, 1350, 1250, 1400, 1500, 1950],
                 backgroundColor: '#154aaa',
                 borderColor: '#0c3866',
                 borderWidth: 1,
-                tension: 0.1 
+                tension: 0.1
             }]
         },
         options: {
@@ -98,18 +98,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     title: {
                         display: true,
                         text: 'Amount (Rs.)',
-                        color:'black',
-                        font: { 
+                        color: 'black',
+                        font: {
                             size: 14
-                        }   
+                        }
                     }
                 },
                 x: {
                     title: {
                         display: true,
                         text: 'Month',
-                        color:'black',
-                        font: { 
+                        color: 'black',
+                        font: {
                             size: 14
                         }
                     }
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //utility usage chart-resident js
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var ctx = document.getElementById('utilityUsageChart').getContext('2d');
     var utilityUsageChart = new Chart(ctx, {
         type: 'bar',
@@ -172,52 +172,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //modal-resident js
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     function closeModal(modal) {
-      modal.style.display = "none";
+        modal.style.display = "none";
     }
-  
-   
+
+
     var modalBooking = document.getElementById("popupModal-booking");
     var btnBooking = document.querySelector(".booking-reminder");
-    btnBooking.onclick = function() {
-      modalBooking.style.display = "block";
+    btnBooking.onclick = function () {
+        modalBooking.style.display = "block";
     };
-  
-   
+
+
     var modalEvents = document.getElementById("popupModal-events");
     var btnEvents = document.querySelector(".event-reminder");
-    btnEvents.onclick = function() {
-      modalEvents.style.display = "block";
+    btnEvents.onclick = function () {
+        modalEvents.style.display = "block";
     };
-  
-    
+
+
     var modalPayment = document.getElementById("popupModal-payment");
     var btnPayment = document.querySelector(".payment-reminder");
-    btnPayment.onclick = function() {
-      modalPayment.style.display = "block";
+    btnPayment.onclick = function () {
+        modalPayment.style.display = "block";
     };
-  
-    
+
+
     var closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(function(btn) {
-      btn.onclick = function() {
-        closeModal(btn.closest('.popup-booking, .popup-events, .popup-payment'));
-      };
+    closeButtons.forEach(function (btn) {
+        btn.onclick = function () {
+            closeModal(btn.closest('.popup-booking, .popup-events, .popup-payment'));
+        };
     });
-  
-    
-    window.onclick = function(event) {
-      if (event.target.classList.contains('popup-booking') || event.target.classList.contains('popup-events') || event.target.classList.contains('popup-payment')) {
-        closeModal(event.target);
-      }
+
+
+    window.onclick = function (event) {
+        if (event.target.classList.contains('popup-booking') || event.target.classList.contains('popup-events') || event.target.classList.contains('popup-payment')) {
+            closeModal(event.target);
+        }
     };
-  });
+});
 
 
 /*consumption chart general manger*/
 
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('consumptionChart').getContext('2d');
     const consumptionChart = new Chart(ctx, {
         type: 'line',
@@ -270,13 +270,13 @@ document.addEventListener('DOMContentLoaded', function() {
             maintainAspectRatio: false // Allows flexibility in adjusting aspect ratio
         }
     });
-  });
+});
 
 
 
 /*finance chart for both general manager and finance manger*/
 
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const ctx = document.getElementById('financeChart').getContext('2d');
     const financeChart = new Chart(ctx, {
         type: 'line',
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 /*choose files-billing, complaint*/
-document.getElementById('file-input').addEventListener('change', function() {
+document.getElementById('file-input').addEventListener('change', function () {
     var fileName = document.getElementById('file-input').files[0].name;
     document.getElementById('file-name').textContent = fileName;
 });
@@ -405,12 +405,12 @@ function toggleDropdowns() {
 
 /*Notification and announcement*/
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var quill = new Quill('#editor', {
         theme: 'snow'  // Specify theme in configuration
     });
 
-    document.getElementById('notificationForm').addEventListener('submit', function(event) {
+    document.getElementById('notificationForm').addEventListener('submit', function (event) {
         event.preventDefault();
 
         const title = document.getElementById('title').value;
