@@ -54,14 +54,14 @@
                             <label for="nicPhoto">Photo of NIC:</label>
                             <button type="button" onclick="document.getElementById('nicPhoto').click()" class="custom-file-upload">Choose File</button>
                             <span id="nicPhotoName">No file chosen</span>
-                            <input type="file" id="nicPhoto" name="nic_photo" accept="image/*" onchange="updateFileName('nicPhoto', 'nicPhotoName')" required style="display: none;">
+                            <input type="file" id="nicPhoto" name="nic_photo" accept="image/*" required style="display: none;">
                         </div>
 
                         <div class="file-upload-wrapper">
                             <label for="agreementPhoto">Photo of Agreement Document:</label>
                             <button type="button" onclick="document.getElementById('agreementPhoto').click()" class="custom-file-upload">Choose File</button>
                             <span id="agreementPhotoName">No file chosen</span>
-                            <input type="file" id="agreementPhoto" name="agreement_photo" accept="image/*" onchange="updateFileName('agreementPhoto', 'agreementPhotoName')" required style="display: none;">
+                            <input type="file" id="agreementPhoto" name="agreement_photo" accept="image/*" required style="display: none;">
                         </div>
                     </div>
                     <div class="sign-up-bottom">
@@ -81,7 +81,7 @@
             </form>
         </div>
     </div>
-    <script src="<?php echo URL_ROOT . 'js/index.js'; ?>"></script>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 
 </body>
 
