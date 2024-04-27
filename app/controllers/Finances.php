@@ -233,4 +233,24 @@ class Finances extends Controller
             return false;
         }
     }
+
+    public function paymentsOverview()
+    {
+        $this->loadView('finances/payments_overview');
+    }
+
+    public function paymentsDue()
+    {
+        $this->loadView('finances/payments_due');
+    }
+
+    public function paymentsOverDue()
+    {
+        $this->loadView('finances/payments_overdue');
+    }
+
+    public function paymentsLog()
+    {
+        $this->loadView('finances/payments_log');
+    }
 }

@@ -17,10 +17,10 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
             <div class="payment-overview-heading">Payment Overview</div>
             <div class="payment-filter">
                 <div class="topbar-payment-filter">
-                    <a href="payment-overview.php">All</a>
-                    <a href="payment_up_coming.php">Up-Comming payments</a>
-                    <a href="payment_due.php">Due payments</a>
-                    <a href="payment_log.php">Payments log</a>
+                    <a href="<?php echo URL_ROOT . '/finances/paymentsOverview' ?>">All</a>
+                    <a href="<?php echo URL_ROOT . '/finances/paymentsDue' ?>">Up-Comming payments</a>
+                    <a href="<?php echo URL_ROOT . '/finances/paymentsOverdue' ?>">Overdue payments</a>
+                    <a href="<?php echo URL_ROOT . '/finances/paymentsLog' ?>">Payments log</a>
                 </div>
             </div>
             <div id="all-payments-content" class="payment-details">
