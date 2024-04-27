@@ -406,38 +406,6 @@ function toggleDropdowns() {
 
 }
 
-
-/*Notification and announcement*/
-
-try {
-    document.addEventListener('DOMContentLoaded', function () {
-        if (document.getElementById('editor')) {
-            var quill = new Quill('#editor', {
-                theme: 'snow'  // Specify theme in configuration
-            });
-
-            var notificationForm = document.getElementById('notificationForm')
-            if (notificationForm) {
-
-                notificationForm.addEventListener('submit', function (event) {
-                    event.preventDefault();
-
-                    const title = document.getElementById('title').value;
-                    const message = quill.root.innerHTML;  // Get the inner HTML of the editor
-
-                    console.log('Notification Title:', title);
-                    console.log('Notification Message:', message);
-
-                    // Here you would typically send the data to a server
-                    alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
-                });
-            }
-        }
-    });
-} catch (error) {
-    console.log("Error loading Quill");
-}
-
 /*payment status-finance-js*/
 
 document.addEventListener('DOMContentLoaded', function () {
