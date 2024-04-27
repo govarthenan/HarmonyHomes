@@ -117,6 +117,14 @@ class Staffs extends Controller
                 require_once APP_ROOT . '/controllers/Securities.php';
                 header('Location: ' . URL_ROOT . '/securities');
                 break;
+            case 'technician':
+                require_once APP_ROOT . '/controllers/Technicians.php';
+                header('Location: ' . URL_ROOT . '/technicians');
+                break;
+            case 'facility':
+                require_once APP_ROOT . '/controllers/Facilities.php';
+                header('Location: ' . URL_ROOT . '/facilities');
+                break;
             default:
                 die('Invalid role');
         }
