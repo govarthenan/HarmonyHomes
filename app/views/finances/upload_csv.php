@@ -37,9 +37,9 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                         <div class="water-cont">
                             <label for="waterFile" class="warter-lable">Water Data (CSV):</label>
                             <div class="file-upload-wrapper">
-                                <input type="file" id="file-input" name="billing_data" accept=".csv" required hidden />
-                                <label for="file-input" class="file-input-label">Choose File</label>
-                                <span id="file-name">No file chosen...</span>
+                                <input type="file" id="file-water-csv" name="billing_data" accept=".csv" required hidden />
+                                <label for="file-water-csv" class="file-input-label">Choose File</label>
+                                <span id="name-water-csv">No file chosen...</span>
                             </div>
                         </div>
 
@@ -81,9 +81,9 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                     <div class="water-cont">
                         <label for="waterFile" class="warter-lable">Electricity Data (CSV):</label>
                         <div class="file-upload-wrapper">
-                            <input type="file" id="power-file-input" name="billing_data" accept=".csv" required hidden />
-                            <label for="power-file-input" class="file-input-label">Choose File</label>
-                            <span class="csv-file-name" id="power-file-name">No file chosen...</span>
+                            <input type="file" id="file-power-csv" name="billing_data" accept=".csv" required hidden />
+                            <label for="file-power-csv" class="file-input-label">Choose File</label>
+                            <span class="csv-file-name" id="name-power-csv">No file chosen...</span>
                         </div>
                     </div>
                     <div class="water-cont">

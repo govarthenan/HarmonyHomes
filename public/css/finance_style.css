@@ -542,7 +542,8 @@ margin: 1% 10%;
     border-style: solid;
 }
 
-#file-name {
+#name-power-csv,
+#name-water-csv {
     margin: 3% 2%;
 }
 

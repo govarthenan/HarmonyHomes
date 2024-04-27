@@ -375,37 +375,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-
-
-/*choose files-billing, complaint*/
-var file_input_complaint = document.getElementById('file-input')
-
-if (file_input_complaint) {
-    file_input_complaint.addEventListener('change', function () {
-        var fileName = document.getElementById('file-input').files[0].name;
-        document.getElementById('file-name').textContent = fileName;
-    });
-} else {
-    console.log('Element not found');
-}
-
-
-/*select file in complaints part*/
-var file_input_complaint_1 = document.getElementById('file-input')
-
-if (file_input_complaint_1) {
-    file_input_complaint_1.addEventListener('change', function (event) {
-        var file = event.target.files[0];  // Get the selected file
-        var fileMessage = document.getElementById('select-message');
-
-        // Clear the content of the drop area and then append the file name
-        fileMessage.innerHTML = `${file.name}`;
-    });
-} else {
-    console.log('Element not found');
-}
-
 // Function to close the alert automatically after n seconds
 var alertElement = document.getElementById('alert');
 if (alertElement) {
@@ -507,3 +476,32 @@ function showAnnouncementDetails(id) {
     // Use the id argument to fetch the announcement details from the server
     // and populate the announcementDetails element with the fetched data
 }
+
+/**
+ * Sets the file name in a specified element when a file is selected.
+ * 
+ * @param {string} fileInputId - The ID of the file input element.
+ * @param {string} fileNameMessageId - The ID of the element where the file name will be displayed.
+ */
+function setFileName(fileInputId, fileNameMessageId) {
+    const fileInput = document.getElementById(fileInputId);
+    const fileNameMessage = document.getElementById(fileNameMessageId);
+
+    if (fileInput && fileNameMessage) {
+        fileInput.addEventListener('change', function () {
+            const fileName = fileInput.files[0]?.name;
+            fileNameMessage.textContent = fileName || '';
+        });
+    }
+}
+
+// resident sign up page
+setFileName('nicPhoto', 'nicPhotoName');
+setFileName('agreementPhoto', 'agreementPhotoName');
+
+// resident complaint add page
+setFileName('file-complaint-attachment', 'name-complaint-attachment');
+
+// finance csv uploading page
+setFileName('file-water-csv', 'name-water-csv');
+setFileName('file-power-csv', 'name-power-csv');
