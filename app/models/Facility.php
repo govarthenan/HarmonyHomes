@@ -93,6 +93,95 @@ class Facility
     // fetch technician detail
    
    
+    public function createInventory($data)
+    {
+        $this->db->prepareQuery('INSERT INTO `inventory`( inventory_type, count) VALUES (:inventory_type, :count)');
+        // Bind values
+
+        $this->db->bind('inventory_type', $data['inventory-type']);
+        $this->db->bind('count', $data['inventory-count']);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+    public function viewInventory()
+    {
+        $this->db->prepareQuery('SELECT * FROM `inventory` ');
+        // Bind values
+
+        // Execute the query and return bool
+        return $this->db->resultSet();
+    }
+
+    public function fetchOneInventory($inventory_id)
+    {
+        $this->db->prepareQuery('SELECT * FROM inventory  WHERE inventory_id = :inventory_id');
+        $this->db->bind('inventory_id', $inventory_id);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+
+    public function fetchOneInventoryDetail($inventory_type)
+    {
+        $this->db->prepareQuery('SELECT * FROM inventory  WHERE inventory_type = :inventory_type');
+        $this->db->bind('inventory_type', $inventory_type);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    public function updateInventory($edited_inventory)
+    {
+        $this->db->prepareQuery('UPDATE inventory SET count = :count WHERE inventory_id = :inventory_id');
+
+        // Bind values
+        $this->db->bind('count', $edited_inventory['inventory_count']);
+        $this->db->bind('inventory_id', $edited_inventory['inventory_id']);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
+    public function deleteInventory($inventory_id)
+    {
+        $this->db->prepareQuery('DELETE FROM inventory
+            WHERE inventory_id = :inventory_id;');
+        // Bind values
+        $this->db->bind('inventory_id', $inventory_id);
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
+    //  public function updateInventoryCount($data){
+    //         $this->db->prepareQuery('UPDATE inventory SET count = :count WHERE inventory_id = :inventory_id');
+    //     $this->db->bind('new_count', $data);
+
+    //         return $this->db->execute();
+    //     }
+    public function updateInventoryCount($data)
+    {
+        $this->db->prepareQuery('UPDATE inventory SET count = :count WHERE inventory_id = :inventory_id');
+
+        // Bind values
+        $this->db->bind('inventory_id', $data['inventory_id']);
+        $this->db->bind('count', $data['updatedCount']);
+        
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
+
+    
 
 
 }
