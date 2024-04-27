@@ -1,11 +1,4 @@
 <?php
-// league/csv library
-
-use League\Csv\Reader;
-use League\Csv\Statement;
-
-require_once '../vendor/autoload.php';
-
 /**
  * Specialized version (ideally) of the Database class for the Post model.
  *

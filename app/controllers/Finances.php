@@ -1,12 +1,5 @@
 <?php
 
-// league/csv library
-
-use League\Csv\Reader;
-use League\Csv\Statement;
-
-require_once '../vendor/autoload.php';
-
 /**
  * Controller class for posts.
  *
