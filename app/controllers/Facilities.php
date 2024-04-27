@@ -73,14 +73,18 @@ class Facilities extends Controller
     public function issueAssign()
     {
         $data['issues_data'] = $this->model->getIssues();
+        $data['tech_data'] = $this->model->fetchTechnicianAllDetails();
+       
+        
         $this->loadView('facilities/fac_issue_table',$data);
+       
         
     }
     public function technicianLog()
     {
         $data['tech_detail'] = $this->model->viewTechnician();
         $this->loadView('facilities/technician_view',$data);
-        die(var_dump($data));
+       
      }
     public function technicianAdd()
     {
@@ -102,23 +106,24 @@ class Facilities extends Controller
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['cpassword']),
             ];
+
             $this->errors = [];
-            if (empty($this->data['password'])) {
+            if (empty($data['password'])) {
                 $this->errors['password_err'] = 'Please enter password';
-            } elseif (strlen($this->data['password']) < 6) {
+            } elseif (strlen($data['password']) < 6) {
                 $this->errors['password_err'] = 'Password must be at least 6 characters';
             }
            
             
-            //confirm password
-            if (empty($this->data['confirm_password'])) {
+           // confirm password
+            if (empty($data['confirm_password'])) {
                 $this->errors['confirm_password_err'] = 'Please confirm password';
-            } elseif ($this->data['password'] != $this->data['confirm_password']) {
+            } elseif ($data['password'] != $data['confirm_password']) {
                 $this->errors['confirm_password_err'] = 'Passwords do not match';
             }
             //hash  password
             if (empty($this->errors)) {
-            $this->data['password'] = password_hash($this->data['password'], PASSWORD_DEFAULT);
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
               // call model to add technician
               if ($this->model->addTechnician($data)) {
                 header('location: ' . URL_ROOT . '/facilities/technicianLog');
@@ -160,6 +165,23 @@ class Facilities extends Controller
         header('location: ' . URL_ROOT . '/facilities/technicianLog');
     
      }
+     public function getAssignDetails(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'issue_id' => trim($_POST['issue_id']),  // Assuming user_id is stored in session
+                'technician_type' => trim($_POST['techType']),
+                'technician_id'  => trim($_POST['technician']),
+                'description'  => trim($_POST['description']),
+            ]; 
+
+        }
+        // else{
+        //     $this->loadView('facilities/technician_view');  
+        // }
+
+     }
+     
 
      
     // public function test()

@@ -82,6 +82,16 @@ class Facility
             return false;
         }
     }
+    
+    public function fetchTechnicianAllDetails()
+    {
+        $this->db->prepareQuery('SELECT * FROM technician_overview ');
+        
+         $this->db->resultSet();
+        return  $this->db->resultSet();
+        
+    }
+
     public function deleteTechnician($technician_id){
         $this->db->prepareQuery('DELETE FROM technician_overview
         WHERE technician_id = :technician_id;');
@@ -91,8 +101,15 @@ class Facility
         return $this->db->execute();
     }
     // fetch technician detail
-   
-   
+    
+    public function assignTechnician($data){
+        $this->db->prepareQuery('UPDATE  issue SET technician_assign =:technician_assign WHERE issue_id = :issue_id ');
+         
+        $this->db->bind('issue_id', $data['issue_id']);
+        $this->db->bind('technician_assign', $data['technician_assign']);
+        
+        $this->db->execute();
+    }  
 
 
 }
