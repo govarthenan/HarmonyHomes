@@ -20,7 +20,10 @@ class Residents extends Controller
 
     public function index()
     {
-        $this->loadView('residents/dashboard');
+        // get all announcements
+        $data['announcements'] = $this->model->fetchAllAnnouncements();
+
+        $this->loadView('residents/dashboard', $data);
     }
 
     public function signUp()
