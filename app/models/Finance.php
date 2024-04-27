@@ -1,4 +1,10 @@
 <?php
+// league/csv library
+
+use League\Csv\Reader;
+use League\Csv\Statement;
+
+require_once '../vendor/autoload.php';
 /**
  * Specialized version (ideally) of the Database class for the Post model.
  *
@@ -212,7 +218,7 @@ class Finance
      * @return array Returns an array of rows representing the finished payments.
      */
     public function getFinishedPayments()
-{
+    {
         // get rows where at least one of the columns water_paid, power_paid, maintenance_paid has the value of one
         $this->db->prepareQuery('SELECT * FROM billing_resident WHERE water_paid = 1 OR power_paid = 1 OR maintenance_paid = 1');
         return $this->db->resultSet();
