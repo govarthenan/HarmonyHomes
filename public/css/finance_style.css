@@ -734,3 +734,49 @@ body {
     border-style: solid;
     border-width: 2px;
 }
+
+/* flash message */
+
+.alert {
+    padding: 1.5% 2%;
+    background-color: var(--color_2);
+    color: var(--color_7);
+    opacity: 1;
+    /* Start fully visible */
+    transition: opacity 0.5s linear;
+    /* Smooth transition for the opacity */
+    border-radius: 8px;
+    border: 2px solid var(--color_3);
+    /* Subtle border */
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 30%;
+    margin: 0 auto;
+    /* Center the alert box */
+    position: fixed;
+    /* Fixed at the top */
+    top: 4%;
+    /* Spacing from the top */
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 1;
+    /* Ensures it doesn't get hidden behind other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for better visibility */
+    /* display: none; */
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: var(--color_4);
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: var(--color_6);
+}
