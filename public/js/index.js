@@ -242,10 +242,10 @@ document.addEventListener('DOMContentLoaded', function () {
 /*consumption chart general manger*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('consumptionChart');
+    var ctx = document.getElementById('consumptionChart');
     if (ctx) {
-        const ctx = ctx.getContext('2d');
-        const consumptionChart = new Chart(ctx, {
+        var ctx = ctx.getContext('2d');
+        var consumptionChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example monthly labels
@@ -416,18 +416,22 @@ try {
                 theme: 'snow'  // Specify theme in configuration
             });
 
-            document.getElementById('notificationForm').addEventListener('submit', function (event) {
-                event.preventDefault();
+            var notificationForm = document.getElementById('notificationForm')
+            if (notificationForm) {
 
-                const title = document.getElementById('title').value;
-                const message = quill.root.innerHTML;  // Get the inner HTML of the editor
+                notificationForm.addEventListener('submit', function (event) {
+                    event.preventDefault();
 
-                console.log('Notification Title:', title);
-                console.log('Notification Message:', message);
+                    const title = document.getElementById('title').value;
+                    const message = quill.root.innerHTML;  // Get the inner HTML of the editor
 
-                // Here you would typically send the data to a server
-                alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
-            });
+                    console.log('Notification Title:', title);
+                    console.log('Notification Message:', message);
+
+                    // Here you would typically send the data to a server
+                    alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
+                });
+            }
         }
     });
 } catch (error) {
