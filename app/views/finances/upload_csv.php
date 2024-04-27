@@ -21,7 +21,12 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
             flash('error_invalid_year');
             flash('error_invalid_billing_type');
             flash('error_missing_column');
-            flash('error_csv_parsing')
+            flash('error_csv_parsing');
+            flash('csv_record_success');
+            flash('csv_record_error');
+            flash('error_csv_parsing');
+            flash('error_csv_record');
+            flash('error_csv_record_exists');
             ?>
 
             <div class="billing-heading">Issue monthly bills</div>
@@ -70,9 +75,9 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                     <form enctype="multipart/form-data" action="<?php echo URL_ROOT . '/finances/csvUpload' ?>" method="POST">
                         <label for="waterFile">Electricity Data (CSV):</label>
                         <div class="file-upload-wrapper">
-                            <input type="file" id="file-input" name="billing_data" accept=".csv" required hidden />
-                            <label for="file-input" class="file-input-label">Choose File</label>
-                            <span id="file-name">No file chosen...</span>
+                            <input type="file" id="power-file-input" name="billing_data" accept=".csv" required hidden />
+                            <label for="power-file-input" class="file-input-label">Choose File</label>
+                            <span class="csv-file-name" id="power-file-name">No file chosen...</span>
                         </div>
 
                         <p> select date for the data</p>

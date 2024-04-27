@@ -95,11 +95,11 @@ class Finances extends Controller
     }
 
     /**
-     * Handles the CSV upload functionality.
+     * Handles the CSV file upload for finances.
      *
-     * This method is responsible for handling the CSV file upload. It checks if the request method is POST,
-     * validates the uploaded CSV file, and processes it if there are no errors. If there are errors, it flushes
-     * the $_POST and $_FILES data and reloads the upload page.
+     * This method is responsible for handling the CSV file upload for finances. It checks if the request method is POST,
+     * validates the CSV file, checks if records already exist for the specified month, year, and billing type, and then
+     * either records the CSV file in the database or displays an error message accordingly.
      *
      * @return void
      */
@@ -110,15 +110,40 @@ class Finances extends Controller
             // call function to validate csv
             $validated_data = $this->preprocessCsv();
 
-            // if no errors, proceed to process the csv file
-            if ($validated_data) {
-                // process the csv file
-                echo var_dump($validated_data);
-            } else {
-                // if errors, flush $_POST and $_FILES data, and reload upload page
+            // check if records exist for the month and year for the billing type
+            $record_exists = $this->model->checkRecordsExist($validated_data['month'], $validated_data['year'], $validated_data['billing_type']);
+
+            // if records exist, schedule flash message
+            if ($record_exists) {
+                // flush $_POST and $_FILES data
                 $_POST = [];
                 $_FILES = [];
+
+                flash('error_csv_record_exists', 'Payment details already exist for  ' . $validated_data['month'] . '/' . $validated_data['year'] . '!', 'alert alert-error');
                 header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+            } else {
+                // if no records exist for the month and year
+
+                // if no errors, proceed to record the csv file
+                if ($validated_data) {
+                    // record csv file in DB
+                    if ($this->model->recordCsv($validated_data)) {
+                        // if successful, schedule flash message
+                        flash('csv_record_success', 'Payments recorded successfully!', 'alert alert-success');
+                        header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                    } else {
+                        // if errors, schedule flash message
+                        flash('csv_record_error', 'Error uploading CSV file!', 'alert alert-error');
+                        header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                    }
+                } else {
+                    // if errors, flush $_POST and $_FILES data, and reload upload page
+                    $_POST = [];
+                    $_FILES = [];
+
+                    flash('error_csv_parsing', 'Unknown error in CSV, please check and reupload!', 'alert alert-error');
+                    header('Location: ' . URL_ROOT . '/finances/csvUpload');  // redirect to the same page
+                }
             }
         } else {
             $this->loadView('finances/upload_csv');
