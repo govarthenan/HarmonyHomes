@@ -483,7 +483,7 @@ function showAnnouncementDetails(id) {
  * @param {string} fileInputId - The ID of the file input element.
  * @param {string} fileNameMessageId - The ID of the element where the file name will be displayed.
  */
-function setFileName(fileInputId, fileNameMessageId) {
+function displayFileName(fileInputId, fileNameMessageId) {
     const fileInput = document.getElementById(fileInputId);
     const fileNameMessage = document.getElementById(fileNameMessageId);
 
@@ -496,12 +496,12 @@ function setFileName(fileInputId, fileNameMessageId) {
 }
 
 // resident sign up page
-setFileName('nicPhoto', 'nicPhotoName');
-setFileName('agreementPhoto', 'agreementPhotoName');
+displayFileName('nicPhoto', 'nicPhotoName');
+displayFileName('agreementPhoto', 'agreementPhotoName');
 
 // resident complaint add page
-setFileName('file-complaint-attachment', 'name-complaint-attachment');
+displayFileName('file-complaint-attachment', 'name-complaint-attachment');
 
 // finance csv uploading page
-setFileName('file-water-csv', 'name-water-csv');
-setFileName('file-power-csv', 'name-power-csv');
+displayFileName('file-water-csv', 'name-water-csv');
+displayFileName('file-power-csv', 'name-power-csv');
