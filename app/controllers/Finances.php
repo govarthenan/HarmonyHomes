@@ -252,7 +252,7 @@ class Finances extends Controller
      */
     public function paymentsDue()
     {
-        // get payments of this month
+        // get unpaid payments of this month
         $data['payments'] = $this->model->getPaymentsDue();
 
         $this->loadView('finances/payments_due', $data);
@@ -260,7 +260,7 @@ class Finances extends Controller
 
     public function paymentsOverDue()
     {
-        // get payments of this month
+        // get overdue payments of past months
         $data['payments'] = $this->model->getPaymentsOverdue();
 
         $this->loadView('finances/payments_overdue', $data);
