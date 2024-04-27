@@ -35,7 +35,7 @@ class Facility
     {
         $this->db->prepareQuery('SELECT i.*, r.floor_number, r.door_number
         FROM issue i
-        JOIN resident r ON r.user_id = i.user_id
+        JOIN resident r ON r.user_id = i.user_id WHERE i.technician_assign = 0
         ');
         // $this->db->bind('user_id', $_SESSION['user_id']);
         $this->db->resultSet();
@@ -106,9 +106,9 @@ class Facility
         $this->db->prepareQuery('UPDATE  issue SET technician_assign =:technician_assign WHERE issue_id = :issue_id ');
          
         $this->db->bind('issue_id', $data['issue_id']);
-        $this->db->bind('technician_assign', $data['technician_assign']);
+        $this->db->bind('technician_assign', $data['technician_id']);
         
-        $this->db->execute();
+        return $this->db->execute();
     }  
 
 

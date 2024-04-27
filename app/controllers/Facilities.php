@@ -69,23 +69,34 @@ class Facilities extends Controller
 
     // ToDO: Start with complaints log function
 
-   
+
     public function issueAssign()
     {
         $data['issues_data'] = $this->model->getIssues();
+
+        // // Convert the PHP array to JSON format
+        // $tech_data_json = json_encode($data['tech_data']);
+
+        // Output the JSON data
+        // echo "<script>var technicianData = $tech_data_json;</script>";
+
+        $this->loadView('facilities/fac_issue_table', $data);
+
+
+    }
+    public function assignTechnician($issue_id)
+    {
         $data['tech_data'] = $this->model->fetchTechnicianAllDetails();
+        $data['issueId'] = $issue_id;
+        $this->loadView('facilities/assign_view', $data);
        
-        
-        $this->loadView('facilities/fac_issue_table',$data);
-       
-        
     }
     public function technicianLog()
     {
         $data['tech_detail'] = $this->model->viewTechnician();
-        $this->loadView('facilities/technician_view',$data);
-       
-     }
+        $this->loadView('facilities/technician_view', $data);
+
+    }
     public function technicianAdd()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -113,9 +124,9 @@ class Facilities extends Controller
             } elseif (strlen($data['password']) < 6) {
                 $this->errors['password_err'] = 'Password must be at least 6 characters';
             }
-           
-            
-           // confirm password
+
+
+            // confirm password
             if (empty($data['confirm_password'])) {
                 $this->errors['confirm_password_err'] = 'Please confirm password';
             } elseif ($data['password'] != $data['confirm_password']) {
@@ -123,32 +134,31 @@ class Facilities extends Controller
             }
             //hash  password
             if (empty($this->errors)) {
-            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-              // call model to add technician
-              if ($this->model->addTechnician($data)) {
-                header('location: ' . URL_ROOT . '/facilities/technicianLog');
-                //$this->techniciansLog();
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                // call model to add technician
+                if ($this->model->addTechnician($data)) {
+                    header('location: ' . URL_ROOT . '/facilities/technicianLog');
+                    //$this->techniciansLog();
+                } else {
+                    die('Error with adding technician to DB');  // ToDo: improve error handling
+                }
+
             } else {
-                die('Error with adding technician to DB');  // ToDo: improve error handling
-            }
-            
-            }
-            else {
                 die(print_r($this->errors));  // ToDO: improve error handling
             }
-          
+
         } else {
             $this->loadView('facilities/technician_view');
         }
-        
-        
-        
 
 
-      }
-      public function technicianDelete($technician_id)
+
+
+
+    }
+    public function technicianDelete($technician_id)
     {
-       
+
         // check if technician belongs to user
         $technician_detail = $this->model->fetchtechnicianDetails($technician_id);
 
@@ -163,27 +173,35 @@ class Facilities extends Controller
         }
 
         header('location: ' . URL_ROOT . '/facilities/technicianLog');
-    
-     }
-     public function getAssignDetails(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    }
+    public function getAssignDetails($issue_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
-                'issue_id' => trim($_POST['issue_id']),  // Assuming user_id is stored in session
+                'issue_id' => $issue_id,  // Assign the value of $issue_id directly
                 'technician_type' => trim($_POST['techType']),
-                'technician_id'  => trim($_POST['technician']),
-                'description'  => trim($_POST['description']),
-            ]; 
-
+                'technician_id' => trim($_POST['technician']),
+                'description' => trim($_POST['description']),
+            ];
+            if ($this->model->assignTechnician($data)) {
+                
+                header('location: ' . URL_ROOT . '/facilities/issueAssign');
+                //$this->techniciansLog();
+            } else {
+                die('Error with adding technician to DB');  // ToDo: improve error handling
+            }
+             
+        }else{
+            $this->loadView('facilities/issueAssign');
         }
-        // else{
-        //     $this->loadView('facilities/technician_view');  
-        // }
 
-     }
-     
+       
+    }
 
-     
+
+
     // public function test()
     // {
     //     $complaints_list = $this->model->fetchAllComplaints();
@@ -193,7 +211,7 @@ class Facilities extends Controller
 
 
 
-  
+
 
 
 }
