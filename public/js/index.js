@@ -18,8 +18,6 @@ function randerDate() {
     let addNext = new Date(newDateFunction.getFullYear(),
         newDateFunction.getMonth() + 2, 0).getDate() + 7;
 
-    console.log(currentDate, prevDate, addNext);
-
     let month = newDateFunction.getMonth()
     let year = newDateFunction.getFullYear()
     let monthArr = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -218,58 +216,61 @@ document.addEventListener('DOMContentLoaded', function () {
 /*consumption chart general manger*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('consumptionChart').getContext('2d');
-    const consumptionChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example monthly labels
-            datasets: [{
-                label: 'Total Electricity Consumption (kWh)', // Adjusted label for clarity
-                data: [300, 400, 350, 500, 450, 550], // Example data for electricity consumption
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)', // Line color for electricity
-                tension: 0.1 // Slight curve in the line
-            }, {
-                label: 'Total Water Consumption (Liters)', // Adjusted label for clarity
-                data: [1200, 1100, 1150, 1080, 1220, 1250], // Example data for water consumption
-                fill: false,
-                borderColor: 'rgb(21, 74, 170)', // Line color for water
-                tension: 0.1 // Slight curve in the line
-            }]
-        },
-        options: {
-            aspectRatio: 1, // Ensures the chart maintains a square shape
-            scales: {
-                y: {
-                    beginAtZero: true,
+    const ctx = document.getElementById('consumptionChart');
+    if (ctx) {
+        const ctx = ctx.getContext('2d');
+        const consumptionChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example monthly labels
+                datasets: [{
+                    label: 'Total Electricity Consumption (kWh)', // Adjusted label for clarity
+                    data: [300, 400, 350, 500, 450, 550], // Example data for electricity consumption
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)', // Line color for electricity
+                    tension: 0.1 // Slight curve in the line
+                }, {
+                    label: 'Total Water Consumption (Liters)', // Adjusted label for clarity
+                    data: [1200, 1100, 1150, 1080, 1220, 1250], // Example data for water consumption
+                    fill: false,
+                    borderColor: 'rgb(21, 74, 170)', // Line color for water
+                    tension: 0.1 // Slight curve in the line
+                }]
+            },
+            options: {
+                aspectRatio: 1, // Ensures the chart maintains a square shape
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Total Consumption'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
                     title: {
                         display: true,
-                        text: 'Total Consumption'
+                        text: 'Total Consumption Overview', // Title for the chart
+                        padding: {
+                            top: 10,
+                            bottom: 25
+                        },
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
                     }
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top'
                 },
-                title: {
-                    display: true,
-                    text: 'Total Consumption Overview', // Title for the chart
-                    padding: {
-                        top: 10,
-                        bottom: 25
-                    },
-                    font: {
-                        size: 16,
-                        weight: 'bold'
-                    }
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false // Allows flexibility in adjusting aspect ratio
-        }
-    });
+                responsive: true,
+                maintainAspectRatio: false // Allows flexibility in adjusting aspect ratio
+            }
+        });
+    }
 });
 
 
@@ -277,114 +278,122 @@ document.addEventListener('DOMContentLoaded', function () {
 /*finance chart for both general manager and finance manger*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('financeChart').getContext('2d');
-    const financeChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example months
-            datasets: [
-                {
-                    label: 'Income',
-                    data: [5000, 6000, 5500, 6500, 6200, 6800], // Example income data
-                    borderColor: '#154aaa',
-                    backgroundColor: 'rgba(21, 74, 170,0.1)',
-                    fill: true,
-                    tension: 0.1
-                },
-                {
-                    label: 'Expense',
-                    data: [3000, 3500, 2800, 4000, 3700, 4500], // Example expense data
-                    borderColor: '#f43c6e',
-                    backgroundColor: 'rgba(244, 60, 110,0.1)',
-                    fill: true,
-                    tension: 0.1
-                },
-                {
-                    label: 'Balance',
-                    data: [2000, 2500, 2700, 2500, 2500, 2300], // Example balance data (Income - Expense)
-                    borderColor: '#4cc2c4',
-                    backgroundColor: 'rgba(76, 194, 196,0.1)',
-                    fill: true,
-                    tension: 0.1
-                }
-            ]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Amount ($)'
+    const ctx = document.getElementById('financeChart')
+    if (ctx) {
+        ctx = ctx.getContext('2d');
+        const financeChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Example months
+                datasets: [
+                    {
+                        label: 'Income',
+                        data: [5000, 6000, 5500, 6500, 6200, 6800], // Example income data
+                        borderColor: '#154aaa',
+                        backgroundColor: 'rgba(21, 74, 170,0.1)',
+                        fill: true,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Expense',
+                        data: [3000, 3500, 2800, 4000, 3700, 4500], // Example expense data
+                        borderColor: '#f43c6e',
+                        backgroundColor: 'rgba(244, 60, 110,0.1)',
+                        fill: true,
+                        tension: 0.1
+                    },
+                    {
+                        label: 'Balance',
+                        data: [2000, 2500, 2700, 2500, 2500, 2300], // Example balance data (Income - Expense)
+                        borderColor: '#4cc2c4',
+                        backgroundColor: 'rgba(76, 194, 196,0.1)',
+                        fill: true,
+                        tension: 0.1
                     }
-                },
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Month'
-                    }
-                }
+                ]
             },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top'
-                },
-                title: { // Adding title configuration here
-                    display: true,
-                    text: 'Account Overview',
-                    position: 'top',
-                    font: {
-                        size: 18
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount ($)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
                     }
-                }
-            },
-            responsive: true,
-            maintainAspectRatio: false // Adjusted to maintain aspect ratio within the given square
-        }
-    });
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    title: { // Adding title configuration here
+                        display: true,
+                        text: 'Account Overview',
+                        position: 'top',
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false // Adjusted to maintain aspect ratio within the given square
+            }
+        });
+    }
 });
 
 
 
 
 /*choose files-billing, complaint*/
-document.getElementById('file-input').addEventListener('change', function () {
-    var fileName = document.getElementById('file-input').files[0].name;
-    document.getElementById('file-name').textContent = fileName;
-});
+var file_input_complaint = document.getElementById('file-input')
 
+if (file_input_complaint) {
+    file_input_complaint.addEventListener('change', function () {
+        var fileName = document.getElementById('file-input').files[0].name;
+        document.getElementById('file-name').textContent = fileName;
+    });
+} else {
+    console.log('Element not found');
+}
 
 
 /*select file in complaints part*/
-try {
-    document.getElementById('file-input').addEventListener('change', function (event) {
+var file_input_complaint_1 = document.getElementById('file-input')
+
+if (file_input_complaint_1) {
+    file_input_complaint_1.addEventListener('change', function (event) {
         var file = event.target.files[0];  // Get the selected file
         var fileMessage = document.getElementById('select-message');
 
         // Clear the content of the drop area and then append the file name
         fileMessage.innerHTML = `${file.name}`;
     });
-} catch (error) {
-    console.error(error);
+} else {
+    console.log('Element not found');
 }
 
 // Function to close the alert automatically after n seconds
-try {
-    function closeAlert() {
-        var alertElement = document.getElementById('alert');
-        alertElement.style.opacity = '0';
-        setTimeout(function () {
-            alertElement.style.display = 'none';
-        }, 2000);
-    }
+var alertElement = document.getElementById('alert');
+if (alertElement) {
+    alertElement.style.opacity = '0';
+    setTimeout(function () {
+        alertElement.style.display = 'none';
+    }, 2000);
 
     // Automatically close the alert after 5 seconds
     setTimeout(function () {
         closeAlert();
     }, 1000);
-} catch (error) {
-    console.log(error);
+} else {
+    console.log('Element not found');
 }
 
 /*create announcement*/
@@ -405,56 +414,65 @@ function toggleDropdowns() {
 
 /*Notification and announcement*/
 
-document.addEventListener('DOMContentLoaded', function () {
-    var quill = new Quill('#editor', {
-        theme: 'snow'  // Specify theme in configuration
+try {
+    document.addEventListener('DOMContentLoaded', function () {
+        if (document.getElementById('editor')) {
+            var quill = new Quill('#editor', {
+                theme: 'snow'  // Specify theme in configuration
+            });
+
+            document.getElementById('notificationForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const title = document.getElementById('title').value;
+                const message = quill.root.innerHTML;  // Get the inner HTML of the editor
+
+                console.log('Notification Title:', title);
+                console.log('Notification Message:', message);
+
+                // Here you would typically send the data to a server
+                alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
+            });
+        }
     });
-
-    document.getElementById('notificationForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-
-        const title = document.getElementById('title').value;
-        const message = quill.root.innerHTML;  // Get the inner HTML of the editor
-
-        console.log('Notification Title:', title);
-        console.log('Notification Message:', message);
-
-        // Here you would typically send the data to a server
-        alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
-    });
-});
+} catch (error) {
+    console.log("Error loading Quill");
+}
 
 /*payment status-finance-js*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    var ctx = document.getElementById('paymentStatusChart').getContext('2d');
-    var paymentStatusChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Completed Payments', 'Not Completed Payments'],
-            datasets: [{
-                label: 'Payment Status',
-                data: [60, 40], // Data for the chart: 60% completed, 40% not completed
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.6)', // Light blue for completed
-                    'rgba(255, 99, 132, 0.6)'  // Light red for not completed
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 99, 132, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'right'
+    var ctx = document.getElementById('paymentStatusChart')
+    if (ctx) {
+        ctx = ctx.getContext('2d');
+        var paymentStatusChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Completed Payments', 'Not Completed Payments'],
+                datasets: [{
+                    label: 'Payment Status',
+                    data: [60, 40], // Data for the chart: 60% completed, 40% not completed
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)', // Light blue for completed
+                        'rgba(255, 99, 132, 0.6)'  // Light red for not completed
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right'
+                    }
                 }
             }
-        }
-    });
+        });
+    }
 });
 
 // show announcement details on resident page
