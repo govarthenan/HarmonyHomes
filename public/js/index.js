@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /*finance chart for both general manager and finance manger*/
 
 document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('financeChart')
+    var ctx = document.getElementById('financeChart')
     if (ctx) {
         ctx = ctx.getContext('2d');
         const financeChart = new Chart(ctx, {
