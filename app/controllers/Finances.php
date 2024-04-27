@@ -268,6 +268,9 @@ class Finances extends Controller
 
     public function paymentsLog()
     {
-        $this->loadView('finances/payments_log');
+        // get finished payments
+        $data['payments'] = $this->model->getFinishedPayments();
+
+        $this->loadView('finances/payments_log', $data);
     }
 }

@@ -28,61 +28,61 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                     <div class="table-body">
                         <table>
                             <tr class="payment-table-head">
-                                <th>Payment ID</th>
-                                <th>Resident ID</th>
-                                <th>Date</th>
-                                <th>Subject</th>
+                                <th>Aparment No.</th>
+                                <th>Month</th>
+                                <th>Payments</th>
+                                <th>Total</th>
                                 <th>Action</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>S 2/4</td>
-                                <td>2024.05.02</td>
-                                <td>Maintenance fees</td>
-                                <td><button class="viewButtonlog">View</button></td>
+                            <?php foreach ($data['payments'] as $payment) : ?>
+                                <?php
+                                // calculate total, and whether row should be displayed
+                                $paid_total = 0;
 
+                                if ($payment->water_paid == 1) {
+                                    $paid_total += $payment->water;
+                                    $water_amount = $payment->water;
+                                }
 
-                            </tr>
+                                if ($payment->power_paid == 1) {
+                                    $paid_total += $payment->power;
+                                    $power_amount = $payment->power;
+                                }
 
-                            <tr>
-                                <td>1</td>
-                                <td>S 2/4</td>
-                                <td>2024.05.02</td>
-                                <td>Maintenance fees</td>
-                                <td><button class="viewButtonlog">View</button></td>
+                                if ($payment->maintenance_paid == 1) {
+                                    $paid_total += $payment->maintenance;
+                                    $maintenance_amount = $payment->maintenance;
+                                }
 
+                                if ($paid_total == 0) {
+                                    continue;
+                                }
+                                ?>
 
-                            </tr>
+                                <tr>
+                                    <td><?php echo $payment->floor . '/' . $payment->door; ?></td>
+                                    <td><?php echo $payment->month . '/' . $payment->year; ?></td>
+                                    <!-- print payment items -->
+                                    <td>
+                                        <?php
+                                        if (($payment->water > 0) && ($payment->water_paid == 1)) {
+                                            echo 'Water: ' . $payment->water . ' Rs' . '<br>';
+                                        }
 
-                            <tr>
-                                <td>1</td>
-                                <td>S 2/4</td>
-                                <td>2024.05.02</td>
-                                <td>Maintenance fees</td>
-                                <td><button class="viewButtonlog">View</button></td>
+                                        if (($payment->power > 0) && ($payment->power_paid == 1)) {
+                                            echo 'Electricity: ' . $payment->power .  ' Rs' . '<br>';
+                                        }
 
+                                        if (($payment->maintenance > 0) && ($payment->maintenance_paid == 1)) {
+                                            echo 'Maintenance: ' . $payment->maintenance .  ' Rs' . '<br>';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td><?php echo $paid_total . ' Rs'; ?></td>
+                                    <td><button class="viewButton-up">View</button></td>
+                                </tr>
+                            <?php endforeach; ?>
 
-                            </tr>
-
-                            <tr>
-                                <td>1</td>
-                                <td>S 2/4</td>
-                                <td>2024.05.02</td>
-                                <td>Maintenance fees</td>
-                                <td><button class="viewButtonlog">View</button></td>
-
-
-                            </tr>
-
-                            <tr>
-                                <td>1</td>
-                                <td>S 2/4</td>
-                                <td>2024.05.02</td>
-                                <td>Maintenance fees</td>
-                                <td><button class="viewButtonlog">View</button></td>
-
-
-                            </tr>
                         </table>
                     </div>
                 </div>

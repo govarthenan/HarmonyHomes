@@ -210,4 +210,18 @@ class Finance
         $this->db->bind('year', date('Y'));
         return $this->db->resultSet();
     }
+
+    /**
+     * Retrieves the finished payments from the billing_resident table.
+     *
+     * This method retrieves rows from the billing_resident table where at least one of the columns water_paid, power_paid, or maintenance_paid has the value of one.
+     *
+     * @return array Returns an array of rows representing the finished payments.
+     */
+    public function getFinishedPayments()
+{
+        // get rows where at least one of the columns water_paid, power_paid, maintenance_paid has the value of one
+        $this->db->prepareQuery('SELECT * FROM billing_resident WHERE water_paid = 1 OR power_paid = 1 OR maintenance_paid = 1');
+        return $this->db->resultSet();
+    }
 }
