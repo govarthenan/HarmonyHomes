@@ -60,6 +60,7 @@ class Database
      */
     public function bind(string $param, mixed $value, $type = null)
     {
+        // die(var_dump(func_get_args()));
         if (is_null($type)) {
             switch (true) {
                 case is_int($value):

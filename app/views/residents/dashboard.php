@@ -129,6 +129,17 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
        </div>
     </div>
 
+    <div id="popupModal-announcement" class="popup-announcement" style="display:none;">
+       <div class="modal-content-announcement">
+         <span class="close">&times;</span>
+         <div class="announcement-msg">
+          <div class="title">Power Cut</div>
+          <div class="sender">Facility manager</div>
+          <div class="date">sent date</div>
+          <div class="message">fhrhgruhgiergr</div>
+       </div>
+    </div>
+
     <script src="<?php echo URL_ROOT . '/js/index.js'; ?>" ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>

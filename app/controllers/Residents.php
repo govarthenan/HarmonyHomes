@@ -10,6 +10,8 @@ class Residents extends Controller
     private $model;
     public $data = [];  // to store data entered by user, as well as to be passed to view
     public $errors = [];  // to store errors, as well as to be passed to view
+    public $controller_role = "resident";
+
     public function __construct()
     {
         // load DB model
@@ -242,6 +244,7 @@ class Residents extends Controller
         $_SESSION['user_id'] = $user->user_id;
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->name;
+        $_SESSION['user_role'] = $this->controller_role;
 
         header('location: ' . URL_ROOT . '/residents/index');
     }
@@ -322,6 +325,7 @@ class Residents extends Controller
 
             // call model to add complaint
             if ($this->model->writeComplaint($data)) {
+                flash('complaint_add_success', 'Complaint added successfully!');
                 header('location: ' . URL_ROOT . '/residents/complaintsLog');
             } else {
                 die('Error with adding complaint to DB');  // ToDo: improve error handling

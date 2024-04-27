@@ -27,8 +27,8 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                     </div>
                 </div>
 
-
-
+                <!-- flash message -->
+                <?php flash('complaint_add_success'); ?>
 
                 <?php foreach ($data['complaints'] as $index => $complaint) : ?>
                     <div class="complaint-log-content">
@@ -63,20 +63,13 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 </a>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
                     </div>
                 <?php endforeach; ?>
 
             </div>
         </div>
     </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
 
 </html>

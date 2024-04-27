@@ -74,7 +74,9 @@ function moveDate(para) {
     randerDate();
 }
 
-//maintenance payment variation chart
+/*resident js*
+
+//maintenance payment variation chart-resident js 
 
 document.addEventListener("DOMContentLoaded", function () {
     var ctx = document.getElementById("maintenancePaymentChart").getContext("2d");
@@ -132,7 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//utility usage chart
+
+//utility usage chart-resident js
 
 document.addEventListener("DOMContentLoaded", function () {
     var ctx = document.getElementById("utilityUsageChart").getContext("2d");
@@ -173,9 +176,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//modal
+//modal-resident js
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function() {
     function closeModal(modal) {
         modal.style.display = "none";
     }
@@ -384,27 +387,102 @@ $(document).ready(function () {
 });
 
 /*select file in complaints part*/
+try {
+    document.getElementById('file-input').addEventListener('change', function (event) {
+        var file = event.target.files[0];  // Get the selected file
+        var fileMessage = document.getElementById('select-message');
 
-document.getElementById("file-input").addEventListener("change", function (event) {
-    var file = event.target.files[0]; // Get the selected file
-    var dropArea = document.getElementById("drop-area");
-
-    // Clear the content of the drop area and then append the file name
-    dropArea.innerHTML = `
-        <p>Selected file: ${file.name}</p>
-    `;
-});
-
-// Function to close the alert manually
-function closeAlert() {
-    var alertElement = document.getElementById("alert");
-    alertElement.style.opacity = "0";
-    setTimeout(function () {
-        alertElement.style.display = "none";
-    }, 500);
+        // Clear the content of the drop area and then append the file name
+        fileMessage.innerHTML = `${file.name}`;
+    });
+} catch (error) {
+    console.error(error);
 }
 
-// Automatically close the alert after 5 seconds
-setTimeout(function () {
-    closeAlert();
-}, 5000);
+// Function to close the alert automatically after n seconds
+try {
+    function closeAlert() {
+        var alertElement = document.getElementById('alert');
+        alertElement.style.opacity = '0';
+        setTimeout(function () {
+            alertElement.style.display = 'none';
+        }, 2000);
+    }
+
+    // Automatically close the alert after 5 seconds
+    setTimeout(function () {
+        closeAlert();
+    }, 1000);
+} catch (error) {
+    console.log(error);
+}
+
+/*create announcement*/
+
+function toggleDropdowns() {
+    var userType = document.getElementById('userType').value;
+    var groupSelect = document.getElementById('groupSelect');
+
+    // Handling Group Select visibility
+    if (userType === 'wings') {
+        groupSelect.style.display = 'block';
+    } else {
+        groupSelect.style.display = 'none';
+    }
+
+}
+
+
+/*Notification and announcement*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    var quill = new Quill('#editor', {
+        theme: 'snow'  // Specify theme in configuration
+    });
+
+    document.getElementById('notificationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const title = document.getElementById('title').value;
+        const message = quill.root.innerHTML;  // Get the inner HTML of the editor
+
+        console.log('Notification Title:', title);
+        console.log('Notification Message:', message);
+
+        // Here you would typically send the data to a server
+        alert('Notification Created!\nTitle: ' + title + '\nMessage: ' + message);
+    });
+});
+
+/*payment status-finance-js*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('paymentStatusChart').getContext('2d');
+    var paymentStatusChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Completed Payments', 'Not Completed Payments'],
+            datasets: [{
+                label: 'Payment Status',
+                data: [60, 40], // Data for the chart: 60% completed, 40% not completed
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)', // Light blue for completed
+                    'rgba(255, 99, 132, 0.6)'  // Light red for not completed
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right'
+                }
+            }
+        }
+    });
+});
