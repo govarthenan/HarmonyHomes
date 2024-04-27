@@ -201,4 +201,13 @@ class Finance
         $this->db->bind('year', date('Y'));
         return $this->db->resultSet();
     }
+
+    public function getPaymentsOverdue()
+    {
+        // get payments that belong to months before this
+        $this->db->prepareQuery('SELECT * FROM billing_resident WHERE (year < :year) OR (year = :year AND month < :month)');
+        $this->db->bind('month', date('m'));
+        $this->db->bind('year', date('Y'));
+        return $this->db->resultSet();
+    }
 }
