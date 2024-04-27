@@ -589,7 +589,6 @@ a:-webkit-any-link {
         width:94%;
         margin: 1% 2%;
         background-color: var(--color_6);
-        display: grid;
         grid-template-rows: 1fr 12fr;
         padding-bottom: 2%;
         }

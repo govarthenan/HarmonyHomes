@@ -36,11 +36,11 @@
         <nav class="navigation">
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_payment.svg' ?>" />
-                <span class="sidebar-title">Payment</span>
+                <a href="<?php echo URL_ROOT . '/finances/paymentsDue' ?>"><span class="sidebar-title">Payment Overview</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_bill.svg' ?>" />
-                <span class="sidebar-title">Billing</span>
+                <a href="<?php echo URL_ROOT . '/finances/csvUpload' ?>"><span class="sidebar-title">Billing</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_calendar.svg' ?>" />
