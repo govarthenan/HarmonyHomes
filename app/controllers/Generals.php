@@ -327,11 +327,22 @@ class Generals extends Controller
                 } else {
                     flash('error_user_deleted', 'Error deleting user', 'alert alert-error');
                 }
+            } elseif ($action == 'set-wing') {
+                // set PHP null for HTML null
+                if ($_POST['wing'] == '') {
+                    $_POST['wing'] = null;
+                }
+
+                if ($this->model->setWing($target_resident_id, $_POST['wing'])) {
+                    flash('success_wing_set', 'Wing set!', 'alert alert-success');
+                } else {
+                    flash('error_wing_set', 'Error setting wing', 'alert alert-error');
+                }
             } else {
-                flash('error_user_action', 'Unknown action. Please try again!', 'alert alert-error');
+                flash('error_wing_action', 'Unknown action. Please try again!', 'alert alert-error');
             }
         }
 
-        header('location: ' . URL_ROOT . '/generals/registrations');
+        header('location: ' . URL_ROOT . '/generals/signUpRequestDetails/' . $target_resident_id);
     }
 }
