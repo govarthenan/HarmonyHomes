@@ -23,7 +23,7 @@ include (APP_ROOT . '/views/inc/facility_side_nav.php');
         <div id="technicians" class="technicians-container">
           <?php foreach ($data['tech_detail'] as $index => $tech): ?>
             <div class="technician-card">
-              <img src="image.png" class="technician-profile-image">
+              <img src="<?php echo URL_ROOT . '/resources/generals/img-tec.png' ?>" class="technician-profile-image">
               <div class="technicain-name">Technician: <?php echo $tech->first_name; ?> </div>
               <div class="technicain-name">Phone no: <?php echo $tech->phone_number; ?> </div>
               <div class="specialization">Specialization: <?php echo $tech->specialization; ?></div>
@@ -119,8 +119,7 @@ include (APP_ROOT . '/views/inc/facility_side_nav.php');
   </div>
   </div>
   </div>
-  <<script src="<?php echo URL_ROOT . '/js/script.js'; ?>">
-    </script>
+  <script src="<?php echo URL_ROOT . '/js/script.js'; ?>"> </script>
 </body>
 
 </html>

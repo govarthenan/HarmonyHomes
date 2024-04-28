@@ -101,10 +101,7 @@ class Facilities extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            // foreach ($_POST as $key => $value) {
-            //     echo gettype($value) . PHP_EOL;
-            // }
-            // die();
+            
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
@@ -167,9 +164,9 @@ class Facilities extends Controller
         // }
 
         $technician_delete_result = $this->model->deleteTechnician($technician_id);
-
+            
         if (!$technician_delete_result) {
-            die('Error deleting announcement');  // ToDo: improve error handling
+            die('Error deleting Technician');  // ToDo: improve error handling
         }
 
         header('location: ' . URL_ROOT . '/facilities/technicianLog');
@@ -224,6 +221,111 @@ class Facilities extends Controller
     //     $data['complaints'] = $complaints_list;
     //     $this->loadView('generals/test', $data);
     // }
+
+    //inventory
+    public function inventoryLog()
+    {
+       $data['inventory_detail'] = $this->model->viewInventoryDetails();
+        $this->loadView('facilities/inventory_table',$data);
+       
+    }
+     // fac-manger add inventory  
+     public function inventoryCreate(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'inventory-type' => trim($_POST['inventory-type']),
+                'inventory-count' => trim($_POST['inventory-count']),
+            
+            ];
+            $inventory_detail = $this->model->fetchOneInventoryDetail($data['inventory-type']);
+            print_r($inventory_detail);
+            if($inventory_detail){
+                $inventory_detail->count = $inventory_detail->count + $data['inventory-count']; //function for "If the table already contains that inventory, then the inventory count will be added to the existing inventory."
+                $updated_inventory = [
+                    'inventory_id' => $inventory_detail->inventory_id,
+                    'inventory_type' => $inventory_detail->inventory_type,
+                    'inventory_count' => $inventory_detail->count
+                ];
+                print_r($updated_inventory);
+                if ($this->model->updateInventory($updated_inventory)) {
+                    flash('inventory_add_success', 'inventory added successfully!');
+                    header('location: ' . URL_ROOT . '/facilities/inventoryLog');
+                } else {
+                    die('Error with adding inventory to DB');  // ToDo: improve error handling
+                }
+            }else{
+                if ($this->model->createInventory($data)) {
+                    flash('inventory_add_success', 'inventory added successfully!');
+                    header('location: ' . URL_ROOT . '/facilities/inventoryLog');
+            } else {
+                die('Error with adding inventory to DB');  // ToDo: improve error handling
+            
+            }
+        }
+            
+        } else {
+            $this->loadView('facilities/inventoryLog');
+        }
+    }
+
+    public function inventoryDelete($inventory_id)
+    {
+       
+        
+        $inventory_detail = $this->model->fetchOneInventoryDetail($inventory_id);
+
+        $inventory_delete_result = $this->model->deleteInventory($inventory_id);
+
+        if (!$inventory_delete_result) {
+            die('Error deleting announcement');  // ToDo: improve error handling
+        }
+
+        header('location: ' . URL_ROOT . '/facilities/inventoryLog');
+    
+     }
+     public function inventoryView($inventory_id)
+     {
+        $inventory_detail = $this->model->viewInventory();
+        $data['inventory_details'] = $this->model->fetchOneInventory($inventory_id);
+        $this->loadView('facilities/inventory_view_form',$data);
+       
+
+      }
+    //  public function inventoryCountUpdate($inventory_id){
+    // $inventory_detail = $this->model->updateInventoryCount($inventory_id);
+
+    //  }
+    public function inventoryCountUpdate($inventory_id){
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data = [
+            
+            'inventory_id' => $inventory_id,
+            'updatedCount' => trim($_POST['updatedCount']),
+        ];
+        
+        
+        
+        if ($this->model->updateInventoryCount($data)) {
+           // If update is successful, redirect to the inventory log page 
+            header('location: ' . URL_ROOT . '/facilities/inventoryLog');
+            exit() ;
+        } else {
+            die('Error with updating inventory count in DB');  // ToDo: improve error handling
+        }
+
+        }else{
+            header('location: ' . URL_ROOT . '/facilities/inventoryLog');
+            exit() ;
+        }
+
+
+
+
+}
+
 
 
 
