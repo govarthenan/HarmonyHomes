@@ -567,6 +567,26 @@ body {
     color: var(--color_4);
 }
 
+.submitButton-maintenance{
+    background-color: var(--color_7);
+    color: var(--color_6);
+    padding: 1% 1.5%;
+    border-style: solid;
+    border-color: var(--color_7);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 1rem;
+    float: right;
+    margin-right: 5%;
+    margin-top: 3%;   
+}
+
+.submitButton-maintenance:hover {
+    background-color: var(--color_6);
+    border-color: var(--color_4);
+    color: var(--color_4);
+}
+
 select {
     background-color: var(--form_color);
     padding: 1% 5%;

@@ -121,6 +121,19 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                         </div>
                         
                     </form>
+                    <!-- electricity form -->
+                <div class="elec-container">
+                
+                <form enctype="multipart/form-data" action="<?php echo URL_ROOT . '/finances/csvUpload' ?>" method="POST">
+                <div class="water-cont">
+                    <label for="waterFile" class="warter-lable">Maintenance Fees:</label>
+                    <input type="text" name="fixMaintenanceFee">
+                </div>
+
+                <!-- billing type indicator, hidden input -->
+                    <input type="hidden" name="billing_type" value="power" />
+                    <button type="submit" class="submitButton-maintenance">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
