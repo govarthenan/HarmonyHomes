@@ -322,7 +322,6 @@ class Residents extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
@@ -445,14 +444,4 @@ class Residents extends Controller
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
 
-    public function test()
-    {
-        // schedule multiple flash messages to be shown one below one
-        flashMessage('test1', 'Test message 1', 'alert alert-success');
-        flashMessage('test2', 'Test message 2', 'alert alert-danger');
-        flashMessage('test3', 'Test message 3', 'alert');
-
-        // redirect to home page
-        header('location: ' . URL_ROOT . '/residents/index');
-    }
 }

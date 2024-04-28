@@ -1538,7 +1538,7 @@ input[type="file"] {
 
   /* flash message */
   
-.alert-success {
+.alert {
     padding: 1.5% 2%;
     background-color: var(--color_2);
     color: var(--color_7);
