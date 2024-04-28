@@ -375,21 +375,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Function to close the alert automatically after n seconds
-var alertElement = document.getElementById('alert');
-if (alertElement) {
-    alertElement.style.opacity = '0';
-    setTimeout(function () {
-        alertElement.style.display = 'none';
-    }, 2000);
-
-    // Automatically close the alert after 5 seconds
-    setTimeout(function () {
-        closeAlert();
-    }, 1000);
-} else {
-    console.log('Element not found');
-}
 
 /*create announcement*/
 
@@ -477,3 +462,62 @@ displayFileName('file-complaint-attachment', 'name-complaint-attachment');
 // finance csv uploading page
 displayFileName('file-water-csv', 'name-water-csv');
 displayFileName('file-power-csv', 'name-power-csv');
+
+
+// function to select all alert messages by name, and close them after 5 seconds
+var flashMessages = document.getElementsByName('alert-message');
+
+// if flashMessages contain any elements, loop through each element
+if (flashMessages.length > 0) {
+    console.log('pass 1');
+    flashMessages.forEach(message => {
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 3000);
+    });
+}
+
+
+
+/*create Notification*/
+
+function toggleDropdowns() {
+    var userType = document.getElementById('userType').value;
+    var groupSelect = document.getElementById('groupSelect');
+    var residentIdSelect = document.getElementById('residentIdSelect');
+
+    // Handling Group Select visibility
+    if (userType === 'groups') {
+        groupSelect.style.display = 'block';
+        residentIdSelect.style.display = 'none';  // Ensure this is hidden if not 'customUser'
+    } else {
+        groupSelect.style.display = 'none';
+    }
+
+    
+    if (userType === 'customUser') {
+        residentIdSelect.style.display = 'block';
+        groupSelect.style.display = 'none';  // Ensure this is hidden if not 'groups'
+    } else {
+        residentIdSelect.style.display = 'none';
+    }
+}
+
+
+
+/* displying full details when clicked on view button of sign request table*/
+document.addEventListener('DOMContentLoaded', function() {
+    const viewButtons = document.querySelectorAll('.viewButton');
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const detailsRow = this.closest('tr').nextElementSibling; // Get the next row, which should be the details row
+            detailsRow.style.display = detailsRow.style.display === 'none' ? 'table-row' : 'none'; // Toggle visibility
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('.viewButton').click(function() {
+        $(this).closest('tr').next('.description-row').toggle();  // Toggle the visibility of the next description row
+    });
+});
