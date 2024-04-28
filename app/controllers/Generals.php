@@ -300,4 +300,39 @@ class Generals extends Controller
         $this->loadView('generals/signup_request_details', $data);
     }
 
+    public function userManagement($target_resident_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // sanitize input
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $action = $_POST['action'];
+
+            if ($action == 'toggle-approval') {
+                if ($_POST['approval'] == 1) {
+                    if ($this->model->toggleResidentApproval($target_resident_id, 0)) {
+                        flash('success_user_suspended', 'User suspended!', 'alert alert-success');
+                    } else {
+                        flash('error_user_suspended', 'Error suspending user', 'alert alert-error');
+                    }
+                } else {
+                    if ($this->model->toggleResidentApproval($target_resident_id, 1)) {
+                        flash('success_user_approved', 'User approved!', 'alert alert-success');
+                    } else {
+                        flash('error_user_approved', 'Error approving user', 'alert alert-error');
+                    }
+                }
+            } elseif ($action == 'delete-user') {
+                if ($this->model->deleteResident($target_resident_id)) {
+                    flash('success_user_deleted', 'User deleted!', 'alert alert-success');
+                } else {
+                    flash('error_user_deleted', 'Error deleting user', 'alert alert-error');
+                }
+            } else {
+                flash('error_user_action', 'Unknown action. Please try again!', 'alert alert-error');
+            }
+        }
+
+        header('location: ' . URL_ROOT . '/generals/registrations');
+    }
 }
