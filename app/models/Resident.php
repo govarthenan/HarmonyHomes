@@ -185,4 +185,10 @@ class Resident
         // Execute the query and return bool
         return $this->db->execute();
     }
+
+    public function fetchAllAnnouncements()
+    {
+        $this->db->prepareQuery('SELECT * FROM announcement ORDER BY announcement_id DESC LIMIT 2');
+        return $this->db->resultSet();
+    }
 }
