@@ -77,8 +77,7 @@ class General
 
     public function writeAnnouncement($data)
     {
-       $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
-       
+        $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
 
         $this->db->bind('user_id', $data['user_id']);
         $this->db->bind('receiver', $data['receiver']);
@@ -89,7 +88,7 @@ class General
     }
 
 
-    
+
     /**
      * Fetches all announcements for the current user.
      *
@@ -102,7 +101,7 @@ class General
         return $this->db->resultSet();
     }
 
-    
+
     /**
      * Updates a announcement in the database with the edited information.
      *
@@ -115,9 +114,9 @@ class General
 
         // Bind values
         $this->db->bind('receiver', $edited_announcement['receiver']);
-        $this->db->bind('title',$edited_announcement['title']);
+        $this->db->bind('title', $edited_announcement['title']);
         $this->db->bind('message', $edited_announcement['message']);
-        $this->db->bind('announcement_id',$edited_announcement['announcement_id']);
+        $this->db->bind('announcement_id', $edited_announcement['announcement_id']);
 
         // Execute the query and return bool
         return $this->db->execute();
