@@ -276,8 +276,6 @@ class Finances extends Controller
     public function createNotification()
     {
         // get finished payments
-       
-
         $this->loadView('finances/create_notification');
     }
 }
