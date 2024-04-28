@@ -172,4 +172,20 @@ class General
         }
     }
 
+    public function toggleResidentApproval($target_resident_id, $incoming_value)
+    {
+        $this->db->prepareQuery('UPDATE resident SET approved = :approved WHERE user_id = :user_id');
+        $this->db->bind('approved', $incoming_value);
+        $this->db->bind('user_id', $target_resident_id);
+
+        return $this->db->execute();
+    }
+
+    public function deleteResident($target_resident_id)
+    {
+        $this->db->prepareQuery('DELETE FROM resident WHERE user_id = :user_id');
+        $this->db->bind('user_id', $target_resident_id);
+
+        return $this->db->execute();
+    }
 }
