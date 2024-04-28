@@ -148,7 +148,6 @@ class Generals extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             // foreach ($_POST as $key => $value) {
             //     echo gettype($value) . PHP_EOL;
             // }
@@ -174,7 +173,7 @@ class Generals extends Controller
         }
     }
 
-/**
+    /**
      * Edit a announcement.
      *
      * This method is responsible for editing a announcement based on the provided complaint ID.
@@ -252,8 +251,8 @@ class Generals extends Controller
         $this->loadView('generals/announcement_detail', $data);
     }
 
-    
-/**
+
+    /**
      * Deletes a announcement for a resident.
      *
      * @param int $announcement_id The ID of the announcement to be deleted.
@@ -278,4 +277,61 @@ class Generals extends Controller
     }
 
 
+    public function registrations()
+    {
+        // fetch data
+        $data['signup_requests'] = $this->model->fetchAllUsersForManagement();
+
+        $this->loadView('generals/signup_request', $data);
+    }
+
+    public function signUpRequestDetails($user_id)
+    {
+        $signup_request_detail = $this->model->fetchSignupRequestDetails($user_id);
+
+        // check DB result
+        if (!$signup_request_detail) {
+            flash('error_user_not_found', 'User details not found', 'alert alert-error');
+        }
+
+        $data['signup_request'] = $signup_request_detail;
+
+        $this->loadView('generals/signup_request_details', $data);
+    }
+
+    public function userManagement($target_resident_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // sanitize input
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $action = $_POST['action'];
+
+            if ($action == 'toggle-approval') {
+                if ($_POST['approval'] == 1) {
+                    if ($this->model->toggleResidentApproval($target_resident_id, 0)) {
+                        flash('success_user_suspended', 'User suspended!', 'alert alert-success');
+                    } else {
+                        flash('error_user_suspended', 'Error suspending user', 'alert alert-error');
+                    }
+                } else {
+                    if ($this->model->toggleResidentApproval($target_resident_id, 1)) {
+                        flash('success_user_approved', 'User approved!', 'alert alert-success');
+                    } else {
+                        flash('error_user_approved', 'Error approving user', 'alert alert-error');
+                    }
+                }
+            } elseif ($action == 'delete-user') {
+                if ($this->model->deleteResident($target_resident_id)) {
+                    flash('success_user_deleted', 'User deleted!', 'alert alert-success');
+                } else {
+                    flash('error_user_deleted', 'Error deleting user', 'alert alert-error');
+                }
+            } else {
+                flash('error_user_action', 'Unknown action. Please try again!', 'alert alert-error');
+            }
+        }
+
+        header('location: ' . URL_ROOT . '/generals/registrations');
+    }
 }
