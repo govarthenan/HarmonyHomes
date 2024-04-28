@@ -17,7 +17,7 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
             <div class="payment-overview-heading">Payment Overview</div>
             <div class="payment-filter">
                 <div class="topbar-payment-filter">
-                    <a href="<?php echo URL_ROOT . '/finances/paymentsOverview' ?>">All</a>
+                    
                     <a href="<?php echo URL_ROOT . '/finances/paymentsDue' ?>">Up-Comming payments</a>
                     <a href="<?php echo URL_ROOT . '/finances/paymentsOverdue' ?>">Overdue payments</a>
                     <a href="<?php echo URL_ROOT . '/finances/paymentsLog' ?>">Payments log</a>
