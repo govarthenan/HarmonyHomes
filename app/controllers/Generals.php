@@ -148,7 +148,6 @@ class Generals extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             // foreach ($_POST as $key => $value) {
             //     echo gettype($value) . PHP_EOL;
             // }
@@ -174,7 +173,7 @@ class Generals extends Controller
         }
     }
 
-/**
+    /**
      * Edit a announcement.
      *
      * This method is responsible for editing a announcement based on the provided complaint ID.
@@ -252,8 +251,8 @@ class Generals extends Controller
         $this->loadView('generals/announcement_detail', $data);
     }
 
-    
-/**
+
+    /**
      * Deletes a announcement for a resident.
      *
      * @param int $announcement_id The ID of the announcement to be deleted.
