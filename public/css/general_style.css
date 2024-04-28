@@ -2285,3 +2285,44 @@ height: 40%;
 display: grid;
 grid-template-rows:0.5fr 0.5fr 1fr 1fr  ;
 }
+
+.alert {
+    padding: 1.5% 2%;
+    background-color: var(--color_2);
+    color: var(--color_7);
+    opacity: 1; /* Start fully visible */
+    transition: opacity 0.5s linear; /* Smooth transition for the opacity */
+    border-radius: 8px;
+    border: 2px solid var(--color_3); /* Subtle border */
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 30%;
+    margin: 0 auto; /* Center the alert box */
+    position: fixed; /* Fixed at the top */
+    top: 4%; /* Spacing from the top */
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensures it doesn't get hidden behind other elements */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for better visibility */
+    /* display: none; */
+}
+
+.alert-danger{
+    padding: 1.5% 2%;
+    background-color: var(--color_12);
+    color: var(--color_1);
+    opacity: 1; /* Start fully visible */
+    transition: opacity 0.5s linear; /* Smooth transition for the opacity */
+    border-radius: 8px;
+    border: 2px solid var(--color_1); /* Subtle border */
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 30%;
+    margin: 0 auto; /* Center the alert box */
+    position: fixed; /* Fixed at the top */
+    top: 18%; /* Spacing from the top */
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensures it doesn't get hidden behind other elements */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
