@@ -64,7 +64,7 @@ include (APP_ROOT . '/views/inc/facility_side_nav.php');
                   <textarea id="description" name="description" rows="4"></textarea>
                 </div>
                 <div class="assign-Button">
-
+                      <a href="<?php echo URL_ROOT . '/facilities/getAssignDetails/' . $issue_id ?>"></a>
                   <button class="technician-assign-btn" id="technician-assign-btn">Assign Technician </button>
 
                 </div>

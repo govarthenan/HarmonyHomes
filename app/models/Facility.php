@@ -110,6 +110,46 @@ class Facility
         
         return $this->db->execute();
     }  
+    public function fetchAssignDetails()
+    {
+        $this->db->prepareQuery('SELECT issue_id, technician_assign, date
+        FROM issue
+        WHERE technician_assign <> 0 ');
+        // $this->db->bind('issue_id', $issue_id);
+        return $this->db->resultSet();
+
+        
+
+    }
+    public function addAssignDetails($results)
+    {
+        $sql = "INSERT INTO assign_issue (issue_id, technician_id, date)
+            VALUES (:issue_id, :technician_id, :date)";
+
+        // Prepare the query
+        $this->db->prepareQuery($sql);
+
+        
+        foreach ($results as $result) {
+            // Check if all required keys are set in the $result array
+            if (!isset($result->issue_id, $result->technician_assign, $result->date)) {
+                // Handle missing keys, such as logging an error or skipping the current result
+                continue;
+            }
+    
+            // Bind parameters for each result
+            $this->db->bind(':issue_id', $result->issue_id);
+            $this->db->bind(':technician_id', $result->technician_assign);
+            $this->db->bind(':date', $result->date);
+
+        // Execute the query
+       $this->db->execute();
+       
+    }
+
 
 
 }
+
+}
+

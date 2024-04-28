@@ -199,6 +199,22 @@ class Facilities extends Controller
 
        
     }
+    // issuelog for assigned issue views
+    public function fmIssueLog(){
+        $result = $this->model->fetchAssignDetails();
+        $this->model->addAssignDetails($result);
+            
+        // die(var_dump($result));
+        $this->loadView('facilities/fac_issue_log',$result);
+    }
+    // completed issue table view
+    public function fmIssueComplete(){
+        $this->loadView('facilities/completed_issue');
+    }
+     // completed issue form view
+     public function fmIssueCompleteView(){
+        $this->loadView('facilities/completed_issue_view');
+    }
 
 
 
