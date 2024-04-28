@@ -43,36 +43,28 @@
         <nav class="navigation">
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_amenities.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/index' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Home</span></a>
+                <a href="<?php echo URL_ROOT . '/facilities/index' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Home</span></a>
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_issues.svg' ?>" class="sidebar_office_building" />
-                <span class="sidebar-title">Issues</span>
+                <a href="<?php echo URL_ROOT . '/facilities/issueAssign' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"> <span class="sidebar-title">Issues</span> </a>
             </div>
 
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_payment.svg' ?>" />
-                <span class="sidebar-title">Payments</span>
-            </div>
+          
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_complaints.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/complaintsLog' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Complaints</span></a>
+                <a href="<?php echo URL_ROOT . '/facilities/technicianLog' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Technician</span></a>
             </div>
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_notification.svg' ?>" />
-                <span class="sidebar-title">Notification</span>
+                <a href="<?php echo URL_ROOT . '/facilities/inventoryLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">    <span class="sidebar-title">Inventory</span> </a>
             </div>
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
                 <a href="<?php echo URL_ROOT . '/generals/announcementsLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Announcement</span>
-            </div>
-
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/registrations'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Resident Management</span>
             </div>
 
             <hr />

@@ -12,6 +12,9 @@
 
 <body>
     <div class="main-container-sign-in">
+        <?php
+        flash('error_account_not_approved');
+        ?>
         <div class="sign-in-container">
             <div class="sign-in-image-container">
                 <img src="<?php echo URL_ROOT . '/resources/login/login-bro.svg' ?>" class="sign-in-container-company-logo">

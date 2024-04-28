@@ -215,8 +215,14 @@ class Residents extends Controller
 
                 // check password and login
                 if ($logInResult) {
-                    // create session
-                    $this->createUserSession($logInResult);
+                    // check for account approval
+                    if ($logInResult->approved) {
+                        // create session
+                        $this->createUserSession($logInResult);
+                    } else {
+                        flash('error_account_not_approved', "Account not yet approved!", 'alert alert-error');
+                        $this->loadView('residents/sign_in');
+                    }
                 } else {
                     $errors['password_err'] = 'Password incorrect';
                     die(print_r($errors));  // ToDo: improve error handling
@@ -316,7 +322,6 @@ class Residents extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
@@ -439,10 +444,13 @@ class Residents extends Controller
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
 
-    public function test()
+    /**
+     * Shows support doc.
+     *
+     * @return void
+     */
+    public function supportLog()
     {
-        $complaints_list = $this->model->fetchAllComplaints();
-        $data['complaints'] = $complaints_list;
-        $this->loadView('residents/test', $data);
+        $this->loadView('residents/support');
     }
 }

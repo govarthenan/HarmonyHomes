@@ -154,6 +154,9 @@ body {
     background-color: var(--color_8);
     display: flex;
     height: 100vh;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .dashboard-container-finance {
@@ -298,9 +301,6 @@ body {
     color: var(--color_4);
     font-weight: bold;
     font-size: 1.1rem;
-}
-
-.payment-status-chart-1 {
 }
 
 .payment-status-chart-2 {
@@ -462,7 +462,7 @@ body {
 .elec-container {
     display: grid;
     padding: 1.5%;
-    margin: 2% 6% ;
+    margin: 2% 6%;
     border-radius: 8px;
     border-style: solid;
     border-width: 1px;
@@ -493,24 +493,24 @@ body {
     font-weight: bold;
 }
 
-.warter-lable{
+.warter-lable {
     color: var(--color_4);
-   margin: 2% 5%;
+    margin: 2% 5%;
     margin-bottom: 1%;
     font-size: 1.1rem;
     font-weight: bold;
 }
 
-.water-cont{
+.water-cont {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 2%;
 }
 
-.waterfile{
-font-size: 1rem;
-color: var(--color_4);
-margin: 1% 10%;
+.waterfile {
+    font-size: 1rem;
+    color: var(--color_4);
+    margin: 1% 10%;
 }
 
 .file {
@@ -542,7 +542,8 @@ margin: 1% 10%;
     border-style: solid;
 }
 
-#file-name {
+#name-power-csv,
+#name-water-csv {
     margin: 3% 2%;
 }
 
@@ -566,15 +567,15 @@ margin: 1% 10%;
     color: var(--color_4);
 }
 
-select{
+select {
     background-color: var(--form_color);
     padding: 1% 5%;
     border: none;
     width: 90%;
-    margin: 3% 1%;
+    margin: 3% 1% 0%;
 }
 
-input{
+input {
     background-color: var(--form_color);
     padding: 1% 5%;
     border: none;
@@ -587,9 +588,9 @@ input{
     background-color: var(--color_6);
     margin: 1%;
     flex: 1;
-    grid-template-rows: 1fr 1fr 9fr;
     display: grid;
     height: fit-content;
+    padding-bottom: 2%;
 }
 
 .payment-overview-heading {
@@ -605,7 +606,7 @@ input{
     margin: 0% 2%;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 .topbar-payment-filter a {
@@ -818,3 +819,122 @@ input{
 .closebtn:hover {
     color: var(--color_6);
 }
+
+/*notification creation for GM, FM and security*/
+
+.notification-container {
+    background-color: var(--color_6);
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 1.3fr 1fr;
+    margin: 2% 3%;
+    width: 94%;
+}
+
+.notification-heading {
+    margin: 2% 2%;
+    color: var(--color_4);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.notification-audience {
+    display: grid;
+    
+}
+
+.audience-heading {
+    font-weight: bold;
+    margin-left: 4%;
+    font-size: 1.1rem;
+    color: var(--color_3);
+}
+
+.audience-details {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.send-heading {
+    margin: 9% 25% 0%;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+select {
+    background-color: var(--form_color);
+    padding: 1% 8%;
+    border: none;
+    width:90%;
+}
+
+#groupSelect {
+    margin-top: 2%;
+}
+
+input {
+    border: none;
+}
+
+#residentIdSelect {
+    margin-top: 2%;
+}
+
+.notification-content-heading {
+    font-weight: bold;
+    margin-left: 4%;
+    font-size: 1.1rem;
+    color: var(--color_3);
+}
+
+.notification-content-details-title {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.notification-message {
+    display: grid;
+    grid-template-rows: 0.5fr 1fr 3fr;
+}
+
+.notification-title,
+.notification-message-heading {
+    margin: 1% 25%;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 20px;
+    background-color: var(--form_color);
+    border-radius: 4px;
+    border: none;
+}
+
+.notification-content-details-message {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.ql-toolbar {
+    width: 82%;
+    background-color: var(--form_color);
+}
+
+#editor {
+    background-color: var(--form_color);
+}
+
+#sendButton {
+    background-color: var(--color_7);
+    color: var(--color_6);
+    padding: 0.5% 1%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 5% 5% 5% 78%;
+    border: none;
+    border-radius: 5px;
+}
+

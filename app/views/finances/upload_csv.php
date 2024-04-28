@@ -37,14 +37,20 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                         <div class="water-cont">
                             <label for="waterFile" class="warter-lable">Water Data (CSV):</label>
                             <div class="file-upload-wrapper">
-                                <input type="file" id="file-input" name="billing_data" accept=".csv" required hidden />
-                                <label for="file-input" class="file-input-label">Choose File</label>
-                                <span id="file-name">No file chosen...</span>
+                                <input type="file" id="file-water-csv" name="billing_data" accept=".csv" required hidden />
+                                <label for="file-water-csv" class="file-input-label">Choose File</label>
+                                <span id="name-water-csv">No file chosen...</span>
                             </div>
                         </div>
 
                         <div class="water-cont">
-                        <label for="waterFile" class="waterFile">Select month for the data:</label>
+                        <label for="waterFile" class="waterFile">Select year :</label>
+                        <!-- year input -->
+                        <input type="number" name="year" id="year" min="<?php echo date('Y') ?>" max="<?php echo date('Y') + 1 ?>" required placeholder="Year" />
+                        </div>
+
+                        <div class="water-cont">
+                        <label for="waterFile" class="waterFile">Select month :</label>
                         <!-- month input -->
                         <select name="month" required>
                             <option value="1">January</option>
@@ -62,11 +68,7 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                         </select>
                         </div>
 
-                        <div class="water-cont">
-                        <label for="waterFile" class="waterFile">Select year for the data:</label>
-                        <!-- year input -->
-                        <input type="number" name="year" id="year" min="<?php echo date('Y') ?>" max="<?php echo date('Y') + 1 ?>" required placeholder="Year" />
-                        </div>
+                        
                         <!-- billing type indicator, hidden input -->
                         <input type="hidden" name="billing_type" value="water" />
 
@@ -81,13 +83,20 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                     <div class="water-cont">
                         <label for="waterFile" class="warter-lable">Electricity Data (CSV):</label>
                         <div class="file-upload-wrapper">
-                            <input type="file" id="power-file-input" name="billing_data" accept=".csv" required hidden />
-                            <label for="power-file-input" class="file-input-label">Choose File</label>
-                            <span class="csv-file-name" id="power-file-name">No file chosen...</span>
+                            <input type="file" id="file-power-csv" name="billing_data" accept=".csv" required hidden />
+                            <label for="file-power-csv" class="file-input-label">Choose File</label>
+                            <span class="csv-file-name" id="name-power-csv">No file chosen...</span>
                         </div>
                     </div>
+
                     <div class="water-cont">
-                        <label for="waterFile" class="waterFile">Select month for the data:</label>
+                        <label for="waterFile" class="waterFile">Select year:</label>
+                        <!-- year input -->
+                        <input type="number" name="year" id="year" min="<?php echo date('Y') ?>" max="<?php echo date('Y') + 1 ?>" required placeholder="Year" />
+                        </div>
+
+                    <div class="water-cont">
+                        <label for="waterFile" class="waterFile">Select month :</label>
                         <!-- month input -->
                         <select name="month" required>
                             <option value="1">January</option>
@@ -105,15 +114,12 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                         </select>
                         </div>
 
-                        <div class="water-cont">
-                        <label for="waterFile" class="waterFile">Select year for the data:</label>
-                        <!-- year input -->
-                        <input type="number" name="year" id="year" min="<?php echo date('Y') ?>" max="<?php echo date('Y') + 1 ?>" required placeholder="Year" />
-
+                        
                         <!-- billing type indicator, hidden input -->
                         <input type="hidden" name="billing_type" value="power" />
-                        </div>
                         <button type="submit" class="uploadButton">Upload Files</button>
+                        </div>
+                        
                     </form>
                 </div>
             </div>
