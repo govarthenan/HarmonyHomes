@@ -375,21 +375,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Function to close the alert automatically after n seconds
-var alertElement = document.getElementById('alert');
-if (alertElement) {
-    alertElement.style.opacity = '0';
-    setTimeout(function () {
-        alertElement.style.display = 'none';
-    }, 2000);
-
-    // Automatically close the alert after 5 seconds
-    setTimeout(function () {
-        closeAlert();
-    }, 1000);
-} else {
-    console.log('Element not found');
-}
 
 /*create announcement*/
 
@@ -478,6 +463,19 @@ displayFileName('file-complaint-attachment', 'name-complaint-attachment');
 displayFileName('file-water-csv', 'name-water-csv');
 displayFileName('file-power-csv', 'name-power-csv');
 
+
+// function to select all alert messages by name, and close them after 5 seconds
+var flashMessages = document.getElementsByName('alert-message');
+
+// if flashMessages contain any elements, loop through each element
+if (flashMessages.length > 0) {
+    console.log('pass 1');
+    flashMessages.forEach(message => {
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 3000);
+    });
+}
 
 
 
