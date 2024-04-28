@@ -375,21 +375,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// var alertElement = document.getElementById('alert');
-// console.log(alertElement);
-// if (alertElement) {
-//     alertElement.style.opacity = '0';
-//     setTimeout(function () {
-//         alertElement.style.display = 'none';
-//     }, 2000);
-
-//     // Automatically close the alert after 5 seconds
-//     setTimeout(function () {
-//         closeAlert();
-//     }, 1000);
-// } else {
-//     console.log('Element not found');
-// }
 
 /*create announcement*/
 
