@@ -20,7 +20,10 @@ class Residents extends Controller
 
     public function index()
     {
-        $this->loadView('residents/dashboard');
+        // get all announcements
+        $data['announcements'] = $this->model->fetchAllAnnouncements();
+
+        $this->loadView('residents/dashboard', $data);
     }
 
     public function signUp()
@@ -438,8 +441,12 @@ class Residents extends Controller
 
     public function test()
     {
-        $complaints_list = $this->model->fetchAllComplaints();
-        $data['complaints'] = $complaints_list;
-        $this->loadView('residents/test', $data);
+        // schedule multiple flash messages to be shown one below one
+        flashMessage('test1', 'Test message 1', 'alert alert-success');
+        flashMessage('test2', 'Test message 2', 'alert alert-danger');
+        flashMessage('test3', 'Test message 3', 'alert');
+
+        // redirect to home page
+        header('location: ' . URL_ROOT . '/residents/index');
     }
 }

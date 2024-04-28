@@ -67,7 +67,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                                 </div>
                             </div>
 
-                            
+
 
                             <div class="submit-column">
                                 <a href="<?php echo URL_ROOT . '/generals/announcementEdit/' . $data['announcement']->announcement_id; ?>"><button class="edit-btn">Edit</button></a>
@@ -79,6 +79,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
             </div>
         </div>
     </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
 
 </html>
