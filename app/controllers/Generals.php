@@ -278,4 +278,11 @@ class Generals extends Controller
     }
 
 
+    public function registrations()
+    {
+        // fetch data
+        $data['signup_requests'] = $this->model->fetchAllUsersForManagement();
+
+        $this->loadView('generals/signup_request', $data);
+    }
 }

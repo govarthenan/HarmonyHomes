@@ -152,5 +152,9 @@ class General
         return $this->db->execute();
     }
 
-
+    public function fetchAllUsersForManagement()
+    {
+        $this->db->prepareQuery('SELECT * FROM resident Order by approved ASC');
+        return $this->db->resultSet();
+    }
 }
