@@ -47,12 +47,12 @@
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_issues.svg' ?>" class="sidebar_office_building" />
-                <span class="sidebar-title">Issues</span>
+                <span class="sidebar-title">Issues Overview</span>
             </div>
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_payment.svg' ?>" />
-                <span class="sidebar-title">Payments</span>
+                <span class="sidebar-title">Payments Overview</span>
             </div>
 
             <div class="navi-item">
@@ -62,7 +62,7 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_notification.svg' ?>" />
-                <span class="sidebar-title">Notification</span>
+                <span class="sidebar-title">Notifications</span>
             </div>
 
             <div class="navi-item">
