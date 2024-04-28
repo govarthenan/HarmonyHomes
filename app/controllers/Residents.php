@@ -215,8 +215,14 @@ class Residents extends Controller
 
                 // check password and login
                 if ($logInResult) {
-                    // create session
-                    $this->createUserSession($logInResult);
+                    // check for account approval
+                    if ($logInResult->approved) {
+                        // create session
+                        $this->createUserSession($logInResult);
+                    } else {
+                        flash('error_account_not_approved', "Account not yet approved!", 'alert alert-error');
+                        $this->loadView('residents/sign_in');
+                    }
                 } else {
                     $errors['password_err'] = 'Password incorrect';
                     die(print_r($errors));  // ToDo: improve error handling
