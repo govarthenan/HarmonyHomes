@@ -80,7 +80,12 @@ class Facilities extends Controller
     {
         $data['tech_detail'] = $this->model->viewTechnician();
         $this->loadView('facilities/technician_view',$data);
-        die(var_dump($data));
+     }
+     public function inventoryLog()
+     {
+        $data['inventory_detail'] = $this->model->viewInventoryDetails();
+         $this->loadView('facilities/inventory_table',$data);
+        
      }
     public function technicianAdd()
     {

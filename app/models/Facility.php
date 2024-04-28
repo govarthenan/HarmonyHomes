@@ -82,6 +82,15 @@ class Facility
             return false;
         }
     }
+    //inventory
+    public function viewInventoryDetails()
+    {
+        $this->db->prepareQuery('SELECT * FROM inventory ');
+       
+
+        return $this->db->resultSet();
+
+    }
     public function deleteTechnician($technician_id){
         $this->db->prepareQuery('DELETE FROM technician_overview
         WHERE technician_id = :technician_id;');
