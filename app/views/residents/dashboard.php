@@ -13,11 +13,11 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
 <body onload="randerDate()">
     <div class="main-content">
+    <div class="flash-message-container">
         <?php
-        flashMessage('test1');
-        flashMessage('test2');
-        flashMessage('test3');
+        // call flash messages
         ?>
+    </div>
         <div class="dashboard-container">
             <div class="first-row-resident-dashboard">
                 <div class="announcment-container">
