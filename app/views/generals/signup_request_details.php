@@ -14,6 +14,12 @@ $request = $data['signup_request'];
 
 <body>
     <div class="main-content">
+        <?php
+        // flash messages
+        foreach ($_SESSION['flash'] as $key => $value) {
+            flash($key);
+        }
+        ?>
         <div class="view-complaint-landing">
             <div class="complaint-column-new">
 
