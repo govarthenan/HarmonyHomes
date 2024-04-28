@@ -143,11 +143,22 @@ $request = $data['signup_request'];
                         </div>
 
                         <form method="post" action="<?php echo URL_ROOT . '/generals/userManagement/' . $request->user_id ?>">
+                            <div class="form-column-view">
+                                <!-- if the wing is set to null, display option to set wing -->
+                                <select id="items" name="wing">
+                                    <option value="" <?php echo ($request->wing == null) ? 'selected' : ''; ?>>Not Set!</option>
+                                    <option value="north" <?php echo ($request->wing == 'north') ? 'selected' : ''; ?>>North Wing</option>
+                                    <option value="east" <?php echo ($request->wing == 'east') ? 'selected' : ''; ?>>East Wing</option>
+                                    <option value="south" <?php echo ($request->wing == 'south') ? 'selected' : ''; ?>>South Wing</option>
+                                    <option value="west" <?php echo ($request->wing == 'west') ? 'selected' : ''; ?>>West Wing</option>
+                                </select>
+                            </div>
                             <!-- hidden input -->
                             <input type="hidden" value="<?php echo $request->approved; ?>" name="approval">
                             <div class="update-button">
                                 <button type="submit" name="action" value="toggle-approval" class="update-btn"><?php echo ($request->approved == '0') ? 'Approve User' : 'Suspend User'; ?></button>
-                                <button type="submit" name="action" value="delete-user" class="update-btn">Delete User</button>'
+                                <button type="submit" name="action" value="delete-user" class="update-btn">Delete User</button>
+                                <button type="submit" name="action" value="set-wing" class="update-btn">Set Wing</button>
                             </div>
                         </form>
                     </div>

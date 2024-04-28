@@ -187,4 +187,13 @@ class General
 
         return $this->db->execute();
     }
+
+    public function setWing($target_resident_id, $incoming_value)
+    {
+        $this->db->prepareQuery('UPDATE resident SET wing = :wing WHERE user_id = :user_id');
+        $this->db->bind('wing', $incoming_value);
+        $this->db->bind('user_id', $target_resident_id);
+
+        return $this->db->execute();
+    }
 }
