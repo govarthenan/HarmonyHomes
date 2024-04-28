@@ -285,4 +285,19 @@ class Generals extends Controller
 
         $this->loadView('generals/signup_request', $data);
     }
+
+    public function signUpRequestDetails($user_id)
+    {
+        $signup_request_detail = $this->model->fetchSignupRequestDetails($user_id);
+
+        // check DB result
+        if (!$signup_request_detail) {
+            flash('error_user_not_found', 'User details not found', 'alert alert-error');
+        }
+
+        $data['signup_request'] = $signup_request_detail;
+
+        $this->loadView('generals/signup_request_details', $data);
+    }
+
 }

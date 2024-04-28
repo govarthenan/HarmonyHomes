@@ -157,4 +157,19 @@ class General
         $this->db->prepareQuery('SELECT * FROM resident Order by approved ASC');
         return $this->db->resultSet();
     }
+
+    public function fetchSignupRequestDetails(int $user_id)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE user_id = :user_id');
+        $this->db->bind('user_id', $user_id);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
 }
