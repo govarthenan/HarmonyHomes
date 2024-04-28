@@ -68,9 +68,9 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
                             <div class="drop-area" id="drop-area">
                                 <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
-                                <p id="select-message">Drag and Drop to upload files <br> or </p>
-                                <label for="file-input" class="custom-file-upload">Choose File</label>
-                                <input type="file" name="attachment" id="file-input">
+                                <p id="name-complaint-attachment">Drag and Drop to upload files <br> or </p>
+                                <label for="file-complaint-attachment" class="custom-file-upload">Choose File</label>
+                                <input type="file" name="attachment" id="file-complaint-attachment">
                             </div>
 
                             <div class="submit-column">
