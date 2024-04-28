@@ -316,7 +316,6 @@ class Residents extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
@@ -448,5 +447,16 @@ class Residents extends Controller
 
         // redirect to home page
         header('location: ' . URL_ROOT . '/residents/index');
+    }
+
+
+    /**
+     * Fetches all complaints and loads the complaints log view.
+     *
+     * @return void
+     */
+    public function supportLog()
+    {
+        $this->loadView('residents/support');
     }
 }
