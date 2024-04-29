@@ -68,7 +68,6 @@ include (APP_ROOT . '/views/inc/facility_side_nav.php');
     <!-- no need this three div -->
     
     </div>
-    <script src="<?php echo URL_ROOT . '/js/inventory.js'; ?>">
-</script>
+    <script src="<?php echo URL_ROOT . '/js/inventory.js'; ?>"></script>
   </body>
 </html>

@@ -40,8 +40,6 @@ class Facility
         // $this->db->bind('user_id', $_SESSION['user_id']);
         $this->db->resultSet();
         return $this->db->resultSet();
-
-
     }
     public function addTechnician($data)
     {
@@ -58,8 +56,6 @@ class Facility
 
         // Execute the query and return bool
         return $this->db->execute();
-
-
     }
 
     public function viewTechnician()
@@ -91,7 +87,6 @@ class Facility
 
         $this->db->resultSet();
         return $this->db->resultSet();
-
     }
 
     public function deleteTechnician($technician_id)
@@ -103,7 +98,6 @@ class Facility
         $this->db->bind('technician_id', $technician_id);
         // Execute the query and return bool
         return $this->db->execute();
-        
     }
     // fetch technician detail
 
@@ -115,7 +109,6 @@ class Facility
         $this->db->bind('technician_assign', $data['technician_id']);
 
         return $this->db->execute();
-        
     }
     public function fetchAssignDetails()
     {
@@ -124,9 +117,6 @@ class Facility
         WHERE technician_assign <> 0 ');
         // $this->db->bind('issue_id', $issue_id);
         return $this->db->resultSet();
-
-
-
     }
     public function addAssignDetails($results)
     {
@@ -151,11 +141,7 @@ class Facility
 
             // Execute the query
             $this->db->execute();
-
         }
-
-
-
     }
     //inventory
     public function viewInventoryDetails()
@@ -164,7 +150,6 @@ class Facility
 
 
         return $this->db->resultSet();
-
     }
     // public function deleteTechnician($technician_id)
     // {
@@ -265,7 +250,4 @@ class Facility
         // Execute the query and return bool
         return $this->db->execute();
     }
-
-
 }
-

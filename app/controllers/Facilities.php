@@ -81,27 +81,23 @@ class Facilities extends Controller
         // echo "<script>var technicianData = $tech_data_json;</script>";
 
         $this->loadView('facilities/fac_issue_table', $data);
-
-
     }
     public function assignTechnician($issue_id)
     {
         $data['tech_data'] = $this->model->fetchTechnicianAllDetails();
         $data['issueId'] = $issue_id;
         $this->loadView('facilities/assign_view', $data);
-       
     }
     public function technicianLog()
     {
         $data['tech_detail'] = $this->model->viewTechnician();
         $this->loadView('facilities/technician_view', $data);
-
     }
     public function technicianAdd()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            
+
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
@@ -139,19 +135,12 @@ class Facilities extends Controller
                 } else {
                     die('Error with adding technician to DB');  // ToDo: improve error handling
                 }
-
             } else {
                 die(print_r($this->errors));  // ToDO: improve error handling
             }
-
         } else {
             $this->loadView('facilities/technician_view');
         }
-
-
-
-
-
     }
     public function technicianDelete($technician_id)
     {
@@ -164,13 +153,12 @@ class Facilities extends Controller
         // }
 
         $technician_delete_result = $this->model->deleteTechnician($technician_id);
-            
+
         if (!$technician_delete_result) {
             die('Error deleting Technician');  // ToDo: improve error handling
         }
 
         header('location: ' . URL_ROOT . '/facilities/technicianLog');
-
     }
     public function getAssignDetails($issue_id)
     {
@@ -183,33 +171,33 @@ class Facilities extends Controller
                 'description' => trim($_POST['description']),
             ];
             if ($this->model->assignTechnician($data)) {
-                
+
                 header('location: ' . URL_ROOT . '/facilities/issueAssign');
                 //$this->techniciansLog();
             } else {
                 die('Error with adding technician to DB');  // ToDo: improve error handling
             }
-             
-        }else{
+        } else {
             $this->loadView('facilities/issueAssign');
         }
-
-       
     }
     // issuelog for assigned issue views
-    public function fmIssueLog(){
+    public function fmIssueLog()
+    {
         $result = $this->model->fetchAssignDetails();
         $this->model->addAssignDetails($result);
-            
+
         // die(var_dump($result));
-        $this->loadView('facilities/fac_issue_log',$result);
+        $this->loadView('facilities/fac_issue_log', $result);
     }
     // completed issue table view
-    public function fmIssueComplete(){
+    public function fmIssueComplete()
+    {
         $this->loadView('facilities/completed_issue');
     }
-     // completed issue form view
-     public function fmIssueCompleteView(){
+    // completed issue form view
+    public function fmIssueCompleteView()
+    {
         $this->loadView('facilities/completed_issue_view');
     }
 
@@ -225,22 +213,22 @@ class Facilities extends Controller
     //inventory
     public function inventoryLog()
     {
-       $data['inventory_detail'] = $this->model->viewInventoryDetails();
-        $this->loadView('facilities/inventory_table',$data);
-       
+        $data['inventory_detail'] = $this->model->viewInventoryDetails();
+        $this->loadView('facilities/inventory_table', $data);
     }
-     // fac-manger add inventory  
-     public function inventoryCreate(){
+    // fac-manger add inventory  
+    public function inventoryCreate()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'inventory-type' => trim($_POST['inventory-type']),
                 'inventory-count' => trim($_POST['inventory-count']),
-            
+
             ];
             $inventory_detail = $this->model->fetchOneInventoryDetail($data['inventory-type']);
             print_r($inventory_detail);
-            if($inventory_detail){
+            if ($inventory_detail) {
                 $inventory_detail->count = $inventory_detail->count + $data['inventory-count']; //function for "If the table already contains that inventory, then the inventory count will be added to the existing inventory."
                 $updated_inventory = [
                     'inventory_id' => $inventory_detail->inventory_id,
@@ -254,16 +242,15 @@ class Facilities extends Controller
                 } else {
                     die('Error with adding inventory to DB');  // ToDo: improve error handling
                 }
-            }else{
+            } else {
                 if ($this->model->createInventory($data)) {
                     flash('inventory_add_success', 'inventory added successfully!');
                     header('location: ' . URL_ROOT . '/facilities/inventoryLog');
-            } else {
-                die('Error with adding inventory to DB');  // ToDo: improve error handling
-            
+                } else {
+                    die('Error with adding inventory to DB');  // ToDo: improve error handling
+
+                }
             }
-        }
-            
         } else {
             $this->loadView('facilities/inventoryLog');
         }
@@ -271,8 +258,8 @@ class Facilities extends Controller
 
     public function inventoryDelete($inventory_id)
     {
-       
-        
+
+
         $inventory_detail = $this->model->fetchOneInventoryDetail($inventory_id);
 
         $inventory_delete_result = $this->model->deleteInventory($inventory_id);
@@ -282,54 +269,40 @@ class Facilities extends Controller
         }
 
         header('location: ' . URL_ROOT . '/facilities/inventoryLog');
-    
-     }
-     public function inventoryView($inventory_id)
-     {
+    }
+    public function inventoryView($inventory_id)
+    {
         $inventory_detail = $this->model->viewInventory();
         $data['inventory_details'] = $this->model->fetchOneInventory($inventory_id);
-        $this->loadView('facilities/inventory_view_form',$data);
-       
-
-      }
+        $this->loadView('facilities/inventory_view_form', $data);
+    }
     //  public function inventoryCountUpdate($inventory_id){
     // $inventory_detail = $this->model->updateInventoryCount($inventory_id);
 
     //  }
-    public function inventoryCountUpdate($inventory_id){
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
-        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $data = [
-            
-            'inventory_id' => $inventory_id,
-            'updatedCount' => trim($_POST['updatedCount']),
-        ];
-        
-        
-        
-        if ($this->model->updateInventoryCount($data)) {
-           // If update is successful, redirect to the inventory log page 
-            header('location: ' . URL_ROOT . '/facilities/inventoryLog');
-            exit() ;
+    public function inventoryCountUpdate($inventory_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+
+                'inventory_id' => $inventory_id,
+                'updatedCount' => trim($_POST['updatedCount']),
+            ];
+
+
+
+            if ($this->model->updateInventoryCount($data)) {
+                // If update is successful, redirect to the inventory log page 
+                header('location: ' . URL_ROOT . '/facilities/inventoryLog');
+                exit();
+            } else {
+                die('Error with updating inventory count in DB');  // ToDo: improve error handling
+            }
         } else {
-            die('Error with updating inventory count in DB');  // ToDo: improve error handling
-        }
-
-        }else{
             header('location: ' . URL_ROOT . '/facilities/inventoryLog');
-            exit() ;
+            exit();
         }
-
-
-
-
-}
-
-
-
-
-
-
-
+    }
 }

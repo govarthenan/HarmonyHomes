@@ -50,7 +50,7 @@
                 <a href="<?php echo URL_ROOT . '/facilities/issueAssign' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"> <span class="sidebar-title">Issues</span> </a>
             </div>
 
-          
+
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_complaints.svg' ?>" />
