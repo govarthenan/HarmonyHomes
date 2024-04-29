@@ -224,9 +224,11 @@ class Generals extends Controller
 
             // call model to add announcement
             if ($this->model->editAnnouncement($data)) {
+                flash('success_announcement_updated', 'Announcement updated!', 'alert alert-success');
                 header('location: ' . URL_ROOT . '/generals/announcementsLog');
             } else {
-                die('Error with updating announcement in DB');  // ToDo: improve error handling
+                flash('error_announcement_updated', 'Error updating announcement', 'alert alert-error');
+                header('location: ' . URL_ROOT . '/generals/announcementEdit/' . $announcement_id);
             }
         } else {
             $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);

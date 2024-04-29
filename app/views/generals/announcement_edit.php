@@ -34,17 +34,12 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                         <div class="send-heading">Send to :</div>
                         <div class="select-audience">
                             <select id="userType" name="receiver" onchange="toggleDropdowns()">
-                                <option value="AllUsers" <?php echo ($data['announcement']->receiver == 'AllUsers') ? 'selected' : ''; ?>>All Users</option>
-                                <option value="wings">Wings</option>
+                                <option value="all" <?php echo ($data['announcement']->receiver == 'all') ? 'selected' : ''; ?>>All</option>
+                                <option value="north" <?php echo ($data['announcement']->receiver == 'north') ? 'selected' : ''; ?>>North wing</option>
+                                <option value="east" <?php echo ($data['announcement']->receiver == 'east') ? 'selected' : ''; ?>>East wing</option>
+                                <option value="south" <?php echo ($data['announcement']->receiver == 'south') ? 'selected' : ''; ?>>South wing</option>
+                                <option value="west" <?php echo ($data['announcement']->receiver == 'west') ? 'selected' : ''; ?>>West wing</option>
                             </select>
-                            <div id="groupSelect" class="hidden">
-                                <select id="groupType" name="receiver">
-                                    <option value="Rightwing" <?php echo ($data['announcement']->receiver == 'Rightwing') ? 'selected' : ''; ?>>Right wing</option>
-                                    <option value="Leftwing" <?php echo ($data['announcement']->receiver == 'Leftwing') ? 'selected' : ''; ?>>Left wing</option>
-                                    <option value="Eastwing" <?php echo ($data['announcement']->receiver == 'Eastwing') ? 'selected' : ''; ?>>East wing</option>
-                                    <option value="Westwing" <?php echo ($data['announcement']->receiver == 'Westwing') ? 'selected' : ''; ?>>West wing</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                 </div>
