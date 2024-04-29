@@ -9,8 +9,6 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create announcement</title>
     <link rel="stylesheet" href="<?php echo URL_ROOT . '/css/general_style.css' ?>" />
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css" rel="stylesheet" />
-
 </head>
 
 <body>
@@ -54,7 +52,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                     <div class="announcement-content-details-message">
                         <div class="announcement-message-heading">Message:</div>
                         <div class="message-for-announcement">
-                            <input id="editor" name="message" style="height:80%; width: 80%; name=" title" value="<?php echo $data['announcement']->message ?>"">
+                            <input id="editor" name="message" style="height:80%; width: 80%;" title" value="<?php echo $data['announcement']->message ?>"">
             </div>
           </div>
         </div>
@@ -65,9 +63,9 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                         </div>
             </form>
 
-            <script src="<?php echo URL_ROOT . '/js/index.js' ?>"></script>
-            <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
+            <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
+        </div>
+    </div>
 </body>
 
 </html>
