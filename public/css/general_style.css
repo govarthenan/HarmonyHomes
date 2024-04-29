@@ -1307,14 +1307,14 @@ border-width: 2px;
 border-right: 2px solid var(--color_4);
 box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
 margin: 1.5%;
-overflow-y: auto;
+
 }
 .new-announcement,.completed-issue,.issue_log{
 margin: 1.5%;
 opacity: var(--opacity_1);
 box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
 }
-.new-announcement:hover,.completed-issue:hover,.issue_log:hover{
+.new-announcement:hover,.announcement-log:hover,.completed-issue:hover,.issue_log:hover{
 margin: 1.5%;
 box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
 cursor: pointer;
@@ -1327,14 +1327,14 @@ border-width: 2px;
 }
 .announcement-next-log{
 border-right: 2px solid var(--color_4);
-box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
 margin: 1.5%;
-overflow-y: auto;
+
 }
 .new-next-announcement{
 margin: 1.5%;
 opacity: var(--opacity_1);
-box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+
 }
 .new-next-announcement:hover{
 margin: 1.5%;
@@ -1378,10 +1378,10 @@ margin-left: 3%;
 font-weight: bold;
 }
 .announcement-type-title:hover,.issue-log-type:hover{
-font-size: 1.4rem;
 color: var(--color_7);
 margin-left: 3%;
 color: var(--color_4);
+
 }
 
 /* facility manager issue log */
@@ -1514,6 +1514,7 @@ margin-bottom: 20px;
 background-color:var(--form_color);
 border-radius: 4px;
 border: none;
+padding: 2%;
 }
 
 .announcement-content-details-message{
@@ -1539,7 +1540,7 @@ border-style: solid;
 font-weight: bold;
 font-size: 1.1rem;
 font-weight: bold;
-margin:5% 25%;
+margin:5% 25% 5% 80%;
 
 }
 #sendButton:hover{
