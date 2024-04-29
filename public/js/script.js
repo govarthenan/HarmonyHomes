@@ -141,4 +141,15 @@ document.body.appendChild(script);
     });
 });
 
+// function to select all alert messages by name, and close them after 5 seconds
+var flashMessages = document.getElementsByName('alert-message');
 
+// if flashMessages contain any elements, loop through each element
+if (flashMessages.length > 0) {
+    console.log('pass 1');
+    flashMessages.forEach(message => {
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 3000);
+    });
+}
