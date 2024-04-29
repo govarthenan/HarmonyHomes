@@ -16,8 +16,14 @@ $request = $data['signup_request'];
     <div class="main-content">
         <?php
         // flash messages
-        foreach ($_SESSION['flash'] as $key => $value) {
-            flash($key);
+        if (key_exists('flash', $_SESSION)) {
+            try {
+                foreach ($_SESSION['flash'] as $key => $value) {
+                    flash($key);
+                }
+            } catch (Throwable $th) {
+                echo '';
+            }
         }
         ?>
         <div class="view-complaint-landing">

@@ -186,9 +186,19 @@ class Resident
         return $this->db->execute();
     }
 
+    public function getResidentWing($user_id)
+    {
+        $this->db->prepareQuery('SELECT wing FROM resident WHERE user_id = :user_id');
+        $this->db->bind('user_id', $user_id);
+        $row = $this->db->singleResult();
+
+        return $row->wing;
+    }
+
     public function fetchAllAnnouncements()
     {
-        $this->db->prepareQuery('SELECT * FROM announcement ORDER BY announcement_id DESC LIMIT 2');
+        $this->db->prepareQuery("SELECT * FROM announcement WHERE receiver = :resident_wing OR receiver = 'all' ORDER BY announcement_id DESC");
+        $this->db->bind('resident_wing', $_SESSION['resident_wing']);
         return $this->db->resultSet();
     }
 }

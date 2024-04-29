@@ -20,6 +20,9 @@ class Residents extends Controller
 
     public function index()
     {
+        // set resident wing
+        $_SESSION['resident_wing'] = $this->model->getResidentWing($_SESSION['user_id']);
+
         // get all announcements
         $data['announcements'] = $this->model->fetchAllAnnouncements();
 
@@ -155,7 +158,7 @@ class Residents extends Controller
                     // register user
                     if ($this->model->registerResident($this->data)) {
                         // register flash message to be shown in login page
-                        flashMessage('signUp_success', 'You are now registered and can log in', 'alert alert-success');
+                        flash('signUp_success', 'You are now registered and can log in', 'alert alert-success');
 
                         // redirect to home page after successful registration
                         header('location: ' . URL_ROOT . '/residents/signIn');
@@ -272,6 +275,8 @@ class Residents extends Controller
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
+        unset($_SESSION['user_role']);
+        unset($_SESSION['resident_wing']);
 
         // destroy session
         session_destroy();
