@@ -19,12 +19,12 @@ include(APP_ROOT . '/views/inc/security_side_nav.php');
                 Onsite Visitors
             </div>
             <div class="add-new-visitor">
-            <a href="<?php echo URL_ROOT . '/securities/visitorAdd'; ?>" style="text-decoration: none; color: inherit;"><button class="add-btn"><i class="fa-solid fa-plus"></i> <b>Add</b></button></a>
+                <a href="<?php echo URL_ROOT . '/securities/visitorAdd'; ?>" style="text-decoration: none; color: inherit;"><button class="add-btn"><i class="fa-solid fa-plus"></i> <b>Add</b></button></a>
             </div>
-           
+
             <div class="table-body">
                 <table>
-                
+
                     <thead>
                         <tr class="onsite-visitor-head">
                             <th>visitor_id</th>
@@ -34,21 +34,24 @@ include(APP_ROOT . '/views/inc/security_side_nav.php');
                         </tr>
                     </thead>
                     <?php foreach ($data['visitors'] as $index => $visitor) : ?>
-                    <tbody>
-                        <tr>
-                            <td></p><?php echo $visitor->visitor_id; ?></td>
-                            <td><?php echo $visitor->fullName; ?></td>
-                            <td><?php echo $visitor->entryTime; ?></td>
-                            <td><button type="button" onclick="fetchExitTime()">Fetch Exit Time</button></td>
-                        </tr>
-                        
-                        <!-- Add more rows as needed -->
-                    </tbody>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    </p><?php echo $visitor->visitor_id; ?></td>
+                                <td><?php echo $visitor->fullName; ?></td>
+                                <td><?php echo $visitor->entryTime; ?></td>
+                                <td><button type="button" onclick="fetchExitTime()">Fetch Exit Time</button></td>
+                            </tr>
+
+                            <!-- Add more rows as needed -->
+                        </tbody>
                     <?php endforeach; ?>
                 </table>
             </div>
-           
+
 
         </div>
     </div>
 </body>
+
+</html>
