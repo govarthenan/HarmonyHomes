@@ -52,6 +52,11 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_amenities.svg' ?>" />
+                <a href="<?php echo URL_ROOT . '/technicians/taskOngoing' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Tasks</span></a>
+            </div>
+
+            <div class="navi-item">
+                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_amenities.svg' ?>" />
                 <a href="<?php echo URL_ROOT . '/technicians/ViewInventoryLevel' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Inventory</span></a>
             </div>
 

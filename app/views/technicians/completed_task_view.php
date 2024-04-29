@@ -18,6 +18,9 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
         <div class="task-container">
           <div class="column">
             <div class="nested-grid">
+            <div class="attachment-column-view">
+                <h4>Date:</h4>
+              </div>
               <div class="form-column-view">
                 <h4>Task ID:</h4>
               </div>
@@ -29,41 +32,45 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
               </div>
 
               <div class="attachment-column-view">
-                <h4>Inventory:</h4>
+                <h4>Description:</h4>
               </div>
+              
 
             </div>
           </div>
           <div class="column">
             <div class="nested-grid">
-              <div class="form-column-view">
+            <div class="form-column-view">
                 <div class="submitted-answers">
-                  <p style="padding:1%">1</p>
-                </div>
-              </div>
-              <div class="form-column-view">
-                <div class="submitted-answers">
-                  <p style="padding:1%">3</p>
+                  <p style="padding:1%; text-align:block;"><?php echo $data['completed_view']->Date; ?></p>
                 </div>
               </div>
 
               <div class="form-column-view">
                 <div class="submitted-answers">
-                  <p style="padding:1%; text-align:block;">plumbing</p>
+                  <p style="padding:1%"><?php echo $data['completed_view']->issue_id; ?></p>
+                </div>
+              </div>
+              <div class="form-column-view">
+                <div class="submitted-answers">
+                  <p style="padding:1%"><?php $resident_id = $data['completed_view']->floor_number . '/' . $data['completed_view']->door_number;
+                   echo $resident_id; ?></p>
                 </div>
               </div>
 
               <div class="form-column-view">
                 <div class="submitted-answers">
-                  <p style="padding:1%; text-align:block;">inventory</p>
+                  <p style="padding:1%; text-align:block;"><?php echo $data['completed_view']->Issuetype; ?></p>
                 </div>
               </div>
 
               <div class="form-column-view">
                 <div class="submitted-answers">
-                  <p style="padding:1%; text-align:block;">description</p>
+                  <p style="padding:1%; text-align:block;"><?php echo $data['completed_view']->Description; ?></p>
                 </div>
               </div>
+
+              
 
             </div>
           </div>

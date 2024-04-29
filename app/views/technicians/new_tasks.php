@@ -41,9 +41,10 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
             <td><?php echo $new->floor_number?></td>
             <td><?php echo $new->door_number?></td>
             <td><?php echo $new->Description?></td>
-            <td><button class="accept-btn"><a href="<?php URL_ROOT.'/technicians/issueAccept/'.  $new->issue_id; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">Accept</button></a></td>
+            <td><button class="accept-btn"><a href="<?php echo URL_ROOT.'/technicians/issueAccept/'.  $new->issue_id; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">Accept</button></a></td>
+            </tr>
             <?php endforeach ?>
-          </tr>
+          
 
           
         </table>

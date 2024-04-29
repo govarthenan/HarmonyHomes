@@ -52,15 +52,70 @@ class Technician
     INNER JOIN 
         resident AS r ON i.user_id = r.user_id
     WHERE 
-        i.technician_assign = :technician_id');
+        i.technician_assign = :technician_id AND flag = 0');
         $this->db->bind('technician_id',$tech_id);
         return $this->db->resultSet();
      }
      // accept button in new issue
      public function acceptIssue($issue_id,$tech_id){
-       $this->db->prepareQuery('UPDATE assign_issue SET flag = 0 WHERE issue_id = :issue_id AND technician_id =:technician_id') ;
+       $this->db->prepareQuery('UPDATE issue SET flag = 1 WHERE issue_id = :issue_id AND technician_assign =:technician_id') ;
        $this->db->bind('issue_id',$issue_id);
        $this->db->bind('technician_id',$tech_id);
        return $this->db->execute();
      }
+     public function taskCompleted($tech_id){
+        $this->db->prepareQuery('SELECT 
+        i.Date,
+        r.floor_number,
+        r.door_number,
+        i.Issuetype,
+        i.Description,
+        i.issue_id
+    FROM 
+        issue AS i
+    INNER JOIN 
+        resident AS r ON i.user_id = r.user_id
+    WHERE 
+        i.technician_assign = :technician_id AND i.status = "completed" ' );
+        $this->db->bind('technician_id',$tech_id);
+        return $this->db->resultSet();
+     }
+     public function taskCompletedView($issue_id,$tech_id){
+        $this->db->prepareQuery('SELECT 
+        i.Date,
+        r.floor_number,
+        r.door_number,
+        i.Issuetype,
+        i.Description,
+        i.issue_id
+    FROM 
+        issue AS i
+    INNER JOIN 
+        resident AS r ON i.user_id = r.user_id
+    WHERE 
+        i.technician_assign = :technician_id AND i.issue_id = :issue_id ');
+        $this->db->bind('issue_id',$issue_id);
+        $this->db->bind('technician_id',$tech_id);
+        return $this->db->singleResult();
+     }
+     public function ongoingTaskView($tech_id){
+        $this->db->prepareQuery('SELECT 
+        i.Date,
+        r.floor_number,
+        r.door_number,
+        i.Issuetype,
+        i.Description,
+        i.issue_id
+    FROM 
+        issue AS i
+    INNER JOIN 
+        resident AS r ON i.user_id = r.user_id
+    WHERE 
+        i.technician_assign = :technician_id AND status <> 1 ');
+        
+        $this->db->bind('technician_id',$tech_id);
+        return $this->db->resultSet();
+
+     }
+    
 }

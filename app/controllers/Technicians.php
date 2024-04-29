@@ -82,11 +82,11 @@ class Technicians extends Controller
         $tech_id = $_SESSION['user_id'];
         $this->model->acceptIssue($issue_id,$tech_id);
         $accept_issue = $this->model->acceptIssue($issue_id,$tech_id);
-        die(var_dump($accept_issue));
+        
         if(!$accept_issue){
             die('Error in accepting issue');
         }else{
-           $this->loadView('technicians/viewNewTasks');
+            header('Location: ' . URL_ROOT . '/technicians/viewNewTasks');
         }
     }
 
@@ -97,14 +97,29 @@ class Technicians extends Controller
         $this->loadView('technicians/inventory_overview', $data);
     }
 
-    public function ViewCompletedTask()
-    {
-        $this->loadView('technicians/completed_task_view');
+    public function ViewCompletedTask($issue_id)
+    {   
+        $tech_id = $_SESSION['user_id'];
+        
+        $data['completed_view'] = $this->model->taskCompletedView($issue_id,$tech_id);
+        $this->loadView('technicians/completed_task_view',$data);
     }
 
     public function completedTask()
     {
-        $this->loadView('technicians/completed_tasks');
+        $tech_id = $_SESSION['user_id'];
+        $data['completed'] = $this->model->taskCompleted($tech_id);
+        
+        $this->loadView('technicians/completed_tasks',$data);
+    }
+    public function taskOngoing(){
+        $tech_id = $_SESSION['user_id'];
+        $data['ongoing'] = $this->model->ongoingTaskView($tech_id);
+        die(var_dump( $data));
+         $this->loadView('technicians/task_ongoing');
+    }
+    public function taskOngoingView(){
+        $this->loadView('technicians/task_ongoing_view');
     }
 
 
