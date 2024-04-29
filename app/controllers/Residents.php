@@ -155,7 +155,7 @@ class Residents extends Controller
                     // register user
                     if ($this->model->registerResident($this->data)) {
                         // register flash message to be shown in login page
-                        flashMessage('signUp_success', 'You are now registered and can log in', 'alert alert-success');
+                        flash('signUp_success', 'You are now registered and can log in', 'alert alert-success');
 
                         // redirect to home page after successful registration
                         header('location: ' . URL_ROOT . '/residents/signIn');
