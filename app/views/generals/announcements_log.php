@@ -14,6 +14,16 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
 
 <body>
   <div class="main-content">
+        <?php
+        // flash messages
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
+        ?>
     <div class="new-announcement-landing">
       <div class="announcement-column-new">
         <div class="announcement-type">

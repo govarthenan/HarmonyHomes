@@ -148,21 +148,43 @@ class Generals extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // foreach ($_POST as $key => $value) {
-            //     echo gettype($value) . PHP_EOL;
-            // }
-            // die();
 
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $data = [
-                'user_id' => $_SESSION['user_id'],  // Assuming user_id is stored in session
-                'receiver' => trim($_POST['receiver']),
-                'title' => trim($_POST['title']),
-                'message' => trim($_POST['message'])
-            ];
+            // determine the 'from' value
+            $sender = $_SESSION['user_role'];
+            switch ($sender) {
+                case 'general':
+                    $sender = 'General Manager';
+                    break;
+                case 'finance':
+                    $sender = 'Finance Manager';
+                    break;
+                case 'facility':
+                    $sender = 'Facility Manager';
+                    break;
+                default:
+                    $sender = '';
+            }
+
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_SPECIAL_CHARS);
+
+            // try to get announcement data
+            try {
+                $data = [
+                    'user_id' => $_SESSION['user_id'],  // Assuming user_id is stored in session
+                    'sender' => $sender,  // Assuming user_name is stored in session
+                    'receiver' => trim($_POST['receiver']),
+                    'title' => trim($_POST['title']),
+                    'message' => trim($_POST['message'])
+                ];
+            } catch (Error $th) {
+                flash('error_unknown_announcement', 'Error with announcement data', 'alert alert-error');
+                header('location: ' . URL_ROOT . '/generals/announcementAdd');
+                // Remove the unused variable $th
+            }
 
             // call model to add announcment
             if ($this->model->writeAnnouncement($data)) {
+                flash('success_announcement_added', 'Announcement added!', 'alert alert-success');
                 header('location: ' . URL_ROOT . '/generals/announcementsLog');
                 //$this->announcementsLog();
             } else {
@@ -202,9 +224,11 @@ class Generals extends Controller
 
             // call model to add announcement
             if ($this->model->editAnnouncement($data)) {
+                flash('success_announcement_updated', 'Announcement updated!', 'alert alert-success');
                 header('location: ' . URL_ROOT . '/generals/announcementsLog');
             } else {
-                die('Error with updating announcement in DB');  // ToDo: improve error handling
+                flash('error_announcement_updated', 'Error updating announcement', 'alert alert-error');
+                header('location: ' . URL_ROOT . '/generals/announcementEdit/' . $announcement_id);
             }
         } else {
             $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);

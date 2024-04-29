@@ -77,9 +77,10 @@ class General
 
     public function writeAnnouncement($data)
     {
-        $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
+        $this->db->prepareQuery('INSERT INTO announcement (user_id, sender, receiver, title, message) VALUES (:user_id, :sender, :receiver, :title, :message)');
 
         $this->db->bind('user_id', $data['user_id']);
+        $this->db->bind('sender', $data['sender']);
         $this->db->bind('receiver', $data['receiver']);
         $this->db->bind('title', $data['title']);
         $this->db->bind('message', $data['message']);
