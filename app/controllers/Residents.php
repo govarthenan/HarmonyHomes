@@ -20,7 +20,13 @@ class Residents extends Controller
 
     public function index()
     {
-        $this->loadView('residents/dashboard');
+        // set resident wing
+        $_SESSION['resident_wing'] = $this->model->getResidentWing($_SESSION['user_id']);
+
+        // get all announcements
+        $data['announcements'] = $this->model->fetchAllAnnouncements();
+
+        $this->loadView('residents/dashboard', $data);
     }
 
     public function signUp()
@@ -152,7 +158,7 @@ class Residents extends Controller
                     // register user
                     if ($this->model->registerResident($this->data)) {
                         // register flash message to be shown in login page
-                        flashMessage('signUp_success', 'You are now registered and can log in', 'alert alert-success');
+                        flash('signUp_success', 'You are now registered and can log in', 'alert alert-success');
 
                         // redirect to home page after successful registration
                         header('location: ' . URL_ROOT . '/residents/signIn');
@@ -212,8 +218,14 @@ class Residents extends Controller
 
                 // check password and login
                 if ($logInResult) {
-                    // create session
-                    $this->createUserSession($logInResult);
+                    // check for account approval
+                    if ($logInResult->approved) {
+                        // create session
+                        $this->createUserSession($logInResult);
+                    } else {
+                        flash('error_account_not_approved', "Account not yet approved!", 'alert alert-error');
+                        $this->loadView('residents/sign_in');
+                    }
                 } else {
                     $errors['password_err'] = 'Password incorrect';
                     die(print_r($errors));  // ToDo: improve error handling
@@ -263,6 +275,8 @@ class Residents extends Controller
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
+        unset($_SESSION['user_role']);
+        unset($_SESSION['resident_wing']);
 
         // destroy session
         session_destroy();
@@ -313,7 +327,6 @@ class Residents extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
@@ -436,10 +449,13 @@ class Residents extends Controller
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
 
-    public function test()
+    /**
+     * Shows support doc.
+     *
+     * @return void
+     */
+    public function supportLog()
     {
-        $complaints_list = $this->model->fetchAllComplaints();
-        $data['complaints'] = $complaints_list;
-        $this->loadView('residents/test', $data);
+        $this->loadView('residents/support');
     }
 }

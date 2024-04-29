@@ -34,23 +34,34 @@
             </div>
         </div>
         <nav class="navigation">
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_payment.svg' ?>" />
-                <span class="sidebar-title">Payment</span>
-            </div>
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_bill.svg' ?>" />
-                <span class="sidebar-title">Billing</span>
-            </div>
+            <a href="<?php echo URL_ROOT . '/finances/index' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                <div class="navi-item">
+                    <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_amenities.svg' ?>" />
+                    <span class="sidebar-title">Home</span>
+                </div>
+            </a>
+            <a href="<?php echo URL_ROOT . '/finances/paymentsDue' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                <div class="navi-item">
+                    <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_payment.svg' ?>" />
+                    <span class="sidebar-title">Payment&nbsp;Overview</span>
+                </div>
+            </a>
+            <a href="<?php echo URL_ROOT . '/finances/csvUpload' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                <div class="navi-item">
+                    <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_bill.svg' ?>" />
+                    <span class="sidebar-title">Monthly&nbsp;Billing</span>
+                </div>
+            </a>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_calendar.svg' ?>" />
-                <span class="sidebar-title">Calendar events</span>
+                <span class="sidebar-title">Calendar&nbsp;events</span>
             </div>
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_notification.svg' ?>" />
-                <span class="sidebar-title">Notification</span>
-            </div>
-
+            <a href="<?php echo URL_ROOT . '/finances/createNotification' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                <div class="navi-item">
+                    <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_notification.svg' ?>" />
+                    <span class="sidebar-title">Create&nbsp;Notification</span>
+                </div>
+            </a>
             <hr />
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_log-out.svg' ?>" />
