@@ -407,7 +407,6 @@ grid-template-columns:2.4fr 1fr ;
 .dates div:hover:not(.today){
   background-color: var(--color_6);
   color:var(--color_5);
-  font-size: 600;
   cursor: pointer;
   -webkit-box-reflect: below 4px linear-gradient(transparent, #0000004d);
   border: 3px solid var(--color_5);
