@@ -13,11 +13,11 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
 <body onload="randerDate()">
     <div class="main-content">
-    <div class="flash-message-container">
-        <?php
-        // call flash messages
-        ?>
-    </div>
+        <div class="flash-message-container">
+            <?php
+            // call flash messages
+            ?>
+        </div>
         <div class="dashboard-container">
             <div class="first-row-resident-dashboard">
                 <div class="announcment-container">
@@ -26,19 +26,22 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                     </div>
 
                     <div class="announcment-tile-container">
-                        <?php
-                        $n = 0;
-                        foreach ($data['announcements'] as $announcement) :
-                            $n++; ?>
-                            <div class="announcment-1">
-                                <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?><br></div>
-                                <div id="announcementDetails-<?php echo $n ?>" class="announcement-msg">
-                                    <div class="title"><b>Title:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->title; ?></div>
-                                    <div class="sender"><b>by:&nbsp;&nbsp;&nbsp;</b></div>
-                                    <div class="message"><b>Message:&nbsp;&nbsp;&nbsp;</b></div>
+
+                        <?php if ($data['announcements'] != null) : ?>
+                            <?php
+                            $n = 0;
+                            foreach ($data['announcements'] as $announcement) :
+                                $n++; ?>
+                                <div class="announcment-1">
+                                    <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?><br></div>
+                                    <div id="announcementDetails-<?php echo $n ?>" class="announcement-msg">
+                                        <div class="title"><b>Title:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->title; ?></div>
+                                        <div class="sender"><b>From:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->sender; ?></div>
+                                        <div class="message"><b>Message:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->message; ?></div>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="calendar">
