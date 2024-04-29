@@ -376,21 +376,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-/*create announcement*/
-
-function toggleDropdowns() {
-    var userType = document.getElementById('userType').value;
-    var groupSelect = document.getElementById('groupSelect');
-
-    // Handling Group Select visibility
-    if (userType === 'wings') {
-        groupSelect.style.display = 'block';
-    } else {
-        groupSelect.style.display = 'none';
-    }
-
-}
-
 /*payment status-finance-js*/
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -479,31 +464,6 @@ if (flashMessages.length > 0) {
 
 
 
-/*create Notification*/
-
-function toggleDropdowns() {
-    var userType = document.getElementById('userType').value;
-    var groupSelect = document.getElementById('groupSelect');
-    var residentIdSelect = document.getElementById('residentIdSelect');
-
-    // Handling Group Select visibility
-    if (userType === 'groups') {
-        groupSelect.style.display = 'block';
-        residentIdSelect.style.display = 'none';  // Ensure this is hidden if not 'customUser'
-    } else {
-        groupSelect.style.display = 'none';
-    }
-
-    
-    if (userType === 'customUser') {
-        residentIdSelect.style.display = 'block';
-        groupSelect.style.display = 'none';  // Ensure this is hidden if not 'groups'
-    } else {
-        residentIdSelect.style.display = 'none';
-    }
-}
-
-
 
 /* displying full details when clicked on view button of sign request table*/
 document.addEventListener('DOMContentLoaded', function() {
@@ -513,11 +473,5 @@ document.addEventListener('DOMContentLoaded', function() {
             const detailsRow = this.closest('tr').nextElementSibling; // Get the next row, which should be the details row
             detailsRow.style.display = detailsRow.style.display === 'none' ? 'table-row' : 'none'; // Toggle visibility
         });
-    });
-});
-
-$(document).ready(function() {
-    $('.viewButton').click(function() {
-        $(this).closest('tr').next('.description-row').toggle();  // Toggle the visibility of the next description row
     });
 });
