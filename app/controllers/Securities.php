@@ -156,4 +156,13 @@ class Securities extends Controller
         }
     }
 
+    public function logVisitorDeparture($visitor_id)
+    {
+        if ($this->model->updateVisitorDepartureTime($visitor_id)) {
+            flash('success_visitor_departure', 'Visitor departure time logged successfully', 'alert alert-success');
+        } else {
+            flash('error_visitor_departure', 'Error logging visitor departure time', 'alert alert-danger');
+        }
+        header('location: ' . URL_ROOT . '/securities/visitorsLog');
+    }
 }

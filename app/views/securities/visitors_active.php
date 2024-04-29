@@ -14,6 +14,16 @@ include(APP_ROOT . '/views/inc/security_side_nav.php');
 
 <body onload="randerDate()">
     <div class="main-content">
+        <?php
+        // flash messages
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
+        ?>
         <div class="acive-visitor-container">
             <div class="onsite-visitor-heading">
                 Onsite Visitors
@@ -27,20 +37,27 @@ include(APP_ROOT . '/views/inc/security_side_nav.php');
 
                     <thead>
                         <tr class="onsite-visitor-head">
-                            <th>visitor_id</th>
                             <th>Name</th>
-                            <th>entryTime</th>
-                            <th>Action</th>
+                            <th>Host</th>
+                            <th>Arrival</th>
+                            <th>Departure</th>
                         </tr>
                     </thead>
                     <?php foreach ($data['visitors'] as $index => $visitor) : ?>
                         <tbody>
                             <tr>
-                                <td>
-                                    </p><?php echo $visitor->visitor_id; ?></td>
                                 <td><?php echo $visitor->fullName; ?></td>
-                                <td><?php echo $visitor->entryTime; ?></td>
-                                <td><button type="button" onclick="fetchExitTime()">Fetch Exit Time</button></td>
+                                <td><?php echo $visitor->hostName; ?></td>
+                                <td><?php echo explode(':', $visitor->entryTime)[0] . ':' . explode(':', $visitor->entryTime)[1]; ?></td>
+                                <td>
+                                    <?php if ($visitor->exitTime == null) : ?>
+                                        <form method="post" action="<?php echo URL_ROOT . '/securities/logVisitorDeparture/' . $visitor->visitor_id; ?>">
+                                            <button value="submit" type="submit">Fetch Exit Time</button>
+                                        </form>
+                                    <?php else : ?>
+                                        <?php echo explode(':', $visitor->exitTime)[0] . ':' . explode(':', $visitor->exitTime)[1]; ?>
+                                    <?php endif; ?>
+                                </td>
                             </tr>
 
                             <!-- Add more rows as needed -->

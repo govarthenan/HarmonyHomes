@@ -108,6 +108,15 @@ class Security
         return $this->db->execute();
     }
 
-    
+    public function updateVisitorDepartureTime($visitor_id)
+    {
+        $this->db->prepareQuery('UPDATE visitor SET exitTime = :exitTime WHERE visitor_id = :visitor_id');
 
+        // Bind values
+        $this->db->bind('exitTime', date('H:i:s'));
+        $this->db->bind('visitor_id', $visitor_id);
+
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
 }
