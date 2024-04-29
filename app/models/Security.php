@@ -32,7 +32,7 @@ class Security
     }
 
 
-/**
+    /**
      * Fetches all visitors for the current user.
      *
      * @return array An array containing all the visitors for the current user.
@@ -41,6 +41,7 @@ class Security
     {
         $this->db->prepareQuery('SELECT * FROM visitor WHERE user_id = :user_id');
         $this->db->bind('user_id', $_SESSION['user_id']);
+        // die(var_dump($this->db->resultSet()));
         return $this->db->resultSet();
     }
 
@@ -57,7 +58,7 @@ class Security
     public function writeVisitor($data)
     {
         $this->db->prepareQuery('INSERT INTO visitor (user_id, fullName, contactNumber, entryTime, purposeOfVisit, hostName, notes) VALUES (:user_id, :fullName, :contactNumber, :entryTime, :purposeOfVisit, :hostName, :notes)');
-    
+
         // Bind values
         $this->db->bind('user_id', $_SESSION['user_id']);
         $this->db->bind('fullName', $_POST['fullName']);
@@ -66,12 +67,12 @@ class Security
         $this->db->bind('purposeOfVisit', $_POST['purposeOfVisit']);
         $this->db->bind('hostName', $_POST['hostName']);
         $this->db->bind('notes', $_POST['notes']);
-        
+
         // Execute the query and return bool
         return $this->db->execute();
     }
 
-/**
+    /**
      * Fetches all visitors for the current user.
      *
      * @return array An array containing all the visitors for the current user.
@@ -96,17 +97,17 @@ class Security
     public function writedelivery($data)
     {
         $this->db->prepareQuery('INSERT INTO delivery (user_id, doorNumber, floorNumber,  notes) VALUES (:user_id, :doorNumber, :floorNumber, :notes)');
-    
+
         // Bind values
         $this->db->bind('user_id', $_SESSION['user_id']);
         $this->db->bind('doorNumber', $_POST['doorNumber']);
         $this->db->bind('floorNumber', $_POST['floorNumber']);
         $this->db->bind('notes', $_POST['notes']);
-       
-        
+
         // Execute the query and return bool
         return $this->db->execute();
     }
+
     
 
 }

@@ -66,7 +66,7 @@ class Securities extends Controller
         $this->loadView('staffs/sign_in');
     }
 
-/**
+    /**
      * Fetches all visitors and loads the complaints log view.
      *
      * @return void
@@ -75,7 +75,6 @@ class Securities extends Controller
     {
         $data['visitors'] = $this->model->fetchAllVisitors();
         $this->loadView('securities/visitors_active', $data);
-        
     }
 
 
@@ -90,7 +89,6 @@ class Securities extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
@@ -114,7 +112,7 @@ class Securities extends Controller
         }
     }
 
-/**
+    /**
      * Fetches all visitors and loads the complaints log view.
      *
      * @return void
@@ -123,7 +121,6 @@ class Securities extends Controller
     {
         $data['deliveries'] = $this->model->fetchAlldeliveries();
         $this->loadView('securities/delivery_active', $data);
-        
     }
 
 
@@ -139,14 +136,12 @@ class Securities extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
                 'doorNumber' => trim($_POST['doorNumber']),
                 'floorNumber' => trim($_POST['floorNumber']),
                 'notes' => trim($_POST['notes'])
-                
             ];
 
             // call model to add complaint
