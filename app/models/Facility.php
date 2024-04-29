@@ -87,7 +87,7 @@ class Facility
 
     public function fetchTechnicianAllDetails()
     {
-        $this->db->prepareQuery('SELECT * FROM technician_overview');
+        $this->db->prepareQuery('SELECT * FROM technician_overview WHERE status = 1');
 
         $this->db->resultSet();
         return $this->db->resultSet();
