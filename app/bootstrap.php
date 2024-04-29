@@ -10,6 +10,10 @@ require_once '../app/config/MyAutoLoader.php';  // class containing all autoload
 // load config
 require_once '../app/config/config.php';
 
+// load SMS libraries
+require_once(APP_ROOT . '/../vendor/notify/autoload.php');
+require_once(APP_ROOT . '/../vendor/notify/src/Api/SmsApi.php');
+
 // load helpers
 require_once APP_ROOT . '/helpers/file_handling_functions.php';
 require_once APP_ROOT . '/helpers/message_notification_functions.php';

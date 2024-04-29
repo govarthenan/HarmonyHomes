@@ -458,4 +458,9 @@ class Residents extends Controller
     {
         $this->loadView('residents/support');
     }
+
+    public function test()
+    {
+        echo var_dump(sendSMS('94740196630', 'Please pay your bills on time!', 'Finance Manager'));
+    }
 }
