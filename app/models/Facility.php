@@ -150,6 +150,34 @@ class Facility
 
 
 }
+public function fetchCompletedIssueDetails()
+    {
+        $this->db->prepareQuery('SELECT issue.issue_id,resident.user_id,resident.name,issue.Date,Issuetype,door_number,floor_number,first_name as fname,last_name as lname FROM issue JOIN technician_overview t ON issue.technician_assign = t.technician_id JOIN resident ON issue.user_id = resident.user_id WHERE issue.status = "completed" ');
+        // $this->db->bind('issue_id', $issue_id);
+        return $this->db->resultSet();
+
+        
+
+    }
+    public function fetchIssueDetails()
+    {
+        $this->db->prepareQuery('SELECT  resident.user_id,a.status,resident.name,issue.Date,Issuetype,door_number,floor_number,first_name as fname,last_name as lname FROM issue JOIN technician_overview t ON issue.technician_assign = t.technician_id JOIN resident ON issue.user_id = resident.user_id JOIN assign_issue a ON a.issue_id = issue.issue_id WHERE a.status <> "completed" ');
+        // $this->db->bind('issue_id', $issue_id);
+        return $this->db->resultSet();
+
+        
+
+    }
+    public function fetchCompletedOneIssueDetails(int $issue_id)
+    {
+        $this->db->prepareQuery('SELECT resident.user_id,issue.Attachment,resident.name,issue.Date,Issuetype,door_number,floor_number,first_name as fname,last_name as lname FROM issue JOIN technician_overview t ON issue.technician_assign = t.technician_id JOIN resident ON issue.user_id = resident.user_id  WHERE issue.status = "completed" AND issue.issue_id = :issue_id ');
+        $this->db->bind('issue_id', $issue_id);
+        // $this->db->bind('issue_id', $issue_id);
+        return $this->db->singleResult();
+
+        
+
+    }
 
 }
 

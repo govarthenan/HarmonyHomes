@@ -201,19 +201,23 @@ class Facilities extends Controller
     }
     // issuelog for assigned issue views
     public function fmIssueLog(){
-        $result = $this->model->fetchAssignDetails();
-        $this->model->addAssignDetails($result);
+        $data["issues"] = $this->model->fetchIssueDetails();
+        //print_r($result);
             
         // die(var_dump($result));
-        $this->loadView('facilities/fac_issue_log',$result);
+        $this->loadView('facilities/fac_issue_log',$data);
     }
     // completed issue table view
     public function fmIssueComplete(){
-        $this->loadView('facilities/completed_issue');
+       $data['completedIssues'] = $this->model->fetchCompletedIssueDetails();
+        //print_r($data);
+        $this->loadView('facilities/completed_issue',$data);
     }
      // completed issue form view
-     public function fmIssueCompleteView(){
-        $this->loadView('facilities/completed_issue_view');
+     public function fmIssueCompleteView(int $issue_id){
+        $data['completedOne'] = $this->model->fetchCompletedOneIssueDetails($issue_id);
+        $this->loadView('facilities/completed_issue_view',$data);
+        
     }
 
 
