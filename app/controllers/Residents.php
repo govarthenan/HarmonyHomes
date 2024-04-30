@@ -521,6 +521,41 @@ class Residents extends Controller
         flash('complaint_delete_success', 'Complaint deleted', 'alert');
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
+    public function issueLanding(){
+    
+        
+        $data['issue'] = $this->model->fetchAllIssues();
+        $this->loadView('residents/issue', $data);
+  
+}
+public function issueCreate(){
+      // check for post/get to see if form was submitted
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data = [
+            'user_id' => $_SESSION['user_id'],
+            'IssueType' => trim($_POST['IssueType']),
+            'subject' => trim($_POST['subject']),
+            'Description' => trim($_POST['Description']),
+            // 'Attachments' => trim($_POST['Attachments']),
+        ];
+        // if (isset($_FILES['Attachments']) && $_FILES['Attachments']['error'] == UPLOAD_ERR_OK) {
+        //     $file = file_get_contents($_FILES['Attachments']['tmp_name']);
+        //     $data['Attachments'] = $file;
+        // }
+
+        // call model to add complaint
+        if ($this->model->writeIssue($data)) {
+            header('location: ' . URL_ROOT . '/residents/issueLanding');
+        } else {
+            die('Error with adding issue to DB');  // ToDo: improve error handling
+        }
+    }
+        else{
+            $this->loadView('residents/new_issue');
+        }
+    // $this->loadView('residents/new_issue');
+}
 
     /**
      * Shows support doc.
@@ -531,4 +566,5 @@ class Residents extends Controller
     {
         $this->loadView('residents/support');
     }
+
 }
