@@ -201,4 +201,47 @@ class Resident
         $this->db->bind('resident_wing', $_SESSION['resident_wing']);
         return $this->db->resultSet();
     }
+
+    public function isFloorDoorTaken($floor_number, $door_number)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE floor_number = :floor_number AND door_number = :door_number');
+        $this->db->bind('floor_number', $floor_number);
+        $this->db->bind('door_number', $door_number);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isNICTaken($nic)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE nic = :nic');
+        $this->db->bind('nic', $nic);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isPhoneTaken($phone)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE phone = :phone');
+        $this->db->bind('phone', $phone);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
