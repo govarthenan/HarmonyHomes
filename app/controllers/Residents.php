@@ -256,10 +256,15 @@ class Residents extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // store data
-            $data = [
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
-            ];
+            try {
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password']),
+                ];
+            } catch (Throwable $th) {
+                flash('error_missing_login_data', 'Ensure all data was submitted!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signIn');
+            }
 
             // array to store errors
             $errors = [];
@@ -277,16 +282,18 @@ class Residents extends Controller
                         // create session
                         $this->createUserSession($logInResult);
                     } else {
-                        flash('error_account_not_approved', "Account not yet approved!", 'alert alert-error');
+                        flash('error_account_not_approved', "Account not yet approved!", 'alert alert-danger');
                         $this->loadView('residents/sign_in');
                     }
                 } else {
-                    $errors['password_err'] = 'Password incorrect';
-                    die(print_r($errors));  // ToDo: improve error handling
+                    // password wrong
+                    flash('error_user_pw_wrong', "Username or password is wrong", 'alert alert-danger');
+                    $this->loadView('residents/sign_in');
                 }
             } else {
                 // email does not exist
-                $errors['email_err'] = 'No such email found';
+                flash('error_user_pw_wrong', "Username or password is wrong", 'alert alert-danger');
+                $this->loadView('residents/sign_in');
             }
         } else {
             // load form

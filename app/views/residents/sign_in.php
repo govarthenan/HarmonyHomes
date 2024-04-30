@@ -13,7 +13,14 @@
 <body>
     <div class="main-container-sign-in">
         <?php
-        flash('error_account_not_approved');
+        // flash message
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
         ?>
         <div class="sign-in-container">
             <div class="sign-in-image-container">
