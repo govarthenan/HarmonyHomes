@@ -26,51 +26,19 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                             <th>Technician</th>
                             <th>Mark As Read</th>
                             </tr>
+                            <?php foreach ($data['issue'] as $index =>$issues):?>
                             <tr>
-                                <td>2024/01/28</td>
-                                <td>S 2/4</td>
-                                <td>AC Repairs</td>
-                                <td>Shan</td>
-                                <td><button class="assignButton"><i class="fa-solid fa-check"></i></button></td>
-                              
-                                
-                            </tr>
+                                <td><?php echo $issues->Date ?></td>
+                                <td><?php
+                                $resident_id = $issues->floor_number."/".$issues->door_number;
+                                echo $resident_id ?></td>
+                                <td><?php echo $issues->subject ?></td>
+                                <td><?php echo $issues->first_name ?></td>
+                                <td><a href="<?php echo URL_ROOT.'/generals/deleteIssue/'.$issues->issue_id?>"><button class="assignButton"><i class="fa-solid fa-check"></i></button></a></td>
+                             </tr>
+                             <?php endforeach ?>
 
-                            <tr>
-                                <td>2024/02/03</td>
-                                <td>W 3/6</td>
-                                <td>Clogged Sink</td>
-                                <td>Umai</td>
-                                <td><button class="assignButton"><i class="fa-solid fa-check"></i></button></td>
-    
-                            </tr>
-
-                            <tr>
-                                <td>2024/02/25</td>
-                                <td>S 4/7</td>
-                                <td>Hot Water Issue</td>
-                                <td>Himash</td>
-                                <td><button class="assignButton"><i class="fa-solid fa-check"></i></button></td>
-                             
-                            </tr>
-
-                            <tr>
-                                <td>2024/03/03</td>
-                                <td>W 1/6</td>
-                                <td>Electrical Issues</td>
-                                <td>Gova</td>
-                                <td><button class="assignButton"><i class="fa-solid fa-check"></i></button></td>
-                             
-                            </tr>
-
-                            <tr>
-                                <td>2024/03/27</td>
-                                <td>S 3/6</td>
-                                <td>Water Leaks </td>
-                                <td>Thusi</td>
-                                <td><button class="assignButton"><i class="fa-solid fa-check"></i></button></td>
-                           
-                            </tr>
+                          
                           </table>
             
     </div>

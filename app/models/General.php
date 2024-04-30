@@ -151,6 +151,31 @@ class General
         // Execute the query and return bool
         return $this->db->execute();
     }
+    public function residentCount()
+    {
+        $this->db->prepareQuery('SELECT COUNT(*) AS row_count FROM resident');
+        return $this->db->resultSet();
+    }
+    public function staffCount()
+    {
+        $this->db->prepareQuery('SELECT COUNT(*) AS staff_count FROM staff');
+        return $this->db->resultSet();
+    }
+    public function viewIssue()
+    {
+        $this->db->prepareQuery('SELECT i.* ,t.first_name,t.last_name,r.floor_number,r.door_number 
+        FROM issue as i 
+        JOIN technician_overview as t ON i.technician_assign = t.technician_id 
+        JOIN resident as r ON r.user_id = i.user_id
+        WHERE i.status ="completed"  AND technician_assign <>100');
+        return $this->db->resultSet();
+    }
+    public function deleteIssueRow($issue_id)
+    {
+        $this->db->prepareQuery('UPDATE issue SET technician_assign = 100 WHERE issue_id = :issue_id');
+        $this->db->bind('issue_id',$issue_id);
+        return $this->db->execute();
+    }
 
     public function fetchAllUsersForManagement()
     {
@@ -198,3 +223,4 @@ class General
         return $this->db->execute();
     }
 }
+
