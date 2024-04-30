@@ -44,6 +44,7 @@
             </div>
         </div>
     </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
 
 </html>
