@@ -26,18 +26,38 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
                     <tr class="inventory_table_head">
                         <th>Task ID</th>
                         <th>Resident Id</th>
-                        <th>Staus</th>
+                        <th>Status</th>
+                        <th>Update</th>
                         <th>View</th>
 
                     </tr>
+             <form enctype="multipart/form-data" name="technicianForm" method="post" action="<?php echo URL_ROOT . '/technicians/updateStatus' ?>">
+            <?php foreach ($data['ongoing'] as $index =>$new): ?>
                     <tr>
-                        <td>I01</td>
-                        <td>2</td>
-                        <td>Ongoing</td>
-                        <td><button class="View-btn-ongoing">View</button>
-                        <a href="<?php echo URL_ROOT. '/technicians/taskOngoingView'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><button class="update-Button-ongoing" > Update</button></a>
-                    </td>
+                    <td><?php echo $new->issue_id?></td>
+                    <td><?php
+                    $resident_id = $new->floor_number.'/'.$new->door_number;
+                    echo $resident_id ?></td>
+                   <td>
+    <select name="status">
+        <option value="ongoing" <?php $status=''; echo ($status == 'ongoing') ? 'selected' : ''; ?>>Ongoing</option>
+        <option value="onhold" <?php echo ($status == 'onhold') ? 'selected' : ''; ?>>On Hold</option>
+        <option value="finished" <?php echo ($status == 'finished') ? 'selected' : ''; ?>>Finished</option>
+        <option value="other" <?php echo ($status == 'other') ? 'selected' : ''; ?>>Other</option>
+    </select>
+</td>
+              <td><?php echo $new->status ?> </td>
+
+                        <td><a href="<?php echo URL_ROOT. '/technicians/taskOngoingView'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><button class="View-btn-ongoing">View</button></a>
+                        <a href="<?php echo URL_ROOT . '/technicians/updateStatus/' . $new->issue_id; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                    <button type="submit" name="issue_id" value="<?php echo $new->issue_id; ?>" class="update-Button-ongoing">Update</button>
+                </a> 
+                <input type="hidden" name="issue_id" value="<?php echo $new->issue_id; ?>">                  
+             </td>
+                       
                     </tr>
+                    <?php endforeach ?>
+                </form>
 
                     
                     </tr>

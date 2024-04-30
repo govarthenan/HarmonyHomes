@@ -115,12 +115,35 @@ class Technicians extends Controller
     public function taskOngoing(){
         $tech_id = $_SESSION['user_id'];
         $data['ongoing'] = $this->model->ongoingTaskView($tech_id);
-        die(var_dump( $data));
-         $this->loadView('technicians/task_ongoing');
+        
+         $this->loadView('technicians/task_ongoing',$data);
     }
     public function taskOngoingView(){
         $this->loadView('technicians/task_ongoing_view');
     }
+    public function updateStatus(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $data = [
+                'user_id' => $_SESSION['user_id'],
+                'status' => trim($_POST['status']),
+                'issue_id' => trim($_POST['issue_id'])
+                
+            ];
+
+            // call model to add complaint
+            if ($this->model->insertStatus($data)) {
+                flash('update_success', 'Update  added successfully!');
+                header('location: ' . URL_ROOT . '/technicians/taskOngoing');
+            } else {
+                die('Error with adding complaint to DB');  // ToDo: improve error handling
+            }
+        } else {
+            $this->loadView('technicians/task_ongoing');
+        }
+    }
+    
 
 
 }

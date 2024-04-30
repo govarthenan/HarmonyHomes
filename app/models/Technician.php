@@ -105,7 +105,8 @@ class Technician
         r.door_number,
         i.Issuetype,
         i.Description,
-        i.issue_id
+        i.issue_id,
+        i.status
     FROM 
         issue AS i
     INNER JOIN 
@@ -115,6 +116,15 @@ class Technician
         
         $this->db->bind('technician_id',$tech_id);
         return $this->db->resultSet();
+
+     }
+     public function insertStatus($data){
+        $this->db->prepareQuery('UPDATE issue SET  status = :status WHERE issue_id = :issue_id ');
+        $this->db->bind('issue_id', $data['issue_id']);
+        $this->db->bind('status', $data['status']);
+
+        return $this->db->execute();
+      
 
      }
     
