@@ -12,7 +12,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="<?php echo URL_ROOT . '/public/css/generals_style.css' ?>" />
+    <link rel="stylesheet" href="<?php echo URL_ROOT . '/public/css/general_style.css' ?>" />
 </head>
 
 <body>
@@ -50,7 +50,7 @@
                 <a href="<?php echo URL_ROOT . '/facilities/issueAssign' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"> <span class="sidebar-title">Issues</span> </a>
             </div>
 
-          
+
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_complaints.svg' ?>" />
@@ -58,7 +58,7 @@
             </div>
 
             <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_notification.svg' ?>" />
+                <img src="<?php echo URL_ROOT . '/public/resources/generals/Notes-Checklist-Flip--Streamline-Ultimate.svg' ?>" />
                 <a href="<?php echo URL_ROOT . '/facilities/inventoryLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">    <span class="sidebar-title">Inventory</span> </a>
             </div>
 
@@ -66,6 +66,11 @@
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
                 <a href="<?php echo URL_ROOT . '/facilities/inventoryLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Announcement</span>
             </div>
+            <div class="navi-item">
+                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
+                <a href="<?php echo URL_ROOT . '/facilities/inventoryLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Log</span>
+            </div>
+
 
             <hr />
             <div class="navi-item">

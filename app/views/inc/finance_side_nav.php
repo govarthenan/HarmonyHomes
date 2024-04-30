@@ -49,18 +49,19 @@
             <a href="<?php echo URL_ROOT . '/finances/csvUpload' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
                 <div class="navi-item">
                     <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_bill.svg' ?>" />
-                    <span class="sidebar-title">Billing</span>
+                    <span class="sidebar-title">Monthly&nbsp;Billing</span>
                 </div>
             </a>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_calendar.svg' ?>" />
                 <span class="sidebar-title">Calendar&nbsp;events</span>
             </div>
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_notification.svg' ?>" />
-                <span class="sidebar-title">Notification</span>
-            </div>
-
+            <a href="<?php echo URL_ROOT . '/finances/createNotification' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                <div class="navi-item">
+                    <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_notification.svg' ?>" />
+                    <span class="sidebar-title">Create&nbsp;Notification</span>
+                </div>
+            </a>
             <hr />
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/finances/sidebar_log-out.svg' ?>" />

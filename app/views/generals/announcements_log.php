@@ -14,6 +14,16 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
 
 <body>
   <div class="main-content">
+        <?php
+        // flash messages
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
+        ?>
     <div class="new-announcement-landing">
       <div class="announcement-column-new">
         <div class="announcement-type">
@@ -56,13 +66,13 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
               <h4 class="announcement-status-heading">Action</h4>
               <div class="button-action">
                 <a href="<?php echo URL_ROOT . '/generals/announcementDetail/' . $announcement->announcement_id; ?>">
-                  <button class="viewButton">View</button>
+                  <button class="viewButton" style="text-decoration: none";>View</button>
                 </a>
                 <a href="<?php echo URL_ROOT . '/generals/announcementEdit/' . $announcement->announcement_id; ?>">
-                  <button class="updateButton">Update</button>
+                  <button class="updateButton" style="text-decoration: none";>Update</button>
                 </a>
                 <a href="<?php echo URL_ROOT . '/generals/announcementDelete/' . $announcement->announcement_id; ?>">
-                  <button class="delete-btn">Delete</button>
+                  <button class="delete-btn" style="text-decoration: none";>Delete</button>
                 </a>
               </div>
             </div>

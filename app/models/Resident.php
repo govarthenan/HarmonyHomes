@@ -186,9 +186,117 @@ class Resident
         return $this->db->execute();
     }
 
+    public function getResidentWing($user_id)
+    {
+        $this->db->prepareQuery('SELECT wing FROM resident WHERE user_id = :user_id');
+        $this->db->bind('user_id', $user_id);
+        $row = $this->db->singleResult();
+
+        return $row->wing;
+    }
+
     public function fetchAllAnnouncements()
     {
-        $this->db->prepareQuery('SELECT * FROM announcement ORDER BY announcement_id DESC LIMIT 2');
+        $this->db->prepareQuery("SELECT * FROM announcement WHERE receiver = :resident_wing OR receiver = 'all' ORDER BY announcement_id DESC");
+        $this->db->bind('resident_wing', $_SESSION['resident_wing']);
         return $this->db->resultSet();
+    }
+
+    public function isFloorDoorTaken($floor_number, $door_number)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE floor_number = :floor_number AND door_number = :door_number');
+        $this->db->bind('floor_number', $floor_number);
+        $this->db->bind('door_number', $door_number);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isNICTaken($nic)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE nic = :nic');
+        $this->db->bind('nic', $nic);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isPhoneTaken($phone)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE phone = :phone');
+        $this->db->bind('phone', $phone);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public function writeIssue($data)
+    {
+        $this->db->prepareQuery('INSERT INTO `issue`( user_id,  Issuetype, subject , Description, Attachment) VALUES (:user_id, :Issuetype, :subject, :Description, :Attachment)');
+        // Bind values
+        
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        $this->db->bind('Issuetype', $data['IssueType']);
+        $this->db->bind('subject', $data['subject']);
+        $this->db->bind('Description', $data['Description']);
+        $this->db->bind('Attachment', $data['Attachment']);
+
+       
+
+        // Execute the query and return bool
+        return $this->db->execute();
+        
+    }
+    public function fetchAllIssues()
+    {
+        $this->db->prepareQuery('SELECT * FROM issue WHERE user_id = :user_id');
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        return $this->db->resultSet();
+    }
+
+    
+    public function editIssue($edited_issue)
+    {
+         
+            $query = "UPDATE issue 
+                       SET User_id = :User_id,
+                           IssueType = :IssueType,
+                           Description = :Description,
+                           Attachments = :Attachments
+                       WHERE issue_id = :issue_id";
+            
+            $this->db->prepareQuery($query);
+            
+            // Bind values
+            $this->db->bind('User_id', $_SESSION['user_id']);
+            $this->db->bind('IssueType', $_POST['IssueType']);
+            $this->db->bind('Description', $_POST['Description']);
+            $this->db->bind('Attachments', $_POST['Attachments']);
+            $this->db->bind('issue_id', $edited_issue['issue_id']);
+            
+            // Execute the query and return bool
+            return $this->db->execute();
+        
+    }
+    public function deleteIssue($issue_id)
+    {
+        $this->db->prepareQuery('DELETE FROM issue WHERE issue_id = :issue_id');
+        $this->db->bind('complaint_id', $issue_id);
+        // Execute the query and return bool
+        return $this->db->execute();
     }
 }

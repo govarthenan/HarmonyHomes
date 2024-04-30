@@ -20,6 +20,9 @@ class Residents extends Controller
 
     public function index()
     {
+        // set resident wing
+        $_SESSION['resident_wing'] = $this->model->getResidentWing($_SESSION['user_id']);
+
         // get all announcements
         $data['announcements'] = $this->model->fetchAllAnnouncements();
 
@@ -35,20 +38,29 @@ class Residents extends Controller
             // sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $this->data = [
-                'name' => trim($_POST['name']),
-                'email' => trim($_POST['email']),
-                'phone' => trim($_POST['phone']),
-                'birthday' => trim($_POST['birthday']),
-                'gender' => trim($_POST['gender']),
-                'floor_number' => trim($_POST['floor_number']),
-                'door_number' => trim($_POST['door_number']),
-                'nic' => trim($_POST['nic']),
-                'nic_path' => '',
-                'agreement_path' => '',
-                'password' => trim($_POST['password']),
-                'confirm_password' => trim($_POST['confirm_password']),
-            ];
+            try {
+                $this->data = [
+                    'name' => trim($_POST['name']),
+                    'email' => trim($_POST['email']),
+                    'phone' => trim($_POST['phone']),
+                    'birthday' => trim($_POST['birthday']),
+                    'gender' => trim($_POST['gender']),
+                    'floor_number' => trim($_POST['floor_number']),
+                    'door_number' => trim($_POST['door_number']),
+                    'nic' => trim($_POST['nic']),
+                    'password' => trim($_POST['password']),
+                    'confirm_password' => trim($_POST['confirm_password']),
+                ];
+            } catch (Throwable $th) {
+                flash('erro_missing_signup_data', 'Ensure all data was submitted!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            }
+
+            // check if any variables are empty
+            if (in_array('', $this->data)) {
+                flash('erro_missing_signup_data', 'Ensure all data was submitted!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            }
 
             // array to store errors
             $this->errors = [];
@@ -62,6 +74,8 @@ class Residents extends Controller
             } else {
                 if ($this->model->isEmailTaken($this->data['email'])) {
                     $this->errors['email_err'] = 'Entered email is already registered.';
+                    flash('error_signup_validation', 'Entered email is already registered.', 'alert alert-danger');
+                    header('location: ' . URL_ROOT . '/residents/signUp');
                 }
             }
 
@@ -70,22 +84,33 @@ class Residents extends Controller
                 $this->errors['name_err'] = 'Please enter name';
             }
 
+            // check whether phone is taken
+            if ($this->model->isPhoneTaken($this->data['phone'])) {
+                flash('error_signup_validation', 'Entered phone number is already registered.', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            }
+
             // validate phone
             if (empty($this->data['phone'])) {
                 $this->errors['phone_err'] = 'Please enter phone number';
-            } elseif (strlen($this->data['phone']) != 10) {
-                $this->errors['phone_err'] = 'Phone number must be 10 digits';
+            } elseif (strlen($this->data['phone']) != 11) {
+                flash('error_signup_validation', 'Phone number must be 11 digits long', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             } elseif (!is_numeric($this->data['phone'])) {
-                $this->errors['phone_err'] = 'Phone number must be numeric';
-            } elseif ($this->data['phone'][0] != '0') {
-                $this->errors['phone_err'] = 'Phone number must start with 0';
+                flash('error_signup_validation', 'Phone number must be numeric', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            } elseif (($this->data['phone'][0] != '9') || ($this->data['phone'][1] != '4')) {
+                flash('error_signup_validation', 'Phone number must be a local number', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
+
 
             // validate birthday
             if (empty($this->data['birthday'])) {
                 $this->errors['birthday_err'] = 'Please enter birthday';
             } elseif (strtotime($this->data['birthday']) > strtotime('today')) {
-                $this->errors['birthday_err'] = 'Birthday cannot be in the future';
+                flash('error_signup_validation', 'Birthday cannot be in the future', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
 
             // validate gender
@@ -93,18 +118,27 @@ class Residents extends Controller
                 $this->errors['gender_err'] = 'Please select gender';
             }
 
+            // check if floor and door were already taken
+            if ($this->model->isFloorDoorTaken($this->data['floor_number'], $this->data['door_number'])) {
+                $this->errors['floor_door_err'] = 'Entered floor and door number are already taken.';
+                flash('error_signup_validation', 'Entered floor and door number are already registered!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            }
+
             // validate floor number
             if (empty($this->data['floor_number'])) {
                 $this->errors['floor_number_err'] = 'Please enter floor number';
             } elseif (!is_numeric($this->data['floor_number'])) {
-                $this->errors['floor_number_err'] = 'Floor number must be numeric';
+                flash('error_signup_validation', 'Floor number must be numeric!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
 
             // validate door number
             if (empty($this->data['door_number'])) {
                 $this->errors['door_number_err'] = 'Please enter door number';
             } elseif (!is_numeric($this->data['door_number'])) {
-                $this->errors['door_number_err'] = 'Door number must be numeric';
+                flash('error_signup_validation', 'Door number must be numeric!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
 
             // validate NIC
@@ -112,18 +146,33 @@ class Residents extends Controller
                 $this->errors['nic_err'] = 'Please enter NIC';
             }
 
+            // regex match NIC
+            $nic_preg_result = preg_match('/^(([5,6,7,8,9]{1})([0-9]{1})([0,1,2,3,5,6,7,8]{1})([0-9]{6})([v|V|x|X]))|(([1,2]{1})([0,9]{1})([0-9]{2})([0,1,2,3,5,6,7,8]{1})([0-9]{7}))/', $this->data['nic']);
+            if (!$nic_preg_result) {
+                flash('error_signup_validation', 'Invalid NIC number', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            }
+
+            // check if NIC is already taken
+            if ($this->model->isNICTaken($this->data['nic'])) {
+                flash('error_signup_validation', 'Entered NIC is already registered!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
+            }
+
             // validate password
             if (empty($this->data['password'])) {
                 $this->errors['password_err'] = 'Please enter password';
             } elseif (strlen($this->data['password']) < 6) {
-                $this->errors['password_err'] = 'Password must be at least 6 characters';
+                flash('error_signup_validation', 'Password must be at least 6 characters!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
 
             // validate confirm password
             if (empty($this->data['confirm_password'])) {
                 $this->errors['confirm_password_err'] = 'Please confirm password';
             } elseif ($this->data['password'] != $this->data['confirm_password']) {
-                $this->errors['confirm_password_err'] = 'Passwords do not match';
+                flash('error_signup_validation', 'Passwords do not match', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
 
             // validate nic and document file uploads
@@ -144,8 +193,10 @@ class Residents extends Controller
                 // register user
 
                 // move both files and get their paths
-                $this->data['nic_path'] = uploadFile($_FILES['nic_photo']);
-                $this->data['agreement_path'] = uploadFile($_FILES['agreement_photo']);
+                // $this->data['nic_path'] = uploadFile($_FILES['nic_photo']);
+                // $this->data['agreement_path'] = uploadFile($_FILES['agreement_photo']);
+                $this->data['nic_path'] = file_get_contents($_FILES['nic_photo']["tmp_name"]);
+                $this->data['agreement_path'] = file_get_contents($_FILES['agreement_photo']["tmp_name"]);
 
                 // ensure file uploads were successful before registering
                 if ($this->data['nic_path'] && $this->data['agreement_path']) {
@@ -155,22 +206,24 @@ class Residents extends Controller
                     // register user
                     if ($this->model->registerResident($this->data)) {
                         // register flash message to be shown in login page
-                        flashMessage('signUp_success', 'You are now registered and can log in', 'alert alert-success');
+                        flash('signUp_success', 'You are now registered and can log in', 'alert alert-success');
 
                         // redirect to home page after successful registration
                         header('location: ' . URL_ROOT . '/residents/signIn');
                     } else {
-                        die('Error with registering user to DB');  // ToDo: improve error handling
-
+                        flash('error_signup', 'Error registering user in the database!', 'alert alert-danger');
+                        header('location: ' . URL_ROOT . '/residents/signUp');
                         // delete uploaded files unique to this registration
-                        unlink($this->data['nic_path']);
-                        unlink($this->data['agreement_path']);
+                        // unlink($this->data['nic_path']);
+                        // unlink($this->data['agreement_path']);
                     }
                 } else {
-                    die('Error uploading files');  // ToDo: improve error handling
+                    flash('error_signup_validation', 'Error uploading files', 'alert alert-danger');
+                    header('location: ' . URL_ROOT . '/residents/signUp');
                 }
             } else {
-                die(print_r($this->errors));  // ToDO: improve error handling
+                flash('error_signup_validation', 'Errors in submitted data', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signUp');
             }
         } else {
             // load form
@@ -199,10 +252,15 @@ class Residents extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // store data
-            $data = [
-                'email' => trim($_POST['email']),
-                'password' => trim($_POST['password']),
-            ];
+            try {
+                $data = [
+                    'email' => trim($_POST['email']),
+                    'password' => trim($_POST['password']),
+                ];
+            } catch (Throwable $th) {
+                flash('error_missing_login_data', 'Ensure all data was submitted!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/signIn');
+            }
 
             // array to store errors
             $errors = [];
@@ -215,15 +273,23 @@ class Residents extends Controller
 
                 // check password and login
                 if ($logInResult) {
-                    // create session
-                    $this->createUserSession($logInResult);
+                    // check for account approval
+                    if ($logInResult->approved) {
+                        // create session
+                        $this->createUserSession($logInResult);
+                    } else {
+                        flash('error_account_not_approved', "Account not yet approved!", 'alert alert-danger');
+                        $this->loadView('residents/sign_in');
+                    }
                 } else {
-                    $errors['password_err'] = 'Password incorrect';
-                    die(print_r($errors));  // ToDo: improve error handling
+                    // password wrong
+                    flash('error_user_pw_wrong', "Username or password is wrong", 'alert alert-danger');
+                    $this->loadView('residents/sign_in');
                 }
             } else {
                 // email does not exist
-                $errors['email_err'] = 'No such email found';
+                flash('error_user_pw_wrong', "Username or password is wrong", 'alert alert-danger');
+                $this->loadView('residents/sign_in');
             }
         } else {
             // load form
@@ -266,6 +332,8 @@ class Residents extends Controller
         unset($_SESSION['user_id']);
         unset($_SESSION['user_email']);
         unset($_SESSION['user_name']);
+        unset($_SESSION['user_role']);
+        unset($_SESSION['resident_wing']);
 
         // destroy session
         session_destroy();
@@ -316,22 +384,28 @@ class Residents extends Controller
     {
         // check for post/get to see if form was submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $data = [
                 'user_id' => $_SESSION['user_id'],
                 'topic' => trim($_POST['topic']),
                 'subject' => trim($_POST['subject']),
                 'description' => trim($_POST['description']),
-                "attachment" => file_get_contents($_FILES['attachment']["tmp_name"])
             ];
+
+            // get file contents
+            try {
+                $data["attachment"] = file_get_contents($_FILES['attachment']["tmp_name"]);
+            } catch (Throwable $th) {
+                $data["attachment"] = null;
+            }
 
             // call model to add complaint
             if ($this->model->writeComplaint($data)) {
                 flash('complaint_add_success', 'Complaint added successfully!');
                 header('location: ' . URL_ROOT . '/residents/complaintsLog');
             } else {
-                die('Error with adding complaint to DB');  // ToDo: improve error handling
+                flash('error_complaint_add', 'Error with adding complaint!');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
         } else {
             $this->loadView('residents/complaint_add');
@@ -367,21 +441,25 @@ class Residents extends Controller
 
             // call model to add complaint
             if ($this->model->editComplaint($data)) {
+                flash('success_complaint_edit', 'Complaint edited successfully!', 'alert');
                 header('location: ' . URL_ROOT . '/residents/complaintsLog');
             } else {
-                die('Error with updating complaint in DB');  // ToDo: improve error handling
+                flash('error_complaint_edit', 'Error in editing complaint!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
         } else {
             $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
 
             // check DB result
             if (!$complaint_detail) {
-                die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+                flash('error_complaint_detail', 'No such complaint found!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
 
             // check if complaint belongs to user
             if ($complaint_detail->user_id != $_SESSION['user_id']) {
-                die('Unauthorized access');  // ToDo: improve error handling
+                flash('error_access', 'Unauthorized access!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
 
             $data['complaint'] = $complaint_detail;
@@ -402,12 +480,14 @@ class Residents extends Controller
 
         // check DB result
         if (!$complaint_detail) {
-            die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+            flash('error_complaint_detail', 'No such complaint found!', 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
         // check if complaint belongs to user
         if ($complaint_detail->user_id != $_SESSION['user_id']) {
-            die('Unauthorized access');  // ToDo: improve error handling
+            flash('error_access', 'Unauthorized access!', 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
         $data['complaint'] = $complaint_detail;
@@ -427,26 +507,64 @@ class Residents extends Controller
         $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
 
         if ($complaint_detail->user_id != $_SESSION['user_id']) {
-            die('Unauthorized access');  // ToDo: improve error handling
+            flash('error_access', 'Unauthorized access!', 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
         $complaint_delete_result = $this->model->deleteComplaint($complaint_id);
 
         if (!$complaint_delete_result) {
-            die('Error deleting complaint');  // ToDo: improve error handling
+            flash('error_complaint_delete', "Complaint couldn't be deleted!", 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
+        flash('complaint_delete_success', 'Complaint deleted', 'alert');
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
+    public function issueLanding(){
+    
+        
+        $data['issue'] = $this->model->fetchAllIssues();
+        $this->loadView('residents/issue', $data);
+  
+}
+public function issueCreate(){
+      // check for post/get to see if form was submitted
+      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $data = [
+            'user_id' => $_SESSION['user_id'],
+            'IssueType' => trim($_POST['IssueType']),
+            'subject' => trim($_POST['subject']),
+            'Description' => trim($_POST['Description']),
+            'Attachment' => file_get_contents($_FILES['Attachments']['tmp_name'])
+        ];
+        // if (isset($_FILES['Attachments']) && $_FILES['Attachments']['error'] == UPLOAD_ERR_OK) {
+        //     $file = file_get_contents($_FILES['Attachments']['tmp_name']);
+        //     $data['Attachments'] = $file;
+        // }
 
-    public function test()
-    {
-        // schedule multiple flash messages to be shown one below one
-        flashMessage('test1', 'Test message 1', 'alert alert-success');
-        flashMessage('test2', 'Test message 2', 'alert alert-danger');
-        flashMessage('test3', 'Test message 3', 'alert');
-
-        // redirect to home page
-        header('location: ' . URL_ROOT . '/residents/index');
+        // call model to add complaint
+        if ($this->model->writeIssue($data)) {
+            header('location: ' . URL_ROOT . '/residents/issueLanding');
+        } else {
+            die('Error with adding issue to DB');  // ToDo: improve error handling
+        }
     }
+        else{
+            $this->loadView('residents/new_issue');
+        }
+    // $this->loadView('residents/new_issue');
+}
+
+    /**
+     * Shows support doc.
+     *
+     * @return void
+     */
+    public function supportLog()
+    {
+        $this->loadView('residents/support');
+    }
+
 }

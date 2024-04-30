@@ -272,4 +272,10 @@ class Finances extends Controller
 
         $this->loadView('finances/payments_log', $data);
     }
+
+    public function createNotification()
+    {
+        // get finished payments
+        $this->loadView('finances/create_notification');
+    }
 }
