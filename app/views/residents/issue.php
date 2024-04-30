@@ -16,7 +16,7 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
           <div class="issue-type">
           
                 <div class="issue-log">
-                <a href="<?= URL_ROOT?> /residents/issueLanding">
+                <a href="<?php echo URL_ROOT . '/residents/issueLanding'?>">
                   <img src="<?php echo URL_ROOT . '/resources/residents/one-finger-tap.svg'?>" class="select-complaint-img" />
                   <span class="issue-type-title">Issue Log</span>
                  </a>
@@ -24,7 +24,7 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
           
               
                 <div class="new-issue">
-                <a href="<?= URL_ROOT?> /residents/issueCreate"> 
+                <a href="<?php echo URL_ROOT. '/residents/issueCreate' ?>"> 
                   <img src="<?php echo URL_ROOT . '/resources/residents/hand-held-tablet-writing.svg'?>" class="new-complaint-img" />
                   <span class="issue-type-title">New Issue</span>
                 </a>

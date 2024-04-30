@@ -16,7 +16,7 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
             <div class="issue-type">
            
                 <div class="new-issue-log">
-                <a href="<?= URL_ROOT?> /residents/issueLanding">
+                <a href="<?php echo URL_ROOT . '/residents/issueLanding'?>">
                   <img src="<?php echo URL_ROOT . '/resources/residents/one-finger-tap.svg'?>" class="select-complaint-img" />
                   <span class="issue-type-title">Issue Log</span>
                   </a>
@@ -48,7 +48,7 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
             </div>
         </div>
         <div class="column">
-        <form name="issueForm" method="post" class="new-issue-form" action="<?php echo URL_ROOT . '/residents/issueCreate' ?>">
+        <form enctype="multipart/form-data" name="issueForm" method="post" class="new-issue-form" action="<?php echo URL_ROOT . '/residents/issueCreate' ?>">
             <div class="nested-grid">
                 <div class="form-column">
                 <select id="items" name="IssueType">

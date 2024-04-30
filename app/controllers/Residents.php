@@ -537,7 +537,7 @@ public function issueCreate(){
             'IssueType' => trim($_POST['IssueType']),
             'subject' => trim($_POST['subject']),
             'Description' => trim($_POST['Description']),
-            // 'Attachments' => trim($_POST['Attachments']),
+            'Attachment' => file_get_contents($_FILES['Attachments']['tmp_name'])
         ];
         // if (isset($_FILES['Attachments']) && $_FILES['Attachments']['error'] == UPLOAD_ERR_OK) {
         //     $file = file_get_contents($_FILES['Attachments']['tmp_name']);
