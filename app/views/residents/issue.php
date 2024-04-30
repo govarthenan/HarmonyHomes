@@ -45,7 +45,7 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
                    
                <div class="file-column">
                   <h4 class="issue-file-heading">Attachments</h4>
-                  <img src="file.svg" class="file-image">
+                  <img src="<?php echo URL_ROOT . '/resources/residents/file.svg' ?>" class="file-image">
                 </div>
 
                 <div class="description-column">
