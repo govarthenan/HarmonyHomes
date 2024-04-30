@@ -24,11 +24,13 @@ class Generals extends Controller
             if ($role == $this->controller_role) {
                 // continue
             } else {
-                die('You do not have the right role to access this page.');
+                flash('invalid_role', 'Error with assigning role!', 'alert alert-danger');
+                header('Location: ' . URL_ROOT . '/staffs/sign_in');
             }
             // check if user has the right role
             if ($_SESSION['user_role'] != $this->controller_role) {
-                die('You do not have the right role to access this page.');
+                flash('invalid_role', 'Error with assigning role!', 'alert alert-danger');
+                header('Location: ' . URL_ROOT . '/staffs/sign_in');
             }
         } else {
             header('Location: ' . URL_ROOT . '/staffs/sign_in');
@@ -91,7 +93,8 @@ class Generals extends Controller
 
         // check DB result
         if (!$complaint_detail) {
-            die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+            flash('invalid_role', 'Complaint not found', 'alert alert-danger');
+            header('Location: ' . URL_ROOT . '/generals/complaintsLog');
         }
 
         $data['complaint'] = $complaint_detail;
@@ -112,7 +115,8 @@ class Generals extends Controller
         if ($this->model->updateComplaintStatus($complaint_id, $new_status)) {
             $this->complaintsLog();
         } else {
-            die("\nProblem updating status");
+            flash('invalid_role', 'Problem updating status', 'alert alert-danger');
+            header('Location: ' . URL_ROOT . '/generals/complaintsLog');
         }
     }
 
@@ -188,7 +192,8 @@ class Generals extends Controller
                 header('location: ' . URL_ROOT . '/generals/announcementsLog');
                 //$this->announcementsLog();
             } else {
-                die('Error with adding announcement to DB');  // ToDo: improve error handling
+                flash('error_add_announcement', 'Error adding announcement!', 'alert alert-success');
+                header('location: ' . URL_ROOT . '/generals/announcementsLog');
             }
         } else {
             $this->loadView('generals/announcement_add');
@@ -235,12 +240,14 @@ class Generals extends Controller
 
             // check DB result
             if (!$announcement_detail) {
-                die('Announcement not found: fetchAnnouncementDetails()');  // ToDo: improve error handling
+                flash('error_announcement_details', 'Announcement not found', 'alert alert-success');
+                header('location: ' . URL_ROOT . '/generals/announcementsLog');
             }
 
             // check if complaint belongs to user
             if ($announcement_detail->user_id != $_SESSION['user_id']) {
-                die('Unauthorized access');  // ToDo: improve error handling
+                flash('error_access', 'Unauthorized access', 'alert alert-success');
+                header('location: ' . URL_ROOT . '/generals/announcementsLog');
             }
 
             $data['announcement'] = $announcement_detail;
@@ -262,12 +269,14 @@ class Generals extends Controller
 
         // check DB result
         if (!$announcement_detail) {
-            die('Complaint not found: fetchAnnouncementDetails()');  // ToDo: improve error handling
+            flash('error_complaint', 'Complaint not found', 'alert alert-success');
+            header('location: ' . URL_ROOT . '/generals/announcementsLog');
         }
 
         // check if complaint belongs to user
         if ($announcement_detail->user_id != $_SESSION['user_id']) {
-            die('Unauthorized access');  // ToDo: improve error handling
+            flash('error_access', 'Unauthorized access', 'alert alert-success');
+            header('location: ' . URL_ROOT . '/generals/announcementsLog');
         }
 
         $data['announcement'] = $announcement_detail;
@@ -288,13 +297,15 @@ class Generals extends Controller
         $announcement_detail = $this->model->fetchAnnouncementDetails($announcement_id);
 
         if ($announcement_detail->user_id != $_SESSION['user_id']) {
-            die('Unauthorized access');  // ToDo: improve error handling
+            flash('error_access', 'Unauthorized access', 'alert alert-success');
+            header('location: ' . URL_ROOT . '/generals/announcementsLog');
         }
 
         $announcement_delete_result = $this->model->deleteAnnouncement($announcement_id);
 
         if (!$announcement_delete_result) {
-            die('Error deleting announcement');  // ToDo: improve error handling
+            flash('error_announce_delete', 'Error deleting announcement', 'alert alert-success');
+            header('location: ' . URL_ROOT . '/generals/announcementsLog');
         }
 
         header('location: ' . URL_ROOT . '/generals/announcementsLog');
