@@ -38,9 +38,6 @@ class Residents extends Controller
             // sanitize POST data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            // debug
-            // die(var_dump($_POST));
-
             try {
                 $this->data = [
                     'name' => trim($_POST['name']),
@@ -225,7 +222,6 @@ class Residents extends Controller
                     header('location: ' . URL_ROOT . '/residents/signUp');
                 }
             } else {
-                die(print_r($this->errors));  // ToDO: improve error handling
                 flash('error_signup_validation', 'Errors in submitted data', 'alert alert-danger');
                 header('location: ' . URL_ROOT . '/residents/signUp');
             }
@@ -394,15 +390,22 @@ class Residents extends Controller
                 'topic' => trim($_POST['topic']),
                 'subject' => trim($_POST['subject']),
                 'description' => trim($_POST['description']),
-                "attachment" => file_get_contents($_FILES['attachment']["tmp_name"])
             ];
+
+            // get file contents
+            try {
+                $data["attachment"] = file_get_contents($_FILES['attachment']["tmp_name"]);
+            } catch (Throwable $th) {
+                $data["attachment"] = null;
+            }
 
             // call model to add complaint
             if ($this->model->writeComplaint($data)) {
                 flash('complaint_add_success', 'Complaint added successfully!');
                 header('location: ' . URL_ROOT . '/residents/complaintsLog');
             } else {
-                die('Error with adding complaint to DB');  // ToDo: improve error handling
+                flash('error_complaint_add', 'Error with adding complaint!');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
         } else {
             $this->loadView('residents/complaint_add');
@@ -438,21 +441,25 @@ class Residents extends Controller
 
             // call model to add complaint
             if ($this->model->editComplaint($data)) {
+                flash('success_complaint_edit', 'Complaint edited successfully!', 'alert');
                 header('location: ' . URL_ROOT . '/residents/complaintsLog');
             } else {
-                die('Error with updating complaint in DB');  // ToDo: improve error handling
+                flash('error_complaint_edit', 'Error in editing complaint!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
         } else {
             $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
 
             // check DB result
             if (!$complaint_detail) {
-                die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+                flash('error_complaint_detail', 'No such complaint found!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
 
             // check if complaint belongs to user
             if ($complaint_detail->user_id != $_SESSION['user_id']) {
-                die('Unauthorized access');  // ToDo: improve error handling
+                flash('error_access', 'Unauthorized access!', 'alert alert-danger');
+                header('location: ' . URL_ROOT . '/residents/complaintsLog');
             }
 
             $data['complaint'] = $complaint_detail;
@@ -473,12 +480,14 @@ class Residents extends Controller
 
         // check DB result
         if (!$complaint_detail) {
-            die('Complaint not found: fetchComplaintDetails()');  // ToDo: improve error handling
+            flash('error_complaint_detail', 'No such complaint found!', 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
         // check if complaint belongs to user
         if ($complaint_detail->user_id != $_SESSION['user_id']) {
-            die('Unauthorized access');  // ToDo: improve error handling
+            flash('error_access', 'Unauthorized access!', 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
         $data['complaint'] = $complaint_detail;
@@ -498,15 +507,18 @@ class Residents extends Controller
         $complaint_detail = $this->model->fetchComplaintDetails($complaint_id);
 
         if ($complaint_detail->user_id != $_SESSION['user_id']) {
-            die('Unauthorized access');  // ToDo: improve error handling
+            flash('error_access', 'Unauthorized access!', 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
         $complaint_delete_result = $this->model->deleteComplaint($complaint_id);
 
         if (!$complaint_delete_result) {
-            die('Error deleting complaint');  // ToDo: improve error handling
+            flash('error_complaint_delete', "Complaint couldn't be deleted!", 'alert alert-danger');
+            header('location: ' . URL_ROOT . '/residents/complaintsLog');
         }
 
+        flash('complaint_delete_success', 'Complaint deleted', 'alert');
         header('location: ' . URL_ROOT . '/residents/complaintsLog');
     }
 
