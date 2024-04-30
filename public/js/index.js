@@ -444,9 +444,13 @@ displayFileName('agreementPhoto', 'agreementPhotoName');
 // resident complaint add page
 displayFileName('file-complaint-attachment', 'name-complaint-attachment');
 
+// resident complaint edit page
+displayFileName('file-complaint-attachment', 'name-complaint-attachment');
+
 // finance csv uploading page
 displayFileName('file-water-csv', 'name-water-csv');
 displayFileName('file-power-csv', 'name-power-csv');
+
 
 
 // function to select all alert messages by name, and close them after 5 seconds

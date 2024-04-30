@@ -66,10 +66,10 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                             </div>
 
                             <div class="drop-area">
-                              <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
-                              <p>Drag and Drop to upload files <br> or </p>
-                              <label for="file-input" class="custom-file-upload">Choose File</label>
-                              <input type="file" id="file-input" >
+                                <img src="<?php echo URL_ROOT . '/resources/complaint/upload-cloud.svg' ?>" class="upload-cloud-img">
+                                <p id="name-complaint-attachment">Drag and Drop to upload files <br> or </p>
+                                <label for="file-complaint-attachment" class="custom-file-upload">Choose File</label>
+                                <input type="file" id="file-complaint-attachment" name="attachment">
                             </div>
 
                             <div class="submit-column">
@@ -83,6 +83,7 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
         </div>
     </div>
     </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
 
 </html>
