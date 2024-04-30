@@ -43,10 +43,7 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
                  <p class="issue-date"></p><?php echo $issue->Date; ?></p>
                </div>
                    
-               <div class="file-column">
-                  <h4 class="issue-file-heading">Attachments</h4>
-                  <img src="<?php echo URL_ROOT . '/resources/residents/file.svg' ?>" class="file-image">
-                </div>
+               
 
                 <div class="description-column">
                   <h4 class="issue-type-heading"><?php echo $issue->Issuetype; ?></h4>
@@ -57,6 +54,16 @@ include(APP_ROOT.'/views/inc/resident_side_nav.php');
                   <h4 class="issue-status-heading">Status</h4>
                   <p class="status-inprogress">submitted</p>
                 </div>
+
+                <div class="file-column">
+                            <h4 class="complaint-action-heading">Action</h4>
+                            <div class="button-action">
+                                <!--<a href="<?php echo URL_ROOT . '/residents/issueDetail/' . $issue->issue_id; ?>">-->
+                                    <button class="viewButton">View</button>
+                                </a>
+                                
+                            </div>
+                        </div>
                </div>
                <?php endforeach; ?>
 
