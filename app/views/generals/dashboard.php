@@ -33,7 +33,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                                 <span class="title-dashboard-tiles">Residents Overview</span>
                             </div>
                             <div class="flat-details">
-                                <div class="tot-res">Total:<b>540</b></div>
+                                <div class="tot-res">Total:<b><?php echo $data['resident'][0]->row_count; ?></b></div>
                             </div>
                         </div>
                         <div class="no-of-staff">
@@ -42,7 +42,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                                 <span class="title-dashboard-tiles">Staff Members</span>
                             </div>
                             <div class="flat-details">
-                                <div class="tot-staff">Total:<b>18</b></div>
+                                <div class="tot-staff">Total:<b><?php echo $data['staff'][0]->staff_count; ?></b></div>
                             </div>
                         </div>
                     </div>

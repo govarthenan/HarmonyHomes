@@ -47,7 +47,7 @@
             </div>
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_issues.svg' ?>" class="sidebar_office_building" />
-                <span class="sidebar-title">Issues</span>
+                <a href="<?php echo URL_ROOT . '/generals/issueView' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Issues</span></a>
             </div>
 
             <div class="navi-item">

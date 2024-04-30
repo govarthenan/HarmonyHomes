@@ -77,8 +77,8 @@ class General
 
     public function writeAnnouncement($data)
     {
-       $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
-       
+        $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
+
 
         $this->db->bind('user_id', $data['user_id']);
         $this->db->bind('receiver', $data['receiver']);
@@ -89,7 +89,7 @@ class General
     }
 
 
-    
+
     /**
      * Fetches all announcements for the current user.
      *
@@ -102,7 +102,7 @@ class General
         return $this->db->resultSet();
     }
 
-    
+
     /**
      * Updates a announcement in the database with the edited information.
      *
@@ -115,9 +115,9 @@ class General
 
         // Bind values
         $this->db->bind('receiver', $edited_announcement['receiver']);
-        $this->db->bind('title',$edited_announcement['title']);
+        $this->db->bind('title', $edited_announcement['title']);
         $this->db->bind('message', $edited_announcement['message']);
-        $this->db->bind('announcement_id',$edited_announcement['announcement_id']);
+        $this->db->bind('announcement_id', $edited_announcement['announcement_id']);
 
         // Execute the query and return bool
         return $this->db->execute();
@@ -149,6 +149,31 @@ class General
         $this->db->prepareQuery('DELETE FROM announcement WHERE announcement_id = :announcement_id');
         $this->db->bind('announcement_id', $announcement_id);
         // Execute the query and return bool
+        return $this->db->execute();
+    }
+    public function residentCount()
+    {
+        $this->db->prepareQuery('SELECT COUNT(*) AS row_count FROM resident');
+        return $this->db->resultSet();
+    }
+    public function staffCount()
+    {
+        $this->db->prepareQuery('SELECT COUNT(*) AS staff_count FROM staff');
+        return $this->db->resultSet();
+    }
+    public function viewIssue()
+    {
+        $this->db->prepareQuery('SELECT i.* ,t.first_name,t.last_name,r.floor_number,r.door_number 
+        FROM issue as i 
+        JOIN technician_overview as t ON i.technician_assign = t.technician_id 
+        JOIN resident as r ON r.user_id = i.user_id
+        WHERE i.status ="completed"  AND technician_assign <>100');
+        return $this->db->resultSet();
+    }
+    public function deleteIssueRow($issue_id)
+    {
+        $this->db->prepareQuery('UPDATE issue SET technician_assign = 100 WHERE issue_id = :issue_id');
+        $this->db->bind('issue_id',$issue_id);
         return $this->db->execute();
     }
 

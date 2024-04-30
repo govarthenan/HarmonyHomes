@@ -39,8 +39,10 @@ class Generals extends Controller
     }
 
     public function index()
-    {
-        $this->loadView('generals/dashboard');
+    {   
+        $data['resident'] = $this->model->residentCount();
+        $data['staff'] = $this->model->staffCount();
+        $this->loadView('generals/dashboard',$data);
     }
 
     /**
@@ -276,6 +278,22 @@ class Generals extends Controller
 
         header('location: ' . URL_ROOT . '/generals/announcementsLog');
     }
+    public function issueView(){
+        $data['issue'] = $this->model->viewIssue();
+        $this->loadView('generals/gm_issue_table',$data);
+        //  die(var_dump($data));
+    }
+
+    public function deleteIssue($issue_id){
+        $result = $this->model->deleteIssueRow($issue_id);
+        
+        if(!$result){
+            die('Error in deleting');
+        }
+       header('location:'. URL_ROOT.'/generals/issueView');
+        //  die(var_dump($data));
+    }
+
 
 
 }
