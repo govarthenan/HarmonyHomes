@@ -375,36 +375,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Function to close the alert automatically after n seconds
-var alertElement = document.getElementById('alert');
-if (alertElement) {
-    alertElement.style.opacity = '0';
-    setTimeout(function () {
-        alertElement.style.display = 'none';
-    }, 2000);
-
-    // Automatically close the alert after 5 seconds
-    setTimeout(function () {
-        closeAlert();
-    }, 1000);
-} else {
-    console.log('Element not found');
-}
-
-/*create announcement*/
-
-function toggleDropdowns() {
-    var userType = document.getElementById('userType').value;
-    var groupSelect = document.getElementById('groupSelect');
-
-    // Handling Group Select visibility
-    if (userType === 'wings') {
-        groupSelect.style.display = 'block';
-    } else {
-        groupSelect.style.display = 'none';
-    }
-
-}
 
 /*payment status-finance-js*/
 
@@ -474,6 +444,161 @@ displayFileName('agreementPhoto', 'agreementPhotoName');
 // resident complaint add page
 displayFileName('file-complaint-attachment', 'name-complaint-attachment');
 
+// resident complaint edit page
+displayFileName('file-complaint-attachment', 'name-complaint-attachment');
+
 // finance csv uploading page
 displayFileName('file-water-csv', 'name-water-csv');
 displayFileName('file-power-csv', 'name-power-csv');
+
+
+
+// function to select all alert messages by name, and close them after 5 seconds
+var flashMessages = document.getElementsByName('alert-message');
+
+// if flashMessages contain any elements, loop through each element
+if (flashMessages.length > 0) {
+    console.log('pass 1');
+    flashMessages.forEach(message => {
+        setTimeout(() => {
+            message.style.display = 'none';
+        }, 3000);
+    });
+}
+
+
+
+
+/* displying full details when clicked on view button of sign request table*/
+document.addEventListener('DOMContentLoaded', function () {
+    const viewButtons = document.querySelectorAll('.viewButton');
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const detailsRow = this.closest('tr').nextElementSibling; // Get the next row, which should be the details row
+            detailsRow.style.display = detailsRow.style.display === 'none' ? 'table-row' : 'none'; // Toggle visibility
+        });
+    });
+});
+
+
+
+/*visitor satus*/
+
+
+
+var ctx = document.getElementById('visitorStatusDoughnut')
+
+if (ctx) {
+    ctx = ctx.getContext('2d');
+    var visitorStatusDoughnut = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Visitors Left', 'Visitors Still Inside'],
+            datasets: [{
+                data: [12, 8],
+                backgroundColor: [
+                    '#4BC0C0',  // Teal color
+                    '#FF6384'   // Pink color
+                ],
+                borderColor: [
+                    '#ffffff',  // White borders
+                    '#ffffff'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2,  // Increase this number to make the chart "flatter"
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            }
+        }
+    });
+}
+
+
+
+/*external visitors*/
+
+var ctxExternal = document.getElementById('externalPartiesDoughnut')
+if (ctxExternal) {
+    ctxExternal = ctxExternal.getContext('2d');
+    var externalPartiesDoughnut = new Chart(ctxExternal, {
+        type: 'doughnut',
+        data: {
+            labels: ['External Parties Left', 'External Parties Still Inside'],
+            datasets: [{
+                data: [10, 5], // Example data for external parties
+                backgroundColor: [
+                    '#4BC0C0',  // Teal color
+                    '#9370db'   // Pink color
+                ],
+                borderColor: [
+                    '#ffffff',  // White borders
+                    '#ffffff'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2,  // Makes the chart flatter
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            }
+        }
+    });
+}
+
+
+/*delivery status chart */
+
+var ctxDelivery = document.getElementById('deliveryStatusDoughnut')
+if (ctxDelivery) {
+    ctxDelivery = ctxDelivery.getContext('2d');
+    var deliveryStatusDoughnut = new Chart(ctxDelivery, {
+        type: 'doughnut',
+        data: {
+            labels: ['Deliveries Completed', 'Deliveries Pending'],
+            datasets: [{
+                data: [20, 10], // Example data: 20 items completed, 10 pending
+                backgroundColor: [
+                    '#7ec4ff',  // Teal color for completed
+                    '#FF6384'   // Pink color for pending
+                ],
+                borderColor: [
+                    '#ffffff',  // White borders
+                    '#ffffff'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2,  // Controls the flatness of the chart
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            }
+        }
+    });
+}
+

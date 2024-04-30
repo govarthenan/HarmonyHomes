@@ -10,6 +10,7 @@
     --color_9: #073907;
     --color_10: #9370db;
     --color_11: #e3edf6;
+    --color_12:rgb(247, 195, 209);
     --form_color: rgba(213, 235, 247, 0.5);
 
     --font_master: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -300,7 +301,7 @@ input:-webkit-autofill:active {
 }
 
 .sign-up-message {
-    margin: 1% 2% 0%;
+    margin: 2% 2% 0%;
     color: var(--color_7);
     font-size: 1.5rem;
     font-weight: bold;
@@ -320,8 +321,8 @@ input:-webkit-autofill:active {
     margin: 1%;
 }
 
-.sign-in-form-group select{
-    background-color:var(--color_6);
+.sign-in-form-group select {
+    background-color: var(--color_6);
     padding: 1% 8%;
     border: solid;
     border-color: var(--color_2);
@@ -329,7 +330,7 @@ input:-webkit-autofill:active {
     width: 80%;
     height: 7%;
     color: var(--color_4);
-    }
+}
 
 /*sign in*/
 .registration-form label {
@@ -414,6 +415,11 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: 1px solid var(--color_2);
+}
+
+input[type="checkbox" i] {
+    width: 10%;
+    margin-top: 3%;
 }
 
 /*forget-password*/
@@ -650,23 +656,28 @@ input:-webkit-autofill:active {
 
 .dashboard-container {
     display: grid;
-    grid-template-rows: 2fr 0.7fr 2.3fr;
+    grid-template-rows:2fr 0.7fr 2.3fr;
     flex: 1;
 }
 
 .first-row-resident-dashboard {
     display: grid;
     grid-template-columns: 2.8fr 1.1fr;
+   margin-bottom: 1%;
 }
 
 /*announcment*/
 
 .announcment-container {
     background-color: var(--color_6);
-    margin: 1.2%;
+    margin: 1.2% 1.2% 0%;
     grid-template-rows: 0.5fr 2fr;
     display: grid;
     border-radius: 5px;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+   
 }
 
 .announcment-heading {
@@ -675,6 +686,7 @@ input:-webkit-autofill:active {
     font-size: 1.5rem;
     font-weight: bold;
     margin-top: 1%;
+    
 }
 
 .announcment-tile-container {
@@ -684,11 +696,13 @@ input:-webkit-autofill:active {
 }
 
 .announcment-tile-heading {
-    margin: 3%;
-    font-size: 1.2rem;
-    text-align: center;
-    font-weight: bold;
+    float: justify;
+    font-size: 1rem;
+    
+    font-weight: Underline;
     color: var(--color_4);
+    font-weight: bold;
+    margin: 1% 3%;
 }
 
 .announcment-details {
@@ -696,14 +710,15 @@ input:-webkit-autofill:active {
     margin: 2% 5% 2%;
     color: var(--color_7);
     text-align: justify;
-    display: none;  
+    display: none;
 }
 
 .announcment-1,
 .announcment-2 {
-    margin: 1%;
+    margin: 0.5%;
     box-shadow: 0px 0px 15px 3px rgba(0, 0, 255, 0.1);
-    display: flex;
+   display: grid;
+   grid-template-rows: 1fr;
 }
 
 /*calendar*/
@@ -800,7 +815,7 @@ input:-webkit-autofill:active {
 .dates .today:hover {
     background-color: var(--color_5);
     font-size: 1rem;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 .dates div:hover:not(.today) {
@@ -834,7 +849,7 @@ input:-webkit-autofill:active {
 /*second row*/
 
 .second-row-resident-dashboard {
-    margin: 0.3% 1%;
+    margin: 0% 1% 0%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -915,7 +930,7 @@ input:-webkit-autofill:active {
     width: 100vw;
 }
 
-.popup-announcement{
+.popup-announcement {
     position: fixed;
     z-index: 1;
     left: 0;
@@ -985,16 +1000,17 @@ input:-webkit-autofill:active {
     font-weight: bold;
 }
 
-.announcement-msg{
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-left: 2%;
-}
+
 
 .sender{
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-left: 2%;   
+    margin-left: 6%;
+}
+
+.message{
+    font-size: 0.9rem;
+    margin-left: 8%;
 }
 
 /*third  row*/
@@ -1355,11 +1371,11 @@ select {
     border: none;
 }
 
-.form-column-new-complaint.text{
+.form-column-new-complaint.text {
     background-color: var(--form_color);
     padding: 1% 5%;
     border: none;
-    width: 90%;   
+    width: 90%;
 }
 
 textarea {
@@ -1535,8 +1551,8 @@ input[type="file"] {
     color: var(--color_1);
 }
 
-  /* flash message */
-  
+/* flash message */
+
 .alert {
     padding: 1.5% 2%;
     background-color: var(--color_2);
@@ -1554,9 +1570,51 @@ input[type="file"] {
     left: 60%;
     transform: translateX(-50%);
     z-index: 1; /* Ensures it doesn't get hidden behind other elements */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Soft shadow for better visibility */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for better visibility */
     /* display: none; */
 }
+
+.alert-danger{
+    padding: 1.5% 2%;
+    background-color: var(--color_12);
+    color: var(--color_1);
+    opacity: 1; /* Start fully visible */
+    transition: opacity 0.5s linear; /* Smooth transition for the opacity */
+    border-radius: 8px;
+    border: 2px solid var(--color_1); /* Subtle border */
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 30%;
+    margin: 0 auto; /* Center the alert box */
+    position: fixed; /* Fixed at the top */
+    top: 18%; /* Spacing from the top */
+    left: 60%;
+    transform: translateX(-50%);
+    z-index: 1; /* Ensures it doesn't get hidden behind other elements */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+}
+
+.flash-message-container {
+    position: fixed;
+    top: 10%;  /* Adjust based on header/nav-bar height */
+    right: 10%;
+     /* Fixed width, adjust as needed */
+    z-index: 1000; /* Ensure it's on top of other content */
+}
+
+.flash-message {
+    
+    padding: 10px;
+    margin-bottom: 5px; /* Space between messages */
+    border-radius: 8px;
+    border: 2px solid var(--color_3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 1;
+    transition: opacity 0.5s linear;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 
 .closebtn {
     margin-left: 15px;
@@ -1571,4 +1629,53 @@ input[type="file"] {
 
 .closebtn:hover {
     color: var(--color_6);
+}
+
+/*support*/
+
+.support-container {
+    background-color: var(--color_6);
+    margin: 3% 5%;
+    height: fit-content;
+    flex: 1;
+}
+
+.support-center-heading {
+    margin: 3%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--color_4);
+    text-align: center;
+}
+
+.support-intro {
+    text-align: justify;
+    margin: 2% 5%;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+.support-center-content {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.column-1-support {
+    margin: 1% 3% 3% 5%;
+}
+
+.column-2-support {
+    margin: -3% 3% 3% 5%;
+}
+
+.support-sub-heading {
+    margin: 2% 0% 1% 3%;
+    color: var(--color_4);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.supoort-details {
+    font-size: 1.1rem;
+    margin: 2% 3% 2% 4%;
+    text-align: justify;
 }

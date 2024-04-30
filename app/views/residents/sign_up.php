@@ -10,6 +10,12 @@
 
 <body>
     <div class="main-container-sign-up">
+        <?php
+        // flash
+        flash('erro_missing_signup_data');
+        flash('error_signup_validation');
+        flash('error_signup');
+        ?>
         <div class="company-profile-sign-up">
             <img src="<?php echo URL_ROOT . '/resources/common/company-logo-small.png' ?>" class="logo-sign-up">
             <div class="company-name-sign-up">Harmony Homes</div>
@@ -28,7 +34,7 @@
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required>
 
-                        <label for="phone">Phone Number:</label>
+                        <label for="phone">Phone Number (In 94771234567 format):</label>
                         <input type="tel" id="phone" name="phone" required>
 
                         <label for="birthday">Birthday:</label>
@@ -71,8 +77,8 @@
                         <label for="confirmPassword">Confirm Password:</label>
                         <input type="password" id="confirmPassword" name="confirm_password" required>
 
-                        <label>
-                            <input type="checkbox" name="terms" required>I agree to the Terms and Conditions
+                        <label class="agree">
+                            <input type="checkbox" name="terms" required><span>I agree to the Terms and Conditions</span>
                         </label>
 
                         <button type="submit">Submit</button>

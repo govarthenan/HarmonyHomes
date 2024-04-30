@@ -12,6 +12,16 @@
 
 <body>
     <div class="main-container-sign-in">
+        <?php
+        // flash message
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
+        ?>
         <div class="sign-in-container">
             <div class="sign-in-image-container">
                 <img src="<?php echo URL_ROOT . '/resources/login/login-bro.svg' ?>" class="sign-in-container-company-logo">
@@ -22,7 +32,7 @@
                         <img src="<?php echo URL_ROOT . '/resources/common/company-logo-small.png' ?>" class="logo-sign-in">
                         <div class="company-name-sign-in">Harmony Homes</div>
                     </div>
-                    <?php flashMessage('signUp_success'); ?>
+                    <?php flash('signUp_success'); ?>
                     <form action="<?php echo URL_ROOT . '/residents/signIn'; ?>" method="post" class="login-form">
                         <div class="sign-in-form-group">
                             <label for="username">Email:</label>
@@ -41,6 +51,7 @@
             </div>
         </div>
     </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
 </body>
 
 </html>

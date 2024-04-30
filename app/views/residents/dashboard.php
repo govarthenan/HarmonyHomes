@@ -13,11 +13,11 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
 <body onload="randerDate()">
     <div class="main-content">
-        <?php
-        flashMessage('test1');
-        flashMessage('test2');
-        flashMessage('test3');
-        ?>
+        <div class="flash-message-container">
+            <?php
+            // call flash messages
+            ?>
+        </div>
         <div class="dashboard-container">
             <div class="first-row-resident-dashboard">
                 <div class="announcment-container">
@@ -26,15 +26,21 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                     </div>
 
                     <div class="announcment-tile-container">
-                        <?php
-                        $n = 0;
-                        foreach ($data['announcements'] as $announcement) :
-                            $n++; ?>
-                            <div class="announcment-1">
-                                <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?></div>
-                                <div id="announcementDetails-<?php echo $n ?>" class="announcment-details"><?php echo $announcement->message; ?></div>
-                            </div>
-                        <?php endforeach; ?>
+
+                        <?php if ($data['announcements'] != null) : ?>
+                            <?php
+                            $n = 0;
+                            foreach ($data['announcements'] as $announcement) :
+                                $n++; ?>
+                                <div class="announcment-1">
+                                    <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?><br></div>
+                                    <div id="announcementDetails-<?php echo $n ?>" class="announcement-msg">
+                                        <div class="sender"><?php echo $announcement->sender; ?></div>
+                                        <div class="message"><?php echo $announcement->message; ?></div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="calendar">
@@ -126,15 +132,14 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
         <div class="modal-content-announcement">
             <span class="close">&times;</span>
             <div class="announcement-msg">
-                <div class="title">Power Cut</div>
-                <div class="sender">Facility manager</div>
-                <div class="date">sent date</div>
-                <div class="message">fhrhgruhgiergr</div>
+                <div class="title">Title:</div>
+                <div class="sender">by:</div>
+                <div class="message">Message:</div>
             </div>
         </div>
-
-        <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </div>
+    <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 
 </html>

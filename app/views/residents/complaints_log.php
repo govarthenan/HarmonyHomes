@@ -13,6 +13,16 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
 
 <body onload="randerDate()">
     <div class="main-content">
+        <?php
+        // flash message
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
+        ?>
         <div class="new-complaint-landing">
             <div class="complaint-column-new">
                 <div class="complaint-type">
@@ -26,9 +36,6 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                         <a href="<?php echo URL_ROOT . '/residents/complaintAdd' ?>"><span class="complaint-type-title">New Complaint</span></a>
                     </div>
                 </div>
-
-                <!-- flash message -->
-                <?php flash('complaint_add_success'); ?>
 
                 <?php foreach ($data['complaints'] as $index => $complaint) : ?>
                     <div class="complaint-log-content">

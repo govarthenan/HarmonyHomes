@@ -77,10 +77,10 @@ class General
 
     public function writeAnnouncement($data)
     {
-        $this->db->prepareQuery('INSERT INTO announcement (user_id, receiver, title, message) VALUES (:user_id, :receiver, :title, :message)');
-
+        $this->db->prepareQuery('INSERT INTO announcement (user_id, sender, receiver, title, message) VALUES (:user_id, :sender, :receiver, :title, :message)');
 
         $this->db->bind('user_id', $data['user_id']);
+        $this->db->bind('sender', $data['sender']);
         $this->db->bind('receiver', $data['receiver']);
         $this->db->bind('title', $data['title']);
         $this->db->bind('message', $data['message']);
@@ -177,5 +177,50 @@ class General
         return $this->db->execute();
     }
 
+    public function fetchAllUsersForManagement()
+    {
+        $this->db->prepareQuery('SELECT * FROM resident Order by approved ASC');
+        return $this->db->resultSet();
+    }
 
+    public function fetchSignupRequestDetails(int $user_id)
+    {
+        $this->db->prepareQuery('SELECT * FROM resident WHERE user_id = :user_id');
+        $this->db->bind('user_id', $user_id);
+
+        $row = $this->db->singleResult();
+
+        if ($this->db->rowCount() > 0) {
+            return $row;
+        } else {
+            return false;
+        }
+    }
+
+    public function toggleResidentApproval($target_resident_id, $incoming_value)
+    {
+        $this->db->prepareQuery('UPDATE resident SET approved = :approved WHERE user_id = :user_id');
+        $this->db->bind('approved', $incoming_value);
+        $this->db->bind('user_id', $target_resident_id);
+
+        return $this->db->execute();
+    }
+
+    public function deleteResident($target_resident_id)
+    {
+        $this->db->prepareQuery('DELETE FROM resident WHERE user_id = :user_id');
+        $this->db->bind('user_id', $target_resident_id);
+
+        return $this->db->execute();
+    }
+
+    public function setWing($target_resident_id, $incoming_value)
+    {
+        $this->db->prepareQuery('UPDATE resident SET wing = :wing WHERE user_id = :user_id');
+        $this->db->bind('wing', $incoming_value);
+        $this->db->bind('user_id', $target_resident_id);
+
+        return $this->db->execute();
+    }
 }
+
