@@ -53,10 +53,12 @@
                 </div>
             </a>
 
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_issues.svg' ?>" />
-                <span class="sidebar-title">Issues</span>
-            </div>
+            <a href="<?php echo URL_ROOT . '/residents/issueLanding'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
+                <div class="navi-item">
+                    <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_issues.svg' ?>" />
+                    <span class="sidebar-title">Issues</span>
+                </div>
+            </a>
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_payment.svg' ?>" />

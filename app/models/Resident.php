@@ -244,4 +244,59 @@ class Resident
             return false;
         }
     }
+    public function writeIssue($data)
+    {
+        $this->db->prepareQuery('INSERT INTO `issue`( user_id,  Issuetype, subject , Description, Attachment) VALUES (:user_id, :Issuetype, :subject, :Description, :Attachment)');
+        // Bind values
+        
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        $this->db->bind('Issuetype', $data['IssueType']);
+        $this->db->bind('subject', $data['subject']);
+        $this->db->bind('Description', $data['Description']);
+        $this->db->bind('Attachment', $data['Attachment']);
+
+       
+
+        // Execute the query and return bool
+        return $this->db->execute();
+        
+    }
+    public function fetchAllIssues()
+    {
+        $this->db->prepareQuery('SELECT * FROM issue WHERE user_id = :user_id');
+        $this->db->bind('user_id', $_SESSION['user_id']);
+        return $this->db->resultSet();
+    }
+
+    
+    public function editIssue($edited_issue)
+    {
+         
+            $query = "UPDATE issue 
+                       SET User_id = :User_id,
+                           IssueType = :IssueType,
+                           Description = :Description,
+                           Attachments = :Attachments
+                       WHERE issue_id = :issue_id";
+            
+            $this->db->prepareQuery($query);
+            
+            // Bind values
+            $this->db->bind('User_id', $_SESSION['user_id']);
+            $this->db->bind('IssueType', $_POST['IssueType']);
+            $this->db->bind('Description', $_POST['Description']);
+            $this->db->bind('Attachments', $_POST['Attachments']);
+            $this->db->bind('issue_id', $edited_issue['issue_id']);
+            
+            // Execute the query and return bool
+            return $this->db->execute();
+        
+    }
+    public function deleteIssue($issue_id)
+    {
+        $this->db->prepareQuery('DELETE FROM issue WHERE issue_id = :issue_id');
+        $this->db->bind('complaint_id', $issue_id);
+        // Execute the query and return bool
+        return $this->db->execute();
+    }
 }
