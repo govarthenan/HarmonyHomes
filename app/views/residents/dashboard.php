@@ -35,9 +35,8 @@ include(APP_ROOT . '/views/inc/resident_side_nav.php');
                                 <div class="announcment-1">
                                     <div id="announcement" class="announcment-tile-heading" onclick="showAnnouncementDetails(<?php echo $n; ?>)"><?php echo $announcement->title; ?><br></div>
                                     <div id="announcementDetails-<?php echo $n ?>" class="announcement-msg">
-                                        <div class="title"><b>Title:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->title; ?></div>
-                                        <div class="sender"><b>From:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->sender; ?></div>
-                                        <div class="message"><b>Message:&nbsp;&nbsp;&nbsp;</b><?php echo $announcement->message; ?></div>
+                                        <div class="sender"><?php echo $announcement->sender; ?></div>
+                                        <div class="message"><?php echo $announcement->message; ?></div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>

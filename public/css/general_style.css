@@ -172,9 +172,9 @@ margin: 7% 45%;
   background-color: var(--color_8);
   display: flex;
   height:100vh;
-  /* /* overflow-y: auto;
-  -ms-overflow-style: none; 
-  scrollbar-width: none; */
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 } 
 
 .dashboard-container-general-manger{
@@ -589,6 +589,20 @@ border-radius: 5px;
 font-weight: bold;
 }
 
+.delete-btn {
+  background-color: var(--color_1); 
+  color: var(--color_6);
+  border: none; 
+  padding: 2% 5%; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 0.8rem;
+  cursor: pointer; 
+  border-radius: 5px; 
+  font-weight: bold;
+  }
+
 .viewButton:hover{
 background-color: var(--color_6); 
 border-color: var(--color_4);
@@ -607,10 +621,42 @@ font-weight: bold;
 .deleteButton:hover {
 background-color: var(--color_6); 
 border-color: var(--color_1);
-color: var(--color_7);
+color: var(--color_1);
 border-style: solid;
 font-weight: bold;
 }
+
+.delete-btn:hover {
+  background-color: var(--color_6); 
+  border-color: var(--color_1);
+  color: var(--color_7);
+  border-style: solid;
+  font-weight: bold;
+  }
+
+.updateButton{
+  background-color: var(--color_6);
+  border-color: #0c3866;
+  color: #0c3866;
+  border: solid; 
+  padding: 2% 5%; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 0.8rem;
+  cursor: pointer; 
+  border-radius: 5px; 
+  font-weight: bold;
+  }
+
+  .updateButton:hover {
+    background-color: var(--color_7); 
+    color: var(--color_6);
+    border-color: var(--color_4);
+    border-style: solid;
+    font-weight: bold;
+    }
+    
 .tickButton{
 background-color: var(--color_7); 
 color: var(--color_6);
@@ -636,12 +682,12 @@ font-weight: bold;
 
 .gm-amenity-content,.gm-complaint-content{
     flex:1;
-    height:70%;
+    height:fit-content;
     width:94%;
     margin: 1% 2%;
     background-color: var(--color_6);
     display: grid;
-    grid-template-rows: 1fr 12fr;
+    padding-bottom: 1%;
     }
 
 /*table */
@@ -1261,14 +1307,14 @@ border-width: 2px;
 border-right: 2px solid var(--color_4);
 box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
 margin: 1.5%;
-overflow-y: auto;
+
 }
 .new-announcement,.completed-issue,.issue_log{
 margin: 1.5%;
 opacity: var(--opacity_1);
 box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
 }
-.new-announcement:hover,.completed-issue:hover,.issue_log:hover{
+.new-announcement:hover,.announcement-log:hover,.completed-issue:hover,.issue_log:hover{
 margin: 1.5%;
 box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
 cursor: pointer;
@@ -1281,14 +1327,14 @@ border-width: 2px;
 }
 .announcement-next-log{
 border-right: 2px solid var(--color_4);
-box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+box-shadow: 0 8px 16px rgba(7, 7, 85, 0.4);
 margin: 1.5%;
-overflow-y: auto;
+
 }
 .new-next-announcement{
 margin: 1.5%;
 opacity: var(--opacity_1);
-box-shadow: 0 8px 16px rgba(7, 7, 85, 0.1);
+
 }
 .new-next-announcement:hover{
 margin: 1.5%;
@@ -1332,10 +1378,10 @@ margin-left: 3%;
 font-weight: bold;
 }
 .announcement-type-title:hover,.issue-log-type:hover{
-font-size: 1.4rem;
 color: var(--color_7);
 margin-left: 3%;
 color: var(--color_4);
+
 }
 
 /* facility manager issue log */
@@ -1468,6 +1514,7 @@ margin-bottom: 20px;
 background-color:var(--form_color);
 border-radius: 4px;
 border: none;
+padding: 2%;
 }
 
 .announcement-content-details-message{
@@ -1493,7 +1540,7 @@ border-style: solid;
 font-weight: bold;
 font-size: 1.1rem;
 font-weight: bold;
-margin:5% 25%;
+margin:5% 25% 5% 80%;
 
 }
 #sendButton:hover{

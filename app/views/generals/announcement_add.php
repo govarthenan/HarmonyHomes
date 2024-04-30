@@ -56,7 +56,7 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                     <div class="announcement-content-details-title">
                         <div class="announcement-title">Title:</div>
                         <div class="title-for-announcement">
-                            <input type="text" id="title" name="title" required>
+                            <input type="text" id="title" name="title" style="height:15%; width: 80%;" required>
                         </div>
                     </div>
                     <div class="announcement-content-details-message">

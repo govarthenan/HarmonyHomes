@@ -77,8 +77,8 @@
                         <label for="confirmPassword">Confirm Password:</label>
                         <input type="password" id="confirmPassword" name="confirm_password" required>
 
-                        <label>
-                            <input type="checkbox" name="terms" required>I agree to the Terms and Conditions
+                        <label class="agree">
+                            <input type="checkbox" name="terms" required><span>I agree to the Terms and Conditions</span>
                         </label>
 
                         <button type="submit">Submit</button>

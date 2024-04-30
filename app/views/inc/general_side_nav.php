@@ -72,7 +72,7 @@
 
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/registrations'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Resident Management</span>
+                <a href="<?php echo URL_ROOT . '/generals/registrations'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Resident&nbsp;Management</span>
             </div>
 
             <hr />
