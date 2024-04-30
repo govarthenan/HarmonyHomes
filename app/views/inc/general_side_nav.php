@@ -56,11 +56,6 @@
             </div>
 
             <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_complaints.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/complaintsLog' ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Complaints</span></a>
-            </div>
-
-            <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_notification.svg' ?>" />
                 <span class="sidebar-title">Notification</span>
             </div>
@@ -68,11 +63,6 @@
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
                 <a href="<?php echo URL_ROOT . '/generals/announcementsLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Announcement</span>
-            </div>
-
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/public/resources/generals/sidebar_office-building-1.svg' ?>" />
-                <a href="<?php echo URL_ROOT . '/generals/registrations'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;"><span class="sidebar-title">Resident&nbsp;Management</span>
             </div>
 
             <hr />

@@ -49,11 +49,11 @@ include(APP_ROOT . '/views/inc/general_side_nav.php');
                     <div class="dashboard-tile-column-1-gen-row-2">
                         <div class="sign-up-request-box">
                             <img src="<?php echo URL_ROOT . '/public/resources/generals/add-user.svg' ?>" class="add-user">
-                            <span class="sign-up-request-heading">Sign Up requests</span>
+                            <span class="sign-up-request-heading"><a style="text-decoration: none; color: inherit;margin-left: 4%;" href="<?php echo URL_ROOT . '/generals/registrations'; ?>">Resident Management</a></span>
                         </div>
                         <div class="amenity-request-box">
                             <img src="<?php echo URL_ROOT . '/public/resources/generals/request.svg' ?>" class="amenity-request-img">
-                            <span class="amenity-request-heading">Amenity requests</span>
+                            <span class="amenity-request-heading"><a style="text-decoration: none; color: inherit;margin-left: 4%;" href="<?php echo URL_ROOT . '/generals/complaintsLog'; ?>">Complaints</a></span>
                         </div>
                     </div>
                 </div>
