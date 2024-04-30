@@ -41,10 +41,6 @@
                 </div>
             </a>
 
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_building.svg' ?>" />
-                <span class="sidebar-title">Amenities</span>
-            </div>
 
             <a href="<?php echo URL_ROOT . '/residents/complaintsLog'; ?>" style="text-decoration: none; color: inherit;margin-left: 4%;">
                 <div class="navi-item">
@@ -63,11 +59,6 @@
             <div class="navi-item">
                 <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_payment.svg' ?>" />
                 <span class="sidebar-title">Payment</span>
-            </div>
-
-            <div class="navi-item">
-                <img src="<?php echo URL_ROOT . '/resources/resident_side_nav/sidebar_notification.svg' ?>" />
-                <span class="sidebar-title">Notification</span>
             </div>
 
 
