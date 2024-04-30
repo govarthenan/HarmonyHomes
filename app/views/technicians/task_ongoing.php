@@ -25,7 +25,7 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
                 <table>
                     <tr class="inventory_table_head">
                         <th>Task ID</th>
-                        <th>Resident Id</th>
+                        <th>Resident Address</th>
                         <th>Status</th>
                         <th>Update</th>
                         <th>View</th>

@@ -62,7 +62,7 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
       <div class="tech-dashboard-row-2">
         <div class="tech-total-task-tile">
           <div class="tasks">
-            <img src="total-task.svg" class="total-task-icon">
+            <img src="<?php echo URL_ROOT . '/resources/generals/total-task.svg' ?>" class="total-task-icon">
           </div>
           <div class="Number-task">
             <div class="task-name">
@@ -75,7 +75,7 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
         </div>
         <div class="tech-ongoing-task-tile">
           <div class="tasks">
-            <img src="ongoing-task.svg" class="ongoing-task-icon">
+            <img src="<?php echo URL_ROOT .  '/resources/generals/ongoing-task.svg' ?>" class="ongoing-task-icon">
           </div>
           <div class="Number-task">
             <div class="task-name">
@@ -88,7 +88,7 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
         </div>
         <div class="tech-completed-task-tile">
           <div class="tasks">
-            <img src="completed-task.svg" class="completed-task-icon">
+            <img src="<?php echo URL_ROOT .  '/resources/generals/completed-task.svg' ?>" class="completed-task-icon">
           </div>
           <div class="Number-task">
             <div class="task-name">
@@ -115,7 +115,8 @@ include(APP_ROOT . '/views/inc/technician_sidenav.php');
       </div>
     </div>
   </div>
-  <script src="index.js"></script>
+  <!-- <script src="index.js"></script> -->
+  <script src="<?php echo URL_ROOT . '/js/technician.js' ?>"></script>
   
 </body>
 
