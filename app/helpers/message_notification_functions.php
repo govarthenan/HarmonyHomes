@@ -57,8 +57,8 @@ function sendSMS($phone_number, $message, $from): bool
 
     try {
         $result = $api_instance->sendSMS($user_id, $api_key, $message, $to, $sender_id, $contact_fname, $contact_lname, $contact_email, $contact_address, $contact_group, $type);
-        return true;
-    } catch (Exception $e) {
-        return false;
+    } catch (Throwable $e) {
+        flash('err_sms', $e->getMessage(), 'alert alert-danger');
+        header('Location: ' . URL_ROOT . '/finances/createNotification');
     }
 }

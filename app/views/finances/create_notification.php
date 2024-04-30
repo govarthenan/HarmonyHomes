@@ -13,6 +13,16 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
 
 <body>
     <div class="main-content">
+        <?php
+        // flash message
+        try {
+            foreach ($_SESSION['flash'] as $key => $value) {
+                flash($key);
+            }
+        } catch (Throwable $th) {
+            echo '';
+        }
+        ?>
         <div class="notification-container">
             <div class="notification-heading">
                 New Notification
@@ -21,42 +31,41 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                 <div class="audience-heading">Audience</div>
                 <div class="audience-details">
                     <div class="send-heading">Send to :</div>
-                    <div class="select-audience">
-                        <select id="userType" name="userType" onchange="toggleDropdowns()">
-                            <option value="allUsers">All Users</option>
-                            <option value="groups">Wings</option>
-                            <option value="customUser">Custom User</option>
-                        </select>
-                        <div id="groupSelect" class="hidden">
-                            <select id="groupType" name="groupType">
-                                <option value="group1">Right wing</option>
-                                <option value="group2">Left wing</option>
-                                <option value="group3">East wing</option>
-                                <option value="group3">West wing</option>
+                    <form action="<?php echo URL_ROOT . '/finances/createNotification'; ?>" method="POST">
+                        <div class="select-audience">
+                            <select id="userType" name="wing">
+                                <option value="all">All residents</option>
+                                <option value="north">Norht wing</option>
+                                <option value="east">East wing</option>
+                                <option value="south">South wing</option>
+                                <option value="west">West wing</option>
                             </select>
+                            <div id="groupSelect" class="hidden">
+                                <select id="groupType" name="groupType">
+                                </select>
+                            </div>
+                            <div id="residentIdSelect" class="hidden">
+                                <select id="residentId" name="residentId">
+                                    <option value="id1">ID 1</option>
+                                    <option value="id2">ID 2</option>
+                                    <option value="id3">ID 3</option>
+                                </select>
+                            </div>
                         </div>
-                        <div id="residentIdSelect" class="hidden">
-                            <select id="residentId" name="residentId">
-                                <option value="id1">ID 1</option>
-                                <option value="id2">ID 2</option>
-                                <option value="id3">ID 3</option>
-                            </select>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="notification-message">
                 <div class="notification-content-heading">Notification Content</div>
                 <div class="notification-content-details-title">
-                    <div class="notification-title">Title:</div>
+                    <!-- <div class="notification-title">Title:</div> -->
                     <div class="title-for-notification">
-                        <input type="text" id="title" name="title" required>
+                        <!-- <input type="text" id="title" name="title" required> -->
                     </div>
                 </div>
                 <div class="notification-content-details-message">
                     <div class="notification-message-heading">Message:</div>
                     <div class="message-for-notification">
-                        <div id="editor" style="height:80%; width: 90%; "></div>
+                        <input id="editor" style="height:80%; width: 90%;" name="message">
                     </div>
                 </div>
             </div>
@@ -65,6 +74,7 @@ include(APP_ROOT . '/views/inc/finance_side_nav.php');
                     <button type="submit" class="notification" id="sendButton">Send Notification</button>
                 </div>
             </div>
+            </form>
         </div>
     </div>
     <script src="<?php echo URL_ROOT . '/js/index.js'; ?>"></script>

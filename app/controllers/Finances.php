@@ -1,4 +1,8 @@
 <?php
+// load SMS libraries
+// require_once(APP_ROOT . '/../vendor/notify/autoload.php');
+// require_once(APP_ROOT . '/../vendor/notify/src/Api/SmsApi.php');
+
 // league/csv library
 
 use League\Csv\Reader;
@@ -273,9 +277,45 @@ class Finances extends Controller
         $this->loadView('finances/payments_log', $data);
     }
 
+
+    public function sendSMS($phone_number, $message, $from)
+    {
+        $api_instance = new NotifyLk\Api\SmsApi();
+        $user_id = "27041"; // string | API User ID - Can be found in your settings page.
+        $api_key = "nkEBSeQ3qbDESV4CSVJ2"; // string | API Key - Can be found in your settings page.
+        $message = $message . PHP_EOL . '- ' . $from . ', HarmonyHomes.'; // string | Text of the message. 320 chars max.
+        $to = $phone_number; // string | Number to send the SMS. Better to use 9471XXXXXXX format.
+        $sender_id = "NotifyDEMO"; // string | This is the from name recipient will see as the sender of the SMS. Use \\\"NotifyDemo\\\" if you have not ordered your own sender ID yet.
+        $contact_fname = ""; // string | Contact First Name - This will be used while saving the phone number in your Notify contacts (optional).
+        $contact_lname = ""; // string | Contact Last Name - This will be used while saving the phone number in your Notify contacts (optional).
+        $contact_email = ""; // string | Contact Email Address - This will be used while saving the phone number in your Notify contacts (optional).
+        $contact_address = ""; // string | Contact Physical Address - This will be used while saving the phone number in your Notify contacts (optional).
+        $contact_group = 0; // int | A group ID to associate the saving contact with (optional).
+        $type = null; // string | Message type. Provide as unicode to support unicode (optional).
+
+        try {
+            $result = $api_instance->sendSMS($user_id, $api_key, $message, $to, $sender_id, $contact_fname, $contact_lname, $contact_email, $contact_address, $contact_group, $type);
+        } catch (Throwable $e) {
+            flash('err_sms', $e->getMessage(), 'alert alert-danger');
+            header('Location: ' . URL_ROOT . '/finances/createNotification');
+        }
+    }
+
     public function createNotification()
     {
-        // get finished payments
-        $this->loadView('finances/create_notification');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // get numbers for sms
+            $numbers = $this->model->getNumbersToSendSms($_POST['wing']);
+
+            // iterate and send SMS
+            foreach ($numbers as $key => $value) {
+                $this->sendSMS(strval($value->phone), $_POST['message'], 'Finance Manager');
+            }
+
+            flash('success_sms', 'SMS sent!', 'alert');
+            header('Location: ' . URL_ROOT . '/finances/createNotification');
+        } else {
+            $this->loadView('finances/create_notification');
+        }
     }
 }

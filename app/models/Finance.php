@@ -223,4 +223,15 @@ class Finance
         $this->db->prepareQuery('SELECT * FROM billing_resident WHERE water_paid = 1 OR power_paid = 1 OR maintenance_paid = 1');
         return $this->db->resultSet();
     }
+
+    public function getNumbersToSendSms($wing)
+    {
+        if ($wing != 'all') {
+            $this->db->prepareQuery('SELECT phone FROM resident WHERE wing = :wing');
+            $this->db->bind('wing', $wing);
+        } else {
+            $this->db->prepareQuery('SELECT phone FROM resident');
+        }
+        return $this->db->resultSet();
+    }
 }
